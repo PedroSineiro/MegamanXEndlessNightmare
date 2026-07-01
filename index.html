@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Megaman X Endless Nightmare</title>
+    <style>
+        body {
+            margin: 0;
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        canvas {
+            border: 2px solid white;
+        }
+
+        @font-face {
+
+            font-family:
+                "MegaManX";
+
+            src:
+                url(
+                    "assets/fonts/MMRock9.otf"
+                )
+
+                format(
+                    "truetype"
+                );
+
+        }
+    </style>
+</head>
+<body>
+    <div
+        style="
+            font-family:
+            MegaManX;
+            position:
+            absolute;
+            left:
+            -1000px;
+            visibility:
+            hidden;
+        "
+    >
+        .
+    </div>
+    <!-- Phaser -->
+    <script src="./libs/phaser.js"></script>
+
+    <!-- Seu jogo -->
+    <script type="module" src="./src/scenes/MainScene.js"></script>
+
+</body>
+</html>
