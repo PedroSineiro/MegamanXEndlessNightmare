@@ -62,14 +62,14 @@ export default class ZeroGigaShot {
         //
         // debug
         //
-
+        /*
         this.debugGraphics =
             scene.add.graphics();
 
         this.debugGraphics
             .setDepth(
                 99999
-            );
+            );*/
 
     }
 
@@ -102,6 +102,7 @@ export default class ZeroGigaShot {
         // debug
         //
 
+        /*
         this.debugGraphics
             .clear();
 
@@ -122,7 +123,7 @@ export default class ZeroGigaShot {
 
                 this.hitbox.height
 
-            );
+            );*/
 
         //
         // saiu da tela
