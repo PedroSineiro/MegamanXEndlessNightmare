@@ -58,6 +58,8 @@ export default class TitleScene extends Phaser.Scene {
 
     async create() {
 
+        this.volume = 0.5;
+
         this.sfx =
             new SoundManager(
                 this
@@ -88,7 +90,7 @@ export default class TitleScene extends Phaser.Scene {
 
             {
                 loop: true,
-                volume: 0.15
+                volume: this.volume
             }
 
         );
@@ -248,6 +250,105 @@ Clear enemy waves, defeat Mavericks and uncover the source of the Nightmare outb
         );
 
     this.backButton.setVisible(false);
+
+
+            this.volumeText = this.add.text(
+            600,
+            50,
+            `MASTER VOLUME: 50%`,
+            {
+                fontFamily: "MegaManX",
+                fontSize: "20px",
+                color: "#FFFFFF"
+            }
+        ).setOrigin(0.5);
+
+        this.leftButton = this.add.text(
+            710,
+            65,
+            "<",
+            {
+                fontFamily: "MegaManX",
+                fontSize: "20px",
+                color: "#FFFFFF"
+            }
+        )
+        .setInteractive({
+            useHandCursor:
+                true
+        });
+
+        this.rightButton = this.add.text(
+            750,
+            65,
+            ">",
+            {
+                fontFamily: "MegaManX",
+                fontSize: "20px",
+                color: "#FFFFFF"
+            }
+        )
+        .setInteractive({
+            useHandCursor:
+                true
+        });
+
+        this.leftButton.on("pointerdown", () => {
+
+            this.sfx.play(
+                    "choosing_menu",
+                    {
+                        volume: 0.15
+                    }
+                );
+
+            this.volume =
+
+                Math.max(
+                    0,
+                    this.volume - 0.1
+                );
+
+            this.updateVolume();
+
+        });
+
+        this.rightButton.on("pointerdown", () => {
+
+            this.sfx.play(
+                    "choosing_menu",
+                    {
+                        volume: 0.15
+                    }
+                );
+
+            this.volume =
+
+                Math.min(
+                    1,
+                    this.volume + 0.1
+                );
+
+            this.updateVolume();
+
+        });
+    }
+
+    updateVolume() {
+
+        const volume =
+
+            Math.round(
+                this.volume * 100
+            );
+
+        this.volumeText.setText(
+            `MASTER VOLUME: ${volume}%`
+        );
+
+        this.sound.setVolume(
+            this.volume
+        );
 
     }
 
