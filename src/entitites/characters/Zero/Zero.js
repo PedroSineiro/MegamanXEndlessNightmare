@@ -291,8 +291,8 @@ extends BaseCharacter {
 
         return (
 
-            this.saberKey
-                .isDown ||
+            /*this.saberKey
+                .isDown ||*/
 
             this.virtualInput
                 .slash
@@ -305,8 +305,8 @@ extends BaseCharacter {
 
         return (
 
-            this.special1Key
-                .isDown ||
+            /*this.special1Key
+                .isDown ||*/
 
             this.virtualInput
                 .piercing
@@ -319,8 +319,8 @@ extends BaseCharacter {
 
         return (
 
-            this.gigaAttackZKey
-                .isDown ||
+            /*this.gigaAttackZKey
+                .isDown ||*/
 
             this.virtualInput
                 .giga

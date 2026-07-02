@@ -280,8 +280,8 @@ extends BaseCharacter {
 
         return (
 
-            this.shootKey
-                .isDown ||
+            /*this.shootKey
+                .isDown ||*/
 
             this.virtualInput
                 .buster
@@ -294,8 +294,8 @@ extends BaseCharacter {
 
         return (
 
-            this.shootKey
-                .isDown ||
+           /* this.shootKey
+                .isDown ||*/
 
             this.virtualInput
                 .buster
@@ -570,8 +570,8 @@ extends BaseCharacter {
 
         return (
 
-            this.gigaAttackXKey
-                .isDown ||
+            /*this.gigaAttackXKey
+                .isDown ||*/
 
             this.virtualInput
                 .giga

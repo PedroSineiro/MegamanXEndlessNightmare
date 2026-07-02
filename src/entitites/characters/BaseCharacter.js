@@ -116,25 +116,25 @@ export default class BaseCharacter {
 
             left:
 
-                this.cursors.left.isDown ||
+                /*this.cursors.left.isDown ||*/
 
                 this.virtualInput.left,
 
             right:
 
-                this.cursors.right.isDown ||
+                /*this.cursors.right.isDown ||*/
 
                 this.virtualInput.right,
 
             up:
 
-                this.cursors.up.isDown ||
+                /*this.cursors.up.isDown ||*/
 
                 this.virtualInput.up,
 
             down:
 
-                this.cursors.down.isDown ||
+                /*this.cursors.down.isDown ||*/
 
                 this.virtualInput.down
 
@@ -267,75 +267,6 @@ export default class BaseCharacter {
             this.hp <=
             this.maxHp / 3
         );
-
-    }
-
-    move() {
-
-        const c =
-            this.cursors;
-
-        let moving =
-            false;
-
-        if (
-            c.left.isDown
-        ) {
-
-            this.direction =
-                -1;
-
-            this.sprite
-                .setFlipX(
-                    true
-                );
-
-            this.sprite.x -=
-                this.speed;
-
-            moving = true;
-        }
-
-        else if (
-            c.right
-                .isDown
-        ) {
-
-            this.direction =
-                1;
-
-            this.sprite
-                .setFlipX(
-                    false
-                );
-
-            this.sprite.x +=
-                this.speed;
-
-            moving = true;
-        }
-
-        if (
-            c.up.isDown
-        ) {
-
-            this.sprite.y -=
-                this.speed;
-
-            moving = true;
-        }
-
-        else if (
-            c.down.isDown
-        ) {
-
-            this.sprite.y +=
-                this.speed;
-
-            moving = true;
-        }
-
-        return moving;
 
     }
 
@@ -652,23 +583,12 @@ export default class BaseCharacter {
 
     updateMovementAnimation() {
 
-        const moving =
+        const cursors = this.getInput();
 
-            this.cursors
-                .left
-                .isDown ||
-
-            this.cursors
-                .right
-                .isDown ||
-
-            this.cursors
-                .up
-                .isDown ||
-
-            this.cursors
-                .down
-                .isDown;
+        const moving = cursors.left ||
+            cursors.right ||
+            cursors.up ||
+            cursors.down;
 
         if (moving) {
 
