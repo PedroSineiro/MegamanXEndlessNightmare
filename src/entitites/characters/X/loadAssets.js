@@ -317,7 +317,7 @@ loadAssets(scene) {
 
     scene.load.audio(
         "x_taking_damage_voice",
-        "assets/sounds/x/getting_hurt.wav"
+        "assets/sounds/X/getting_hurt.wav"
     );
 
     scene.load.audio(
@@ -332,11 +332,11 @@ loadAssets(scene) {
 
     scene.load.audio(
         "nova_strike",
-        "assets/sounds/General/dash.wav"
+        "assets/sounds/general/dash.wav"
     );
 
     scene.load.audio(
         "end_nova_strike",
-        "assets/sounds/General/dash_end.wav"
+        "assets/sounds/general/dash_end.wav"
     );
 }
