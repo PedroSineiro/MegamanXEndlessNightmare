@@ -42,7 +42,7 @@ from "../systems/SceneHelper.js";
 
 import SoundManager 
 from "../systems/SoundManager.js";
-import InterSceneManager from "../systems/interSceneManager.js";
+import InterSceneManager from "../systems/InterSceneManager.js";
 
 export default class CombatScene
 extends Phaser.Scene {
