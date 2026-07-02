@@ -44,8 +44,8 @@ export const SHOP_UPGRADES = {
             {
                 name: "fourth",
                 cost: 1500,
-                base_evasion: 30,
-                base_reduction: 30,
+                base_evasion: 20,
+                base_reduction: 50,
                 giga_attack_type: "Row",
                 description: "Charged shoot does more damage.",
                 preview_sprite: "fourth_empty_armor"
@@ -90,7 +90,7 @@ export const SHOP_UPGRADES = {
                 name: "zero",
                 cost: 0,
                 base_evasion: 15,
-                base_reduction: 15,
+                base_reduction: 0,
                 giga_attack_type: "Area",
                 description: "",
                 preview_sprite: "zero_empty_armor"
@@ -98,8 +98,8 @@ export const SHOP_UPGRADES = {
             {
                 name: "black_zero",
                 cost: 1800,
-                base_evasion: 30,
-                base_reduction: 30,
+                base_evasion: 20,
+                base_reduction: 50,
                 giga_attack_type: "Area",
                 description: "All attacks do more damage.",
                 preview_sprite: "black_zero_empty_armor"
