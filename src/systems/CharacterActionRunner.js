@@ -846,11 +846,11 @@ CharacterActionRunner {
                 break;
 
             case 1:
-                time = actor.mediumShotChargingTime;
+                time = actor.mediumShotChargingTime+200;
                 break;
 
             case 2:
-                time = actor.chargedShotChargingTime+100;
+                time = actor.chargedShotChargingTime+200;
                 break;
         }
 

@@ -79,7 +79,7 @@ SlashBState {
         player.scene.time
             .delayedCall(
 
-                450,
+                550,
 
                 () => {
 

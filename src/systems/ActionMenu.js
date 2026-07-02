@@ -1042,6 +1042,8 @@ ActionMenu {
     updateEnergyTank(character){
         this.energyTank.setVisible(this.canUseEnergyTank(character));
 
+        this.energyTank.removeAllListeners("pointerdown");
+
         this.energyTank.setInteractive(
             {
                 useHandCursor:
