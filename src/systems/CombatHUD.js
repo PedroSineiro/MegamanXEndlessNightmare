@@ -33,7 +33,7 @@ export default class CombatHUD {
                     0,
                     0,
 
-                    440,
+                    560,
                     150,
 
                     0x111111,
@@ -94,13 +94,37 @@ export default class CombatHUD {
 
             );
 
+        this.waveText =
+
+            scene.add.text(
+
+                425,
+                30,
+
+                "Wave: ",
+
+                {
+                    fontSize:
+                        "14px",
+
+                    fontFamily:
+                        "MegaManX",
+
+                    color:
+                        "#ffffff"
+                }
+
+            );
+
         this.container.add([
 
             this.background,
 
             this.xText,
 
-            this.zeroText
+            this.zeroText,
+
+            this.waveText
 
         ]);
 
@@ -148,6 +172,12 @@ Reduction: ${Math.round(zero.damageReduction * 100)}%` +
 Giga
 Attack: ${Math.round((zero.gigaAttackRechargeTurns/zero.gigaAttackCooldown)*100)}%`: "")
 
+                );
+
+
+                this.waveText?.setText(
+        `
+Wave:${Math.min(this.scene.currentWaveIndex + 1,this.scene.totalNumberOfWaves)}/${this.scene.waves.length}`
                 );
 
             }

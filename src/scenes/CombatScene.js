@@ -135,6 +135,7 @@ extends Phaser.Scene {
             this.combatData
                 .boss;
 
+        this.totalNumberOfWaves = this.waves.length;
 
         const wave = this.waves[
                 this.currentWaveIndex

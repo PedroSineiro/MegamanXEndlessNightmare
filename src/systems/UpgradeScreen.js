@@ -146,7 +146,8 @@ export default class UpgradeScreen {
 
                 `HP: ${hp}
 Armor: ${armor.replaceAll("_", " ")}
-Nightmare Scrap: ${this.data.nightmareScrap}`,
+Nightmare Scrap: ${this.data.nightmareScrap}
+Stages Completed: ${this.data.amountCompletedStages}`,
 
                     {
                         fontFamily:

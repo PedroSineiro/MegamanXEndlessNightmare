@@ -90,7 +90,7 @@ export default class TitleScene extends Phaser.Scene {
 
             {
                 loop: true,
-                volume: this.volume
+                volume: 0.15
             }
 
         );
