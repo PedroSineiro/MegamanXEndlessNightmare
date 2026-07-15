@@ -23,5 +23,35 @@ export const BOSS_SPAWN_CONFIG = {
     slash_beast: {
         offsetX: 0,
         offsetY: 150,
+    },
+
+    frost_walrus: {
+        offsetX: 0,
+        offsetY: 150,
+    },
+
+    blizzard_wolfang: {
+        offsetX: 0,
+        offsetY: 150,
+    },
+
+    cyber_peacock: {
+        offsetX: 0,
+        offsetY: 150,
+    },
+
+    spiral_pegasus: {
+        offsetX: 100,
+        offsetY: 150,
+    },
+
+    colonel: {
+        offsetX: 0,
+        offsetY: 150,
+    },
+
+    double: {
+        offsetX: 0,
+        offsetY: 150,
     }
 };

@@ -14,7 +14,8 @@ export default class BaseShot {
         hitboxWidth = 18,
         hitboxLength = 18,
         isAreaType = false,
-        needRotation = true
+        needRotation = true,
+        fullDepth = false
     ) {
 
         this.scene =
@@ -62,6 +63,10 @@ export default class BaseShot {
             2
         );
 
+        this.sprite.setDepth(
+            this.sprite.y + 1000
+        );
+
         //
         // rotação
         //
@@ -80,6 +85,12 @@ export default class BaseShot {
                 velocityX
 
             );
+        }
+
+        if(fullDepth){
+            this.sprite.setDepth(
+                99999
+            )
         }
 
         //

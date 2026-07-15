@@ -1,3 +1,4 @@
+import SoundManager from "../../systems/SoundManager.js";
 import Explosion from "../effects/Explosion/Explosion.js";
 
 export default class BaseEnemy {
@@ -36,13 +37,15 @@ export default class BaseEnemy {
         this.shots =
             [];
 
-        this.startAttackAnimationName = ""
+        this.startAttackAnimationName = "";
 
-        this.attackAnimationName = ""
+        this.attackAnimationName = "";
 
-        this.idleAnimationName = ""
+        this.idleAnimationName = "";
 
-        this.dashAnimationName = ""
+        this.dashAnimationName = "";
+
+        this.SoundManager = SoundManager;
 
     }
 

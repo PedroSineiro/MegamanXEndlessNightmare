@@ -60,6 +60,30 @@ import loadSlashBeastAssets from "../entitites/enemies/boss/SlashBeast/loadAsset
 
 import loadSlashBeastSlashAssets from "../entitites/enemies/boss/SlashBeast/slash/loadAssets.js";
 
+import loadFrostWalrusAssets from "../entitites/enemies/boss/FrostWalrus/loadAssets.js";
+
+import loadFrostWalrusIcicleSpearAssets from "../entitites/enemies/boss/FrostWalrus/icicleSpear/loadAssets.js";
+
+import loadBlizzardWolfangAssets from "../entitites/enemies/boss/BlizzardWolfang/loadAssets.js";
+
+import loadBlizzardWolfangIceAssets from "../entitites/enemies/boss/BlizzardWolfang/ice/loadAssets.js";
+
+import loadCyberPeacockAssets from "../entitites/enemies/boss/CyberPeacock/loadAssets.js";
+
+import loadCyberPeacockArrowAssets from "../entitites/enemies/boss/CyberPeacock/arrow/loadAssets.js";
+
+import loadSpiralPegasusAssets from "../entitites/enemies/boss/SpiralPegasus/loadAssets.js";
+
+import loadSpiralPegasusHurricaneAssets from "../entitites/enemies/boss/SpiralPegasus/hurricane/loadAssets.js";
+
+import loadColonelAssets from "../entitites/enemies/boss/Colonel/loadAssets.js";
+
+import loadColonelSlashAssets from "../entitites/enemies/boss/Colonel/slash/loadAssets.js";
+
+import loadDoubleAssets from "../entitites/enemies/boss/Double/loadAssets.js";
+
+import loadDoubleSphereAssets from "../entitites/enemies/boss/Double/sphere/loadAssets.js";
+
 import loadExplosionAssets from "../entitites/effects/Explosion/loadAssets.js";
 
 import loadStageAssets from "../stages/loadAssets.js";
@@ -132,6 +156,30 @@ import createSlashBeastAnimations from "../entitites/enemies/boss/SlashBeast/cre
 
 import createSlashBeastSlashAnimations from "../entitites/enemies/boss/SlashBeast/slash/createAnimations.js";
 
+import createFrostWalrusAnimations from "../entitites/enemies/boss/FrostWalrus/createAnimations.js";
+
+import createFrostWalrusIcicleSpearAnimations from "../entitites/enemies/boss/FrostWalrus/icicleSpear/createAnimations.js";
+
+import createBlizzardWolfangAnimations from "../entitites/enemies/boss/BlizzardWolfang/createAnimations.js";
+
+import createBlizzardWolfangIceAnimations from "../entitites/enemies/boss/BlizzardWolfang/ice/createAnimations.js";
+
+import createCyberPeacockAnimations from "../entitites/enemies/boss/CyberPeacock/createAnimations.js";
+
+import createCyberPeacockArrowAnimations from "../entitites/enemies/boss/CyberPeacock/arrow/createAnimations.js";
+
+import createSpiralPegasusAnimations from "../entitites/enemies/boss/SpiralPegasus/createAnimations.js";
+
+import createSpiralPegasusHurricaneAnimations from "../entitites/enemies/boss/SpiralPegasus/hurricane/createAnimations.js";
+
+import createColonelAnimations from "../entitites/enemies/boss/Colonel/createAnimations.js";
+
+import createColonelSlashAnimations from "../entitites/enemies/boss/Colonel/slash/createAnimations.js";
+
+import createDoubleAnimations from "../entitites/enemies/boss/Double/createAnimations.js";
+
+import createDoubleSphereAnimations from "../entitites/enemies/boss/Double/sphere/createAnimations.js";
+
 import createExplosionAnimations from "../entitites/effects/Explosion/createAnimations.js";
 
 import createGeneralAnimations from "../general/createAnimations.js";
@@ -189,6 +237,18 @@ extends Phaser.Scene {
         loadCrescentGrizzlySlashAssets(this);
         loadSlashBeastAssets(this);
         loadSlashBeastSlashAssets(this);
+        loadFrostWalrusAssets(this);
+        loadFrostWalrusIcicleSpearAssets(this);
+        loadBlizzardWolfangAssets(this);
+        loadBlizzardWolfangIceAssets(this);
+        loadCyberPeacockAssets(this);
+        loadCyberPeacockArrowAssets(this);
+        loadSpiralPegasusAssets(this);
+        loadSpiralPegasusHurricaneAssets(this);
+        loadColonelAssets(this);
+        loadColonelSlashAssets(this);
+        loadDoubleAssets(this);
+        loadDoubleSphereAssets(this);
         loadExplosionAssets(this);
         loadGeneralAssets(this);
         loadStageAssets(this);
@@ -230,6 +290,18 @@ extends Phaser.Scene {
         createCrescentGrizzlySlashAnimations(this);
         createSlashBeastAnimations(this);
         createSlashBeastSlashAnimations(this);
+        createFrostWalrusAnimations(this);
+        createFrostWalrusIcicleSpearAnimations(this);
+        createBlizzardWolfangAnimations(this);
+        createBlizzardWolfangIceAnimations(this);
+        createCyberPeacockAnimations(this);
+        createCyberPeacockArrowAnimations(this);
+        createSpiralPegasusAnimations(this);
+        createSpiralPegasusHurricaneAnimations(this);
+        createColonelAnimations(this);
+        createColonelSlashAnimations(this);
+        createDoubleAnimations(this);
+        createDoubleSphereAnimations(this);
         createExplosionAnimations(this);
         createGeneralAnimations(this);
         createDialogAnimations(this);

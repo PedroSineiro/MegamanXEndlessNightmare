@@ -262,6 +262,140 @@ loadAssets(scene) {
 
     }
 
+    for (let i = 1; i <= 11; i++) {
+        scene.load.image(
+            `ultimate_idle_${i}`,
+            `assets/sprites/characters/x/ultimate//idle/idle_${i}.png`
+        );
+    }
+        
+    for (let i = 1; i <= 2; i++) {
+
+        scene.load.image(
+            `ultimate_start_walking_${i}`,
+            `assets/sprites/characters/x/ultimate/start_walking/start_walking_${i}.png`
+        );
+
+    }
+
+    for (let i = 3; i <= 16; i++) {
+
+        scene.load.image(
+            `ultimate_walking_${i}`,
+            `assets/sprites/characters/x/ultimate/walking/walking_${i}.png`
+        );
+
+    }
+    
+    for (let i = 3; i <= 16; i++) {
+
+        scene.load.image(
+            `ultimate_walking_${i}`,
+            `assets/sprites/characters/x/ultimate/walking/walking_${i}.png`
+        );
+
+    }
+
+    scene.load.image(
+        "ultimate_light_1",
+        "assets/sprites/characters/x/ultimate/light/light_1.png"
+    );
+
+    scene.load.image(
+        "ultimate_light_leaving_1",
+        "assets/sprites/characters/x/ultimate/light/light_leaving_1.png"
+    );
+
+    for (let i = 2; i <= 17; i++) {
+
+        scene.load.image(
+            `ultimate_spawning_${i}`,
+            `assets/sprites/characters/x/ultimate/spawning/spawning_${i}.png`
+        );
+
+    }
+
+    for (let i = 1; i <= 7; i++) {
+
+        scene.load.image(
+            `ultimate_shooting_charged_${i}`,
+            `assets/sprites/characters/x/ultimate/shooting_charged/shooting_charged_${i}.png`
+        );
+
+    }
+
+    for (let i = 1; i <= 5; i++) {
+
+        scene.load.image(
+            `ultimate_basic_shooting_${i}`,
+            `assets/sprites/characters/x/ultimate/shooting/shooting_${i}.png`
+        );
+
+    }
+
+    for (let i = 1; i <= 6; i++) {
+
+        scene.load.image(
+            `ultimate_low_hp_${i}`,
+            `assets/sprites/characters/x/ultimate/low_hp/low_hp_${i}.png`
+        );
+
+    }
+
+    for (let i = 1; i <= 4; i++) {
+
+        scene.load.image(
+            `ultimate_dying_${i}`,
+            `assets/sprites/characters/x/ultimate/dying/dying_${i}.png`
+        );
+
+    }
+
+    for (let i = 1; i <= 4; i++) {
+
+        scene.load.image(
+            `ultimate_victory_${i}`,
+            `assets/sprites/characters/x/ultimate/victory/victory_${i}.png`
+        );
+
+    }
+
+    for (let i = 1; i <= 5; i++) {
+
+        scene.load.image(
+            `ultimate_leaving_${i}`,
+            `assets/sprites/characters/x/ultimate/leaving/leaving_${i}.png`
+        );
+
+    }
+
+    for (let i = 1; i <= 4; i++) {
+
+        scene.load.image(
+            `ultimate_start_nova_strike_${i}`,
+            `assets/sprites/characters/x/ultimate/start_nova_strike/start_nova_strike_${i}.png`
+        );
+
+    }
+
+    for (let i = 1; i <= 4; i++) {
+
+        scene.load.image(
+            `ultimate_nova_strike_${i}`,
+            `assets/sprites/characters/x/ultimate/nova_strike/nova_strike_${i}.png`
+        );
+
+    }
+
+    for (let i = 1; i <= 4; i++) {
+
+        scene.load.image(
+            `ultimate_end_nova_strike_${i}`,
+            `assets/sprites/characters/x/ultimate/end_nova_strike/end_nova_strike_${i}.png`
+        );
+
+    }
+
     for (let i = 1; i <= 5; i++) {
 
         scene.load.image(

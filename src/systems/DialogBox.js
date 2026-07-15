@@ -190,17 +190,68 @@ export default class DialogBox {
                 }
             );
 
-            this.continueButton.on(
+        this.continueButton.on(
 
-                "pointerdown",
+            "pointerdown",
 
-                () => {
+            () => {
 
-                    this.onContinue();
+                this.onContinue();
 
+            }
+
+        );
+
+        this.skipButton =
+
+            this.scene.add.text(
+
+                730,
+                760,
+
+                "SKIP",
+
+                {
+                    fontFamily:
+                        "MegaManX",
+
+                    fontSize:
+                        "10px",
+
+                    backgroundColor:
+                        "#000",
+
+                    padding: {
+
+                            left: 10,
+                            right: 10,
+                            top: 5,
+                            bottom: 5
+
+                        }
                 }
 
+            ).setDepth(
+            this.uiDepth + 5
+            ).setInteractive(
+                {
+                    useHandCursor:
+                        true
+                }
             );
+
+        this.skipButton.on(
+
+            "pointerdown",
+
+            () => {
+
+                this.onSkip();
+
+            }
+
+        );
+
 
         this.container.add([
 
@@ -214,7 +265,9 @@ export default class DialogBox {
 
             this.dialogText,
 
-            this.continueButton
+            this.continueButton,
+
+            this.skipButton
 
         ]);
 
@@ -443,6 +496,17 @@ export default class DialogBox {
         this.currentIndex++;
 
         this.showCurrentDialog();
+
+    }
+
+    onSkip() {
+
+        this.isTyping = false;
+
+        this.currentIndex = this.dialogs.length;
+
+        this.showCurrentDialog();
+
 
     }
 

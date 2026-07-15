@@ -9,7 +9,7 @@ export const SHOP_UPGRADES = {
             },
             {
                 name: "energy_tank",
-                cost: 500,
+                cost: 800,
                 max_amount: 1,
                 description: "Refills the HP completley once in battle." 
             }
@@ -22,13 +22,18 @@ export const SHOP_UPGRADES = {
             },
             {
                 name:"quick_charge",
-                cost: 400,
+                cost: 500,
                 description: "Medium and Charged shots take 1 less action." 
             },
             {
                 name:"buster_plus",
                 cost: 500,
                 description: "X-Buster does more damage." 
+            },
+            {
+                name:"giga_attack_recover",
+                cost: 800,
+                description: "Reduces the giga attack recharge time by 3 turns" 
             }
         ],
         armors: [
@@ -49,6 +54,15 @@ export const SHOP_UPGRADES = {
                 giga_attack_type: "Row",
                 description: "Charged shoot does more damage.",
                 preview_sprite: "fourth_empty_armor"
+            },
+            {
+                name: "ultimate",
+                cost: 2800,
+                base_evasion: 20,
+                base_reduction: 50,
+                giga_attack_type: "Row",
+                description: "Charged shoot does more damage. Has unlimited Giga Attack",
+                preview_sprite: "ultimate_empty_armor"
             }
         ]
     },
@@ -63,7 +77,7 @@ export const SHOP_UPGRADES = {
             },
             {
                 name: "energy_tank",
-                cost: 500,
+                cost: 800,
                 max_amount: 1,
                 description: "Refills the HP completley once in battle." 
             }
@@ -83,6 +97,11 @@ export const SHOP_UPGRADES = {
                 name:"saber_plus",
                 cost: 500,
                 description: "Z-saber attacks do more damage." 
+            },
+            {
+                name:"giga_attack_recover",
+                cost: 800,
+                description: "Reduces the giga attack recharge time by 3 turns" 
             }
         ],
         armors: [

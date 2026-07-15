@@ -33,7 +33,7 @@ export default class CombatHUD {
                     0,
                     0,
 
-                    560,
+                    570,
                     150,
 
                     0x111111,

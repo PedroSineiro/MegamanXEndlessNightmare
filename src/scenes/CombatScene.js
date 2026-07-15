@@ -43,6 +43,7 @@ from "../systems/SceneHelper.js";
 import SoundManager 
 from "../systems/SoundManager.js";
 import InterSceneManager from "../systems/InterSceneManager.js";
+import EnemyBuilder from "../systems/EnemyBuilder.js";
 
 export default class CombatScene
 extends Phaser.Scene {
@@ -481,6 +482,8 @@ extends Phaser.Scene {
                 direction
 
             );
+
+        EnemyBuilder.buildEnemy(enemy, this.GameData.nightmareLevel);
 
         enemy.lane =
         lane;
@@ -1545,6 +1548,8 @@ extends Phaser.Scene {
 
         this.enemies =
             [];
+
+        EnemyBuilder.buildBoss(this.boss, this.GameData.nightmareLevel);
 
         this.enemies.push(
             this.boss

@@ -109,7 +109,7 @@ loadAssets(scene) {
 
     }
 
-    for (let i = 1; i <= 33; i++) {
+    for (let i = 1; i <= 29; i++) {
 
         scene.load.image(
             `zero_special_attack_1_${i}`,
@@ -262,7 +262,7 @@ loadAssets(scene) {
 
     }
 
-    for (let i = 1; i <= 33; i++) {
+    for (let i = 1; i <= 29; i++) {
 
         scene.load.image(
             `black_zero_special_attack_1_${i}`,

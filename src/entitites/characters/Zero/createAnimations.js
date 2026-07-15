@@ -204,7 +204,7 @@ createAnimations(scene) {
 
     frames = []
 
-    for (let i = 1; i <= 33; i++) {
+    for (let i = 1; i <= 29; i++) {
 
         frames.push({
             key: `zero_special_attack_1_${i}`
@@ -490,7 +490,7 @@ createAnimations(scene) {
 
     frames = []
 
-    for (let i = 1; i <= 33; i++) {
+    for (let i = 1; i <= 29; i++) {
 
         frames.push({
             key: `black_zero_special_attack_1_${i}`

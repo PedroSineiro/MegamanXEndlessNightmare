@@ -1,4 +1,5 @@
 import { ARMOR_STATS } from "../../constants/ArmorStats.js";
+import SoundManager from "../../systems/SoundManager.js";
 
 export default class BaseCharacter {
 
@@ -197,8 +198,6 @@ export default class BaseCharacter {
 
     startTurn() {
 
-        this.gigaAttackRechargeTurns = Math.min(++this.gigaAttackRechargeTurns, this.gigaAttackCooldown);
-
         this.actions =
             this.maxActions;
 
@@ -208,6 +207,10 @@ export default class BaseCharacter {
         this.damageReduction =
             this.baseDamageReduction;
 
+    }
+
+    rechargeGigaAttack(){
+        this.gigaAttackRechargeTurns = Math.min(++this.gigaAttackRechargeTurns, this.gigaAttackCooldown);
     }
 
     defend(

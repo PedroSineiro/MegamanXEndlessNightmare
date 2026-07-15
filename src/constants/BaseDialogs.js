@@ -212,6 +212,85 @@ BASE_DIALOGS = {
                 speaker: "alia",
                 text: "The Nightmare has returned..."
             }
+        ],
+
+    3:
+        [
+            {
+            speaker: "alia",
+            text: "X, Zero, I've been monitoring the sectors that remain under Nightmare influence."
+            },
+            {
+                speaker: "x",
+                text: "Have you discovered anything new?"
+            },
+
+            {
+                speaker: "alia",
+                text: "Yes. The readings are becoming increasingly unstable. The phenomenon appears to be growing stronger across every contaminated area."
+            },
+
+            {
+                speaker: "zero",
+                text: "So it isn't limited to the places we've already visited."
+            },
+
+            {
+                speaker: "alia",
+                text: "Exactly. Even in sectors with no Hunter activity, the Nightmare's energy continues to rise."
+            },
+
+            {
+                speaker: "x",
+                text: "What effect is that having?"
+            },
+
+            {
+                speaker: "alia",
+                text: "The Nightmare creations appearing in those regions are becoming more powerful."
+            },
+
+            {
+                speaker: "zero",
+                text: "It's adapting."
+            },
+
+            {
+                speaker: "alia",
+                text: "That's our concern. Whatever is driving this phenomenon, it seems to be feeding on time and spreading unchecked."
+            },
+
+            {
+                speaker: "x",
+                text: "Then every mission from now on will be more dangerous."
+            },
+
+            {
+                speaker: "alia",
+                text: "Most likely. We've started referring to the intensity of the phenomenon as the Nightmare Level. According to our projections, it's still rising."
+            },
+
+            {
+                speaker: "zero",
+                text: "Then we'd better move faster than it does."
+            },
+
+            {
+                speaker: "alia",
+                text: "Stay alert. The next sectors may contain threats far beyond what you've encountered so far."
+            },
+
+            {
+                speaker: "x",
+                text: "Understood. We'll keep pushing forward."
+            },
+
+            {
+                speaker: "zero",
+                text: "No matter what the Nightmare creates, we'll destroy it."
+            }
+
         ]
+
 
 };

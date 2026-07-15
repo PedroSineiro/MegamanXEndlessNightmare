@@ -46,16 +46,16 @@ extends BaseBoss {
 
         this.gigaAttackScream = "slash_beast_giga_attack_scream";
 
-        this.stopAttackSound = "slash_beast_stop_attack";
+        this.stopAttackSound = "charge_break";
 
         this.name = "Slash Beast";
 
         this.hudColor = "#e48416";
 
 
-        this.hp = 800;
-
         this.maxHp = 800;
+
+        this.hp = this.maxHp;
 
         this.attackDamage = 42;
 
@@ -184,9 +184,20 @@ extends BaseBoss {
 
             : 700;
 
-        await this.chargeTarget(
-            target,
-            targetX
+        await this.moveTowards(
+            {
+                targetX,
+
+                speed: 15,
+
+                onUpdate: () => {
+
+                    const hitbox = this.setupHitbox();
+
+                    this.checkChargeHit([target], hitbox,this.attackDamage);
+                }
+                
+            }
         );
 
         this.scene.sfx.play(this.stopAttackSound, {volume: 0.15});
@@ -204,161 +215,6 @@ extends BaseBoss {
             : -1
 
         );
-
-    }
-
-    async chargeTarget(
-        target,
-        targetX
-    ) {
-
-        return new Promise(
-
-            resolve => {
-
-                const speed = 15;
-
-                let alreadyHit =
-                    false;
-
-                const event =
-
-                    this.scene.time.addEvent({
-
-                        delay: 16,
-
-                        loop: true,
-
-                        callback: () => {
-
-                            const dx =
-
-                                targetX -
-
-                                this.sprite.x;
-
-                            //
-                            // movimentação
-                            //
-
-                            if (
-
-                                Math.abs(dx)
-
-                                <= speed
-
-                            ) {
-
-                                this.sprite.x =
-                                    targetX;
-
-                                event.remove();
-
-                                resolve();
-
-                                return;
-
-                            }
-
-                            this.sprite.x +=
-
-                                Math.sign(dx)
-                                * speed;
-
-                            //
-                            // hitbox
-                            //
-
-                            if (
-                                !alreadyHit
-                            ) {
-
-                                const hitbox =
-
-                                    new Phaser
-                                        .Geom
-                                        .Rectangle(
-
-                                            this.sprite.x - 120,
-
-                                            this.sprite.y - 120,
-
-                                            240,
-
-                                            240
-
-                                        );
-
-                                if(target.isDead) return;
-
-                                const hit =
-
-                                    Phaser
-                                        .Geom
-                                        .Intersects
-                                        .RectangleToRectangle(
-
-                                            hitbox,
-
-                                            target.hurtbox
-
-                                        );
-
-                                if (
-                                    hit
-                                ) {
-
-                                    alreadyHit =
-                                        true;
-
-                                    target.receiveAttack(this.attackDamage,this);
-
-                                }
-
-                            }
-
-                        }
-
-                    });
-
-            }
-
-        );
-
-    }
-
-    async performBrake() {
-
-        const speeds = [
-
-            8,
-            6,
-            4,
-            2,
-            1
-
-        ];
-
-        const direction =
-
-            this.direction;
-
-        for (
-
-            const speed of speeds
-
-        ) {
-
-            this.sprite.x +=
-
-                speed *
-                direction;
-
-            await this.wait(
-                40
-            );
-
-        }
 
     }
 

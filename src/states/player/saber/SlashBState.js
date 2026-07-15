@@ -10,8 +10,7 @@ SlashBState {
         player
     ) {
 
-        player.comboQueued =
-            false;
+        player.turnActions--;
 
         player.comboWindow =
             false;
@@ -102,24 +101,7 @@ SlashBState {
 
             () => {
 
-                if (
-                    player
-                    .comboQueued
-                ) {
-
-                    this
-                    .stateMachine
-                    .transition(
-                        "slashC"
-                    );
-
-                    return;
-                }
-
-                this.stateMachine
-                    .transition(
-                        "slashEnd"
-                    );
+                player.continueComboOrEnd();
 
             }
 
@@ -139,11 +121,14 @@ SlashBState {
 
         ) {
 
-            player.comboQueued =
-                true;
+            player.comboQueue.push(
+                "slashC"
+            );
+
+            player.comboWindow =
+                false;
 
         }
-
     }
 
 }

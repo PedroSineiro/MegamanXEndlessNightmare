@@ -10,8 +10,7 @@ SlashCState {
         player
     ) {
 
-        player.comboQueued =
-            false;
+        player.turnActions--;
 
         player.comboWindow =
             false;
@@ -67,10 +66,7 @@ SlashCState {
 
             () => {
 
-                this.stateMachine
-                    .transition(
-                        "slashEnd"
-                    );
+                player.continueComboOrEnd();
 
             }
 

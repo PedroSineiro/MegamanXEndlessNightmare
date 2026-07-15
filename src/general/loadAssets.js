@@ -87,6 +87,11 @@ loadAssets(scene) {
     );
 
     scene.load.image(
+        "ultimate_empty_armor",
+        "assets/sprites/characters/x/ultimate/empty_armor/empty_armor.png"
+    );
+
+    scene.load.image(
         "zero_empty_armor",
         "assets/sprites/characters/zero/zero/empty_armor/empty_armor.png"
     );

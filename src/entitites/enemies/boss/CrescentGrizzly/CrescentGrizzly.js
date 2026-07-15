@@ -56,11 +56,11 @@ extends BaseBoss {
         this.hudColor = "#915007";
 
 
-        this.hp = 900;
+        this.maxHp = 880;
 
-        this.maxHp = 900;
+        this.hp = this.maxHp;
 
-        this.attackDamage = 37;
+        this.attackDamage = 43;
 
         this.gigaAttackDamage = 60;
 

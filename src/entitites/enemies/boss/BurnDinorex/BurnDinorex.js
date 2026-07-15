@@ -52,13 +52,13 @@ extends BaseBoss {
                 "burn_dinorex_flame"
             );
 
-        this.hp = 880;
+        this.maxHp = 840;
 
-        this.maxHp = 880;
+        this.hp = this.maxHp;
 
         this.attackDamage = 35;
 
-        this.gigaAttackDamage = 70;
+        this.gigaAttackDamage = 76;
 
         this.originalX = x;
 
@@ -276,16 +276,6 @@ extends BaseBoss {
         this.sprite.y =
             this.targetSpawnY;
 
-        //
-        // prepara colisão
-        //
-
-        this.canDamageDuringCharge =
-            true;
-
-        this.playersHit =
-            new Set();
-
         this.flameSound.play({
 
             volume: 0.15,
@@ -301,135 +291,26 @@ extends BaseBoss {
         // atravessa a tela
         //
 
-        await this.chargeAcrossScreen();
+        const targetX = -400;
 
-        //
-        // fim
-        //
+        await this.moveTowards(
+            {
+                targetX,
 
-        this.canDamageDuringCharge =
-            false;
+                speed: 22,
+
+                onUpdate: () => {
+
+                    const hitbox = this.setupHitbox(-120,-220);
+    
+                    this.checkChargeHit(this.scene.players, hitbox, this.gigaAttackDamage);
+                }
+                
+            });
 
         this.flameSound.stop();
 
         await this.spawn();
-
-    }
-
-    async chargeAcrossScreen() {
-
-        return new Promise(
-
-            resolve => {
-
-                const speed = 22;
-
-                const event =
-
-                    this.scene.time.addEvent({
-
-                        delay: 16,
-
-                        loop: true,
-
-                        callback: () => {
-
-                            this.sprite.x -= speed;
-
-                            this.damagePlayers();
-
-                            //
-                            // saiu da tela?
-                            //
-
-                            if (
-
-                                this.sprite.x <
-
-                                -400
-
-                            ) {
-
-                                event.remove();
-
-                                resolve();
-
-                            }
-
-                        }
-
-                    });
-
-            }
-
-        );
-
-    }
-
-    damagePlayers() {
-
-        const hitbox =
-
-            new Phaser
-                .Geom
-                .Rectangle(
-
-                    this.sprite.x - 120,
-                    this.sprite.y - 220,
-
-                    240,
-                    240
-
-                );
-
-        this.scene.players.forEach(
-
-            player => {
-
-                if (
-                    player.isDead
-                ) {
-                    return;
-                }
-
-                if (
-
-                    this.playersHit.has(
-                        player
-                    )
-
-                ) {
-                    return;
-                }
-
-                const hit =
-
-                    Phaser
-                        .Geom
-                        .Intersects
-                        .RectangleToRectangle(
-
-                            hitbox,
-
-                            player.hurtbox
-
-                        );
-
-                if (
-                    !hit
-                ) {
-                    return;
-                }
-
-                this.playersHit.add(
-                    player
-                );
-
-                player.receiveAttack(this.gigaAttackDamage, this);
-
-            }
-
-        );
 
     }
 

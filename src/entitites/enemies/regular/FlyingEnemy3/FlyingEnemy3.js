@@ -30,7 +30,7 @@ extends BaseEnemy {
             30;
 
         this.hp =
-            30;
+            this.maxHp;
 
         this.damage = 20;
 
@@ -75,7 +75,7 @@ extends BaseEnemy {
         this.scene.sfx.play("generic_shot",
             {
                 volume:0.2
-            })
+            });
 
         //
         // ponto do disparo

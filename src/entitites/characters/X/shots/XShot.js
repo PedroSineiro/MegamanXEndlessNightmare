@@ -42,6 +42,10 @@ export default class XShot {
         `${currentArmor}_${shotType}_shot_1`
         );
 
+        this.sprite.setDepth(
+            this.sprite.y + 1000
+        );
+
         this.offsetX = direction==1? this.config.offsetXRight: this.config.offsetXLeft
 
         this.hitbox =

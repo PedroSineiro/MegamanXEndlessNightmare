@@ -65,7 +65,7 @@ CharacterStatsCalculator {
         const gigaAttackCooldown = (gameData.inventory
                 .x
                 .abilities
-                .quicker_giga_attack? 7: 8);
+                .giga_attack_recover? 5: 8);
 
         return {
 
@@ -166,9 +166,9 @@ CharacterStatsCalculator {
         const gigaAttackMustRecharge = ARMOR_STATS[gameData.currentArmors[1]].gigaAttackMustRecharge;
 
         const gigaAttackCooldown = (gameData.inventory
-                .x
+                .zero
                 .abilities
-                .quicker_giga_attack? 7: 8);
+                .giga_attack_recover? 5: 8);
 
         return {
 

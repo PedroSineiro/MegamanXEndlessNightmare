@@ -51,10 +51,11 @@ createAnimations(scene) {
             { key: "x_idle_3" },
             { key: "x_idle_4" },
             { key: "x_idle_5" },
-            { key: "x_idle_6", duration: 35 },
-            { key: "x_idle_7", duration: 35 },
-            { key: "x_idle_8", duration: 35 },
-            { key: "x_idle_9" },
+            { key: "x_idle_9", duration: 20 },
+            { key: "x_idle_6", duration: 20 },
+            { key: "x_idle_7", duration: 20 },
+            { key: "x_idle_8", duration: 20 },
+            { key: "x_idle_9", duration: 20 },
             { key: "x_idle_10" },
             { key: "x_idle_11" }
         ],
@@ -126,13 +127,12 @@ createAnimations(scene) {
     scene.anims.create({
         key: "x_taking_damage",
         frames: [
-            { key: "x_taking_damage_1" },
-            { key: "x_taking_damage_2" },
-            { key: "x_taking_damage_3" },
-            { key: "x_taking_damage_4" },
-            { key: "x_taking_damage_5" }
+            { key: "x_dying_1" },
+            { key: "x_dying_2" },
+            { key: "x_dying_3" },
+            { key: "x_dying_4" }
         ],
-        frameRate: 22,
+        frameRate: 16,
         repeat: 0
     });
 
@@ -248,10 +248,11 @@ createAnimations(scene) {
             { key: "fourth_idle_3" },
             { key: "fourth_idle_4" },
             { key: "fourth_idle_5" },
-            { key: "fourth_idle_6", duration: 35 },
-            { key: "fourth_idle_7", duration: 35 },
-            { key: "fourth_idle_8", duration: 35 },
-            { key: "fourth_idle_9" },
+            { key: "fourth_idle_9", duration: 20 },
+            { key: "fourth_idle_6", duration: 20 },
+            { key: "fourth_idle_7", duration: 20 },
+            { key: "fourth_idle_8", duration: 20 },
+            { key: "fourth_idle_9", duration: 20 },
             { key: "fourth_idle_10" },
             { key: "fourth_idle_11" }
         ],
@@ -323,13 +324,12 @@ createAnimations(scene) {
     scene.anims.create({
         key: "fourth_taking_damage",
         frames: [
-            { key: "fourth_taking_damage_1" },
-            { key: "fourth_taking_damage_2" },
-            { key: "fourth_taking_damage_3" },
-            { key: "fourth_taking_damage_4" },
-            { key: "fourth_taking_damage_5" }
+            { key: "fourth_dying_1" },
+            { key: "fourth_dying_2" },
+            { key: "fourth_dying_3" },
+            { key: "fourth_dying_4" }
         ],
-        frameRate: 22,
+        frameRate: 16,
         repeat: 0
     });
 
@@ -439,6 +439,253 @@ createAnimations(scene) {
 
     scene.anims.create({
         key: "fourth_end_nova_strike",
+        frames: frames,
+        frameRate: 10,
+        repeat: 0
+    });
+
+
+    scene.anims.create({
+            key: "ultimate_light",
+            frames: [
+                { key: "ultimate_light_1" }
+            ],
+            frameRate: 1,
+            repeat: -1
+        });
+
+    scene.anims.create({
+            key: "ultimate_light_leaving",
+            frames: [
+                { key: "ultimate_light_leaving_1" }
+            ],
+            frameRate: 1,
+            repeat: -1
+        });
+
+    scene.anims.create({
+        key: "ultimate_spawning",
+        frames: [
+            { key: "ultimate_spawning_2", duration: 60 },
+            { key: "ultimate_spawning_3", duration: 60 },
+            { key: "ultimate_spawning_4", duration: 60 },
+            { key: "ultimate_spawning_5", duration: 60 },
+            { key: "ultimate_spawning_6", duration: 60 },
+            { key: "ultimate_spawning_7", duration: 60 },
+            { key: "ultimate_spawning_8", duration: 60 },
+            { key: "ultimate_spawning_9", duration: 60 },
+            { key: "ultimate_spawning_10", duration: 60 },
+            { key: "ultimate_spawning_11", duration: 60 },
+            { key: "ultimate_spawning_12", duration: 60 },
+            { key: "ultimate_spawning_13", duration: 60 },
+            { key: "ultimate_spawning_14", duration: 60 },
+            { key: "ultimate_spawning_15", duration: 60 },
+            { key: "ultimate_spawning_16", duration: 60 },
+            { key: "ultimate_spawning_17", duration: 500 }
+        ],
+        frameRate: 16,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: "ultimate_idle",
+        frames: [
+            { key: "ultimate_idle_1" },
+            { key: "ultimate_idle_2" },
+            { key: "ultimate_idle_3" },
+            { key: "ultimate_idle_4" },
+            { key: "ultimate_idle_5" },
+            { key: "ultimate_idle_9", duration: 20 },
+            { key: "ultimate_idle_6", duration: 20 },
+            { key: "ultimate_idle_7", duration: 20 },
+            { key: "ultimate_idle_8", duration: 20 },
+            { key: "ultimate_idle_9", duration: 20 },
+            { key: "ultimate_idle_10" },
+            { key: "ultimate_idle_11" }
+        ],
+        frameRate: 6,
+        repeat: -1
+    });
+
+
+    scene.anims.create({
+        key: "ultimate_start_walking",
+        frames: [
+            { key: "ultimate_start_walking_1" },
+            { key: "ultimate_start_walking_2" }
+        ],
+        frameRate: 16,
+        repeat: 0
+    });
+    
+    scene.anims.create({
+        key: "ultimate_walking",
+        frames: [
+            { key: "ultimate_walking_3" },
+            { key: "ultimate_walking_4" },
+            { key: "ultimate_walking_5" },
+            { key: "ultimate_walking_6" },
+            { key: "ultimate_walking_7" },
+            { key: "ultimate_walking_8" },
+            { key: "ultimate_walking_9" },
+            { key: "ultimate_walking_10" },
+            { key: "ultimate_walking_11" },
+            { key: "ultimate_walking_12" },
+            { key: "ultimate_walking_13" },
+            { key: "ultimate_walking_14" },
+            { key: "ultimate_walking_15" },
+            { key: "ultimate_walking_16" }
+        ],
+        frameRate: 20,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: "ultimate_basic_shooting",
+        frames: [
+            { key: "ultimate_basic_shooting_1" },
+            { key: "ultimate_basic_shooting_2" },
+            { key: "ultimate_basic_shooting_3" },
+            { key: "ultimate_basic_shooting_4" },
+            { key: "ultimate_basic_shooting_5" }
+        ],
+        frameRate: 16,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: "ultimate_charged_shooting",
+        frames: [
+            { key: "ultimate_shooting_charged_1" },
+            { key: "ultimate_shooting_charged_2" },
+            { key: "ultimate_shooting_charged_3" },
+            { key: "ultimate_shooting_charged_4" },
+            { key: "ultimate_shooting_charged_5" },
+            { key: "ultimate_shooting_charged_6" },
+            { key: "ultimate_shooting_charged_7" }
+        ],
+        frameRate: 16,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: "ultimate_taking_damage",
+        frames: [
+            { key: "ultimate_dying_1" },
+            { key: "ultimate_dying_2" },
+            { key: "ultimate_dying_3" },
+            { key: "ultimate_dying_4" }
+        ],
+        frameRate: 16,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: "ultimate_low_hp",
+        frames: [
+            { key: "ultimate_low_hp_1" },
+            { key: "ultimate_low_hp_2" },
+            { key: "ultimate_low_hp_3" },
+            { key: "ultimate_low_hp_4" },
+            { key: "ultimate_low_hp_5" },
+            { key: "ultimate_low_hp_6" }
+        ],
+        frameRate: 3,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: "ultimate_dying",
+        frames: [
+            { key: "ultimate_dying_1" },
+            { key: "ultimate_dying_2" },
+            { key: "ultimate_dying_3" },
+            { key: "ultimate_dying_4" }
+        ],
+        frameRate: 16,
+        repeat: 0
+    });
+
+    frames = []
+
+    for (let i = 1; i <= 4; i++) {
+
+        frames.push({
+            key: `ultimate_victory_${i}`
+        });
+
+    }
+
+    scene.anims.create({
+        key: "ultimate_victory",
+        frames: frames,
+        frameRate: 10,
+        repeat: 0
+    });
+
+    frames = []
+
+    for (let i = 1; i <= 5; i++) {
+
+        frames.push({
+            key: `ultimate_leaving_${i}`
+        });
+
+    }
+
+    scene.anims.create({
+        key: "ultimate_leaving",
+        frames: frames,
+        frameRate: 16,
+        repeat: 0
+    });
+
+    frames = []
+
+    for (let i = 1; i <= 4; i++) {
+
+        frames.push({
+            key: `ultimate_start_nova_strike_${i}`
+        });
+
+    }
+
+    scene.anims.create({
+        key: "ultimate_start_nova_strike",
+        frames: frames,
+        frameRate: 10,
+        repeat: 0
+    });
+
+    frames = []
+
+    for (let i = 1; i <= 4; i++) {
+
+        frames.push({
+            key: `ultimate_nova_strike_${i}`
+        });
+
+    }
+
+    scene.anims.create({
+        key: "ultimate_nova_strike",
+        frames: frames,
+        frameRate: 36,
+        repeat: -1
+    });
+
+    frames = []
+
+    for (let i = 1; i <= 4; i++) {
+
+        frames.push({
+            key: `ultimate_end_nova_strike_${i}`
+        });
+
+    }
+
+    scene.anims.create({
+        key: "ultimate_end_nova_strike",
         frames: frames,
         frameRate: 10,
         repeat: 0

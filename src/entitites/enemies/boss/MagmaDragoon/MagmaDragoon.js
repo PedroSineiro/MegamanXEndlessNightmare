@@ -52,13 +52,13 @@ extends BaseBoss {
                 "magma_dragoon_flame"
             );
 
-        this.hp = 800;
-
         this.maxHp = 800;
+
+        this.hp = this.maxHp;
 
         this.attackDamage = 44;
 
-        this.gigaAttackDamage = 21;
+        this.gigaAttackDamage = 36;
 
         this.originalY = y;
 
@@ -454,51 +454,6 @@ extends BaseBoss {
                 40,
                 false,
                 false
-
-            );
-
-        this.shots.push(
-            shot
-        );
-
-    }
-
-    shootGigaAttack(
-        startX,
-        startY
-    ) {
-
-        const charactersHit = [];
-
-        this.scene.players.forEach(
-            (player) => {
-                const hit = this.tryHitTarget(player)
-                if(hit) charactersHit.push(player.filename)
-            }
-
-        )
-
-        this.scene.sfx.play(
-            "night_zero_saber",
-            {
-                volume: 0.2
-            }
-        );
-
-        const shot =
-
-            new GigaAttack(
-
-                this.scene,
-
-                startX,
-                startY,
-
-                -14,
-                0,
-
-                20,
-                charactersHit
 
             );
 

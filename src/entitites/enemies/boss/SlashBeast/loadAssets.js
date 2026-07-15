@@ -80,7 +80,7 @@ export default function loadAssets(scene) {
     );
 
      scene.load.audio(
-        "slash_beast_stop_attack",
+        "charge_break",
         "assets/sounds/slash_beast/stop_attack.wav"
     );
 

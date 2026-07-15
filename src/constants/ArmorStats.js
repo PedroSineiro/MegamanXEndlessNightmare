@@ -20,6 +20,16 @@ export const ARMOR_STATS = {
         gigaAttackMustRecharge: true
     },
 
+    "ultimate":{
+        baseEvasion: 0.20,
+        baseReduction: 0.50,
+        basicShotDamage: 10,
+        mediumShotDamage: 25,
+        chargedShotDamage: 75,
+        hasGigaAttack: true,
+        gigaAttackMustRecharge: false
+    },
+
     "zero":{
         baseEvasion: 0.15,
         baseReduction: 0,

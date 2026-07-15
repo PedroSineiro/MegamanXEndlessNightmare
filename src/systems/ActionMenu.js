@@ -363,7 +363,7 @@ ActionMenu {
             }
 
 
-            if(character.currentArmor=="fourth" && this.canUseGigaAttack(character)){
+            if((character.currentArmor=="fourth" || character.currentArmor=="ultimate") && this.canUseGigaAttack(character)){
                 this.addGigaAttackButton(
                     "Giga Attack",
 
@@ -562,9 +562,6 @@ ActionMenu {
                             async enemy => {
 
                                 this.hide();
-
-                                character
-                                    .turnActions -= character.piercingSlashActions;
 
                                 await this.scene
                                     .actionRunner

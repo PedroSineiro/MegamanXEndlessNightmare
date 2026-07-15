@@ -25,9 +25,7 @@ extends BaseEnemy {
         );
 
 
-        //
-        // giga attack
-        //
+        this.isAttackSingle = false;
 
         this.gigaAttackCooldown = 0;
 
@@ -62,9 +60,7 @@ extends BaseEnemy {
             this.maxHp / 2;
 
         if (
-
             this.hp <= halfHp
-
         ) {
 
             this.gigaAttackCooldown = Math.max(--this.gigaAttackCooldown,0);
@@ -84,10 +80,6 @@ extends BaseEnemy {
 
         }
 
-        //
-        // jogadores vivos
-        //
-
         const alivePlayers =
 
             this.scene.players
@@ -99,38 +91,35 @@ extends BaseEnemy {
 
                 );
 
-        //
-        // um ataque
-        // em cada player
-        //
-
         await this.beforeTurn();
 
-        for (
-
+        if(this.isAttackSingle){
+            await this.performAttack();
+        } else {
+            for (
             const target of
             alivePlayers
-
-        ) {
-
-            if (
-                this.isDead || this.scene.isGameOver
             ) {
-                break;
+
+                if (
+                    this.isDead || this.scene.isGameOver
+                ) {
+                    break;
+                }
+
+                await this.performAttack(
+                    target
+                );
+
+                //
+                // pequeno delay
+                //
+
+                await this.wait(
+                    300
+                );
+
             }
-
-            await this.performAttack(
-                target
-            );
-
-            //
-            // pequeno delay
-            //
-
-            await this.wait(
-                300
-            );
-
         }
 
         this.isBusy =
@@ -166,6 +155,315 @@ extends BaseEnemy {
             "performAttack not implemented"
 
         );
+
+    }
+
+    async moveTowards({
+
+        targetX = null,
+        targetY = null,
+
+        speed = 15,
+
+        onUpdate = null
+
+    }) {
+
+        this.hitTargets =
+            new Set();
+
+        return new Promise(
+
+            resolve => {
+
+                const event =
+
+                    this.scene.time.addEvent({
+
+                        delay: 16,
+
+                        loop: true,
+
+                        callback: () => {
+
+                            let reachedX =
+                                targetX === null;
+
+                            let reachedY =
+                                targetY === null;
+
+                            //
+                            // eixo X
+                            //
+
+                            if (
+                                targetX !== null
+                            ) {
+
+                                const dx =
+
+                                    targetX -
+
+                                    this.sprite.x;
+
+                                if (
+
+                                    Math.abs(dx)
+
+                                    <= speed
+
+                                ) {
+
+                                    this.sprite.x =
+                                        targetX;
+
+                                    reachedX =
+                                        true;
+
+                                } else {
+
+                                    this.sprite.x +=
+
+                                        Math.sign(dx)
+
+                                        * speed;
+
+                                }
+
+                            }
+
+                            //
+                            // eixo Y
+                            //
+
+                            if (
+                                targetY !== null
+                            ) {
+
+                                const dy =
+
+                                    targetY -
+
+                                    this.sprite.y;
+
+                                if (
+
+                                    Math.abs(dy)
+
+                                    <= speed
+
+                                ) {
+
+                                    this.sprite.y =
+                                        targetY;
+
+                                    reachedY =
+                                        true;
+
+                                } else {
+
+                                    this.sprite.y +=
+
+                                        Math.sign(dy)
+
+                                        * speed;
+
+                                }
+
+                            }
+
+                            //
+                            // callback opcional
+                            //
+
+                            onUpdate?.();
+
+                            //
+                            // chegou?
+                            //
+
+                            if (
+
+                                reachedX &&
+
+                                reachedY
+
+                            ) {
+
+                                event.remove();
+
+                                resolve();
+
+                            }
+
+                        }
+
+                    });
+
+            }
+
+        );
+
+    }
+
+    async moveByVelocity({
+
+        velocityX,
+        velocityY,
+
+        onUpdate = null,
+
+        stopCondition
+
+    }) {
+
+        this.hitTargets =
+            new Set();
+
+        return new Promise(
+
+            resolve => {
+
+                const event =
+
+                    this.scene.time.addEvent({
+
+                        delay: 16,
+
+                        loop: true,
+
+                        callback: () => {
+
+                            this.sprite.x +=
+                                velocityX;
+
+                            this.sprite.y +=
+                                velocityY;
+
+                            onUpdate?.();
+
+                            if(
+                                stopCondition()
+                            ) {
+
+                                event.remove();
+
+                                resolve();
+
+                            }
+
+                        }
+
+                    });
+
+            }
+
+        );
+
+    }
+
+    checkChargeHit(targets, hitbox, damage) {
+
+         targets.forEach(
+
+            target => {
+
+                if(
+                    target.isDead
+                ) {
+                    return;
+                }
+
+                if(
+
+                    this.hitTargets?.has(
+                        target
+                    )
+
+                ) {
+                    return;
+                }
+
+                const hit =
+
+                    Phaser
+                        .Geom
+                        .Intersects
+                        .RectangleToRectangle(
+
+                            hitbox,
+
+                            target.hurtbox
+
+                        );
+
+                if(
+                    !hit
+                ) {
+                    return;
+                }
+
+                this.hitTargets?.add(
+                    target
+                );
+
+                target.receiveAttack(
+                    damage,
+                    this
+                );
+
+            }
+
+        );
+    }
+
+    setupHitbox(offsetX = -120, offsetY = -120, width = 240, height = 240){
+            
+        return new Phaser
+                .Geom
+                .Rectangle(
+
+                    this.sprite.x + offsetX,
+                    this.sprite.y + offsetY,
+
+                    width,
+                    height
+
+                );
+    }
+
+    async performBrake() {
+
+        const speeds = [
+
+            8,
+            6,
+            4,
+            2,
+            1
+
+        ];
+
+        const direction =
+
+            this.direction;
+
+        for (
+
+            const speed of speeds
+
+        ) {
+
+            this.sprite.x +=
+
+                speed *
+                direction;
+
+            await this.wait(
+                40
+            );
+
+        }
 
     }
 

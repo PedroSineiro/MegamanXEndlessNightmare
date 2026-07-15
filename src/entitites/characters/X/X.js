@@ -68,7 +68,7 @@ extends BaseCharacter {
             stats
         );
 
-        this.filename= "x"
+        this.filename= "x";
 
         //
         // sprite
@@ -266,6 +266,9 @@ extends BaseCharacter {
             
                             fourth:
                                 new FourthGigaAttackState(),
+
+                            ultimate:
+                                new FourthGigaAttackState(),
             
             
                         },
@@ -273,6 +276,46 @@ extends BaseCharacter {
                         this
             
                     );
+
+    }
+
+    waitUntilCharged(
+        level
+    ) {
+
+        return new Promise(
+
+            resolve => {
+
+                const event =
+
+                    this.scene.time.addEvent({
+
+                        delay: 16,
+
+                        loop: true,
+
+                        callback: () => {
+
+                            if (
+
+                                this.chargeLevel >= level
+
+                            ) {
+
+                                event.remove();
+
+                                resolve();
+
+                            }
+
+                        }
+
+                    });
+
+            }
+
+        );
 
     }
 

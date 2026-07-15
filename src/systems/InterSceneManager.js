@@ -1,6 +1,11 @@
+
+import { BASE_DIALOGS } from "../constants/BaseDialogs.js";
+
+import { COMBAT_DIALOGS } from "../constants/CombatDialogs.js";
+
 export default class InterSceneManager {
 
-    static TOTAL_AMOUNT_STAGES = 3;
+    static TOTAL_AMOUNT_STAGES = 6;
 
     static MAVERIC_STAGES = {
         volcano_stage: {
@@ -23,8 +28,46 @@ export default class InterSceneManager {
                 "slash_beast",
                 "crescent_grizzly"
             ],
+        },
+
+        frozen_stage: {
+            stage: "frozen_stage",
+            theme: "frozen_stage",
+            background: "frozen_stage",
+            boss_theme: "boss",
+            bosses: [
+                "frost_walrus",
+                "blizzard_wolfang"
+            ],
+        },
+
+        cyber_stage: {
+            stage: "cyber_stage",
+            theme: "cyber_stage",
+            background: "cyber_stage",
+            boss_theme: "boss",
+            bosses: [
+                "spiral_pegasus",
+                "cyber_peacock"
+            ],
         }
     };
+
+    static FINAL_STAGES = [
+        {
+            0: {
+            stage: "repliforce_stage",
+            theme: "repliforce_stage",
+            background: "repliforce_stage",
+            boss_theme: "boss",
+            bosses: [
+                "colonel",
+                "double"
+            ],
+            }
+        }
+    ]
+
 
     static DEFAULT_WAVE_CONFIG = {
 
@@ -136,6 +179,10 @@ export default class InterSceneManager {
                 waves
             );
 
+        const dialogs = this.getCombatDialogs(nextStage, gameData.storyFlags.hasSeenRepliforce, gameData.amountCompletedStages);
+        
+        
+
         return {
 
             scene: "CombatScene",
@@ -154,7 +201,7 @@ export default class InterSceneManager {
 
                 waves,
 
-                dialogs: [],
+                dialogs: dialogs,
 
                 stage_theme:
                     nextStage.theme,
@@ -173,6 +220,12 @@ export default class InterSceneManager {
 
     static handleNextSceneAfterCombat(gameData, DataManager, combatData){
         gameData.amountCompletedStages++;
+
+        if(gameData.amountCompletedStages>1){
+            gameData.storyFlags.hasSeenRepliforce = true;
+        }
+
+        gameData.nightmareLevel = this.updateNightmareLevel(gameData.nightmareLevel, gameData.amountCompletedStages);
         
         gameData.completedStages.push(combatData.stage);
 
@@ -195,7 +248,10 @@ export default class InterSceneManager {
         gameData
     ) {
 
-        const availableStages =
+        const amountCompletedStages = gameData.amountCompletedStages;
+
+        if(amountCompletedStages < 5){
+            const availableStages =
 
             Object.keys(this.MAVERIC_STAGES)
 
@@ -209,22 +265,25 @@ export default class InterSceneManager {
 
                 );
 
-        if (
-            availableStages.length === 0
-        ) {
-            return null;
+            if (
+                availableStages.length === 0
+            ) {
+                return null;
+            }
+
+            const selectedStage = availableStages[
+
+                Math.floor(
+                    Math.random() *
+                    availableStages.length
+                )
+
+            ];
+
+            return this.MAVERIC_STAGES[selectedStage];
+        } else {
+            return this.FINAL_STAGES[amountCompletedStages-5][amountCompletedStages-5];
         }
-
-        const selectedStage = availableStages[
-
-            Math.floor(
-                Math.random() *
-                availableStages.length
-            )
-
-        ];
-
-        return this.MAVERIC_STAGES[selectedStage];
 
     }
 
@@ -474,6 +533,34 @@ export default class InterSceneManager {
         }
 
         return totalReward;
+
+    }
+
+    static updateNightmareLevel(nightmareLevel, amountOfCompletedStages){
+        if(amountOfCompletedStages == 3 || amountOfCompletedStages == 5) nightmareLevel++;
+        
+        return nightmareLevel;
+    }
+
+
+    static getBaseDialogs(
+        stagesBeaten
+    ) {
+
+        return BASE_DIALOGS[stagesBeaten] ?? [];
+
+    }
+
+    static getCombatDialogs(selectedStage, hasSeenRepliforce, amountOfCompletedStages) {
+
+        if(amountOfCompletedStages < 5){
+            if(hasSeenRepliforce){
+                return COMBAT_DIALOGS[selectedStage.stage].later ?? [];
+            }
+            return COMBAT_DIALOGS[selectedStage.stage].first ?? []
+        }
+
+        return COMBAT_DIALOGS[selectedStage.stage] ?? [];
 
     }
 }

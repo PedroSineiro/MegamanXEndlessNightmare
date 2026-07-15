@@ -11,6 +11,8 @@ SpecialAttack1State {
         player
     ) {
 
+        player.turnActions -= player.piercingSlashActions;
+
         player.sprite.play(
             `${player.currentArmor}_special_attack_1`,
             true
@@ -61,12 +63,7 @@ SpecialAttack1State {
 
             () => {
 
-                player.updateMovementAnimation();
-
-                this.stateMachine
-                    .transition(
-                        "neutral"
-                    );
+                player.continueComboOrEnd();
 
                 }
 

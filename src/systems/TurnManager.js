@@ -43,6 +43,10 @@ export default class TurnManager {
 
         this.turnOrder = [];
 
+        this.scene.players.forEach(player => {
+            player.rechargeGigaAttack();
+        });
+
         this.buildTurnOrder();
     }
 

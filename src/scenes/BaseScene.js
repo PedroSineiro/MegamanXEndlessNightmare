@@ -10,11 +10,10 @@ import InventoryManager from "../systems/InventoryManager.js";
 
 import DataManager from "../systems/DataManager.js";
 
-import { BASE_DIALOGS } from "../constants/BaseDialogs.js";
-
 import UpgradeScreen from "../systems/UpgradeScreen.js";
 
 import SceneHelper from "../systems/SceneHelper.js";
+
 import InterSceneManager from "../systems/InterSceneManager.js";
 
 export default class BaseScene
@@ -127,7 +126,7 @@ extends Phaser.Scene {
 
         const dialogs =
 
-            this.getDialogs(
+            this.InterSceneManager.getBaseDialogs(
 
                 stagesBeaten
 
@@ -138,15 +137,6 @@ extends Phaser.Scene {
             dialogs
 
         );
-
-
-    }
-
-    getDialogs(
-        stagesBeaten
-    ) {
-
-        return BASE_DIALOGS[stagesBeaten] ?? [];
 
     }
 

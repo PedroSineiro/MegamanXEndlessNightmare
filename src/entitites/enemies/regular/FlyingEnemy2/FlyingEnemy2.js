@@ -29,7 +29,7 @@ extends BaseEnemy {
             15;
 
         this.hp =
-            15;
+            this.maxHp;
 
         this.damage = 20;
 

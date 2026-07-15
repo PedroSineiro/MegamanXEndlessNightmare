@@ -236,29 +236,44 @@ extends Phaser.Scene {
                         1000
                     );
 
-                    const firstHalf =
+                    const test = false;
+
+                    let firstHalf = [];
+
+                    if(!test){
+                        firstHalf =
 
                         InterSceneManager.generateWaves({
 
-                        numberOfWaves: 8,
+                            numberOfWaves: 8,
 
-                        spawnPercentage: 0.50,
+                            spawnPercentage: 0.50,
 
-                        smallEnemySpawnPercentage: 0.70,
+                            smallEnemySpawnPercentage: 0.70,
 
-                        bigEnemySpawnPercentage: 0.30,
+                            bigEnemySpawnPercentage: 0.30,
 
-                        nightmareSpawnPercentage: 0.0
+                            nightmareSpawnPercentage: 0.0
 
-                    });
+                        });
 
-                    firstHalf.push({
+                        firstHalf.push({
 
-                        type: "boss",
+                            type: "boss",
 
-                        boss: "nightmare_zero"
+                            boss: "nightmare_zero"
 
-                    });
+                        });
+
+                    } else {
+                        firstHalf.push({
+
+                            type: "boss",
+
+                            boss: "spiral_pegasus"
+
+                        });
+                    }
 
                     this.stopWarningLoop();
 
@@ -674,7 +689,8 @@ is about to begin...`;
                     armors: {
 
                         x: true,
-                        fourth: false
+                        fourth: false,
+                        ultimate: false
 
                     }
 
@@ -707,8 +723,10 @@ is about to begin...`;
 
             nightmareScrap: 0,
 
-            storyFlags: {
+            nightmareLevel: 1,
 
+            storyFlags: {
+                hasSeenRepliforce: false
             }
 
         };
@@ -717,237 +735,3 @@ is about to begin...`;
     }
 
 }
-
-/*
-waves: [
-
-                                {
-                                    type: "enemies",
-
-                                    enemies: [
-
-                                        {
-                                            type: "ground_enemy_1",
-                                            lane: "bottom",
-                                            slot: 0
-                                        }
-                                    ]
-                                },
-                                {
-                                    type: "enemies",
-
-                                    enemies: [
-
-                                        {
-                                            type: "flying_enemy_1",
-                                            lane: "top",
-                                            slot: 0
-                                        }
-
-                                    ]
-                                },
-                                {
-                                    type: "boss",
-
-                                    boss: "nightmare_zero"
-                                }
-                            ],
-                            dialogs: [
-
-                                {
-                                    waveIndex: 0,
-                                    isAfterBossSpawn: false,
-
-                                    dialogs: [
-                                        {
-                                            speaker: "alia",
-                                            text: "X, Zero! The Hunter Base has been evacuated. An unknown outbreak has spread through several sectors of the facility."
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "An outbreak? What's causing this? A virus?"
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "We can't confirm it yet, but dozens of mechaniloids have suddenly gone berserk. Hunter units sent to investigate have stopped responding."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Don't worry, we are going to clear the area. Focus on getting out of here safelly."
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "There's more. Security footage captured a Reploid moving through the infected areas."
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "A Reploid?"
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "Yes. The image quality is poor, but its appearance closely resembles Zero."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Someone who looks like me?"
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "Exactly. The figure was seen near every major incident before communications were lost."
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "Then we need to find out what's happening before the infection spreads any further."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Whether it's a copy, an impostor, or something worse... I'll deal with it myself."
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "Be careful, both of you. Whatever attacked the base is unlike anything we've seen since the Gate Incident."
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "We're moving out."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Let's put an end to this right now."
-                                        }
-                                    ]
-                                },
-
-                                {
-                                    waveIndex: 2,
-                                    isAfterBossSpawn: true,
-
-                                    dialogs:[
-                                        {
-                                            speaker: "x",
-                                            text: "Impossible..."
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "That form... Zero, it's the same Nightmare form I fought during the Gate Incident."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "So that's what Alia detected."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "A Nightmare copy of me."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "RRRAAAAGH!!"
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "DESTROY...!"
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "He's completely out of control."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "No. He's worse."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "The original Nightmare Zero vanished after that day..."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "This thing shouldn't exist anymore."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "KILL...!"
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "DESTROY EVERYTHING!!"
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "The Nightmare Virus must have recreated him somehow."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "X!!"
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "DIE!!"
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "He remembers me..."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Maybe. Or maybe all that's left are fragments of hatred."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "ZERO...!"
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "ERASE...!"
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Whatever he is, it's time to end."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Let's put him to rest."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "RRRAAAAAAAAGH!!!"
-                                        }
-                                    ]
-                                }
-
-                            ],
-
-*/

@@ -189,91 +189,47 @@ CharacterActionRunner {
 
         let usedTurns = 0;
 
+        let combo = [];
+
+        actor.comboTarget = target;
+
         switch (
             comboType
         ) {
 
             case "slashA":
 
-                await this.pressAttack(
-                    actor
-                );
-
-                actor.turnActions--;
+                combo = ["slashA"];
 
                 break;
 
             case "slashAB":
 
-                await this.pressAttack(
-                    actor
-                );
-
-                actor.turnActions--;
-
-                await this.wait(
-                    250
-                );
-
-                if(target.isDead) break;
-
-                await this.pressAttack(
-                    actor
-                );
-
-                actor.turnActions--;
+                combo = ["slashA","slashB"];
 
                 break;
 
             case "slashABC":
 
-                await this.pressAttack(
-                    actor
-                );
-
-                actor.turnActions--;
-
-                await this.wait(
-                    250
-                );
-
-                if(target.isDead) break;
-
-                await this.pressAttack(
-                    actor
-                );
-
-                actor.turnActions--;
-
-
-                await this.wait(
-                    250
-                );
-
-                if(target.isDead) break;
-
-                await this.pressAttack(
-                    actor
-                );
-
-                actor.turnActions--;
-
+                combo = ["slashA","slashB", "slashC"];
 
                 break;
 
             case "piercingSlash":
 
-                await this.pressPiercingAttack(
-                    actor
-                );
+                combo = ["special1"];
 
 
                 break;
 
         }
 
+        await actor.performCombo(combo);
+
+        actor.comboTarget = null;
+
         await this.wait(
-            1200
+            600
         );
 
         await this.moveBack(
@@ -437,181 +393,6 @@ CharacterActionRunner {
                     }
 
                 });
-
-            }
-
-        );
-
-    }
-
-    async moveCharacter(
-
-        character,
-
-        targetX,
-
-        targetY
-
-    ) {
-
-        return new Promise(
-
-            resolve => {
-
-                this.scene.tweens.add({
-
-                    targets:
-                        character
-                            .sprite,
-
-                    x:
-                        targetX,
-
-                    y:
-                        targetY,
-
-                    duration:
-                        350,
-
-                    onComplete:
-                        resolve
-
-                });
-
-            }
-
-        );
-
-    }
-
-    async playAnimation(
-
-        character,
-
-        animationKey
-
-    ) {
-
-        return new Promise(
-
-            resolve => {
-
-                character.sprite.play(
-                    animationKey
-                );
-
-                character.sprite.once(
-
-                    Phaser
-                        .Animations
-                        .Events
-                        .ANIMATION_COMPLETE,
-
-                    () => {
-
-                        resolve();
-
-                    }
-
-                );
-
-            }
-
-        );
-
-    }
-
-    async playSlash(
-
-        zero,
-
-        enemy,
-
-        slashName
-
-    ) {
-
-        zero.sprite.play(
-
-            `zero_${slashName}`
-
-        );
-
-        //
-        // timing do hit
-        //
-
-        const hitFrame = {
-
-            slashA: 6,
-            slashB: 5,
-            slashC: 8
-
-        };
-
-        let alreadyHit =
-            false;
-
-        return new Promise(
-
-            resolve => {
-
-                zero.sprite.on(
-
-                    "animationupdate",
-
-                    (
-
-                        animation,
-
-                        frame
-
-                    ) => {
-
-                        if (
-                            alreadyHit
-                        ) {
-                            return;
-                        }
-
-                        if (
-
-                            frame.index ===
-
-                            hitFrame[
-                                slashName
-                            ]
-
-                        ) {
-
-                            alreadyHit =
-                                true;
-
-                            enemy
-                                .takeDamage(
-                                    1
-                                );
-
-                        }
-
-                    }
-
-                );
-
-                zero.sprite.once(
-
-                    Phaser
-                        .Animations
-                        .Events
-                        .ANIMATION_COMPLETE,
-
-                    () => {
-
-                        resolve();
-
-                    }
-
-                );
 
             }
 
@@ -828,7 +609,7 @@ CharacterActionRunner {
 
     }
 
-        async chargeShot(
+    async chargeShot(
         actor,
         level
     ) {
@@ -836,26 +617,10 @@ CharacterActionRunner {
         actor.virtualInput
             .buster = true;
 
-        let time =
-            0;
-
-        switch(level) {
-
-            case 0:
-                time = 100;
-                break;
-
-            case 1:
-                time = actor.mediumShotChargingTime+200;
-                break;
-
-            case 2:
-                time = actor.chargedShotChargingTime+200;
-                break;
-        }
+        await actor.waitUntilCharged(level);
 
         await this.wait(
-            time
+            100
         );
 
         actor.virtualInput

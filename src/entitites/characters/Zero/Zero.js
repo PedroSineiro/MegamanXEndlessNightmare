@@ -101,6 +101,12 @@ extends BaseCharacter {
 
         this.gigaAttackDamage = stats.gigaAttackDamage;
 
+        this.comboQueue = [];
+
+        this.comboUsedTurns = 0;
+
+        this.comboTarget = null;
+
         //
         // sprite
         //
@@ -329,51 +335,85 @@ extends BaseCharacter {
 
     }
 
-    playCombo(
+    async performCombo(
         combo
     ) {
 
-        const sequence =
-            [];
+        return new Promise(
+
+            resolve => {
+
+                this.comboQueue =
+                    [...combo];
+
+                this.comboFinishedResolve =
+                    resolve;
+
+                const firstState =
+
+                    this.comboQueue
+                        .shift();
+
+                this.comboStateMachine
+                    .transition(
+                        firstState
+                    );
+
+            }
+
+        );
+
+    }
+
+    continueComboOrEnd() {
+
+        const nextCombo =
+
+            this.comboQueue
+                .shift();
 
         if (
-            combo.includes(
-                "A"
-            )
+
+            nextCombo &&
+
+            this.canContinueCombo()
+
         ) {
 
-            sequence.push(
-                "zero_slash_a"
-            );
+            this.comboStateMachine
+                .transition(
+                    nextCombo
+                );
 
+            return;
         }
 
-        if (
-            combo.includes(
-                "B"
-            )
-        ) {
+        this.finishCombo();
 
-            sequence.push(
-                "zero_slash_b"
+        this.comboStateMachine
+            .transition(
+                "slashEnd"
             );
 
-        }
+    }
 
-        if (
-            combo.includes(
-                "C"
-            )
-        ) {
+    finishCombo() {
 
-            sequence.push(
-                "zero_slash_c"
-            );
+        this.comboFinishedResolve?.();
 
-        }
+        this.comboFinishedResolve =
+            null;
 
-        this.playAnimationSequence(
-            sequence
+    }
+
+    canContinueCombo() {
+
+        return (
+
+            this.comboTarget &&
+
+            !this.comboTarget.isDead
+
         );
 
     }

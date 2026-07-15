@@ -7,7 +7,7 @@ SoundManager {
 
     }
 
-    play(key, config = {}) {
+    play(key, config = {volume: 0.15}) {
 
         this.scene.sound.play(
             key,

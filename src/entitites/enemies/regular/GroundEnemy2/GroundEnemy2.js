@@ -31,7 +31,7 @@ extends BaseEnemy {
             30;
 
         this.hp =
-            30;
+            this.maxHp;
 
         this.damage = 12;
 
@@ -178,7 +178,7 @@ extends BaseEnemy {
         this.scene.sfx.play("ground_enemy_2_shot",
         {
             volume:0.15
-        })
+        });
 
         const shot =
 

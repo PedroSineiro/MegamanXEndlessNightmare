@@ -1,8 +1,8 @@
-import AttackHitbox 
+import AttackHitbox
 from "../../../entitites/attacks/AttackHitbox.js";
 
-import { SLASH_CONFIG } from "../../../constants/SlashConfig.js";
-
+import { SLASH_CONFIG }
+from "../../../constants/SlashConfig.js";
 
 export default class
 SlashAState {
@@ -11,8 +11,7 @@ SlashAState {
         player
     ) {
 
-        player.comboQueued =
-            false;
+        player.turnActions--;
 
         player.comboWindow =
             false;
@@ -50,45 +49,49 @@ SlashAState {
         // abre janela
         //
 
-        player.scene.time
-            .delayedCall(
+        player.scene.time.delayedCall(
 
-                200,
+            200,
 
-                () => {
+            () => {
 
-                    player.comboWindow =
-                        true;
+                player.comboWindow =
+                    true;
 
-                }
+            }
 
-            );
+        );
 
         //
         // fecha janela
         //
 
-        player.scene.time
-            .delayedCall(
+        player.scene.time.delayedCall(
 
-                550,
+            550,
 
-                () => {
+            () => {
 
-                    player.comboWindow =
-                        false;
+                player.comboWindow =
+                    false;
 
-                }
+            }
 
-            );
+        );
 
-        player.scene.sfx.play("z_saber",{
-            volume:0.2
-        })
+        player.scene.sfx.play(
+            "z_saber",
+            {
+                volume: 0.2
+            }
+        );
 
-        player.scene.sfx.play("zero_regular_hit",{
-            volume:0.2
-        })
+        player.scene.sfx.play(
+            "zero_regular_hit",
+            {
+                volume: 0.2
+            }
+        );
 
         //
         // fim animação
@@ -102,25 +105,7 @@ SlashAState {
 
             () => {
 
-                if (
-                    player
-                    .comboQueued
-                ) {
-
-                    this
-                    .stateMachine
-                    .transition(
-                        "slashB"
-                    );
-
-                    return;
-                }
-
-                this.stateMachine
-                    .transition(
-                        "slashEnd"
-                    );
-
+                player.continueComboOrEnd();
             }
 
         );
@@ -139,8 +124,12 @@ SlashAState {
 
         ) {
 
-            player.comboQueued =
-                true;
+            player.comboQueue.push(
+                "slashB"
+            );
+
+            player.comboWindow =
+                false;
 
         }
 
