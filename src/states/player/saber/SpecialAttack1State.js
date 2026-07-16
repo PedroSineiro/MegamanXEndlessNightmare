@@ -47,6 +47,17 @@ SpecialAttack1State {
 
                     );
 
+
+                player.attackHitbox.startGrowing({
+
+                    startWidth: 50,
+
+                    endWidth: 260,
+
+                    duration: 180
+
+                });
+
             }
 
         );

@@ -59,6 +59,31 @@ export default class AttackHitbox {
 
     }
 
+    startGrowing({
+
+        startWidth,
+
+        endWidth,
+
+        duration
+
+    }) {
+
+        this.hitbox.width =
+            startWidth;
+
+        this.scene.tweens.add({
+
+            targets: this.hitbox,
+
+            width: endWidth,
+
+            duration
+
+        });
+
+    }
+
     update() {
 
         if (
@@ -72,16 +97,26 @@ export default class AttackHitbox {
             this.owner
                 .direction;
 
-        this.hitbox.x =
+        if (this.owner.direction === 1) {
 
-            this.owner
-                .sprite.x +
+            this.hitbox.x =
 
-            (
-                dir === 1
-                ? this.offsetX
-                : -this.offsetX
-            );
+                this.owner.sprite.x +
+
+                this.offsetX;
+
+        }
+        else {
+
+            this.hitbox.x =
+
+                this.owner.sprite.x +
+
+                this.offsetX -
+
+                this.hitbox.width;
+
+        }
 
         this.hitbox.y =
 
@@ -93,7 +128,7 @@ export default class AttackHitbox {
         //
         // debug
         //
-/*
+        /*
         this.debugGraphics
             .clear();
 
@@ -114,7 +149,9 @@ export default class AttackHitbox {
 
                 this.hitbox.height
 
-            );*/
+            );
+
+        this.debugGraphics.setDepth(99999);*/
 
     }
 

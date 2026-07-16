@@ -10,7 +10,7 @@ SLASH_CONFIG = {
 
         offsetX: 20,
         offsetXRight: 20,
-        offsetXLeft: 100,
+        offsetXLeft: -20,
         offsetY: -160,
 
         duration: 120
@@ -23,7 +23,7 @@ SLASH_CONFIG = {
 
 
         offsetXRight: 20,
-        offsetXLeft: 100,
+        offsetXLeft: -20,
         offsetY: -160,
 
         duration: 140
@@ -35,7 +35,7 @@ SLASH_CONFIG = {
         height: 120,
 
         offsetXRight: 20,
-        offsetXLeft: 120,
+        offsetXLeft: -20,
         offsetY: -200,
 
         duration: 180
@@ -43,11 +43,11 @@ SLASH_CONFIG = {
 
     slashSpecial1: {
 
-        width: 200,
+        width: 50,
         height: 60,
 
         offsetXRight: 20,
-        offsetXLeft: 220,
+        offsetXLeft: 20,
         offsetY: -160,
 
         duration: 180
