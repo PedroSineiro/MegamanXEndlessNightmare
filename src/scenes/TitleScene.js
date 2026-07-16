@@ -58,7 +58,7 @@ export default class TitleScene extends Phaser.Scene {
 
     async create() {
 
-        this.volume = 0.5;
+        this.volume = this.sound.volume;
 
         this.sfx =
             new SoundManager(
@@ -332,6 +332,8 @@ Clear enemy waves, defeat Mavericks and uncover the source of the Nightmare outb
             this.updateVolume();
 
         });
+
+        this.updateVolume();
     }
 
     updateVolume() {
