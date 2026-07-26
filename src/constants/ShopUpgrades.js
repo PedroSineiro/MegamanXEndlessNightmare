@@ -57,7 +57,7 @@ export const SHOP_UPGRADES = {
                 base_evasion: 20,
                 base_reduction: 50,
                 giga_attack_type: "Row",
-                description: "Charged shoot does more damage.",
+                description: "Charged shot does more damage.",
                 preview_sprite: "fourth_empty_armor"
             },
             {
@@ -66,7 +66,7 @@ export const SHOP_UPGRADES = {
                 base_evasion: 20,
                 base_reduction: 50,
                 giga_attack_type: "Row",
-                description: "Charged shoot does more damage. Has unlimited Giga Attack",
+                description: "Charged shot does more damage. Has unlimited Giga Attack.",
                 preview_sprite: "ultimate_empty_armor"
             }
         ]
