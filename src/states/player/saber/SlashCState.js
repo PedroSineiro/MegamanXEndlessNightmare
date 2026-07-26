@@ -21,29 +21,59 @@ SlashCState {
         );
 
 
-        player.scene.time.delayedCall(
-        
-            120,
+        let slashSpawned = false;
+                
+        const impactFrame = 4;
 
-            () => {
+        const onUpdate = (
 
-                player.attackHitbox =
+            animation,
+            frame
 
-                    new AttackHitbox(
+        ) => {
 
-                        player.scene,
-
-                        player,
-
-                        SLASH_CONFIG
-                            .slashC,
-
-                        player.slashCDamage
-
-                    );
-
+            if (
+                slashSpawned
+            ) {
+                return;
             }
 
+            if (
+                frame.index !== impactFrame
+            ) {
+                return;
+            }
+
+            slashSpawned = true;
+
+            player.scene.sfx.play("z_saber",{
+                volume:0.2
+            })
+
+            player.scene.sfx.play("zero_strong_hit",{
+                volume:0.2
+            })
+
+
+            player.attackHitbox =
+
+            new AttackHitbox(
+
+                player.scene,
+
+                player,
+
+                SLASH_CONFIG
+                    .slashC,
+
+                player.slashCDamage
+
+            );
+        };
+
+        player.sprite.on(
+            "animationupdate",
+            onUpdate
         );
 
 
@@ -51,13 +81,6 @@ SlashCState {
         // fim animação
         //
 
-        player.scene.sfx.play("z_saber",{
-            volume:0.2
-        })
-
-        player.scene.sfx.play("zero_strong_hit",{
-            volume:0.2
-        })
         player.sprite.once(
 
             Phaser.Animations
@@ -65,6 +88,11 @@ SlashCState {
                 .ANIMATION_COMPLETE,
 
             () => {
+
+                player.sprite.off(
+                    "animationupdate",
+                    onUpdate
+                );
 
                 player.continueComboOrEnd();
 

@@ -17,6 +17,8 @@ ActionMenu {
 
         this.gigaAttackButton = null
 
+        this.specialAttackButton = null;
+
         this.currentCharacter =
             null;
 
@@ -439,7 +441,7 @@ ActionMenu {
 
                                         enemy,
 
-                                        "slashA"
+                                        ["slashA"]
 
                                     );
 
@@ -483,7 +485,7 @@ ActionMenu {
 
                                         enemy,
 
-                                        "slashAB"
+                                        ["slashAB"]
 
                                     );
 
@@ -527,7 +529,7 @@ ActionMenu {
 
                                         enemy,
 
-                                        "slashABC"
+                                        ["slashABC"]
 
                                     );
 
@@ -571,7 +573,7 @@ ActionMenu {
 
                                         enemy,
 
-                                        "piercingSlash"
+                                        ["piercingSlash"]
 
                                     );
 
@@ -585,6 +587,49 @@ ActionMenu {
                 }
                 );
             }
+
+            if (
+
+                character
+                    .turnActions >= (character.piercingSlashActions + 3)
+
+            ) {
+                this.addSpecialAttackButton(
+                "Slash ABCP",
+
+                () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                await this.scene
+                                    .actionRunner
+                                    .zeroCombo(
+
+                                        character,
+
+                                        enemy,
+
+                                        ["slashABC","piercingSlash"]
+
+                                    );
+
+                                this.refresh();
+
+                            }
+
+                        );
+                    
+                    if(this.characterTurnEnded(character)) return;
+                }
+                );
+            }
+
 
              if (
                 character.turnActions >=4 && this.canUseGigaAttack(character)
@@ -696,6 +741,8 @@ ActionMenu {
 
         this.gigaAttackButton?.setVisible(false);
 
+        this.specialAttackButton?.setVisible(false);
+
         this.cancelButton.setVisible(false);
 
         this.portrait.setVisible(false);
@@ -735,6 +782,8 @@ ActionMenu {
             ?.setVisible(
                 false
             );
+
+        this.specialAttackButton?.setVisible(false);
 
     }
 
@@ -1036,6 +1085,73 @@ ActionMenu {
 
     }
 
+    addSpecialAttackButton(
+        text,
+        callback
+    ) {
+        const button =
+
+            this.scene
+                .add
+                .text(
+
+                    580,
+
+                    760,
+                    text,
+
+                    {
+                        fontFamily:
+                            "MegaManX",
+
+                        fontSize:
+                            "10px",
+
+                        backgroundColor:
+                            "#000",
+
+                        padding: {
+
+                            left: 10,
+                            right: 10,
+                            top: 5,
+                            bottom: 5
+
+                        }
+
+                    }
+
+                ).setDepth(
+                    this.uiDepth + 10
+                )
+
+                .setInteractive(
+                    {
+                        useHandCursor:
+                            true
+                    }
+                )
+
+                .on(
+
+                    "pointerdown",
+                    () => {
+                        this.scene.sfx.play(
+                            "choosing_menu",
+                            {
+                                volume: 0.15
+                            }
+                        );
+
+                        callback?.();
+                    }
+
+                );
+
+        this.specialAttackButton = button;
+
+    }
+
     updateEnergyTank(character){
         this.energyTank.setVisible(this.canUseEnergyTank(character));
 
@@ -1150,7 +1266,11 @@ ActionMenu {
 
             );
 
-        this.gigaAttackButton?.destroy()
+        this.gigaAttackButton?.destroy();
+
+        this.specialAttackButton?.destroy();
+
+        this.specialAttackButton = null;
 
         this.gigaAttackButton = null
 

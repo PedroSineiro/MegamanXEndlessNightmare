@@ -192,9 +192,9 @@ export default class TitleScene extends Phaser.Scene {
         120,
         180,
 
-`MEGAMAN ENDLESS NIGHTMARE
+`MEGAMAN X ENDLESS NIGHTMARE
 
-Megaman Endless Nightmare is a turn-based game where you control X and Zero.
+Megaman X Endless Nightmare is a turn-based game where you control X and Zero.
 
 Each character has 4 actions per turn and can use them offensively or defensively.
 

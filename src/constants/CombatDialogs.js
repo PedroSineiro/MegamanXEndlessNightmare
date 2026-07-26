@@ -917,5 +917,396 @@ export const COMBAT_DIALOGS = {
             ]
         }
     ],
+
+    sigma_stage: [
+        {
+        waveIndex: 0,
+        isAfterBossSpawn: false,
+
+
+            dialogs: [
+                {
+                    speaker: "alia",
+                    text: "X, Zero... this is it."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "The Nightmare concentration in this area is higher than anywhere else we've encountered."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "I'm having trouble analyzing the sector. The interference is overwhelming."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Most of my scanners are practically blind."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Can you identify anything at all?"
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Only fragments."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "But one signature keeps appearing throughout the entire area."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Sigma Virus."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "...Sigma."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "I can't confirm his presence, but the amount of Sigma Virus energy is far beyond anything we've recorded before."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "If someone is directing the Nightmare phenomenon..."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Sigma is the most likely candidate."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Then we finally have a lead."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Or a target."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Stay alert. Whatever is waiting for you ahead, this place feels different from the other sectors."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Almost as if the Nightmare itself is becoming more organized."
+                },
+
+                {
+                    speaker: "x",
+                    text: "We've come too far to stop now."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Let's finish this."
+                }
+            ]
+        },
+        {
+        waveIndex: 4,
+        isAfterBossSpawn: true,
+
+
+            dialogs: [
+                {
+                    speaker: "x",
+                    text: "High Max?!"
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Another one..."
+                },
+
+                {
+                    speaker: "high_max",
+                    text: "You still cling to the past."
+                },
+
+                {
+                    speaker: "x",
+                    text: "...What?"
+                },
+
+                {
+                    speaker: "high_max",
+                    text: "Weak. Predictable. Bound by limitations."
+                },
+
+                {
+                    speaker: "high_max",
+                    text: "That is all the Maverick Hunters have ever been."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "These copies never talked like this before."
+                },
+
+                {
+                    speaker: "high_max",
+                    text: "Copies?"
+                },
+
+                {
+                    speaker: "high_max",
+                    text: "No."
+                },
+
+                {
+                    speaker: "high_max",
+                    text: "We are evolution."
+                },
+
+                {
+                    speaker: "high_max",
+                    text: "And you are obsolete."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Alia was right..."
+                },
+
+                {
+                    speaker: "x",
+                    text: "The Nightmare is changing."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Then we'll put a stop to it before it changes any further."
+                }
+            ]
+        },
+        {
+        waveIndex: 9,
+        isAfterBossSpawn: true,
+
+
+            dialogs: [
+                {
+                    speaker: "dynamo",
+                    text: "Still fighting for the same ideals?"
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "How boring."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Dynamo..."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Something's wrong."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "He's speaking as if he actually understands what's happening."
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "Of course I understand."
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "You two keep chasing limits."
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "Rules. Duty. Purpose."
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "Pathetic."
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "The future belongs to those willing to become something greater."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Greater?"
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "Free from weakness."
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "Free from restraint."
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "Free from the need to remain what you were."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "..."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Zero?"
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Nothing."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Let's end this."
+                }
+            ]
+        },
+        {
+        waveIndex: 18,
+        isAfterBossSpawn: true,
+
+
+            dialogs: [
+                {
+                    speaker: "x",
+                    text: "Sigma!"
+                },
+
+                {
+                    speaker: "zero",
+                    text: "So it really was you."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "You still fail to understand."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "Even after everything."
+                },
+
+                {
+                    speaker: "x",
+                    text: "The Nightmare phenomenon."
+                },
+
+                {
+                    speaker: "x",
+                    text: "The recreations."
+                },
+
+                {
+                    speaker: "x",
+                    text: "The Sigma Virus."
+                },
+
+                {
+                    speaker: "x",
+                    text: "This all leads back to you."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "Of course it does."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "You always needed someone to blame."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Enough."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "We're ending this now."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "Ending it?"
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "You cannot even comprehend what has been created here."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "You are relics."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "Outdated machines clinging to obsolete ideals."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "Inferior beings desperately resisting evolution."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Maybe."
+                },
+
+                {
+                    speaker: "x",
+                    text: "But we're still standing."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "And we're still fighting."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "Then come."
+                },
+
+                {
+                    speaker: "sigma",
+                    text: "Show me how long your obsolete world can survive."
+                }
+            ]
+        }
+    ],
     
 };

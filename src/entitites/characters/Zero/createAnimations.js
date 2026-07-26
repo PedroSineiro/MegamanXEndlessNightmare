@@ -219,6 +219,36 @@ createAnimations(scene) {
         repeat: 0
     });
 
+    frames = [];
+
+    frames.push({
+            key: "zero_slash_end_1"
+        });
+
+    frames.push({
+            key: "zero_slash_end_2"
+        });
+
+    frames.push({
+            key: "zero_slash_end_3"
+        });
+
+    for (let i = 3; i <= 29; i++) {
+
+        frames.push({
+            key: `zero_special_attack_1_${i}`
+        });
+
+    }
+
+
+    scene.anims.create({
+        key: "zero_special_attack_1_combo",
+        frames: frames,
+        frameRate: 20,
+        repeat: 0
+    });
+
     frames = []
 
     for (let i = 1; i <= 7; i++) {
@@ -500,6 +530,36 @@ createAnimations(scene) {
 
     scene.anims.create({
         key: "black_zero_special_attack_1",
+        frames: frames,
+        frameRate: 20,
+        repeat: 0
+    });
+
+    frames = [];
+
+    frames.push({
+            key: "black_zero_slash_end_1"
+        });
+
+    frames.push({
+            key: "black_zero_slash_end_2"
+        });
+
+    frames.push({
+            key: "black_zero_slash_end_3",
+        });
+
+    for (let i = 3; i <= 29; i++) {
+
+        frames.push({
+            key: `black_zero_special_attack_1_${i}`
+        });
+
+    }
+
+
+    scene.anims.create({
+        key: "black_zero_special_attack_1_combo",
         frames: frames,
         frameRate: 20,
         repeat: 0

@@ -15,7 +15,7 @@ export const ARMOR_STATS = {
         baseReduction: 0.50,
         basicShotDamage: 10,
         mediumShotDamage: 25,
-        chargedShotDamage: 75,
+        chargedShotDamage: 90,
         hasGigaAttack: true,
         gigaAttackMustRecharge: true
     },
@@ -25,7 +25,7 @@ export const ARMOR_STATS = {
         baseReduction: 0.50,
         basicShotDamage: 10,
         mediumShotDamage: 25,
-        chargedShotDamage: 75,
+        chargedShotDamage: 90,
         hasGigaAttack: true,
         gigaAttackMustRecharge: false
     },
@@ -45,10 +45,10 @@ export const ARMOR_STATS = {
     "black_zero":{
         baseEvasion: 0.20,
         baseReduction: 0.50,
-        slashADamage: 30,
-        slashBDamage: 30,
-        slashCDamage: 70,
-        slashPiercingDamage: 70,
+        slashADamage: 40,
+        slashBDamage: 40,
+        slashCDamage: 80,
+        slashPiercingDamage: 80,
         gigaAttackDamage: 220,
         hasGigaAttack: true,
         gigaAttackMustRecharge: true

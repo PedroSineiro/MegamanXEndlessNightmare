@@ -53,5 +53,25 @@ export const BOSS_SPAWN_CONFIG = {
     double: {
         offsetX: 0,
         offsetY: 150,
+    },
+
+    dynamo: {
+        offsetX: 0,
+        offsetY: 150,
+    },
+
+    high_max: {
+        offsetX: 0,
+        offsetY: 120,
+    },
+
+    sigma_head: {
+        offsetX: 0,
+        offsetY: 120,
+    },
+
+    sigma: {
+        offsetX: 0,
+        offsetY: 150,
     }
 };

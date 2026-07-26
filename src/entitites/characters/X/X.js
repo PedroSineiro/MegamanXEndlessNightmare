@@ -781,7 +781,7 @@ extends BaseCharacter {
                                         );
 
                                         enemy.takeDamage(
-                                            280
+                                            320
                                         );
 
                                     }

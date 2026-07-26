@@ -9,6 +9,10 @@ import CyberPeacock from "../entitites/enemies/boss/CyberPeacock/CyberPeacock.js
 import SpiralPegasus from "../entitites/enemies/boss/SpiralPegasus/SpiralPegasus.js";
 import Colonel from "../entitites/enemies/boss/Colonel/Colonel.js";
 import Double from "../entitites/enemies/boss/Double/Double.js";
+import Dynamo from "../entitites/enemies/boss/Dynamo/Dynamo.js";
+import HighMax from "../entitites/enemies/boss/HighMax/Highmax.js";
+import SigmaHead from "../entitites/enemies/boss/SigmaHead/SigmaHead.js";
+import Sigma from "../entitites/enemies/boss/Sigma/Sigma.js";
 
 export const
 BOSS_CONFIG = {
@@ -44,6 +48,18 @@ BOSS_CONFIG = {
         Colonel,
 
     double:
-        Double
+        Double,
+    
+    dynamo:
+        Dynamo,
+    
+    high_max:
+        HighMax,
+
+    sigma_head:
+        SigmaHead,
+
+    sigma:
+        Sigma
 
 };

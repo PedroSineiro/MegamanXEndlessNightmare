@@ -270,7 +270,7 @@ extends Phaser.Scene {
 
                             type: "boss",
 
-                            boss: "spiral_pegasus"
+                            boss: "sigma"
 
                         });
                     }

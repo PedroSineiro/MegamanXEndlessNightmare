@@ -135,7 +135,6 @@ extends BaseEnemy {
 
     async afterTurn() {}
 
-
     async gigaAttack() {
 
         console.warn(

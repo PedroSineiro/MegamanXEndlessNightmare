@@ -84,6 +84,28 @@ import loadDoubleAssets from "../entitites/enemies/boss/Double/loadAssets.js";
 
 import loadDoubleSphereAssets from "../entitites/enemies/boss/Double/sphere/loadAssets.js";
 
+import loadDynamoAssets from "../entitites/enemies/boss/Dynamo/loadAssets.js";
+
+import loadDynamoBoomerangAssets from "../entitites/enemies/boss/Dynamo/boomerang/loadAssets.js";
+
+import loadHighMaxAssets from "../entitites/enemies/boss/HighMax/loadAssets.js";
+
+import loadHighMaxAttackShpereAssets from "../entitites/enemies/boss/HighMax/sphere/loadAssets.js";
+
+import loadHighMaxGigaAttackShpereAssets from "../entitites/enemies/boss/HighMax/gigaAttack/loadAssets.js";
+
+import loadSigmaHeadAssets from "../entitites/enemies/boss/SigmaHead/loadAssets.js";
+
+import loadSigmaHeadAttackSphereAssets from "../entitites/enemies/boss/SigmaHead/sphere/loadAssets.js";
+
+import loadSigmaHeadGigaAttackSphereAssets from "../entitites/enemies/boss/SigmaHead/gigaAttack/loadAssets.js";
+
+import loadSigmaAssets from "../entitites/enemies/boss/Sigma/loadAssets.js";
+
+import loadSigmaAttackAssets from "../entitites/enemies/boss/Sigma/attack/loadAssets.js";
+
+import loadSigmaBlockAssets from "../entitites/enemies/boss/Sigma/gigaAttack/loadAssets.js";
+
 import loadExplosionAssets from "../entitites/effects/Explosion/loadAssets.js";
 
 import loadStageAssets from "../stages/loadAssets.js";
@@ -180,6 +202,28 @@ import createDoubleAnimations from "../entitites/enemies/boss/Double/createAnima
 
 import createDoubleSphereAnimations from "../entitites/enemies/boss/Double/sphere/createAnimations.js";
 
+import createDynamoAnimations from "../entitites/enemies/boss/Dynamo/createAnimations.js";
+
+import createDynamoBoomerangAnimations from "../entitites/enemies/boss/Dynamo/boomerang/createAnimations.js";
+
+import createHighMaxAnimations from "../entitites/enemies/boss/highMax/createAnimations.js";
+
+import createHighMaxAttackSphereAnimations from "../entitites/enemies/boss/highMax/sphere/createAnimations.js";
+
+import createHighMaxGigaAttackSphereAnimations from "../entitites/enemies/boss/highMax/gigaAttack/createAnimations.js";
+
+import createSigmaHeadAnimations from "../entitites/enemies/boss/SigmaHead/createAnimations.js";
+
+import createSigmaHeadAttackSphereAnimations from "../entitites/enemies/boss/SigmaHead/sphere/createAnimations.js";
+
+import createSigmaHeadGigaAttackSphereAnimations from "../entitites/enemies/boss/SigmaHead/gigaAttack/createAnimations.js";
+
+import createSigmaAnimations from "../entitites/enemies/boss/Sigma/createAnimations.js";
+
+import createSigmaAttackAnimations from "../entitites/enemies/boss/Sigma/attack/createAnimations.js";
+
+import createSigmaBlockAnimations from "../entitites/enemies/boss/Sigma/gigaAttack/createAnimations.js";
+
 import createExplosionAnimations from "../entitites/effects/Explosion/createAnimations.js";
 
 import createGeneralAnimations from "../general/createAnimations.js";
@@ -249,6 +293,17 @@ extends Phaser.Scene {
         loadColonelSlashAssets(this);
         loadDoubleAssets(this);
         loadDoubleSphereAssets(this);
+        loadDynamoAssets(this);
+        loadDynamoBoomerangAssets(this);
+        loadHighMaxAssets(this);
+        loadHighMaxAttackShpereAssets(this);
+        loadHighMaxGigaAttackShpereAssets(this);
+        loadSigmaHeadAssets(this);
+        loadSigmaHeadAttackSphereAssets(this);
+        loadSigmaHeadGigaAttackSphereAssets(this);
+        loadSigmaAssets(this);
+        loadSigmaAttackAssets(this);
+        loadSigmaBlockAssets(this);
         loadExplosionAssets(this);
         loadGeneralAssets(this);
         loadStageAssets(this);
@@ -302,6 +357,17 @@ extends Phaser.Scene {
         createColonelSlashAnimations(this);
         createDoubleAnimations(this);
         createDoubleSphereAnimations(this);
+        createDynamoAnimations(this);
+        createDynamoBoomerangAnimations(this);
+        createHighMaxAnimations(this);
+        createHighMaxAttackSphereAnimations(this);
+        createHighMaxGigaAttackSphereAnimations(this);
+        createSigmaHeadAnimations(this);
+        createSigmaHeadAttackSphereAnimations(this);
+        createSigmaHeadGigaAttackSphereAnimations(this);
+        createSigmaAnimations(this);
+        createSigmaAttackAnimations(this);
+        createSigmaBlockAnimations(this);
         createExplosionAnimations(this);
         createGeneralAnimations(this);
         createDialogAnimations(this);

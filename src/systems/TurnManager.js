@@ -11,10 +11,12 @@ export default class TurnManager {
         this.currentIndex =
             0;
 
+        this.lastIndex = null;
+
+        this.roundStarted = false;
+
         this.currentCharacter =
             null;
-
-        this.turnRestarted = false;
 
     }
 
@@ -43,7 +45,7 @@ export default class TurnManager {
         this.currentIndex =
             0;
 
-        this.turnRestarted = true;
+        this.roundStarted = false;
 
         this.turnOrder = [];
 
@@ -61,12 +63,11 @@ export default class TurnManager {
         this.currentCharacter =
             character;
 
-        if(this.turnRestarted){
+        if(this.currentIndex==0 && !this.roundStarted){
+            this.roundStarted = true;
             this.scene.players.forEach(player => {
-                player.rechargeGigaAttack();
+                player.applyTurnHabilities();
             });
-
-            this.turnRestarted = false;
         }
 
         character.startTurn();
@@ -126,7 +127,7 @@ export default class TurnManager {
 
             this.currentIndex = 0;
 
-            this.turnRestarted = true;
+            this.roundStarted = false;
 
         }
 

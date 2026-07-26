@@ -15,7 +15,8 @@ export default class BaseShot {
         hitboxLength = 18,
         isAreaType = false,
         needRotation = true,
-        fullDepth = false
+        fullDepth = false,
+        sound = null
     ) {
 
         this.scene =
@@ -91,6 +92,15 @@ export default class BaseShot {
             this.sprite.setDepth(
                 99999
             )
+        }
+
+        if(sound){
+            this.sound =
+                scene.sound.add(
+                    sound
+                );
+
+            this.sound.play({volume:0.15, loop: true});
         }
 
         //
@@ -216,6 +226,9 @@ export default class BaseShot {
 
         this.sprite
             ?.destroy();
+
+        this.sound
+            ?.stop();
 
         this.debugGraphics
             ?.destroy();

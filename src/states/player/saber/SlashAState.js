@@ -21,30 +21,67 @@ SlashAState {
             true
         );
 
-        player.scene.time.delayedCall(
+        let slashSpawned = false;
+        
+        const impactFrame = 4;
 
-            120,
+        const onUpdate = (
 
-            () => {
+            animation,
+            frame
 
-                player.attackHitbox =
+        ) => {
 
-                    new AttackHitbox(
-
-                        player.scene,
-
-                        player,
-
-                        SLASH_CONFIG
-                            .slashA,
-
-                        player.slashADamage
-
-                    );
-
+            if (
+                slashSpawned
+            ) {
+                return;
             }
 
+            if (
+                frame.index !== impactFrame
+            ) {
+                return;
+            }
+
+            slashSpawned = true;
+
+            player.scene.sfx.play(
+            "z_saber",
+            {
+                volume: 0.2
+            }
+            );
+
+            player.scene.sfx.play(
+                "zero_regular_hit",
+                {
+                    volume: 0.2
+                }
+            );
+
+
+            player.attackHitbox =
+
+            new AttackHitbox(
+
+                player.scene,
+
+                player,
+
+                SLASH_CONFIG
+                    .slashA,
+
+                player.slashADamage
+
+            );
+        };
+
+        player.sprite.on(
+            "animationupdate",
+            onUpdate
         );
+
         //
         // abre janela
         //
@@ -78,21 +115,6 @@ SlashAState {
             }
 
         );
-
-        player.scene.sfx.play(
-            "z_saber",
-            {
-                volume: 0.2
-            }
-        );
-
-        player.scene.sfx.play(
-            "zero_regular_hit",
-            {
-                volume: 0.2
-            }
-        );
-
         //
         // fim animação
         //
@@ -104,6 +126,11 @@ SlashAState {
                 .ANIMATION_COMPLETE,
 
             () => {
+
+                player.sprite.off(
+                    "animationupdate",
+                    onUpdate
+                );
 
                 player.continueComboOrEnd();
             }

@@ -29,6 +29,8 @@ export default class BaseCharacter {
 
         this.gigaAttackRechargeTurns = this.gigaAttackCooldown;
 
+        this.lifeRecover = stats.lifeRecover;
+
         this.scene = scene;
 
         this.speed = 4;
@@ -209,8 +211,19 @@ export default class BaseCharacter {
 
     }
 
+    applyTurnHabilities(){
+        this.rechargeGigaAttack();
+        this.recoverHP();
+    }
+
     rechargeGigaAttack(){
         this.gigaAttackRechargeTurns = Math.min(++this.gigaAttackRechargeTurns, this.gigaAttackCooldown);
+    }
+
+    recoverHP(){
+        if(this.lifeRecover){
+            this.hp = Math.min(this.hp + 10, this.maxHp);
+        }
     }
 
     defend(

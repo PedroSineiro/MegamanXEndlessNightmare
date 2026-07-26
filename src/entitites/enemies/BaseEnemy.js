@@ -150,7 +150,28 @@ export default class BaseEnemy {
 
     }
 
-    async meleeAttack(target, damage, hitboxWidth, hitboxHeight, hitboxOffsetX, hitboxOffsetY, impactFrame = null){
+    async meleeAttack(
+
+        targets,
+
+        damage,
+
+        hitboxWidth,
+
+        hitboxHeight,
+
+        hitboxOffsetX,
+
+        hitboxOffsetY,
+
+        impactFrame = null
+
+    ) {
+
+        targets = Array.isArray(targets)
+        ? targets
+        : [targets];
+
         let alreadyHit =
             false;
 
@@ -171,12 +192,12 @@ export default class BaseEnemy {
                         return;
                     }
 
-                    //
-                    // frame impacto
-                    //
-
                     if (
-                        impactFrame != null && frame.index !== impactFrame
+
+                        impactFrame != null &&
+
+                        frame.index !== impactFrame
+
                     ) {
                         return;
                     }
@@ -208,71 +229,43 @@ export default class BaseEnemy {
 
                             );
 
-                    //
-                    // DEBUG
-                    //
+                    for (
 
-                    /*const g =
+                        const target of targets
 
-                        this.scene
-                            .add
-                            .graphics();
-
-                    g.setDepth(
-                        99999
-                    );
-
-                    g.lineStyle(
-                        2,
-                        0xff0000,
-                        1
-                    );
-
-                    g.strokeRectShape(
-                        attackHitbox
-                    );
-
-                    this.scene.time
-                        .delayedCall(
-
-                            100,
-
-                            () => {
-
-                                g.destroy();
-
-                            }
-
-                        );*/
-
-                    //
-                    // colisão
-                    //
-
-                    const hit =
-
-                        Phaser
-                            .Geom
-                            .Intersects
-                            .RectangleToRectangle(
-
-                                attackHitbox,
-
-                                target.hurtbox
-
-                            );
-
-                    if (
-                        !hit
                     ) {
-                        return;
+
+                        if (
+                            target.isDead
+                        ) {
+                            continue;
+                        }
+
+                        const hit =
+
+                            Phaser
+                                .Geom
+                                .Intersects
+                                .RectangleToRectangle(
+
+                                    attackHitbox,
+
+                                    target.hurtbox
+
+                                );
+
+                        if (
+                            !hit
+                        ) {
+                            continue;
+                        }
+
+                        target.receiveAttack(
+                            damage,
+                            this
+                        );
+
                     }
-
-                    //
-                    // evasion
-                    //
-
-                    target.receiveAttack(damage, this);
 
                 };
 
@@ -294,8 +287,11 @@ export default class BaseEnemy {
                     () => {
 
                         this.sprite.off(
+
                             "animationupdate",
+
                             onUpdate
+
                         );
 
                         resolve();
@@ -307,6 +303,7 @@ export default class BaseEnemy {
             }
 
         );
+
     }
 
     updateHurtbox() {

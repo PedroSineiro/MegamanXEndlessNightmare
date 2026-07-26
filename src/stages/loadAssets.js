@@ -35,6 +35,11 @@ export default function loadStageAssets(scene) {
         "assets/backgrounds/repliforce_stage.png"
     );
 
+    scene.load.image(
+        "sigma_stage",
+        "assets/backgrounds/sigma_stage.png"
+    );
+
     scene.load.audio(
         "introduction_stage",
         "assets/music/introduction.mp3"
@@ -68,5 +73,15 @@ export default function loadStageAssets(scene) {
     scene.load.audio(
         "repliforce_stage",
         "assets/music/repliforce_theme.mp3"
+    );
+
+    scene.load.audio(
+        "sigma_stage",
+        "assets/music/sigma_theme.mp3"
+    );
+
+    scene.load.audio(
+        "final_boss",
+        "assets/music/final_boss.mp3"
     );
 }

@@ -6,6 +6,17 @@ export default class DialogBox {
 
         this.dialogs = [];
 
+        this.backgroundColors = {
+            "alia": 0xff99cc,
+            "x": 0x173aff,
+            "zero": 0xf71e1e,
+            "nightmare_zero": 0xfc03f8,
+            "high_max": 0xffe924,
+            "dynamo":   0x3a24ff,
+            "sigma": 0x851071
+
+        }
+
         this.currentIndex = 0;
 
         this.isTyping = false;
@@ -282,22 +293,6 @@ export default class DialogBox {
     ) {
 
         if (
-            speaker === "alia"
-        ) {
-
-            return {
-
-                idle:
-                    "dialog_alia_idle",
-
-                speaking:
-                    "dialog_alia_speaking"
-
-            };
-
-        }
-
-        if (
             speaker === "x"
         ) {
 
@@ -341,21 +336,16 @@ export default class DialogBox {
 
         }
 
-        if (
-            speaker === "nightmare_zero"
-        ) {
 
-            return {
+        return {
 
-                idle:
-                    "dialog_nightmare_zero_idle",
+            idle:
+                `dialog_${speaker}_idle`,
 
-                speaking:
-                    "dialog_nightmare_zero_speaking"
+            speaking:
+                `dialog_${speaker}_speaking`
 
-            };
-
-        }
+        };
 
     }
 
@@ -363,46 +353,10 @@ export default class DialogBox {
         speaker
     ) {
 
-        if (
-            speaker === "alia"
-        ) {
-
-            this.background
-                .setFillStyle(
-                    0xff99cc
-                );
-
-        }
-
-        else if(
-            speaker === "x"
-        ) {
-
-            this.background
-                .setFillStyle(
-                    0x173aff
-                );
-
-        } else if(
-            speaker === "zero"
-        ) {
-
-            this.background
-                .setFillStyle(
-                    0xf71e1e
-                );
-
-        } else if(
-            speaker === "nightmare_zero"
-        ) {
-
-            this.background
-                .setFillStyle(
-                    0xfc03f8
-                );
-
-        }
-        
+    this.background
+        .setFillStyle(
+            this.backgroundColors[speaker]
+        );
 
     }
 

@@ -67,6 +67,11 @@ CharacterStatsCalculator {
                 .abilities
                 .giga_attack_recover? 5: 8);
 
+        const lifeRecover = gameData.inventory
+                .x
+                .abilities
+                .life_recover?? false;
+
         return {
 
             maxHp,
@@ -96,6 +101,8 @@ CharacterStatsCalculator {
             gigaAttackMustRecharge: gigaAttackMustRecharge,
 
             gigaAttackCooldown: gigaAttackCooldown,
+
+            lifeRecover: lifeRecover,
 
             armor:
 
@@ -170,6 +177,11 @@ CharacterStatsCalculator {
                 .abilities
                 .giga_attack_recover? 5: 8);
 
+        const lifeRecover = gameData.inventory
+                .zero
+                .abilities
+                .life_recover?? false;
+
         return {
 
             maxHp,
@@ -199,6 +211,8 @@ CharacterStatsCalculator {
             gigaAttackMustRecharge: gigaAttackMustRecharge,
 
             gigaAttackCooldown: gigaAttackCooldown,
+
+            lifeRecover: lifeRecover,
 
             armor:
 

@@ -20,29 +20,65 @@ SlashBState {
             true
         );
 
-        player.scene.time.delayedCall(
+        let slashSpawned = false;
+        
+        const impactFrame = 3;
 
-            120,
+        const onUpdate = (
 
-            () => {
+            animation,
+            frame
 
-                player.attackHitbox =
+        ) => {
 
-                    new AttackHitbox(
-
-                        player.scene,
-
-                        player,
-
-                        SLASH_CONFIG
-                            .slashB,
-
-                        player.slashBDamage
-
-                    );
-
+            if (
+                slashSpawned
+            ) {
+                return;
             }
 
+            if (
+                frame.index !== impactFrame
+            ) {
+                return;
+            }
+
+            slashSpawned = true;
+
+            player.scene.sfx.play(
+            "z_saber",
+            {
+                volume: 0.2
+            }
+            );
+
+            player.scene.sfx.play(
+                "zero_regular_hit",
+                {
+                    volume: 0.2
+                }
+            );
+
+
+            player.attackHitbox =
+
+            new AttackHitbox(
+
+                player.scene,
+
+                player,
+
+                SLASH_CONFIG
+                    .slashB,
+
+                player.slashBDamage
+
+            );
+        };
+
+        player.sprite.on(
+            "animationupdate",
+            onUpdate
         );
 
         //
@@ -62,18 +98,6 @@ SlashBState {
                 }
 
             );
-
-        //
-        // fecha janela
-        //
-
-        player.scene.sfx.play("z_saber",{
-            volume:0.2
-        })
-
-        player.scene.sfx.play("zero_second_hit",{
-            volume:0.2
-        })
 
         player.scene.time
             .delayedCall(
@@ -100,6 +124,11 @@ SlashBState {
                 .ANIMATION_COMPLETE,
 
             () => {
+
+                player.sprite.off(
+                    "animationupdate",
+                    onUpdate
+                );
 
                 player.continueComboOrEnd();
 

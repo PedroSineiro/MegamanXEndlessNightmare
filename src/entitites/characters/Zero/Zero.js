@@ -105,6 +105,8 @@ extends BaseCharacter {
 
         this.comboUsedTurns = 0;
 
+        this.piercingSlashCombo = false;
+
         this.comboTarget = null;
 
         //

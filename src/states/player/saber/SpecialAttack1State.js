@@ -14,52 +14,79 @@ SpecialAttack1State {
         player.turnActions -= player.piercingSlashActions;
 
         player.sprite.play(
-            `${player.currentArmor}_special_attack_1`,
+            player.piercingSlashCombo?`${player.currentArmor}_special_attack_1_combo`:`${player.currentArmor}_special_attack_1`,
             true
         );
 
-        player.scene.time.delayedCall(
+        let slashSpawned = false;
 
-            500,
+        const impactFrame = player.piercingSlashCombo? 12: 14;
 
-            () => {
+        const onUpdate = (
 
-                player.scene.sfx.play("z_saber",{
-                    volume:0.2
-                })
+            animation,
+            frame
 
-                player.scene.sfx.play("zero_strong_hit",{
-                    volume:0.2
-                })
+        ) => {
 
-                player.attackHitbox =
-
-                    new AttackHitbox(
-
-                        player.scene,
-
-                        player,
-
-                        SLASH_CONFIG
-                            .slashSpecial1,
-
-                        player.slashPiercingDamage
-
-                    );
-
-
-                player.attackHitbox.startGrowing({
-
-                    startWidth: 50,
-
-                    endWidth: 260,
-
-                    duration: 180
-
-                });
-
+            if (
+                slashSpawned
+            ) {
+                return;
             }
 
+            if (
+                frame.index !== impactFrame
+            ) {
+                return;
+            }
+
+            slashSpawned = true;
+
+            player.scene.sfx.play(
+                "z_saber",
+                {
+                    volume: 0.2
+                }
+            );
+
+            player.scene.sfx.play(
+                "zero_strong_hit",
+                {
+                    volume: 0.2
+                }
+            );
+
+            player.attackHitbox =
+
+                new AttackHitbox(
+
+                    player.scene,
+
+                    player,
+
+                    SLASH_CONFIG
+                        .slashSpecial1,
+
+                    player.slashPiercingDamage
+
+                );
+
+            player.attackHitbox.startGrowing({
+
+                startWidth: 50,
+
+                endWidth: 260,
+
+                duration: 180
+
+            });
+
+        };
+
+        player.sprite.on(
+            "animationupdate",
+            onUpdate
         );
 
         //
@@ -73,6 +100,11 @@ SpecialAttack1State {
                 .ANIMATION_COMPLETE,
 
             () => {
+
+                player.sprite.off(
+                    "animationupdate",
+                    onUpdate
+                );
 
                 player.continueComboOrEnd();
 

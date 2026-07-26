@@ -104,4 +104,37 @@ loadAssets(scene) {
             `assets/sprites/mugshot/nightmare_zero/speaking/speaking_${i}.png`
         );
     }
+
+    for (let i = 1; i <= 1; i++) {
+        scene.load.image(
+            `dialog_high_max_idle_${i}`,
+            `assets/sprites/mugshot/high_max/idle/idle_${i}.png`
+        );
+    }
+
+    for (let i = 1; i <= 3; i++) {
+        scene.load.image(
+            `dialog_high_max_speaking_${i}`,
+            `assets/sprites/mugshot/high_max/speaking/speaking_${i}.png`
+        );
+    }
+
+    for (let i = 1; i <= 3; i++) {
+        scene.load.image(
+            `dialog_dynamo_idle_${i}`,
+            `assets/sprites/mugshot/dynamo/idle/idle_${i}.png`
+        );
+    }
+
+    for (let i = 1; i <= 3; i++) {
+        scene.load.image(
+            `dialog_dynamo_speaking_${i}`,
+            `assets/sprites/mugshot/dynamo/speaking/speaking_${i}.png`
+        );
+    }
+
+    scene.load.image(
+            "dialog_sigma_idle_1",
+            "assets/sprites/mugshot/sigma/idle/idle_1.png"
+        );
 }

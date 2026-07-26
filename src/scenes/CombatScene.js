@@ -1566,6 +1566,10 @@ extends Phaser.Scene {
 
     }
 
+    async bossBeforeFight() {
+        await this.boss.beforeFight();
+    }
+
     async runWaveDialogs(
         waveIndex,
         isAfterBossSpawn

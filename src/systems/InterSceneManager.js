@@ -5,18 +5,35 @@ import { COMBAT_DIALOGS } from "../constants/CombatDialogs.js";
 
 export default class InterSceneManager {
 
-    static TOTAL_AMOUNT_STAGES = 6;
+    static TOTAL_AMOUNT_STAGES = 7;
 
-    static MAVERIC_STAGES = {
+    static STAGES = {
         volcano_stage: {
             stage: "volcano_stage",
             theme: "volcano_stage",
             background: "volcano_stage",
             boss_theme: "boss",
-            bosses: [
-                "magma_dragoon",
-                "burn_dinorex"
-            ],
+            layout: [
+                    {
+                        type: "waves",
+                        count: 8
+                    },
+
+                    {
+                        type: "boss",
+                        boss: "magma_dragoon"
+                    },
+
+                    {
+                        type: "waves",
+                        count: 8
+                    },
+
+                    {
+                        type: "boss",
+                        boss: "burn_dinorex"
+                    }
+                ]
         },
 
         cave_stage: {
@@ -24,10 +41,28 @@ export default class InterSceneManager {
             theme: "cave_stage",
             background: "cave_stage",
             boss_theme: "boss",
-            bosses: [
-                "slash_beast",
-                "crescent_grizzly"
-            ],
+            layout: [
+
+                {
+                    type: "waves",
+                    count: 8
+                },
+
+                {
+                    type: "boss",
+                    boss: "slash_beast"
+                },
+
+                {
+                    type: "waves",
+                    count: 8
+                },
+
+                {
+                    type: "boss",
+                    boss: "crescent_grizzly"
+                }
+            ]
         },
 
         frozen_stage: {
@@ -35,10 +70,28 @@ export default class InterSceneManager {
             theme: "frozen_stage",
             background: "frozen_stage",
             boss_theme: "boss",
-            bosses: [
-                "frost_walrus",
-                "blizzard_wolfang"
-            ],
+            layout: [
+
+                {
+                    type: "waves",
+                    count: 8
+                },
+
+                {
+                    type: "boss",
+                    boss: "frost_walrus"
+                },
+
+                {
+                    type: "waves",
+                    count: 8
+                },
+
+                {
+                    type: "boss",
+                    boss: "blizzard_wolfang"
+                }
+            ]
         },
 
         cyber_stage: {
@@ -46,27 +99,110 @@ export default class InterSceneManager {
             theme: "cyber_stage",
             background: "cyber_stage",
             boss_theme: "boss",
-            bosses: [
-                "spiral_pegasus",
-                "cyber_peacock"
-            ],
-        }
-    };
+            layout: [
 
-    static FINAL_STAGES = [
-        {
-            0: {
+                {
+                    type: "waves",
+                    count: 8
+                },
+
+                {
+                    type: "boss",
+                    boss: "spiral_pegasus"
+                },
+
+                {
+                    type: "waves",
+                    count: 8
+                },
+
+                {
+                    type: "boss",
+                    boss: "cyber_peacock"
+                }
+            ]
+        },
+        repliforce_stage: {
             stage: "repliforce_stage",
             theme: "repliforce_stage",
             background: "repliforce_stage",
             boss_theme: "boss",
-            bosses: [
-                "colonel",
-                "double"
-            ],
-            }
+            layout: [
+
+                {
+                    type: "waves",
+                    count: 8
+                },
+
+                {
+                    type: "boss",
+                    boss: "colonel"
+                },
+
+                {
+                    type: "waves",
+                    count: 8
+                },
+
+                {
+                    type: "boss",
+                    boss: "double"
+                }
+            ]
+        },
+        sigma_stage: {
+            stage: "sigma_stage",
+            theme: "sigma_stage",
+            background: "sigma_stage",
+            boss_theme: "final_boss",
+            layout: [
+
+                {
+                    type: "waves",
+                    count: 4
+                },
+
+                {
+                    type: "boss",
+                    boss: "high_max"
+                },
+
+                {
+                    type: "waves",
+                    count: 4
+                },
+
+                {
+                    type: "boss",
+                    boss: "dynamo"
+                },
+
+                {
+                    type: "waves",
+                    count: 8
+                },
+
+                {
+                    type: "boss",
+                    boss: "sigma_head"
+                },
+
+                {
+                    type: "boss",
+                    boss: "sigma"
+                }
+
+            ]
         }
-    ]
+    };
+
+    static FINAL_STAGE_KEYS = [
+
+        "repliforce_stage",
+
+        "sigma_stage"
+
+    ];
 
 
     static DEFAULT_WAVE_CONFIG = {
@@ -121,57 +257,49 @@ export default class InterSceneManager {
                 gameData
             );
 
-        //
-        // primeira metade
-        //
+        const waves = [];
 
-        const firstHalf =
+        for (
 
-            this.generateWaves(this.DEFAULT_WAVE_CONFIG);
+            const segment of nextStage.layout
 
-        //
-        // primeiro boss
-        //
+        ) {
 
-        firstHalf.push({
+            if (
 
-            type: "boss",
+                segment.type === "waves"
 
-            boss: nextStage.bosses[0]
+            ) {
 
-        });
+                const config = this.DEFAULT_WAVE_CONFIG;
 
-        //
-        // segunda metade
-        //
+                config.numberOfWaves = segment.count;
 
-        const secondHalf =
+                waves.push(
 
-            this.generateWaves(this.DEFAULT_WAVE_CONFIG);
+                    ...this.generateWaves(config)
 
-        //
-        // segundo boss
-        //
+                );
 
-        secondHalf.push({
+            }
 
-            type: "boss",
+            if (
 
-            boss: nextStage.bosses[1]
+                segment.type === "boss"
 
-        });
+            ) {
 
-        //
-        // waves completas
-        //
+                waves.push({
 
-        const waves = [
+                    type: "boss",
 
-            ...firstHalf,
+                    boss: segment.boss
 
-            ...secondHalf
+                });
 
-        ];
+            }
+
+        }
 
         const nightmareScrapReward =
 
@@ -248,42 +376,94 @@ export default class InterSceneManager {
         gameData
     ) {
 
-        const amountCompletedStages = gameData.amountCompletedStages;
+        const amountCompletedStages =
 
-        if(amountCompletedStages < 5){
+            gameData.amountCompletedStages;
+
+        if (
+
+            amountCompletedStages < 5
+
+        ) {
+
             const availableStages =
 
-            Object.keys(this.MAVERIC_STAGES)
+                Object.keys(
+                    this.STAGES
+                )
 
                 .filter(
 
-                    key =>
+                    stage =>
 
-                        !gameData.completedStages.includes(
-                            key
-                        )
+                        !this.FINAL_STAGE_KEYS
+                            .includes(stage)
+
+                )
+
+                .filter(
+
+                    stage =>
+
+                        !gameData
+                            .completedStages
+                            .includes(stage)
 
                 );
 
             if (
+
                 availableStages.length === 0
+
             ) {
+
                 return null;
+
             }
 
-            const selectedStage = availableStages[
+            const selectedStage =
 
-                Math.floor(
-                    Math.random() *
-                    availableStages.length
-                )
+                availableStages[
 
+                    Math.floor(
+
+                        Math.random() *
+
+                        availableStages.length
+
+                    )
+
+                ];
+
+            return this.STAGES[
+                selectedStage
             ];
 
-            return this.MAVERIC_STAGES[selectedStage];
-        } else {
-            return this.FINAL_STAGES[amountCompletedStages-5][amountCompletedStages-5];
         }
+
+        if (
+
+            amountCompletedStages === 5
+
+        ) {
+
+            return this.STAGES
+                .repliforce_stage;
+
+        }
+
+        if (
+
+            amountCompletedStages === 6
+
+        ) {
+
+            return this.STAGES
+                .sigma_stage;
+
+        }
+
+        return null;
 
     }
 

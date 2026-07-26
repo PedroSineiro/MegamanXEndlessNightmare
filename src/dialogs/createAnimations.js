@@ -178,5 +178,68 @@ createAnimations(scene) {
         repeat: -1
     });
 
+    scene.anims.create({
+        key: "dialog_high_max_idle",
+        frames: [
+            { key: "dialog_high_max_idle_1" }
+        ],
+        frameRate: 0,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: "dialog_high_max_speaking",
+        frames: [
+            { key: "dialog_high_max_speaking_1", duration: 30 },
+            { key: "dialog_high_max_speaking_2", duration: 30 },
+            { key: "dialog_high_max_speaking_3", duration: 30 },
+            { key: "dialog_high_max_speaking_2", duration: 30 }
+        ],
+        frameRate: 16,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: "dialog_dynamo_idle",
+        frames: [
+            { key: "dialog_dynamo_idle_1", duration: 1500 },
+            { key: "dialog_dynamo_idle_2", duration: 30 },
+            { key: "dialog_dynamo_idle_3", duration: 30 },
+            { key: "dialog_dynamo_idle_2", duration: 30 }
+        ],
+        frameRate: 16,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: "dialog_dynamo_speaking",
+        frames: [
+            { key: "dialog_dynamo_speaking_1", duration: 30 },
+            { key: "dialog_dynamo_speaking_2", duration: 30 },
+            { key: "dialog_dynamo_speaking_3", duration: 30 },
+            { key: "dialog_dynamo_speaking_2", duration: 30 }
+        ],
+        frameRate: 16,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: "dialog_sigma_idle",
+        frames: [
+            { key: "dialog_sigma_idle_1" }
+        ],
+        frameRate: 16,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: "dialog_sigma_speaking",
+        frames: [
+            { key: "dialog_sigma_idle_1" }
+        ],
+        frameRate: 16,
+        repeat: 0
+    });
+
 
 }

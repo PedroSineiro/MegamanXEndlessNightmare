@@ -109,7 +109,7 @@ CharacterActionRunner {
 
         target,
 
-        comboType
+        comboTypes
 
     ) {
 
@@ -193,40 +193,55 @@ CharacterActionRunner {
 
         actor.comboTarget = target;
 
-        switch (
-            comboType
-        ) {
+        if(comboTypes.length==2) actor.piercingSlashCombo = true;
 
-            case "slashA":
+        for (
 
-                combo = ["slashA"];
+                const comboType of
+                comboTypes
 
-                break;
+            ) {
 
-            case "slashAB":
+            if(target.isDead) break;
+            
+            switch (
+                comboType
+            ) {
 
-                combo = ["slashA","slashB"];
+                case "slashA":
 
-                break;
+                    combo = ["slashA"];
 
-            case "slashABC":
+                    break;
 
-                combo = ["slashA","slashB", "slashC"];
+                case "slashAB":
 
-                break;
+                    combo = ["slashA","slashB"];
 
-            case "piercingSlash":
+                    break;
 
-                combo = ["special1"];
+                case "slashABC":
+
+                    combo = ["slashA","slashB", "slashC"];
+
+                    break;
+
+                case "piercingSlash":
+
+                    combo = ["special1"];
 
 
-                break;
+                    break;
 
+            }
+
+            await actor.performCombo(combo);
+                    
         }
 
-        await actor.performCombo(combo);
-
         actor.comboTarget = null;
+
+        actor.piercingSlashCombo = false;
 
         await this.wait(
             600

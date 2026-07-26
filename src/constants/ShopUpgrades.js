@@ -33,7 +33,12 @@ export const SHOP_UPGRADES = {
             {
                 name:"giga_attack_recover",
                 cost: 800,
-                description: "Reduces the giga attack recharge time by 3 turns" 
+                description: "Reduces the giga attack recharge time by 3 turns." 
+            },
+            {
+                name:"life_recover",
+                cost: 800,
+                description: "Heals 10 HP at the start of the turn." 
             }
         ],
         armors: [
@@ -101,7 +106,12 @@ export const SHOP_UPGRADES = {
             {
                 name:"giga_attack_recover",
                 cost: 800,
-                description: "Reduces the giga attack recharge time by 3 turns" 
+                description: "Reduces the giga attack recharge time by 3 turns." 
+            },
+            {
+                name:"life_recover",
+                cost: 800,
+                description: "Heals 10 HP at the start of the turn." 
             }
         ],
         armors: [
