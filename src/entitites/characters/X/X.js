@@ -50,6 +50,10 @@ import FourthGigaAttackState from "../../../states/player/gigaAttackX/FourthArmo
 import XShot
 from "./shots/XShot.js";
 
+import FalconGigaAttackState from "../../../states/player/gigaAttackX/FalconArmorGigaAttackState.js";
+
+import FalconGigaShot from "./shots/falconGigaShot.js";
+
 
 export default class X
 extends BaseCharacter {
@@ -112,6 +116,10 @@ extends BaseCharacter {
         this.mediumShotDamage = stats.mediumShotDamage;
 
         this.chargedShotDamage = stats.chargedShotDamage;
+
+        this.isChargedShotPiercing = stats.isChargedShotPiercing;
+
+        this.falconGigaAttackDamage = 50;
 
         this.shots = [];
 
@@ -255,27 +263,32 @@ extends BaseCharacter {
             );
 
             this.gigaAttackStateMachine =
-                        new StateMachine(
-            
-                        "neutral",
-            
-                        {
-            
-                            neutral:
-                                new NeutralGigaAttackState(),
-            
-                            fourth:
-                                new FourthGigaAttackState(),
+                new StateMachine(
+    
+                "neutral",
+    
+                {
+    
+                    neutral:
+                        new NeutralGigaAttackState(),
+    
+                    fourth:
+                        new FourthGigaAttackState(),
 
-                            ultimate:
-                                new FourthGigaAttackState(),
-            
-            
-                        },
-            
-                        this
-            
-                    );
+                    ultimate:
+                        new FourthGigaAttackState(),
+
+                    falcon:
+                        new FalconGigaAttackState()
+    
+    
+                },
+    
+                this
+    
+                );
+
+        this.gigaShots = [];
 
     }
 
@@ -366,42 +379,6 @@ extends BaseCharacter {
 
     }
 
-    playTurnAttack(
-        type
-    ) {
-
-        switch (
-            type
-        ) {
-
-            case "basic":
-
-                this.sprite.play(
-                    "x_turn_shoot_basic"
-                );
-
-                break;
-
-            case "medium":
-
-                this.sprite.play(
-                    "x_turn_shoot_medium"
-                );
-
-                break;
-
-            case "charged":
-
-                this.sprite.play(
-                    "x_turn_shoot_charged"
-                );
-
-                break;
-
-        }
-
-    }
-
     shoot(
         chargeLevel
     ) {
@@ -416,6 +393,8 @@ extends BaseCharacter {
             "basic";
 
         let damage = this.basicShotDamage;
+
+        let isShotPiercing = false;
 
         if (
             chargeLevel === 1
@@ -437,6 +416,8 @@ extends BaseCharacter {
 
             damage = this.chargedShotDamage;
 
+            isShotPiercing = this.isChargedShotPiercing;
+
         }
 
         const shot =
@@ -457,7 +438,9 @@ extends BaseCharacter {
 
                 this.currentArmor,
 
-                damage
+                damage,
+
+                isShotPiercing
             );
 
         this.shots.push(
@@ -557,7 +540,7 @@ extends BaseCharacter {
                 "x_charging_1"
 
             ).setDepth(9999)
-            .setScale(1.5)
+            .setScale(2)
             .play(
                 "x_charging"
             );
@@ -592,7 +575,7 @@ extends BaseCharacter {
                 "x_charged_1"
 
             ).setDepth(9999)
-            .setScale(1.5)
+            .setScale(2)
             .play(
                 "x_charged"
             );
@@ -859,6 +842,174 @@ extends BaseCharacter {
         }
 
         this.updateMovementAnimation();
+
+    }
+
+    async falconGigaAttack() {
+
+        this.isInvulnerable = true;
+
+        await this.playAnimation(
+            `${this.currentArmor}_start_giga_attack`
+        );
+
+        await this.chargeFalcon();
+
+        await this.unleashFalcon();
+        
+        this.isInvulnerable = false;
+
+    }
+
+    async chargeFalcon() {
+        this.sprite.play(`${this.currentArmor}_charge_giga_attack`);
+
+        await this.wait(1000);
+    }
+
+    async unleashFalcon() {
+        this.sprite.play(`${this.currentArmor}_giga_attack`);
+        
+        this.scene.sfx.play("falcon_giga_attack");
+
+        this.falconGigaShots();
+
+        await this.wait(3000);
+
+        this.updateMovementAnimation();
+    }
+
+    falconGigaShots() {
+
+        const screenWidth =
+            this.scene.scale.width + 50;
+
+        const screenHeight =
+            this.scene.scale.height;
+
+        //
+        // lanes verticais
+        //
+
+        const shotsPerSide =
+            14;
+
+        const margin =
+            0;
+
+        const spacing =
+
+            (
+                screenWidth -
+                margin * 2
+            ) /
+
+            (
+                shotsPerSide - 1
+            );
+
+        //
+        // cria cada lane
+        //
+
+        for (
+            let lane = 0;
+            lane < shotsPerSide;
+            lane++
+        ) {
+
+            const baseX =
+
+                margin +
+
+                spacing * lane;
+
+            //
+            // 3 tiros de cima
+            // 3 tiros de baixo
+            //
+
+            const directions = [
+                1,
+                1,
+
+                -1,
+                -1
+
+            ];
+
+            //
+            // ordem aleatória
+            //
+
+            Phaser.Utils.Array.Shuffle(
+                directions
+            );
+
+            let delay = 0;
+
+            //
+            // agenda os disparos
+            //
+
+            for (
+                const direction of directions
+            ) {
+
+                this.scene.time.delayedCall(
+
+                    delay,
+
+                    () => {
+
+                        const shot =
+
+                            new FalconGigaShot(
+
+                                this.scene,
+
+                                baseX +
+
+                                Phaser.Math.Between(
+                                    -4,
+                                    4
+                                ),
+
+                                direction === 1
+
+                                    ? -80
+
+                                    : screenHeight + 80,
+
+                                direction,
+
+                                this.falconGigaAttackDamage
+
+                            );
+
+                        this.gigaShots.push(
+                            shot
+                        );
+
+                    }
+
+                );
+
+                //
+                // cooldown aleatório
+                // da lane
+                //
+
+                delay +=
+
+                    Phaser.Math.Between(
+                        550,
+                        750
+                    );
+
+            }
+
+        }
 
     }
 

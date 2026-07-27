@@ -406,6 +406,46 @@ ActionMenu {
                 );
             }
 
+            if((character.currentArmor=="falcon") && this.canUseGigaAttack(character)){
+                this.addGigaAttackButton(
+                    "Giga Attack",
+
+                    async () => {
+
+
+                        this.hide();
+
+                        character.turnActions -= 4;
+
+                        if(character.gigaAttackMustRecharge) character.gigaAttackRechargeTurns = 0;
+
+                        await this.scene
+                            .actionRunner
+                            .falconGigaAttack(
+                                character
+                            );
+
+                        //
+                        // acabou turno?
+                        //
+
+                        if (
+                            this.characterTurnEnded(
+                                character
+                            )
+                        ) {
+                            return;
+                        }
+
+                        //
+                        // volta UI
+                        //
+
+                        this.refresh();
+                    }
+                );
+            }
+
         }
 
         //

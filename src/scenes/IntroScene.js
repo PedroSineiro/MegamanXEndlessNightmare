@@ -690,7 +690,8 @@ is about to begin...`;
 
                         x: true,
                         fourth: false,
-                        ultimate: false
+                        ultimate: false,
+                        falcon: true
 
                     }
 

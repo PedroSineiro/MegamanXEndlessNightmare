@@ -1,400 +1,165 @@
-export default function
-loadAssets(scene) {
+export default function loadAssets(scene) {
 
+    const armors = [
 
+        {
+            key: "x",
+            folder: "base_x"
+        },
 
-    for (let i = 1; i <= 11; i++) {
-        scene.load.image(
-            `x_idle_${i}`,
-            `assets/sprites/characters/x/base_x/idle/idle_${i}.png`
-        );
-    }
-        
-    for (let i = 1; i <= 2; i++) {
+        {
+            key: "fourth",
+            folder: "fourth"
+        },
 
-        scene.load.image(
-            `x_start_walking_${i}`,
-            `assets/sprites/characters/x/base_x/start_walking/start_walking_${i}.png`
-        );
+        {
+            key: "ultimate",
+            folder: "ultimate"
+        },
 
-    }
+        {
+            key: "falcon",
+            folder: "falcon"
+        }
 
-    for (let i = 3; i <= 16; i++) {
+    ];
 
-        scene.load.image(
-            `x_walking_${i}`,
-            `assets/sprites/characters/x/base_x/walking/walking_${i}.png`
-        );
+    const commonAnimations = [
 
-    }
-    
-    for (let i = 3; i <= 16; i++) {
+        {
+            name: "idle",
+            start: 1,
+            end: 11
+        },
 
-        scene.load.image(
-            `x_walking_${i}`,
-            `assets/sprites/characters/x/base_x/walking/walking_${i}.png`
-        );
+        {
+            name: "start_walking",
+            start: 1,
+            end: 2
+        },
 
-    }
+        {
+            name: "walking",
+            start: 3,
+            end: 16
+        },
 
-    scene.load.image(
-        "x_light_1",
-        "assets/sprites/characters/x/base_x/light/light_1.png"
-    );
+        {
+            name: "spawning",
+            start: 2,
+            end: 17
+        },
 
-    scene.load.image(
-        "x_light_leaving_1",
-        "assets/sprites/characters/x/base_x/light/light_leaving_1.png"
-    );
+        {
+            name: "shooting_charged",
+            start: 1,
+            end: 7
+        },
 
-    for (let i = 2; i <= 17; i++) {
+        {
+            name: "basic_shooting",
+            folder: "shooting",
+            filePrefix: "shooting",
+            start: 1,
+            end: 5
+        },
 
-        scene.load.image(
-            `x_spawning_${i}`,
-            `assets/sprites/characters/x/base_x/spawning/spawning_${i}.png`
-        );
+        {
+            name: "low_hp",
+            start: 1,
+            end: 6
+        },
 
-    }
+        {
+            name: "dying",
+            start: 1,
+            end: 4
+        },
 
-    for (let i = 1; i <= 7; i++) {
+        {
+            name: "victory",
+            start: 1,
+            end: 4
+        },
 
-        scene.load.image(
-            `x_shooting_charged_${i}`,
-            `assets/sprites/characters/x/base_x/shooting_charged/shooting_charged_${i}.png`
-        );
+        {
+            name: "leaving",
+            start: 1,
+            end: 5
+        }
 
-    }
+    ];
 
-    for (let i = 1; i <= 5; i++) {
+    for (const armor of armors) {
 
-        scene.load.image(
-            `x_basic_shooting_${i}`,
-            `assets/sprites/characters/x/base_x/shooting/shooting_${i}.png`
-        );
+        for (const anim of commonAnimations) {
 
-    }
+            const folder =
 
-    for (let i = 1; i <= 5; i++) {
+                anim.folder ??
+                anim.name;
 
-        scene.load.image(
-            `x_taking_damage_${i}`,
-            `assets/sprites/characters/x/base_x/taking_damage/taking_damage_${i}.png`
-        );
+            const filePrefix =
 
-    }
+                anim.filePrefix ??
+                anim.name;
 
-    for (let i = 1; i <= 6; i++) {
+            for (
 
-        scene.load.image(
-            `x_low_hp_${i}`,
-            `assets/sprites/characters/x/base_x/low_hp/low_hp_${i}.png`
-        );
+                let i = anim.start;
 
-    }
+                i <= anim.end;
 
-    for (let i = 1; i <= 4; i++) {
+                i++
 
-        scene.load.image(
-            `x_dying_${i}`,
-            `assets/sprites/characters/x/base_x/dying/dying_${i}.png`
-        );
+            ) {
 
-    }
+                scene.load.image(
 
-    for (let i = 1; i <= 4; i++) {
+                    `${armor.key}_${anim.name}_${i}`,
 
-        scene.load.image(
-            `x_victory_${i}`,
-            `assets/sprites/characters/x/base_x/victory/victory_${i}.png`
-        );
+                    `assets/sprites/characters/x/${armor.folder}/${folder}/${filePrefix}_${i}.png`
 
-    }
+                );
 
-    for (let i = 1; i <= 5; i++) {
+            }
 
-        scene.load.image(
-            `x_leaving_${i}`,
-            `assets/sprites/characters/x/base_x/leaving/leaving_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 11; i++) {
-        scene.load.image(
-            `fourth_idle_${i}`,
-            `assets/sprites/characters/x/fourth//idle/idle_${i}.png`
-        );
-    }
-        
-    for (let i = 1; i <= 2; i++) {
+        }
 
         scene.load.image(
-            `fourth_start_walking_${i}`,
-            `assets/sprites/characters/x/fourth/start_walking/start_walking_${i}.png`
-        );
 
-    }
+            `${armor.key}_light_1`,
 
-    for (let i = 3; i <= 16; i++) {
+            `assets/sprites/characters/x/${armor.folder}/light/light_1.png`
 
-        scene.load.image(
-            `fourth_walking_${i}`,
-            `assets/sprites/characters/x/fourth/walking/walking_${i}.png`
         );
 
-    }
-    
-    for (let i = 3; i <= 16; i++) {
-
         scene.load.image(
-            `fourth_walking_${i}`,
-            `assets/sprites/characters/x/fourth/walking/walking_${i}.png`
+
+            `${armor.key}_light_leaving_1`,
+
+            `assets/sprites/characters/x/${armor.folder}/light/light_leaving_1.png`
+
         );
 
     }
 
-    scene.load.image(
-        "fourth_light_1",
-        "assets/sprites/characters/x/fourth/light/light_1.png"
-    );
+    //
+    // Fourth Armor
+    //
 
-    scene.load.image(
-        "fourth_light_leaving_1",
-        "assets/sprites/characters/x/fourth/light/light_leaving_1.png"
-    );
+    loadNovaStrike(scene, "fourth");
 
-    for (let i = 2; i <= 17; i++) {
+    //
+    // Ultimate Armor
+    //
 
-        scene.load.image(
-            `fourth_spawning_${i}`,
-            `assets/sprites/characters/x/fourth/spawning/spawning_${i}.png`
-        );
+    loadNovaStrike(scene, "ultimate");
 
-    }
-
-    for (let i = 1; i <= 7; i++) {
-
-        scene.load.image(
-            `fourth_shooting_charged_${i}`,
-            `assets/sprites/characters/x/fourth/shooting_charged/shooting_charged_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 5; i++) {
-
-        scene.load.image(
-            `fourth_basic_shooting_${i}`,
-            `assets/sprites/characters/x/fourth/shooting/shooting_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 5; i++) {
-
-        scene.load.image(
-            `fourth_taking_damage_${i}`,
-            `assets/sprites/characters/x/fourth/taking_damage/taking_damage_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 6; i++) {
-
-        scene.load.image(
-            `fourth_low_hp_${i}`,
-            `assets/sprites/characters/x/fourth/low_hp/low_hp_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `fourth_dying_${i}`,
-            `assets/sprites/characters/x/fourth/dying/dying_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `fourth_victory_${i}`,
-            `assets/sprites/characters/x/fourth/victory/victory_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 5; i++) {
-
-        scene.load.image(
-            `fourth_leaving_${i}`,
-            `assets/sprites/characters/x/fourth/leaving/leaving_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `fourth_start_nova_strike_${i}`,
-            `assets/sprites/characters/x/fourth/start_nova_strike/start_nova_strike_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `fourth_nova_strike_${i}`,
-            `assets/sprites/characters/x/fourth/nova_strike/nova_strike_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `fourth_end_nova_strike_${i}`,
-            `assets/sprites/characters/x/fourth/end_nova_strike/end_nova_strike_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 11; i++) {
-        scene.load.image(
-            `ultimate_idle_${i}`,
-            `assets/sprites/characters/x/ultimate//idle/idle_${i}.png`
-        );
-    }
-        
-    for (let i = 1; i <= 2; i++) {
-
-        scene.load.image(
-            `ultimate_start_walking_${i}`,
-            `assets/sprites/characters/x/ultimate/start_walking/start_walking_${i}.png`
-        );
-
-    }
-
-    for (let i = 3; i <= 16; i++) {
-
-        scene.load.image(
-            `ultimate_walking_${i}`,
-            `assets/sprites/characters/x/ultimate/walking/walking_${i}.png`
-        );
-
-    }
-    
-    for (let i = 3; i <= 16; i++) {
-
-        scene.load.image(
-            `ultimate_walking_${i}`,
-            `assets/sprites/characters/x/ultimate/walking/walking_${i}.png`
-        );
-
-    }
-
-    scene.load.image(
-        "ultimate_light_1",
-        "assets/sprites/characters/x/ultimate/light/light_1.png"
-    );
-
-    scene.load.image(
-        "ultimate_light_leaving_1",
-        "assets/sprites/characters/x/ultimate/light/light_leaving_1.png"
-    );
-
-    for (let i = 2; i <= 17; i++) {
-
-        scene.load.image(
-            `ultimate_spawning_${i}`,
-            `assets/sprites/characters/x/ultimate/spawning/spawning_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 7; i++) {
-
-        scene.load.image(
-            `ultimate_shooting_charged_${i}`,
-            `assets/sprites/characters/x/ultimate/shooting_charged/shooting_charged_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 5; i++) {
-
-        scene.load.image(
-            `ultimate_basic_shooting_${i}`,
-            `assets/sprites/characters/x/ultimate/shooting/shooting_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 6; i++) {
-
-        scene.load.image(
-            `ultimate_low_hp_${i}`,
-            `assets/sprites/characters/x/ultimate/low_hp/low_hp_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `ultimate_dying_${i}`,
-            `assets/sprites/characters/x/ultimate/dying/dying_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `ultimate_victory_${i}`,
-            `assets/sprites/characters/x/ultimate/victory/victory_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 5; i++) {
-
-        scene.load.image(
-            `ultimate_leaving_${i}`,
-            `assets/sprites/characters/x/ultimate/leaving/leaving_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `ultimate_start_nova_strike_${i}`,
-            `assets/sprites/characters/x/ultimate/start_nova_strike/start_nova_strike_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `ultimate_nova_strike_${i}`,
-            `assets/sprites/characters/x/ultimate/nova_strike/nova_strike_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `ultimate_end_nova_strike_${i}`,
-            `assets/sprites/characters/x/ultimate/end_nova_strike/end_nova_strike_${i}.png`
-        );
-
-    }
+    //
+    // Falcon Armor
+    //
+    loadFalconGigaAttack(scene);
 
     for (let i = 1; i <= 5; i++) {
 
@@ -473,4 +238,74 @@ loadAssets(scene) {
         "end_nova_strike",
         "assets/sounds/general/dash_end.wav"
     );
+
+    scene.load.audio(
+        "falcon_giga_attack",
+        "assets/sounds/X/falcon_giga_attack.wav"
+    );
+}
+
+function loadNovaStrike(scene, armor) {
+
+    const animations = [
+
+        "start_nova_strike",
+
+        "nova_strike",
+
+        "end_nova_strike"
+
+    ];
+
+    for (
+
+        const animation of animations
+
+    ) {
+
+        for (
+
+            let i = 1;
+
+            i <= 4;
+
+            i++
+
+        ) {
+
+            scene.load.image(
+
+                `${armor}_${animation}_${i}`,
+
+                `assets/sprites/characters/x/${armor}/${animation}/${animation}_${i}.png`
+
+            );
+
+        }
+
+    }
+
+}
+
+function loadFalconGigaAttack(scene){
+    for (
+
+        let i = 1;
+
+        i <= 5;
+
+        i++
+
+    ) {
+
+        scene.load.image(
+
+            `falcon_giga_attack_${i}`,
+
+            `assets/sprites/characters/x/falcon/giga_attack/giga_attack_${i}.png`
+
+        );
+
+    }
+
 }

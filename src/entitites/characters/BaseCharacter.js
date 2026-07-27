@@ -92,6 +92,8 @@ export default class BaseCharacter {
             giga: false,
 
         };
+        
+        this.gigaShots = [];
 
         this.isBusy = false;
     }
@@ -652,6 +654,21 @@ export default class BaseCharacter {
         this.sprite.setDepth(
             this.sprite.y
         );
+
+        this.gigaShots =
+
+        this.gigaShots
+            .filter(
+
+                shot => {
+
+                    shot.update();
+
+                    return shot.active;
+
+                }
+
+            );
 
         this.updateHurtbox();
 

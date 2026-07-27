@@ -15,7 +15,7 @@ from
 
 export default class XShot {
 
-    constructor(scene, x, y, direction, shotType, currentArmor, damage) {
+    constructor(scene, x, y, direction, shotType, currentArmor, damage, isPiercing = false) {
 
         this.active = true;
 
@@ -24,6 +24,8 @@ export default class XShot {
         this.direction = direction;
 
         this.shotType = shotType;
+
+        this.isPiercing = isPiercing;
 
         this.playerCurrentArmor = currentArmor;
 

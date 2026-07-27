@@ -477,9 +477,7 @@ CharacterActionRunner {
         );
 
         this.pressGigaAttack(actor);
-        //
-        // espera slash end
-        //
+
 
         await this.wait(
             1200
@@ -497,6 +495,30 @@ CharacterActionRunner {
 
             originalY
 
+        );
+
+        actor.isBusy =
+            false;
+
+    }
+
+    async falconGigaAttack(
+
+        actor
+
+    ) {
+
+        actor.isBusy =
+            true;
+
+
+        this.pressGigaAttack(actor);
+        //
+        // espera slash end
+        //
+
+        await this.wait(
+            5000
         );
 
         actor.isBusy =

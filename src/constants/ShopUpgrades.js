@@ -61,6 +61,15 @@ export const SHOP_UPGRADES = {
                 preview_sprite: "fourth_empty_armor"
             },
             {
+                name: "falcon",
+                cost: 1500,
+                base_evasion: 20,
+                base_reduction: 50,
+                giga_attack_type: "Area",
+                description: "Charged shot pierces through enemies.",
+                preview_sprite: "falcon_empty_armor"
+            },
+            {
                 name: "ultimate",
                 cost: 2800,
                 base_evasion: 20,

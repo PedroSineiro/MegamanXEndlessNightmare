@@ -30,6 +30,17 @@ export const ARMOR_STATS = {
         gigaAttackMustRecharge: false
     },
 
+    "falcon":{
+        baseEvasion: 0.20,
+        baseReduction: 0.50,
+        basicShotDamage: 10,
+        mediumShotDamage: 25,
+        chargedShotDamage: 60,
+        piercingShot: true,
+        hasGigaAttack: true,
+        gigaAttackMustRecharge: true
+    },
+
     "zero":{
         baseEvasion: 0.15,
         baseReduction: 0,

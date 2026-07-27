@@ -372,7 +372,6 @@ extends Phaser.Scene {
         createGeneralAnimations(this);
         createDialogAnimations(this);
         createGeneralAnimations(this);
-        createDialogAnimations(this);
     }
 
     create() {

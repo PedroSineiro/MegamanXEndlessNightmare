@@ -189,9 +189,6 @@ extends BaseCharacter {
                     .G
 
                 );
-        
-
-        this.gigaShots = [];
 
         //
         // movement state machine
@@ -585,21 +582,6 @@ extends BaseCharacter {
                 this.hurtbox.height
 
             );*/
-
-        this.gigaShots =
-
-        this.gigaShots
-            .filter(
-
-                shot => {
-
-                    shot.update();
-
-                    return shot.active;
-
-                }
-
-            );
     }
 
     destroy() {

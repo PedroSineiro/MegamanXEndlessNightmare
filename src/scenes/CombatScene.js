@@ -1697,7 +1697,7 @@ extends Phaser.Scene {
                                     //
 
                                     if (
-                                        !enemy.isDead
+                                        !enemy.isDead && !shot.isPiercing
                                     ) {
 
                                         shot.destroy();
@@ -1804,7 +1804,7 @@ extends Phaser.Scene {
 
     }
 
-    updateZeroGigaShots() {
+    updateGigaShots() {
 
         this.players.forEach(
 
@@ -2044,7 +2044,7 @@ extends Phaser.Scene {
 
         this.updateSlashCollisions();
 
-        this.updateZeroGigaShots();
+        this.updateGigaShots();
 
         this.updateEnemyShots();
 

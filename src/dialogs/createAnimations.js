@@ -1,181 +1,52 @@
 export default function
 createAnimations(scene) {
 
-     if (
-        scene.anims.exists(
-            "dialog_x_idle"
-        )
-    ) {
-        return;
-    }
+    const CHARACTERS = [
 
-    scene.anims.create({
-        key: "dialog_x_idle",
-        frames: [
-            { key: "dialog_x_idle_1", duration: 1500 },
-            { key: "dialog_x_idle_2", duration: 30 },
-            { key: "dialog_x_idle_3", duration: 30 },
-            { key: "dialog_x_idle_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+        "x",
 
-    scene.anims.create({
-        key: "dialog_x_speaking",
-        frames: [
-            { key: "dialog_x_speaking_1", duration: 30 },
-            { key: "dialog_x_speaking_2", duration: 30 },
-            { key: "dialog_x_speaking_3", duration: 30 },
-            { key: "dialog_x_speaking_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+        "fourth",
 
-    scene.anims.create({
-        key: "dialog_fourth_idle",
-        frames: [
-            { key: "dialog_fourth_idle_1", duration: 1500 },
-            { key: "dialog_fourth_idle_2", duration: 30 },
-            { key: "dialog_fourth_idle_3", duration: 30 },
-            { key: "dialog_fourth_idle_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+        "ultimate",
 
-    scene.anims.create({
-        key: "dialog_fourth_speaking",
-        frames: [
-            { key: "dialog_fourth_speaking_1", duration: 30 },
-            { key: "dialog_fourth_speaking_2", duration: 30 },
-            { key: "dialog_fourth_speaking_3", duration: 30 },
-            { key: "dialog_fourth_speaking_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+        "falcon",
 
-    scene.anims.create({
-        key: "dialog_ultimate_idle",
-        frames: [
-            { key: "dialog_ultimate_idle_1", duration: 1500 },
-            { key: "dialog_ultimate_idle_2", duration: 30 },
-            { key: "dialog_ultimate_idle_3", duration: 30 },
-            { key: "dialog_ultimate_idle_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+        "zero",
 
-    scene.anims.create({
-        key: "dialog_ultimate_speaking",
-        frames: [
-            { key: "dialog_ultimate_speaking_1", duration: 30 },
-            { key: "dialog_ultimate_speaking_2", duration: 30 },
-            { key: "dialog_ultimate_speaking_3", duration: 30 },
-            { key: "dialog_ultimate_speaking_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+        "black_zero",
 
+        "alia",
 
-    scene.anims.create({
-        key: "dialog_zero_idle",
-        frames: [
-            { key: "dialog_zero_idle_1", duration: 1500 },
-            { key: "dialog_zero_idle_2", duration: 30 },
-            { key: "dialog_zero_idle_3", duration: 30 },
-            { key: "dialog_zero_idle_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+        "nightmare_zero",
 
-    scene.anims.create({
-        key: "dialog_zero_speaking",
-        frames: [
-            { key: "dialog_zero_speaking_1", duration: 30 },
-            { key: "dialog_zero_speaking_2", duration: 30 },
-            { key: "dialog_zero_speaking_3", duration: 30 },
-            { key: "dialog_zero_speaking_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+        "dynamo",
 
-    scene.anims.create({
-        key: "dialog_black_zero_idle",
-        frames: [
-            { key: "dialog_black_zero_idle_1", duration: 1500 },
-            { key: "dialog_black_zero_idle_2", duration: 30 },
-            { key: "dialog_black_zero_idle_3", duration: 30 },
-            { key: "dialog_black_zero_idle_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+    ];
 
-    scene.anims.create({
-        key: "dialog_black_zero_speaking",
-        frames: [
-            { key: "dialog_black_zero_speaking_1", duration: 30 },
-            { key: "dialog_black_zero_speaking_2", duration: 30 },
-            { key: "dialog_black_zero_speaking_3", duration: 30 },
-            { key: "dialog_black_zero_speaking_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
+    CHARACTERS.forEach(character => {
+        scene.anims.create({
+            key: `dialog_${character}_idle`,
+            frames: [
+                { key: `dialog_${character}_idle_1`, duration: 1500 },
+                { key: `dialog_${character}_idle_2`, duration: 30 },
+                { key: `dialog_${character}_idle_3`, duration: 30 },
+                { key: `dialog_${character}_idle_2`, duration: 30 }
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
 
-    scene.anims.create({
-        key: "dialog_alia_idle",
-        frames: [
-            { key: "dialog_alia_idle_1", duration: 1500 },
-            { key: "dialog_alia_idle_2", duration: 30 },
-            { key: "dialog_alia_idle_3", duration: 30 },
-            { key: "dialog_alia_idle_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
-
-    scene.anims.create({
-        key: "dialog_alia_speaking",
-        frames: [
-            { key: "dialog_alia_speaking_1", duration: 30 },
-            { key: "dialog_alia_speaking_2", duration: 30 },
-            { key: "dialog_alia_speaking_3", duration: 30 },
-            { key: "dialog_alia_speaking_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
-
-    scene.anims.create({
-        key: "dialog_nightmare_zero_idle",
-        frames: [
-            { key: "dialog_nightmare_zero_idle_1", duration: 1500 },
-            { key: "dialog_nightmare_zero_idle_2", duration: 30 },
-            { key: "dialog_nightmare_zero_idle_3", duration: 30 },
-            { key: "dialog_nightmare_zero_idle_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
-
-    scene.anims.create({
-        key: "dialog_nightmare_zero_speaking",
-        frames: [
-            { key: "dialog_nightmare_zero_speaking_1", duration: 30 },
-            { key: "dialog_nightmare_zero_speaking_2", duration: 30 },
-            { key: "dialog_nightmare_zero_speaking_3", duration: 30 },
-            { key: "dialog_nightmare_zero_speaking_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
+        scene.anims.create({
+            key: `dialog_${character}_speaking`,
+            frames: [
+                { key: `dialog_${character}_speaking_1`, duration: 30 },
+                { key: `dialog_${character}_speaking_2`, duration: 30 },
+                { key: `dialog_${character}_speaking_3`, duration: 30 },
+                { key: `dialog_${character}_speaking_2`, duration: 30 }
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
     });
 
     scene.anims.create({
@@ -194,30 +65,6 @@ createAnimations(scene) {
             { key: "dialog_high_max_speaking_2", duration: 30 },
             { key: "dialog_high_max_speaking_3", duration: 30 },
             { key: "dialog_high_max_speaking_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
-
-    scene.anims.create({
-        key: "dialog_dynamo_idle",
-        frames: [
-            { key: "dialog_dynamo_idle_1", duration: 1500 },
-            { key: "dialog_dynamo_idle_2", duration: 30 },
-            { key: "dialog_dynamo_idle_3", duration: 30 },
-            { key: "dialog_dynamo_idle_2", duration: 30 }
-        ],
-        frameRate: 16,
-        repeat: -1
-    });
-
-    scene.anims.create({
-        key: "dialog_dynamo_speaking",
-        frames: [
-            { key: "dialog_dynamo_speaking_1", duration: 30 },
-            { key: "dialog_dynamo_speaking_2", duration: 30 },
-            { key: "dialog_dynamo_speaking_3", duration: 30 },
-            { key: "dialog_dynamo_speaking_2", duration: 30 }
         ],
         frameRate: 16,
         repeat: -1

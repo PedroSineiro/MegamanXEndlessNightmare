@@ -6,132 +6,99 @@ loadAssets(scene) {
         "assets/sounds/dialog/dialog.wav"
     );
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_x_idle_${i}`,
-            `assets/sprites/mugshot/x/base_x/idle/idle_${i}.png`
-        );
-    }
+    const CHARACTERS = [
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_x_speaking_${i}`,
-            `assets/sprites/mugshot/x/base_x/speaking/speaking_${i}.png`
-        );
-    }
+        {
+            id: "x",
+            baseFolder: "x",
+            folderName: "base_x",
+            idleSprites: 3,
+            speakingSprites:3
+        },
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_fourth_idle_${i}`,
-            `assets/sprites/mugshot/x/fourth/idle/idle_${i}.png`
-        );
-    }
+        {
+            id: "fourth",
+            baseFolder: "x",
+            idleSprites: 3,
+            speakingSprites:3
+        },
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_fourth_speaking_${i}`,
-            `assets/sprites/mugshot/x/fourth/speaking/speaking_${i}.png`
-        );
-    }
+        {
+            id: "ultimate",
+            baseFolder: "x",
+            idleSprites: 3,
+            speakingSprites:3
+        },
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_ultimate_idle_${i}`,
-            `assets/sprites/mugshot/x/ultimate/idle/idle_${i}.png`
-        );
-    }
+        {
+            id: "falcon",
+            baseFolder: "x",
+            idleSprites: 3,
+            speakingSprites:3
+        },
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_ultimate_speaking_${i}`,
-            `assets/sprites/mugshot/x/ultimate/speaking/speaking_${i}.png`
-        );
-    }
+        {
+            id: "zero",
+            baseFolder: "zero",
+            idleSprites: 3,
+            speakingSprites:3
+        },
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_zero_idle_${i}`,
-            `assets/sprites/mugshot/zero/zero/idle/idle_${i}.png`
-        );
-    }
+        {
+            id: "black_zero",
+            baseFolder: "zero",
+            idleSprites: 3,
+            speakingSprites:3
+        },
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_zero_speaking_${i}`,
-            `assets/sprites/mugshot/zero/zero/speaking/speaking_${i}.png`
-        );
-    }
+        {
+            id: "alia",
+            idleSprites: 3,
+            speakingSprites:3
+        },
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_black_zero_idle_${i}`,
-            `assets/sprites/mugshot/zero/black_zero/idle/idle_${i}.png`
-        );
-    }
+        {
+            id: "nightmare_zero",
+            idleSprites: 3,
+            speakingSprites:3
+        },
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_black_zero_speaking_${i}`,
-            `assets/sprites/mugshot/zero/black_zero/speaking/speaking_${i}.png`
-        );
-    }
+        {
+            id: "dynamo",
+            idleSprites: 3,
+            speakingSprites:3
+        },
 
+        {
+            id: "high_max",
+            idleSprites: 1,
+            speakingSprites:3
+        }
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_alia_idle_${i}`,
-            `assets/sprites/mugshot/alia/idle/idle_${i}.png`
-        );
-    }
+    ];
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_alia_speaking_${i}`,
-            `assets/sprites/mugshot/alia/speaking/speaking_${i}.png`
-        );
-    }
+    CHARACTERS.forEach(character => {
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_nightmare_zero_idle_${i}`,
-            `assets/sprites/mugshot/nightmare_zero/idle/idle_${i}.png`
-        );
-    }
+        const folderName = character.folderName? character.folderName: character.id;
 
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_nightmare_zero_speaking_${i}`,
-            `assets/sprites/mugshot/nightmare_zero/speaking/speaking_${i}.png`
-        );
-    }
+        for(let i = 1; i<=character.idleSprites;i++){
+            scene.load.image(
+                `dialog_${character.id}_idle_${i}`,
+                character.baseFolder?
+                `assets/sprites/mugshot/${character.baseFolder}/${folderName}/idle/idle_${i}.png`:
+                `assets/sprites/mugshot/${folderName}/idle/idle_${i}.png`
+            );
+        }
 
-    for (let i = 1; i <= 1; i++) {
-        scene.load.image(
-            `dialog_high_max_idle_${i}`,
-            `assets/sprites/mugshot/high_max/idle/idle_${i}.png`
-        );
-    }
-
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_high_max_speaking_${i}`,
-            `assets/sprites/mugshot/high_max/speaking/speaking_${i}.png`
-        );
-    }
-
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_dynamo_idle_${i}`,
-            `assets/sprites/mugshot/dynamo/idle/idle_${i}.png`
-        );
-    }
-
-    for (let i = 1; i <= 3; i++) {
-        scene.load.image(
-            `dialog_dynamo_speaking_${i}`,
-            `assets/sprites/mugshot/dynamo/speaking/speaking_${i}.png`
-        );
-    }
+        for(let i = 1; i<=character.speakingSprites;i++){
+            scene.load.image(
+                `dialog_${character.id}_speaking_${i}`,
+                character.baseFolder?
+                `assets/sprites/mugshot/${character.baseFolder}/${folderName}/speaking/speaking_${i}.png`:
+                `assets/sprites/mugshot/${folderName}/speaking/speaking_${i}.png`
+            );
+        }
+    });
 
     scene.load.image(
             "dialog_sigma_idle_1",

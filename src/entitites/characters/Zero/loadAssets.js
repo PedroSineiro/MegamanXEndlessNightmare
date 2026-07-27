@@ -1,311 +1,177 @@
-export default function
-loadAssets(scene) {
+export default function loadAssets(scene) {
 
-    for (let i = 1; i <= 11; i++) {
-        scene.load.image(
-            `zero_idle_${i}`,
-            `assets/sprites/characters/zero/zero/idle/idle_${i}.png`
-        );
-    }
-        
-    for (let i = 1; i <= 2; i++) {
+    const armors = [
 
-        scene.load.image(
-            `zero_start_walking_${i}`,
-            `assets/sprites/characters/zero/zero/start_walking/start_walking_${i}.png`
-        );
+        {
+            key: "zero",
+            folder: "zero"
+        },
 
-    }
+        {
+            key: "black_zero",
+            folder: "black_zero"
+        }
 
-    for (let i = 1; i <= 14; i++) {
+    ];
 
-        scene.load.image(
-            `zero_walking_${i}`,
-            `assets/sprites/characters/zero/zero/walking/walking_${i}.png`
-        );
+    const commonAnimations = [
 
-    }
-    
-    scene.load.image(
-        "zero_light_1",
-        "assets/sprites/characters/zero/zero/light/light_1.png"
-    );
+        {
+            name: "idle",
+            end: 11
+        },
 
-    scene.load.image(
-        "zero_light_leaving_1",
-        "assets/sprites/characters/zero/zero/light/light_leaving_1.png"
-    );
+        {
+            name: "start_walking",
+            end: 2
+        },
 
-    for (let i = 1; i <= 14; i++) {
+        {
+            name: "walking",
+            end: 14
+        },
 
-        scene.load.image(
-            `zero_spawning_${i}`,
-            `assets/sprites/characters/zero/zero/spawning/spawning_${i}.png`
-        );
+        {
+            name: "spawning",
+            end: 14
+        },
 
-    }
+        {
+            name: "taking_damage",
+            end: 4
+        },
 
+        {
+            name: "low_hp",
+            end: 6
+        },
 
-    for (let i = 1; i <= 4; i++) {
+        {
+            name: "dying",
+            end: 8
+        },
 
-        scene.load.image(
-            `zero_taking_damage_${i}`,
-            `assets/sprites/characters/zero/zero/taking_damage/taking_damage_${i}.png`
-        );
+        {
+            name: "slash_a",
+            end: 13
+        },
 
-    }
+        {
+            name: "slash_b",
+            end: 12
+        },
 
-    for (let i = 1; i <= 6; i++) {
+        {
+            name: "slash_c",
+            end: 15
+        },
 
-        scene.load.image(
-            `zero_low_hp_${i}`,
-            `assets/sprites/characters/zero/zero/low_hp/low_hp_${i}.png`
-        );
+        {
+            name: "slash_end",
+            end: 4
+        },
 
-    }
+        {
+            name: "special_attack_1",
+            end: 29
+        },
 
-    for (let i = 1; i <= 8; i++) {
+        {
+            name: "victory",
+            end: 7
+        },
 
-        scene.load.image(
-            `zero_dying_${i}`,
-            `assets/sprites/characters/zero/zero/dying/dying_${i}.png`
-        );
+        {
+            name: "leaving",
+            end: 5
+        },
 
-    }
+        {
+            name: "giga_attack",
+            end: 11
+        }
 
-    for (let i = 1; i <= 13; i++) {
+    ];
 
-        scene.load.image(
-            `zero_slash_a_${i}`,
-            `assets/sprites/characters/zero/zero/slash_a/slash_a_${i}.png`
-        );
+    for (const armor of armors) {
 
-    }
+        //
+        // animações comuns
+        //
 
-    for (let i = 1; i <= 12; i++) {
+        for (const animation of commonAnimations) {
 
-        scene.load.image(
-            `zero_slash_b_${i}`,
-            `assets/sprites/characters/zero/zero/slash_b/slash_b_${i}.png`
-        );
+            for (
 
-    }
+                let i = 1;
 
-    for (let i = 1; i <= 15; i++) {
+                i <= animation.end;
 
-        scene.load.image(
-            `zero_slash_c_${i}`,
-            `assets/sprites/characters/zero/zero/slash_c/slash_c_${i}.png`
-        );
+                i++
 
-    }
+            ) {
 
-    for (let i = 1; i <= 4; i++) {
+                scene.load.image(
 
-        scene.load.image(
-            `zero_slash_end_${i}`,
-            `assets/sprites/characters/zero/zero/slash_end/slash_end_${i}.png`
-        );
+                    `${armor.key}_${animation.name}_${i}`,
 
-    }
+                    `assets/sprites/characters/zero/${armor.folder}/${animation.name}/${animation.name}_${i}.png`
 
-    for (let i = 1; i <= 29; i++) {
+                );
 
-        scene.load.image(
-            `zero_special_attack_1_${i}`,
-            `assets/sprites/characters/zero/zero/special_attack_1/special_attack_1_${i}.png`
-        );
+            }
 
-    }
+        }
 
-    for (let i = 1; i <= 7; i++) {
-
-        scene.load.image(
-            `zero_victory_${i}`,
-            `assets/sprites/characters/zero/zero/victory/victory_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 5; i++) {
+        //
+        // light
+        //
 
         scene.load.image(
-            `zero_leaving_${i}`,
-            `assets/sprites/characters/zero/zero/leaving/leaving_${i}.png`
+
+            `${armor.key}_light_1`,
+
+            `assets/sprites/characters/zero/${armor.folder}/light/light_1.png`
+
         );
-
-    }
-
-    for (let i = 1; i <= 11; i++) {
 
         scene.load.image(
-            `zero_giga_attack_${i}`,
-            `assets/sprites/characters/zero/zero/giga_attack/giga_attack_${i}.png`
+
+            `${armor.key}_light_leaving_1`,
+
+            `assets/sprites/characters/zero/${armor.folder}/light/light_leaving_1.png`
+
         );
 
-    }
+        //
+        // giga shot
+        //
 
-    for (let i = 1; i <= 4; i++) {
+        for (
 
-        scene.load.image(
-            `zero_giga_shot_${i}`,
-            `assets/sprites/characters/zero/zero/giga_attack_shot/shot_${i}.png`
-        );
+            let i = 1;
 
-    }
+            i <= 4;
 
-    for (let i = 1; i <= 11; i++) {
-        scene.load.image(
-            `black_zero_idle_${i}`,
-            `assets/sprites/characters/zero/black_zero/idle/idle_${i}.png`
-        );
-    }
-        
-    for (let i = 1; i <= 2; i++) {
+            i++
 
-        scene.load.image(
-            `black_zero_start_walking_${i}`,
-            `assets/sprites/characters/zero/black_zero/start_walking/start_walking_${i}.png`
-        );
+        ) {
 
-    }
+            scene.load.image(
 
-    for (let i = 1; i <= 14; i++) {
+                `${armor.key}_giga_shot_${i}`,
 
-        scene.load.image(
-            `black_zero_walking_${i}`,
-            `assets/sprites/characters/zero/black_zero/walking/walking_${i}.png`
-        );
+                `assets/sprites/characters/zero/${armor.folder}/giga_attack_shot/shot_${i}.png`
 
-    }
-    
-    scene.load.image(
-        "black_zero_light_1",
-        "assets/sprites/characters/zero/black_zero/light/light_1.png"
-    );
+            );
 
-    scene.load.image(
-        "black_zero_light_leaving_1",
-        "assets/sprites/characters/zero/black_zero/light/light_leaving_1.png"
-    );
-
-    for (let i = 1; i <= 14; i++) {
-
-        scene.load.image(
-            `black_zero_spawning_${i}`,
-            `assets/sprites/characters/zero/black_zero/spawning/spawning_${i}.png`
-        );
+        }
 
     }
 
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `black_zero_taking_damage_${i}`,
-            `assets/sprites/characters/zero/black_zero/taking_damage/taking_damage_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 6; i++) {
-
-        scene.load.image(
-            `black_zero_low_hp_${i}`,
-            `assets/sprites/characters/zero/black_zero/low_hp/low_hp_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 8; i++) {
-
-        scene.load.image(
-            `black_zero_dying_${i}`,
-            `assets/sprites/characters/zero/black_zero/dying/dying_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 13; i++) {
-
-        scene.load.image(
-            `black_zero_slash_a_${i}`,
-            `assets/sprites/characters/zero/black_zero/slash_a/slash_a_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 12; i++) {
-
-        scene.load.image(
-            `black_zero_slash_b_${i}`,
-            `assets/sprites/characters/zero/black_zero/slash_b/slash_b_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 15; i++) {
-
-        scene.load.image(
-            `black_zero_slash_c_${i}`,
-            `assets/sprites/characters/zero/black_zero/slash_c/slash_c_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `black_zero_slash_end_${i}`,
-            `assets/sprites/characters/zero/black_zero/slash_end/slash_end_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 29; i++) {
-
-        scene.load.image(
-            `black_zero_special_attack_1_${i}`,
-            `assets/sprites/characters/zero/black_zero/special_attack_1/special_attack_1_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 7; i++) {
-
-        scene.load.image(
-            `black_zero_victory_${i}`,
-            `assets/sprites/characters/zero/black_zero/victory/victory_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 5; i++) {
-
-        scene.load.image(
-            `black_zero_leaving_${i}`,
-            `assets/sprites/characters/zero/black_zero/leaving/leaving_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 11; i++) {
-
-        scene.load.image(
-            `black_zero_giga_attack_${i}`,
-            `assets/sprites/characters/zero/black_zero/giga_attack/giga_attack_${i}.png`
-        );
-
-    }
-
-    for (let i = 1; i <= 4; i++) {
-
-        scene.load.image(
-            `black_zero_giga_shot_${i}`,
-            `assets/sprites/characters/zero/black_zero/giga_attack_shot/shot_${i}.png`
-        );
-
-    }
+    //
+    // sons
+    //
 
     scene.load.audio(
         "zero_arriving",
@@ -356,4 +222,5 @@ loadAssets(scene) {
         "zero_giga_attack",
         "assets/sounds/Zero/giga_attack.wav"
     );
+
 }

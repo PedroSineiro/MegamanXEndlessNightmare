@@ -1,651 +1,274 @@
-export default function
-createAnimations(scene) {
+export default function createAnimations(scene) {
 
-    scene.anims.create({
-            key: "zero_light",
-            frames: [
-                { key: "zero_light_1" }
-            ],
-            frameRate: 1,
-            repeat: -1
-        });
+    const armors = [
+        "zero",
+        "black_zero"
+    ];
 
-    scene.anims.create({
-            key: "zero_light_leaving",
-            frames: [
-                { key: "zero_light_leaving_1" }
-            ],
-            frameRate: 1,
-            repeat: -1
-        });
-
-    scene.anims.create({
-        key: "zero_spawning",
-        frames: [
-            { key: "zero_spawning_2", duration: 60 },
-            { key: "zero_spawning_3", duration: 60 },
-            { key: "zero_spawning_4", duration: 60 },
-            { key: "zero_spawning_5", duration: 60 },
-            { key: "zero_spawning_6", duration: 60 },
-            { key: "zero_spawning_7", duration: 60 },
-            { key: "zero_spawning_8", duration: 60 },
-            { key: "zero_spawning_9", duration: 60 },
-            { key: "zero_spawning_10", duration: 60 },
-            { key: "zero_spawning_11", duration: 60 },
-            { key: "zero_spawning_12", duration: 60 },
-            { key: "zero_spawning_13", duration: 60 },
-            { key: "zero_spawning_14", duration: 60 }
-        ],
-        frameRate: 16,
-        repeat: 0
-    });
-
-    scene.anims.create({
-        key: "zero_idle",
-        frames: [
-            { key: "zero_idle_1" },
-            { key: "zero_idle_2" },
-            { key: "zero_idle_3" },
-            { key: "zero_idle_4" },
-            { key: "zero_idle_5" },
-            { key: "zero_idle_6" },
-            { key: "zero_idle_7" },
-            { key: "zero_idle_8" },
-            { key: "zero_idle_9", duration: 35 },
-            { key: "zero_idle_10", duration: 35 },
-            { key: "zero_idle_11", duration: 35 }
-        ],
-        frameRate: 6,
-        repeat: -1
-    });
-
-
-    scene.anims.create({
-        key: "zero_start_walking",
-        frames: [
-            { key: "zero_start_walking_1" },
-            { key: "zero_start_walking_2" }
-        ],
-        frameRate: 16,
-        repeat: 0
-    });
-    
-    scene.anims.create({
-        key: "zero_walking",
-        frames: [
-            { key: "zero_walking_1" },
-            { key: "zero_walking_2" },
-            { key: "zero_walking_3" },
-            { key: "zero_walking_4" },
-            { key: "zero_walking_5" },
-            { key: "zero_walking_6" },
-            { key: "zero_walking_7" },
-            { key: "zero_walking_8" },
-            { key: "zero_walking_9" },
-            { key: "zero_walking_10" },
-            { key: "zero_walking_11" },
-            { key: "zero_walking_12" },
-            { key: "zero_walking_13" },
-            { key: "zero_walking_14" }
-        ],
-        frameRate: 20,
-        repeat: -1
-    });
-
-    scene.anims.create({
-        key: "zero_taking_damage",
-        frames: [
-            { key: "zero_taking_damage_1" },
-            { key: "zero_taking_damage_2" },
-            { key: "zero_taking_damage_3" },
-            { key: "zero_taking_damage_4" }
-        ],
-        frameRate: 22,
-        repeat: 0
-    });
-
-    scene.anims.create({
-        key: "zero_low_hp",
-        frames: [
-            { key: "zero_low_hp_1" },
-            { key: "zero_low_hp_2" },
-            { key: "zero_low_hp_3" },
-            { key: "zero_low_hp_4" },
-            { key: "zero_low_hp_5" },
-            { key: "zero_low_hp_6" }
-        ],
-        frameRate: 6,
-        repeat: -1
-    });
-
-    scene.anims.create({
-        key: "zero_dying",
-        frames: [
-            { key: "zero_dying_1" },
-            { key: "zero_dying_2" },
-            { key: "zero_dying_3" },
-            { key: "zero_dying_4" },
-            { key: "zero_dying_5" },
-            { key: "zero_dying_6" },
-            { key: "zero_dying_7" },
-            { key: "zero_dying_8" }
-        ],
-        frameRate: 20,
-        repeat: 0
-    });
-
-    let frames = [];
-
-    for (let i = 1; i <= 13; i++) {
-
-        frames.push({
-            key: `zero_slash_a_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "zero_slash_a",
-        frames: frames,
-        frameRate: 30,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 12; i++) {
-
-        frames.push({
-            key: `zero_slash_b_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "zero_slash_b",
-        frames: frames,
-        frameRate: 30,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 15; i++) {
-
-        frames.push({
-            key: `zero_slash_c_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "zero_slash_c",
-        frames: frames,
-        frameRate: 30,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 4; i++) {
-
-        frames.push({
-            key: `zero_slash_end_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "zero_slash_end",
-        frames: frames,
-        frameRate: 20,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 29; i++) {
-
-        frames.push({
-            key: `zero_special_attack_1_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "zero_special_attack_1",
-        frames: frames,
-        frameRate: 20,
-        repeat: 0
-    });
-
-    frames = [];
-
-    frames.push({
-            key: "zero_slash_end_1"
-        });
-
-    frames.push({
-            key: "zero_slash_end_2"
-        });
-
-    frames.push({
-            key: "zero_slash_end_3"
-        });
-
-    for (let i = 3; i <= 29; i++) {
-
-        frames.push({
-            key: `zero_special_attack_1_${i}`
-        });
-
-    }
-
-
-    scene.anims.create({
-        key: "zero_special_attack_1_combo",
-        frames: frames,
-        frameRate: 20,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 7; i++) {
-
-        frames.push({
-            key: `zero_victory_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "zero_victory",
-        frames: frames,
-        frameRate: 16,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 5; i++) {
-
-        frames.push({
-            key: `zero_leaving_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "zero_leaving",
-        frames: frames,
-        frameRate: 16,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 3; i++) {
-
-        frames.push({
-            key: `zero_giga_attack_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "zero_start_giga_attack",
-        frames: frames,
-        frameRate: 10,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 4; i <= 11; i++) {
-
-        frames.push({
-            key: `zero_giga_attack_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "zero_giga_attack",
-        frames: frames,
-        frameRate: 12,
-        repeat: 0
-    });
+    for (const armor of armors) {
 
         scene.anims.create({
-            key: "black_zero_light",
+            key: `${armor}_light`,
             frames: [
-                { key: "black_zero_light_1" }
+                { key: `${armor}_light_1` }
             ],
             frameRate: 1,
             repeat: -1
         });
 
-    scene.anims.create({
-            key: "black_zero_light_leaving",
+        scene.anims.create({
+            key: `${armor}_light_leaving`,
             frames: [
-                { key: "black_zero_light_leaving_1" }
+                { key: `${armor}_light_leaving_1` }
             ],
             frameRate: 1,
             repeat: -1
         });
 
-    scene.anims.create({
-        key: "black_zero_spawning",
-        frames: [
-            { key: "black_zero_spawning_2", duration: 60 },
-            { key: "black_zero_spawning_3", duration: 60 },
-            { key: "black_zero_spawning_4", duration: 60 },
-            { key: "black_zero_spawning_5", duration: 60 },
-            { key: "black_zero_spawning_6", duration: 60 },
-            { key: "black_zero_spawning_7", duration: 60 },
-            { key: "black_zero_spawning_8", duration: 60 },
-            { key: "black_zero_spawning_9", duration: 60 },
-            { key: "black_zero_spawning_10", duration: 60 },
-            { key: "black_zero_spawning_11", duration: 60 },
-            { key: "black_zero_spawning_12", duration: 60 },
-            { key: "black_zero_spawning_13", duration: 60 },
-            { key: "black_zero_spawning_14", duration: 60 }
-        ],
-        frameRate: 16,
-        repeat: 0
-    });
-
-    scene.anims.create({
-        key: "black_zero_idle",
-        frames: [
-            { key: "black_zero_idle_1" },
-            { key: "black_zero_idle_2" },
-            { key: "black_zero_idle_3" },
-            { key: "black_zero_idle_4" },
-            { key: "black_zero_idle_5" },
-            { key: "black_zero_idle_6" },
-            { key: "black_zero_idle_7" },
-            { key: "black_zero_idle_8" },
-            { key: "black_zero_idle_9", duration: 35 },
-            { key: "black_zero_idle_10", duration: 35 },
-            { key: "black_zero_idle_11", duration: 35 }
-        ],
-        frameRate: 6,
-        repeat: -1
-    });
-
-
-    scene.anims.create({
-        key: "black_zero_start_walking",
-        frames: [
-            { key: "black_zero_start_walking_1" },
-            { key: "black_zero_start_walking_2" }
-        ],
-        frameRate: 16,
-        repeat: 0
-    });
-    
-    scene.anims.create({
-        key: "black_zero_walking",
-        frames: [
-            { key: "black_zero_walking_1" },
-            { key: "black_zero_walking_2" },
-            { key: "black_zero_walking_3" },
-            { key: "black_zero_walking_4" },
-            { key: "black_zero_walking_5" },
-            { key: "black_zero_walking_6" },
-            { key: "black_zero_walking_7" },
-            { key: "black_zero_walking_8" },
-            { key: "black_zero_walking_9" },
-            { key: "black_zero_walking_10" },
-            { key: "black_zero_walking_11" },
-            { key: "black_zero_walking_12" },
-            { key: "black_zero_walking_13" },
-            { key: "black_zero_walking_14" }
-        ],
-        frameRate: 20,
-        repeat: -1
-    });
-
-    scene.anims.create({
-        key: "black_zero_taking_damage",
-        frames: [
-            { key: "black_zero_taking_damage_1" },
-            { key: "black_zero_taking_damage_2" },
-            { key: "black_zero_taking_damage_3" },
-            { key: "black_zero_taking_damage_4" }
-        ],
-        frameRate: 22,
-        repeat: 0
-    });
-
-    scene.anims.create({
-        key: "black_zero_low_hp",
-        frames: [
-            { key: "black_zero_low_hp_1" },
-            { key: "black_zero_low_hp_2" },
-            { key: "black_zero_low_hp_3" },
-            { key: "black_zero_low_hp_4" },
-            { key: "black_zero_low_hp_5" },
-            { key: "black_zero_low_hp_6" }
-        ],
-        frameRate: 6,
-        repeat: -1
-    });
-
-    scene.anims.create({
-        key: "black_zero_dying",
-        frames: [
-            { key: "black_zero_dying_1" },
-            { key: "black_zero_dying_2" },
-            { key: "black_zero_dying_3" },
-            { key: "black_zero_dying_4" },
-            { key: "black_zero_dying_5" },
-            { key: "black_zero_dying_6" },
-            { key: "black_zero_dying_7" },
-            { key: "black_zero_dying_8" }
-        ],
-        frameRate: 20,
-        repeat: 0
-    });
-
-    frames = [];
-
-    for (let i = 1; i <= 13; i++) {
-
-        frames.push({
-            key: `black_zero_slash_a_${i}`
+        scene.anims.create({
+            key: `${armor}_spawning`,
+            frames: Array.from(
+                { length: 13 },
+                (_, i) => ({
+                    key: `${armor}_spawning_${i + 2}`,
+                    duration: 60
+                })
+            ),
+            frameRate: 16,
+            repeat: 0
         });
 
+        scene.anims.create({
+            key: `${armor}_idle`,
+            frames: [
+                ...Array.from(
+                    { length: 8 },
+                    (_, i) => ({
+                        key: `${armor}_idle_${i + 1}`
+                    })
+                ),
+
+                { key: `${armor}_idle_9`, duration: 35 },
+                { key: `${armor}_idle_10`, duration: 35 },
+                { key: `${armor}_idle_11`, duration: 35 }
+            ],
+            frameRate: 6,
+            repeat: -1
+        });
+
+        scene.anims.create({
+            key: `${armor}_start_walking`,
+            frames: [
+                { key: `${armor}_start_walking_1` },
+                { key: `${armor}_start_walking_2` }
+            ],
+            frameRate: 16,
+            repeat: 0
+        });
+
+        scene.anims.create({
+            key: `${armor}_walking`,
+            frames: Array.from(
+                { length: 14 },
+                (_, i) => ({
+                    key: `${armor}_walking_${i + 1}`
+                })
+            ),
+            frameRate: 20,
+            repeat: -1
+        });
+
+        scene.anims.create({
+            key: `${armor}_taking_damage`,
+            frames: Array.from(
+                { length: 4 },
+                (_, i) => ({
+                    key: `${armor}_taking_damage_${i + 1}`
+                })
+            ),
+            frameRate: 22,
+            repeat: 0
+        });
+
+        scene.anims.create({
+            key: `${armor}_low_hp`,
+            frames: Array.from(
+                { length: 6 },
+                (_, i) => ({
+                    key: `${armor}_low_hp_${i + 1}`
+                })
+            ),
+            frameRate: 6,
+            repeat: -1
+        });
+
+        scene.anims.create({
+            key: `${armor}_dying`,
+            frames: Array.from(
+                { length: 8 },
+                (_, i) => ({
+                    key: `${armor}_dying_${i + 1}`
+                })
+            ),
+            frameRate: 20,
+            repeat: 0
+        });
+
+        //
+        // SABER COMBO
+        //
+
+        scene.anims.create({
+            key: `${armor}_slash_a`,
+            frames: Array.from(
+                { length: 13 },
+                (_, i) => ({
+                    key: `${armor}_slash_a_${i + 1}`
+                })
+            ),
+            frameRate: 30,
+            repeat: 0
+        });
+
+        scene.anims.create({
+            key: `${armor}_slash_b`,
+            frames: Array.from(
+                { length: 12 },
+                (_, i) => ({
+                    key: `${armor}_slash_b_${i + 1}`
+                })
+            ),
+            frameRate: 30,
+            repeat: 0
+        });
+
+        scene.anims.create({
+            key: `${armor}_slash_c`,
+            frames: Array.from(
+                { length: 15 },
+                (_, i) => ({
+                    key: `${armor}_slash_c_${i + 1}`
+                })
+            ),
+            frameRate: 30,
+            repeat: 0
+        });
+
+        scene.anims.create({
+            key: `${armor}_slash_end`,
+            frames: Array.from(
+                { length: 4 },
+                (_, i) => ({
+                    key: `${armor}_slash_end_${i + 1}`
+                })
+            ),
+            frameRate: 20,
+            repeat: 0
+        });
+
+        //
+        // PIERCING SLASH
+        //
+
+        scene.anims.create({
+            key: `${armor}_special_attack_1`,
+            frames: Array.from(
+                { length: 29 },
+                (_, i) => ({
+                    key: `${armor}_special_attack_1_${i + 1}`
+                })
+            ),
+            frameRate: 20,
+            repeat: 0
+        });
+
+        scene.anims.create({
+            key: `${armor}_special_attack_1_combo`,
+            frames: [
+                { key: `${armor}_slash_end_1` },
+                { key: `${armor}_slash_end_2` },
+                { key: `${armor}_slash_end_3` },
+
+                ...Array.from(
+                    { length: 27 },
+                    (_, i) => ({
+                        key: `${armor}_special_attack_1_${i + 3}`
+                    })
+                )
+            ],
+            frameRate: 20,
+            repeat: 0
+        });
+
+        //
+        // VICTORY
+        //
+
+        scene.anims.create({
+            key: `${armor}_victory`,
+            frames: Array.from(
+                { length: 7 },
+                (_, i) => ({
+                    key: `${armor}_victory_${i + 1}`
+                })
+            ),
+            frameRate: 16,
+            repeat: 0
+        });
+
+        scene.anims.create({
+            key: `${armor}_leaving`,
+            frames: Array.from(
+                { length: 5 },
+                (_, i) => ({
+                    key: `${armor}_leaving_${i + 1}`
+                })
+            ),
+            frameRate: 16,
+            repeat: 0
+        });
+
+        //
+        // GIGA ATTACK
+        //
+
+        scene.anims.create({
+            key: `${armor}_start_giga_attack`,
+            frames: Array.from(
+                { length: 3 },
+                (_, i) => ({
+                    key: `${armor}_giga_attack_${i + 1}`
+                })
+            ),
+            frameRate: 10,
+            repeat: 0
+        });
+
+        scene.anims.create({
+            key: `${armor}_giga_attack`,
+            frames: Array.from(
+                { length: 8 },
+                (_, i) => ({
+                    key: `${armor}_giga_attack_${i + 4}`
+                })
+            ),
+            frameRate: 12,
+            repeat: 0
+        });
     }
 
-    scene.anims.create({
-        key: "black_zero_slash_a",
-        frames: frames,
-        frameRate: 30,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 12; i++) {
-
-        frames.push({
-            key: `black_zero_slash_b_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "black_zero_slash_b",
-        frames: frames,
-        frameRate: 30,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 15; i++) {
-
-        frames.push({
-            key: `black_zero_slash_c_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "black_zero_slash_c",
-        frames: frames,
-        frameRate: 30,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 4; i++) {
-
-        frames.push({
-            key: `black_zero_slash_end_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "black_zero_slash_end",
-        frames: frames,
-        frameRate: 20,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 29; i++) {
-
-        frames.push({
-            key: `black_zero_special_attack_1_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "black_zero_special_attack_1",
-        frames: frames,
-        frameRate: 20,
-        repeat: 0
-    });
-
-    frames = [];
-
-    frames.push({
-            key: "black_zero_slash_end_1"
-        });
-
-    frames.push({
-            key: "black_zero_slash_end_2"
-        });
-
-    frames.push({
-            key: "black_zero_slash_end_3",
-        });
-
-    for (let i = 3; i <= 29; i++) {
-
-        frames.push({
-            key: `black_zero_special_attack_1_${i}`
-        });
-
-    }
-
-
-    scene.anims.create({
-        key: "black_zero_special_attack_1_combo",
-        frames: frames,
-        frameRate: 20,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 7; i++) {
-
-        frames.push({
-            key: `black_zero_victory_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "black_zero_victory",
-        frames: frames,
-        frameRate: 16,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 5; i++) {
-
-        frames.push({
-            key: `black_zero_leaving_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "black_zero_leaving",
-        frames: frames,
-        frameRate: 16,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 3; i++) {
-
-        frames.push({
-            key: `black_zero_giga_attack_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "black_zero_start_giga_attack",
-        frames: frames,
-        frameRate: 10,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 4; i <= 11; i++) {
-
-        frames.push({
-            key: `black_zero_giga_attack_${i}`
-        });
-
-    }
-
-    scene.anims.create({
-        key: "black_zero_giga_attack",
-        frames: frames,
-        frameRate: 12,
-        repeat: 0
-    });
-
-    frames = []
-
-    for (let i = 1; i <= 4; i++) {
-
-        frames.push({
-            key: `zero_giga_shot_${i}`
-        });
-
-    }
+    //
+    // compartilhado
+    //
 
     scene.anims.create({
         key: "zero_giga_shot",
-        frames: frames,
+        frames: Array.from(
+            { length: 4 },
+            (_, i) => ({
+                key: `zero_giga_shot_${i + 1}`
+            })
+        ),
         frameRate: 12,
         repeat: -1
     });
