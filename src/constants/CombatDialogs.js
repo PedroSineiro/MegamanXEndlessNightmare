@@ -1308,5 +1308,350 @@ export const COMBAT_DIALOGS = {
             ]
         }
     ],
+
+    gate_stage: [
+        {
+            waveIndex: 0,
+            isAfterBossSpawn: false,
+            dialogs:[
+                {
+                    speaker: "alia",
+                    text: "X, Zero, you're entering the source of the transmission."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "The Nightmare readings are off the charts."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "I've never seen anything like this."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Can you identify what's inside?"
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Not clearly."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "The interference is overwhelming."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "But I'm detecting multiple Maverick-class signatures."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "More recreations."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Possibly."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "The signatures resemble several Mavericks you've already fought."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "But they're overlapping each other."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "It's impossible to tell exactly how many are present."
+                },
+
+                {
+                    speaker: "x",
+                    text: "So whoever is behind this gathered them all in one place."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Trying to stop us before we reach them."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Maybe."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Or maybe they're trying to prove something."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Either way, we're almost at the end."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Then let's tear through whatever stands in our way."
+                },
+
+                {
+                    speaker: "alia",
+                    text: "Good luck, Hunters."
+                }
+            ]
+        }
+    ],
+
+    final_stage: [
+        {
+            waveIndex: 4,
+            isAfterBossSpawn: true,
+            dialogs:[
+                {
+                    speaker: "x",
+                    text: "..."
+                },
+                {
+                    speaker: "zero",
+                    text: "...Impossible."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Nightmare Zero?"
+                },
+
+                {
+                    speaker: "zero",
+                    text: "We destroyed you."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Destroyed me?"
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "No."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "You destroyed a clone."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "A crude vessel. A disposable experiment."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Then you were behind all of this?"
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "From the very beginning."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Every Nightmare. Every recreation. Every battle."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "All of it existed to test you."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Why?"
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Because I wanted to see the limits of the originals."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "And now I have."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "You disappoint me."
+                },
+
+                {
+                    speaker: "x",
+                    text: "..."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Especially you, Zero."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "A legendary warrior burdened by endless questions."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Who created you?"
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Why were you built?"
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "What purpose were you truly meant to serve?"
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Even now, you still don't know."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "..."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "You are incomplete."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "A relic defined by uncertainty."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "I have no such weakness."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "I can create."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "I can reshape."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "I can erase reality and rebuild it exactly as I desire."
+                },
+
+                {
+                    speaker: "x",
+                    text: "All you've created is suffering."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Temporary suffering."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Necessary suffering."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "This world is flawed."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "Reploids. Humans. Mavericks."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "An endless cycle of conflict."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "I will erase it all."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "And create something perfect."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Perfect?"
+                },
+
+                {
+                    speaker: "zero",
+                    text: "You're just running away from reality."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "No."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "I am transcending it."
+                },
+
+                {
+                    speaker: "x",
+                    text: "Then there's only one thing left to do."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "We'll stop you."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "You may try."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "But today..."
+                },
+
+                {
+                    speaker: "nightmare_zero",
+                    text: "The originals will finally be replaced."
+                }
+            ]
+        }
+    ]
     
 };

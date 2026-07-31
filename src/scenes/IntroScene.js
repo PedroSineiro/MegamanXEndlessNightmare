@@ -270,7 +270,7 @@ extends Phaser.Scene {
 
                             type: "boss",
 
-                            boss: "sigma"
+                            boss: "awakened_nightmare_zero"
 
                         });
                     }
@@ -691,7 +691,7 @@ is about to begin...`;
                         x: true,
                         fourth: false,
                         ultimate: false,
-                        falcon: true
+                        falcon: false
 
                     }
 

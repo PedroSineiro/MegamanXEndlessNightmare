@@ -29,9 +29,13 @@ extends BaseEnemy {
 
         this.gigaAttackCooldown = 0;
 
-        this.deathAnimationName = ""
+        this.deathAnimationName = "";
 
-        this.deathVoice = ""
+        this.deathVoice = "";
+
+        this.secondPhase = false;
+
+        this.hasShield = false;
 
     }
 
@@ -59,8 +63,12 @@ extends BaseEnemy {
 
             this.maxHp / 2;
 
+        if(!this.secondPhase && this.hp <= halfHp){
+            this.secondPhase = true;
+        }
+
         if (
-            this.hp <= halfHp
+           this.secondPhase 
         ) {
 
             this.gigaAttackCooldown = Math.max(--this.gigaAttackCooldown,0);
@@ -518,6 +526,8 @@ extends BaseEnemy {
 
         this.scene.isBossDying = true;
 
+        this.miniboss?.destroy();
+
         await this.wait(1500);
 
         this.scene
@@ -728,6 +738,135 @@ extends BaseEnemy {
         // TODO:
         // vitória
         //
+
+    }
+
+    async destroyProto() {
+
+        this.scene.miniboss = null;
+
+        if (this.isDead) {
+            return;
+        }
+
+        this.scene.bossHud?.update();
+
+        this.isDead = true;
+
+        this.active = false;
+
+        this.hurtbox = null;
+
+        this.scene.isMinibossDying = true;
+
+        this.scene.sfx.play(
+            "enemy_taking_damage",
+            {
+                volume: 0.4
+            }
+        );
+
+        if (this.deathAnimationName) {
+
+            this.sprite.play(
+                this.deathAnimationName
+            );
+
+        }
+
+        await this.playProtoDeathSequence();
+
+        await this.wait(1000);
+
+        await this.owner.teleportMiniboss(true);
+
+        await this.wait(500);
+
+        this.scene.isMinibossDying = false;
+
+        this.owner.miniboss = null;
+
+        this.scene.actionMenu.shallowRefresh();
+
+
+    }
+
+    async playProtoDeathSequence() {
+
+        const explosionEvent =
+
+            this.scene.time
+                .addEvent({
+
+                    delay: 180,
+
+                    loop: true,
+
+                    callback: () => {
+
+                        if (
+                            !this.sprite
+                        ) {
+                            return;
+                        }
+
+                        const offsetX =
+
+                            Phaser
+                                .Math
+                                .Between(
+
+                                    -90,
+                                    90
+
+                                );
+
+                        const offsetY =
+
+                            Phaser
+                                .Math
+                                .Between(
+
+                                    -220,
+                                    -20
+
+                                );
+
+                        new Explosion(
+
+                            this.scene,
+
+                            this.sprite.x +
+                            offsetX,
+
+                            this.sprite.y +
+                            offsetY
+
+                        );
+
+                    }
+
+                });
+
+        //
+        // parar explosões
+        //
+
+        await this.wait(
+            1000
+        );
+
+        explosionEvent.remove();
+
+        this.sprite
+            ?.destroy();
+
+        this.scene.sfx.play(
+            "big_explosion",
+            {
+                volume: 0.4
+            }
+        );
 
     }
 

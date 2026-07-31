@@ -5,7 +5,7 @@ import { COMBAT_DIALOGS } from "../constants/CombatDialogs.js";
 
 export default class InterSceneManager {
 
-    static TOTAL_AMOUNT_STAGES = 7;
+    static TOTAL_AMOUNT_STAGES = 9;
 
     static STAGES = {
         volcano_stage: {
@@ -193,6 +193,74 @@ export default class InterSceneManager {
                 }
 
             ]
+        },
+        gate_stage: {
+            stage: "gate_stage",
+            theme: "gate_stage",
+            background: "gate_stage",
+            boss_theme: "final_boss",
+            layout: [
+
+                {
+                    type: "boss",
+                    boss: "slash_beast"
+                },
+
+                {
+                    type: "boss",
+                    boss: "crescent_grizzly"
+                },
+
+                {
+                    type: "boss",
+                    boss: "magma_dragoon"
+                },
+
+                {
+                    type: "boss",
+                    boss: "burn_dinorex"
+                },
+
+                {
+                    type: "boss",
+                    boss: "frost_walrus"
+                },
+
+                {
+                    type: "boss",
+                    boss: "blizzard_wolfang"
+                },
+                
+                {
+                    type: "boss",
+                    boss: "spiral_pegasus"
+                },
+
+                {
+                    type: "boss",
+                    boss: "cyber_peacock"
+                }
+
+            ]
+        },
+        final_stage: {
+            stage: "final_stage",
+            theme: "gate_stage",
+            background: "gate_stage",
+            boss_theme: "final_stage",
+            layout: [
+
+                {
+                    type: "waves",
+                    count: 4
+                },
+
+                {
+                    type: "boss",
+                    boss: "awakened_nightmare_zero"
+                }
+
+            ]
         }
     };
 
@@ -200,7 +268,11 @@ export default class InterSceneManager {
 
         "repliforce_stage",
 
-        "sigma_stage"
+        "sigma_stage",
+
+        "gate_stage",
+
+        "final_stage"
 
     ];
 
@@ -250,6 +322,11 @@ export default class InterSceneManager {
         gameData,
         DataManager
     ) {
+
+        if(gameData.amountCompletedStages == this.TOTAL_AMOUNT_STAGES) {
+            return {scene: "EndingScene", data: {}}
+        }
+
 
         const nextStage =
 
@@ -361,11 +438,7 @@ export default class InterSceneManager {
 
         DataManager.saveGameData(gameData);
 
-        if(gameData.amountCompletedStages < this.TOTAL_AMOUNT_STAGES) {
-            return {scene: "BaseScene", data: {}}
-        }
-
-        return {scene: "EndingScene", data: {}}
+        return {scene: "BaseScene", data: {}}
     }
 
     static handleGameOver(gameData, DataManager, combatData){
@@ -460,6 +533,28 @@ export default class InterSceneManager {
 
             return this.STAGES
                 .sigma_stage;
+
+        }
+
+        if (
+
+            amountCompletedStages === 7
+
+        ) {
+
+            return this.STAGES
+                .gate_stage;
+
+        }
+
+        if (
+
+            amountCompletedStages === 8
+
+        ) {
+
+            return this.STAGES
+                .final_stage;
 
         }
 
@@ -717,7 +812,7 @@ export default class InterSceneManager {
     }
 
     static updateNightmareLevel(nightmareLevel, amountOfCompletedStages){
-        if(amountOfCompletedStages == 3 || amountOfCompletedStages == 5) nightmareLevel++;
+        if(amountOfCompletedStages == 3 || amountOfCompletedStages == 5 || amountOfCompletedStages == 7) nightmareLevel++;
         
         return nightmareLevel;
     }

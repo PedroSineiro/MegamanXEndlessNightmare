@@ -67,7 +67,7 @@ CharacterStatsCalculator {
         const gigaAttackCooldown = (gameData.inventory
                 .x
                 .abilities
-                .giga_attack_recover? 5: 8);
+                .giga_attack_recover? 4: 7);
 
         const lifeRecover = gameData.inventory
                 .x
@@ -179,7 +179,7 @@ CharacterStatsCalculator {
         const gigaAttackCooldown = (gameData.inventory
                 .zero
                 .abilities
-                .giga_attack_recover? 5: 8);
+                .giga_attack_recover? 4: 7);
 
         const lifeRecover = gameData.inventory
                 .zero

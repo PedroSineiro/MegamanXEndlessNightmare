@@ -22,6 +22,11 @@ EnemyBuilder {
                 attackMultiplier = 1.8;
                 hpMultiplier = 2;
                 break;
+
+            case 4:
+                attackMultiplier = 2;
+                hpMultiplier = 2.5;
+                break;
         }
 
         boss.attackDamage = Math.floor(boss.attackDamage * attackMultiplier);
@@ -50,6 +55,11 @@ EnemyBuilder {
             case 3:
                 attackMultiplier = 1.8;
                 hpMultiplier = 1.4;
+                break;
+
+            case 4:
+                attackMultiplier = 2;
+                hpMultiplier = 1.6;
                 break;
         }
 

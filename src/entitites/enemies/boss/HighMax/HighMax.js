@@ -267,8 +267,6 @@ extends BaseBoss {
                     spawnY,
                     "high_max_sphere_1"
                 );
-
-        this.sphereSprite.setDepth()
         
         this.sphereSprite.play("high_max_sphere");
 

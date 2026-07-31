@@ -649,7 +649,7 @@ extends BaseCharacter {
             resolve => {
 
                 const totalDistance =
-                    500;
+                    550;
 
                 let traveled =
                     0;

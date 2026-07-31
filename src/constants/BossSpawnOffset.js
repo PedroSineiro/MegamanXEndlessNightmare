@@ -10,6 +10,11 @@ export const BOSS_SPAWN_CONFIG = {
         offsetY: 150,
     },
 
+    proto_magma_dragoon: {
+        offsetX: 0,
+        offsetY: 150,
+    },
+
     burn_dinorex: {
         offsetX: 0,
         offsetY: 150,
@@ -65,7 +70,17 @@ export const BOSS_SPAWN_CONFIG = {
         offsetY: 120,
     },
 
+    proto_high_max: {
+        offsetX: 0,
+        offsetY: 120,
+    },
+
     sigma_head: {
+        offsetX: 0,
+        offsetY: 120,
+    },
+
+    proto_sigma_head: {
         offsetX: 0,
         offsetY: 120,
     },
@@ -73,5 +88,10 @@ export const BOSS_SPAWN_CONFIG = {
     sigma: {
         offsetX: 0,
         offsetY: 150,
-    }
+    },
+
+    awakened_nightmare_zero: {
+        offsetX: 0,
+        offsetY: 120,
+    },
 };

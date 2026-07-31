@@ -23,6 +23,8 @@ export default class BaseEnemy {
         
         this.spawnY = y;
 
+        this.aditionalDepth = 0;
+
         this.direction = direction
 
         this.explosionOffsetX = -30;
@@ -46,6 +48,8 @@ export default class BaseEnemy {
         this.dashAnimationName = "";
 
         this.SoundManager = SoundManager;
+
+        this.auraSprite = null;
 
     }
 
@@ -671,6 +675,51 @@ export default class BaseEnemy {
             return;
         }
 
+        if(this.hasShield && this.shieldActive) {
+            this.shieldHp -=
+            damage;
+
+            this.scene.sfx.play(
+            "nightmare_shield",
+            {
+                volume: 0.4
+            }
+        );
+
+            this.shieldHp =
+                Math.max(
+                    0,
+                    this.shieldHp
+                );
+
+            if(this.shieldHp==0){
+                this.shieldActive = false;
+                this.hideShield();
+            }
+
+            this.isInvulnerable =
+            true;
+
+            this.scene.time
+            .delayedCall(
+
+                350,
+
+                () => {
+
+                    this.isInvulnerable =
+                        false;
+
+                    this.sprite
+                        ?.clearTint();
+
+                }
+
+            );
+
+            return;
+        }
+
         //
         // dano
         //
@@ -829,6 +878,10 @@ export default class BaseEnemy {
 
     update() {
 
+        if(this.auraSprite){
+            this.updateAura();
+        }
+
         if (
             this.isDead ||
             !this.active
@@ -848,7 +901,7 @@ export default class BaseEnemy {
 
         this.sprite
             .setDepth(
-                this.sprite.y
+                this.sprite.y + this.aditionalDepth
             );
 
         //

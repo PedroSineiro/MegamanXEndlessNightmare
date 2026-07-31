@@ -189,13 +189,30 @@ ActionMenu {
         return false;
     }
 
+    checkCharacterTurnEnded(character){
+        if (
+
+            character
+                .turnActions <= 0 && !character.isBusy
+
+        ) {
+
+            this.clear();
+
+            return true;
+
+        }
+
+        return false;
+    }
+
     show(
-        character
+        character, skipTurn = true
     ) {
 
         this.clear();
 
-        if(this.scene.isBossDying || this.scene.isWaveOver || this.scene.isGameOver) return;
+        if(this.scene.isBossDying || this.scene.isWaveOver || this.scene.isGameOver || this.scene.isMinibossDying) return;
 
         this.menuBackground
             .setVisible(
@@ -211,7 +228,13 @@ ActionMenu {
         this.currentCharacter =
             character;
 
-        if(this.characterTurnEnded(character)) return;
+        if(skipTurn){
+            if(this.characterTurnEnded(character)) return;
+        } else {
+            if(this.checkCharacterTurnEnded(character)) return;
+        }
+
+        
 
         this.updateEnergyTank(character);
 
@@ -855,9 +878,16 @@ ActionMenu {
 
     refresh() {
 
-
         this.show(
             this.currentCharacter
+        );
+
+    }
+
+    shallowRefresh() {
+
+        this.show(
+            this.currentCharacter, false
         );
 
     }
@@ -1243,8 +1273,10 @@ ActionMenu {
                 .isBossFight
         ) {
 
+            const target = this.scene.miniboss?? this.scene.boss;
+
             await callback(
-                this.scene.boss
+                target
             );
 
             character.direction =

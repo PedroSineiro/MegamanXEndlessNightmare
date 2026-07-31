@@ -398,7 +398,7 @@ function createFalconGigaAttack(scene) {
             }
         ],
 
-        frameRate: 16,
+        frameRate: 30,
 
         repeat: -1
 
@@ -417,7 +417,7 @@ function createFalconGigaAttack(scene) {
             }
         ],
 
-        frameRate: 16,
+        frameRate: 30,
 
         repeat: -1
 

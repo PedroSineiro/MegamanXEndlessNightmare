@@ -13,6 +13,10 @@ import Dynamo from "../entitites/enemies/boss/Dynamo/Dynamo.js";
 import HighMax from "../entitites/enemies/boss/HighMax/Highmax.js";
 import SigmaHead from "../entitites/enemies/boss/SigmaHead/SigmaHead.js";
 import Sigma from "../entitites/enemies/boss/Sigma/Sigma.js";
+import AwakenedNightmareZero from "../entitites/enemies/boss/AwakenedNightmareZero/AwakenedNightmareZero.js";
+import ProtoMagmaDragoon from "../entitites/enemies/boss/MagmaDragoon/ProtoMagmaDragoon.js";
+import ProtoHighMax from "../entitites/enemies/boss/HighMax/ProtoHighMax.js";
+import ProtoSigmaHead from "../entitites/enemies/boss/SigmaHead/ProtoSigmaHead.js";
 
 export const
 BOSS_CONFIG = {
@@ -60,6 +64,18 @@ BOSS_CONFIG = {
         SigmaHead,
 
     sigma:
-        Sigma
+        Sigma,
+
+    awakened_nightmare_zero:
+        AwakenedNightmareZero,
+
+    proto_magma_dragoon:
+        ProtoMagmaDragoon,
+
+    proto_high_max:
+        ProtoHighMax,
+
+    proto_sigma_head:
+        ProtoSigmaHead
 
 };

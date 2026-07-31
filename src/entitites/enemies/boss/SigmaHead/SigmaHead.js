@@ -213,6 +213,7 @@ extends BaseBoss {
                 this.scene.players
 
             ) {
+                if(player.isDead) return;
 
                 let targetX =
 

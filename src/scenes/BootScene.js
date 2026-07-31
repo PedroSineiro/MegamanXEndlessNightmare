@@ -106,6 +106,10 @@ import loadSigmaAttackAssets from "../entitites/enemies/boss/Sigma/attack/loadAs
 
 import loadSigmaBlockAssets from "../entitites/enemies/boss/Sigma/gigaAttack/loadAssets.js";
 
+import loadAwakenedNightmareZeroAssets from "../entitites/enemies/boss/AwakenedNightmareZero/loadAssets.js";
+
+import loadAwakenedNightmareZeroRingAssets from "../entitites/enemies/boss/AwakenedNightmareZero/ring/loadAssets.js";
+
 import loadExplosionAssets from "../entitites/effects/Explosion/loadAssets.js";
 
 import loadStageAssets from "../stages/loadAssets.js";
@@ -224,6 +228,10 @@ import createSigmaAttackAnimations from "../entitites/enemies/boss/Sigma/attack/
 
 import createSigmaBlockAnimations from "../entitites/enemies/boss/Sigma/gigaAttack/createAnimations.js";
 
+import createAwakenedNightmareZeroAnimations from "../entitites/enemies/boss/AwakenedNightmareZero/createAnimations.js";
+
+import createAwakenedNightmareZeroRingAnimations from "../entitites/enemies/boss/AwakenedNightmareZero/ring/createAnimations.js";
+
 import createExplosionAnimations from "../entitites/effects/Explosion/createAnimations.js";
 
 import createGeneralAnimations from "../general/createAnimations.js";
@@ -304,6 +312,8 @@ extends Phaser.Scene {
         loadSigmaAssets(this);
         loadSigmaAttackAssets(this);
         loadSigmaBlockAssets(this);
+        loadAwakenedNightmareZeroAssets(this);
+        loadAwakenedNightmareZeroRingAssets(this);
         loadExplosionAssets(this);
         loadGeneralAssets(this);
         loadStageAssets(this);
@@ -368,6 +378,8 @@ extends Phaser.Scene {
         createSigmaAnimations(this);
         createSigmaAttackAnimations(this);
         createSigmaBlockAnimations(this);
+        createAwakenedNightmareZeroAnimations(this);
+        createAwakenedNightmareZeroRingAnimations(this);
         createExplosionAnimations(this);
         createGeneralAnimations(this);
         createDialogAnimations(this);

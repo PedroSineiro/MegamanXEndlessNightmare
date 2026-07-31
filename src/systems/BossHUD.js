@@ -98,7 +98,9 @@ export default class BossHUD {
             .setText(
 
 ` ${this.boss.name}
- HP: ${this.boss.hp}/${this.boss.maxHp}`
+ HP: ${this.boss.hp}/${this.boss.maxHp}
+ `+
+ ((this.boss.hasShield && this.boss.shieldActive)?`Shield: ${this.boss.shieldHp}`:"")
 
             );
 

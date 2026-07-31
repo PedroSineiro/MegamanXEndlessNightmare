@@ -480,7 +480,7 @@ CharacterActionRunner {
 
 
         await this.wait(
-            1200
+            1800
         );
 
         //

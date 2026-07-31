@@ -40,6 +40,16 @@ export default function loadStageAssets(scene) {
         "assets/backgrounds/sigma_stage.png"
     );
 
+    scene.load.image(
+        "gate_stage",
+        "assets/backgrounds/gate_stage.png"
+    );
+
+    scene.load.image(
+        "final_stage",
+        "assets/backgrounds/final_stage.png"
+    );
+
     scene.load.audio(
         "introduction_stage",
         "assets/music/introduction.mp3"
@@ -78,6 +88,16 @@ export default function loadStageAssets(scene) {
     scene.load.audio(
         "sigma_stage",
         "assets/music/sigma_theme.mp3"
+    );
+
+    scene.load.audio(
+        "gate_stage",
+        "assets/music/gate_theme.mp3"
+    );
+
+    scene.load.audio(
+        "final_stage",
+        "assets/music/final_theme.mp3"
     );
 
     scene.load.audio(

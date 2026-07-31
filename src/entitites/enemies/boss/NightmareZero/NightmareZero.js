@@ -484,6 +484,8 @@ extends BaseBoss {
 
         this.sprite.play(this.idleAnimationName);
 
+        await this.wait(1000);
+
     }
 
     shootGigaAttack(

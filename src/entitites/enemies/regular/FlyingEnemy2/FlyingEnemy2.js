@@ -21,6 +21,8 @@ extends BaseEnemy {
             direction
         );
 
+        this.aditionalDepth = 100;
+
         //
         // stats
         //

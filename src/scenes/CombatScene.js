@@ -77,7 +77,15 @@ extends Phaser.Scene {
 
         this.isBossFight = false;
 
+        this.boss = null;
+
+        this.miniboss = null;
+
         this.isBossDying = false;
+
+        this.isMinibossDying = false;
+
+        this.actionMenuBlocked = false;
 
         this.isGameOver = false;
 
@@ -1544,8 +1552,6 @@ extends Phaser.Scene {
 
             );
 
-        await this.boss.spawn();
-
         this.enemies =
             [];
 
@@ -1554,6 +1560,8 @@ extends Phaser.Scene {
         this.enemies.push(
             this.boss
         );
+
+        await this.boss.spawn();
 
         this.bossHud =
         new BossHUD(
@@ -1564,6 +1572,38 @@ extends Phaser.Scene {
 
         this.isBossFight = true;
 
+    }
+
+    async spawnMiniboss(bossId) {
+        const BossClass =
+
+            BOSS_CONFIG[
+                bossId
+            ];
+
+        const BossOffset = BOSS_SPAWN_CONFIG[bossId];
+
+        this.miniboss =
+
+            new BossClass(
+
+                this,
+
+                650,
+
+                BossOffset.offsetX,
+                
+                this.enemyLanes["boss"],
+
+                BossOffset.offsetY
+
+            );
+
+        EnemyBuilder.buildBoss(this.miniboss, this.GameData.nightmareLevel);
+
+        await this.miniboss.spawn();
+
+        return this.miniboss;
     }
 
     async bossBeforeFight() {
@@ -1629,7 +1669,7 @@ extends Phaser.Scene {
 
     updateEntities() {
 
-        this.players.forEach(
+        this.players?.forEach(
             player =>
                 player.update()
         );
@@ -1639,11 +1679,15 @@ extends Phaser.Scene {
                 enemy.update()
         );
 
+        this.miniboss?.update();
+
     }
 
     updatePlayerShots() {
 
-        this.players.forEach(
+        const enemies = this.getTotalEnemies();
+
+        this.players?.forEach(
 
             player => {
 
@@ -1658,7 +1702,7 @@ extends Phaser.Scene {
                             return;
                         }
 
-                        this.enemies
+                        enemies
                             .forEach(
 
                             enemy => {
@@ -1722,7 +1766,9 @@ extends Phaser.Scene {
 
     updateSlashCollisions() {
 
-        this.players.forEach(
+        const enemies = this.getTotalEnemies();
+
+        this.players?.forEach(
 
             player => {
 
@@ -1737,7 +1783,7 @@ extends Phaser.Scene {
                     return;
                 }
 
-                this.enemies
+                enemies
                     .forEach(
 
                     enemy => {
@@ -1806,7 +1852,9 @@ extends Phaser.Scene {
 
     updateGigaShots() {
 
-        this.players.forEach(
+        const enemies = this.getTotalEnemies();
+
+        this.players?.forEach(
 
             player => {
 
@@ -1821,7 +1869,7 @@ extends Phaser.Scene {
                             return;
                         }
 
-                        this.enemies
+                        enemies
                             .forEach(
 
                             enemy => {
@@ -1873,7 +1921,9 @@ extends Phaser.Scene {
 
     updateEnemyShots() {
 
-        this.enemies?.forEach(
+        const enemies = this.getTotalEnemies();
+
+        enemies?.forEach(
 
             enemy => {
 
@@ -2031,12 +2081,18 @@ extends Phaser.Scene {
 
     }
 
+    getTotalEnemies() {
+        const enemies = this.enemies? [...this.enemies]: null;
+
+        if (this.miniboss && enemies){
+            enemies.push(this.miniboss);
+        }
+
+        return enemies;
+    }
+
 
     update() {
-
-        if(!this.isReady){
-            return;
-        } 
 
         this.updateEntities();
 
@@ -2051,7 +2107,6 @@ extends Phaser.Scene {
         this.hud?.update();
 
         this.bossHud?.update();
-
     }
 
 }

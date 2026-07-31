@@ -290,7 +290,276 @@ BASE_DIALOGS = {
                 text: "No matter what the Nightmare creates, we'll destroy it."
             }
 
-        ]
+        ],
+    
+    7:
+        [
+            {
+                speaker: "alia",
+                text: "X, Zero... something's wrong."
+            },
 
+            {
+                speaker: "x",
+                text: "What happened?"
+            },
+
+            {
+                speaker: "alia",
+                text: "The Nightmare activity should be disappearing."
+            },
+
+            {
+                speaker: "alia",
+                text: "Sigma's signal has completely vanished."
+            },
+
+            {
+                speaker: "alia",
+                text: "But the global readings are doing the exact opposite."
+            },
+
+            {
+                speaker: "zero",
+                text: "...They're increasing."
+            },
+
+            {
+                speaker: "alia",
+                text: "Rapidly."
+            },
+
+            {
+                speaker: "alia",
+                text: "New Nightmare concentrations are appearing all over the planet."
+            },
+
+            {
+                speaker: "alia",
+                text: "Stronger than anything we've encountered so far."
+            },
+
+            {
+                speaker: "x",
+                text: "That doesn't make any sense."
+            },
+
+            {
+                speaker: "x",
+                text: "If Sigma was controlling all of this..."
+            },
+
+            {
+                speaker: "alia",
+                text: "Then it should have ended with him."
+            },
+
+            {
+                speaker: "zero",
+                text: "Which means Sigma wasn't the one in control."
+            },
+
+            {
+                speaker: "alia",
+                text: "There's more."
+            },
+
+            {
+                speaker: "alia",
+                text: "A transmission arrived moments after Sigma's defeat."
+            },
+
+            {
+                speaker: "x",
+                text: "A transmission?"
+            },
+
+            {
+                speaker: "alia",
+                text: "No identifiable source."
+            },
+
+            {
+                speaker: "alia",
+                text: "No known encryption."
+            },
+
+            {
+                speaker: "alia",
+                text: "Just a single message."
+            },
+
+            {
+                speaker: "zero",
+                text: "What did it say?"
+            },
+
+            {
+                speaker: "alia",
+                text: "\"You have overcome the puppets.\""
+            },
+
+            {
+                speaker: "alia",
+                text: "\"Now face the trial prepared for you.\""
+            },
+
+            {
+                speaker: "alia",
+                text: "\"Come if you seek the truth.\""
+            },
+
+            {
+                speaker: "x",
+                text: "...A challenge."
+            },
+
+            {
+                speaker: "zero",
+                text: "A trap."
+            },
+
+            {
+                speaker: "alia",
+                text: "Most likely."
+            },
+
+            {
+                speaker: "zero",
+                text: "Good."
+            },
+
+            {
+                speaker: "x",
+                text: "Zero..."
+            },
+
+            {
+                speaker: "zero",
+                text: "Whoever has been pulling the strings wants us there."
+            },
+
+            {
+                speaker: "zero",
+                text: "And they're finally stepping out of the shadows."
+            },
+
+            {
+                speaker: "x",
+                text: "Then we'll finish this ourselves."
+            },
+
+            {
+                speaker: "alia",
+                text: "I'll transmit the coordinates."
+            },
+
+            {
+                speaker: "alia",
+                text: "Be careful. Whatever is waiting there... it survived Sigma."
+            },
+
+            {
+                speaker: "zero",
+                text: "Then it's time we found out why."
+            }
+        ],
+
+    8: [
+        {
+            speaker: "alia",
+            text: "X, Zero... we've received another transmission."
+        },
+
+        {
+            speaker: "x",
+            text: "Another one?"
+        },
+
+        {
+            speaker: "alia",
+            text: "Yes. This time it contains precise coordinates."
+        },
+
+        {
+            speaker: "alia",
+            text: "Whoever has been orchestrating the Nightmare phenomenon wants you to come there."
+        },
+
+        {
+            speaker: "zero",
+            text: "Another waste of time."
+        },
+
+        {
+            speaker: "alia",
+            text: "Almost certainly."
+        },
+
+        {
+            speaker: "alia",
+            text: "But after analyzing the data from the Sigma sector, I'm convinced this is the source."
+        },
+
+        {
+            speaker: "alia",
+            text: "Every Nightmare outbreak. Every recreation. Every distortion."
+        },
+
+        {
+            speaker: "alia",
+            text: "Everything traces back to this location."
+        },
+
+        {
+            speaker: "x",
+            text: "Then this ends there."
+        },
+
+        {
+            speaker: "zero",
+            text: "We've chased this nightmare across the entire world."
+        },
+
+        {
+            speaker: "zero",
+            text: "No more distractions. No more copies."
+        },
+
+        {
+            speaker: "x",
+            text: "We'll find whoever's responsible."
+        },
+
+        {
+            speaker: "zero",
+            text: "And we'll destroy them."
+        },
+
+        {
+            speaker: "alia",
+            text: "Be careful... whoever sent this message has manipulated every battle you've fought so far."
+        },
+
+        {
+            speaker: "alia",
+            text: "This won't be easy, the full capabilites of the one behind this are still unknown."
+        },
+
+        {
+            speaker: "x",
+            text: "We'll handle it."
+        },
+
+        {
+            speaker: "zero",
+            text: "The amount of battles that we've already faced before..."
+        },
+
+        {
+            speaker: "zero",
+            text: "This won't be in vain."
+        }
+    ]
 
 };
