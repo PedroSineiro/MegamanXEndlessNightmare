@@ -3,57 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Megaman X Endless Nightmare</title>
-    <style>
-        body {
-            margin: 0;
-            background: #000000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
 
-        canvas {
-            border: 2px solid white;
-        }
+    <style>
 
         @font-face {
 
-            font-family:
-                "MegaManX";
+            font-family: "MegaManX";
 
-            src:
-                url(
-                    "assets/fonts/MMRock9.otf"
-                )
-
-                format(
-                    "truetype"
-                );
+            src: url(
+                "assets/fonts/MMRock9.otf"
+            ) format(
+                "truetype"
+            );
 
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            width: 100vw;
+            height: 100vh;
+
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-image:
+                url(
+                    "assets/images/site_background.png"
+                );
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        canvas { border: 2px solid white; }
+
+        #font-preload {
+
+            font-family: MegaManX;
+
+            position: absolute;
+
+            left: -9999px;
+
+            visibility: hidden;
+
+        }
+
     </style>
+
 </head>
+
 <body>
-    <div
-        style="
-            font-family:
-            MegaManX;
-            position:
-            absolute;
-            left:
-            -1000px;
-            visibility:
-            hidden;
-        "
-    >
+
+    <div id="font-preload">
         .
     </div>
-    <!-- Phaser -->
-    <script src="./libs/phaser.js"></script>
 
-    <!-- Seu jogo -->
-    <script type="module" src="./src/scenes/MainScene.js"></script>
+    <div id="game-container">
+
+        <!-- Phaser -->
+        <script src="./libs/phaser.js"></script>
+
+        <!-- Seu jogo -->
+        <script
+            type="module"
+            src="./src/scenes/MainScene.js"
+        ></script>
+
+    </div>
 
 </body>
 </html>
