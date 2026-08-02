@@ -35,9 +35,9 @@ extends NightmareZero {
                 "night_zero_aura"
             );
 
-        this.maxHp = 800;
+        this.maxHp = 1400;
 
-        this.hp = 800;
+        this.hp = 1400;
 
         this.attackDamage = 40;
 
@@ -329,7 +329,7 @@ extends NightmareZero {
 
     async restoreShield() {
 
-        this.hp = Math.min(this.hp+400,this.maxHp);
+        this.hp = Math.min(this.hp+300,this.maxHp);
 
         this.shieldCooldown = 2;
 
