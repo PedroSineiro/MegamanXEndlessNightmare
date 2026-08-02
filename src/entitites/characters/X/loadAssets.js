@@ -20,6 +20,11 @@ export default function loadAssets(scene) {
         {
             key: "falcon",
             folder: "falcon"
+        },
+
+        {
+            key: "blade",
+            folder: "blade"
         }
 
     ];
@@ -160,6 +165,8 @@ export default function loadAssets(scene) {
     // Falcon Armor
     //
     loadFalconGigaAttack(scene);
+
+    loadBladeSlash(scene);
 
     for (let i = 1; i <= 5; i++) {
 
@@ -309,3 +316,28 @@ function loadFalconGigaAttack(scene){
     }
 
 }
+
+
+function loadBladeSlash(scene) {
+
+    for (
+
+        let i = 1;
+
+        i <= 15;
+
+        i++
+
+    ) {
+
+        scene.load.image(
+
+            `blade_slash_${i}`,
+
+            `assets/sprites/characters/x/blade/slash/slash_${i}.png`
+
+        );
+
+    }
+}
+

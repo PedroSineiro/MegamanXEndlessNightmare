@@ -4,24 +4,39 @@ createAnimations(scene) {
 
         {
             armor: "x",
-            source: "x"
+            source: "x",
+            chargedSpawnFrames: [1, 2, 3, 4],
+            chargedMovingFrames: [5, 6, 7]
+
         },
 
         {
             armor: "fourth",
-            source: "fourth"
+            source: "fourth",
+            chargedSpawnFrames: [1, 2, 3, 4],
+            chargedMovingFrames: [5, 6, 7, 8]
         },
 
         {
             armor: "falcon",
-            source: "falcon"
+            source: "falcon",
+            chargedSpawnFrames: [1, 2, 3, 4],
+            chargedMovingFrames: [5, 6, 7, 8]
         },
 
         {
             armor: "ultimate",
-            source: "fourth"
+            source: "fourth",
+            chargedSpawnFrames: [1, 2, 3, 4],
+            chargedMovingFrames: [5, 6, 7, 8]
+        },
+        
+        {
+            armor: "blade",
+            source: "blade",
+            chargedSpawnFrames: null,
+            chargedMovingFrames: [1, 2, 3, 4, 5]
         }
-
     ];
 
     for (const armor of armors) {
@@ -34,13 +49,29 @@ createAnimations(scene) {
 
             armor.source,
 
-            [1, 2, 3, 4],
+            armor.chargedSpawnFrames,
 
-            [5, 6, 7]
+            armor.chargedMovingFrames
 
         );
 
     }
+
+    scene.anims.create({
+
+        key: "blade_giga_shot_moving",
+
+        frames: [
+
+            { key: "blade_giga_shot_1" },
+            { key: "blade_giga_shot_2" }
+
+        ],
+
+        frameRate: 20,
+        repeat: -1
+
+    });
 
 }
 
@@ -123,22 +154,24 @@ function createShotAnimations(
 
     });
 
-    scene.anims.create({
+    if(chargedSpawnFrames) {
+        scene.anims.create({
 
-        key: `${armor}_charged_shot_spawn`,
+            key: `${armor}_charged_shot_spawn`,
 
-        frames: chargedSpawnFrames.map(
+            frames: chargedSpawnFrames.map(
 
-            frame => ({
-                key: `${sourceArmor}_charged_shot_${frame}`
-            })
+                frame => ({
+                    key: `${sourceArmor}_charged_shot_${frame}`
+                })
 
-        ),
+            ),
 
-        frameRate: 20,
-        repeat: 0
+            frameRate: 20,
+            repeat: 0
 
-    });
+        });
+    }
 
     scene.anims.create({
 

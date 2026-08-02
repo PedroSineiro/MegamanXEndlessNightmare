@@ -786,7 +786,7 @@ extends BaseEnemy {
 
         this.owner.miniboss = null;
 
-        this.scene.actionMenu.shallowRefresh();
+        this.scene.actionMenu.refresh();
 
 
     }

@@ -18,6 +18,12 @@ export default function loadAssets(scene) {
             key: "falcon",
             chargedFolder: "falcon",
             chargedFrames: 8
+        },
+
+        {
+            key: "blade",
+            chargedFolder: "blade",
+            chargedFrames: 5
         }
 
     ];
@@ -105,5 +111,14 @@ export default function loadAssets(scene) {
         }
 
     }
+
+    scene.load.image(
+        "blade_giga_shot_1",
+        "assets/sprites/characters/x/blade/giga_attack/giga_attack_1.png"
+    );
+    scene.load.image(
+        "blade_giga_shot_2",
+        "assets/sprites/characters/x/blade/giga_attack/giga_attack_2.png"
+    );
 
 }

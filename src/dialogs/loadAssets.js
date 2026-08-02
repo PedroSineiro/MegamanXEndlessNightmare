@@ -38,6 +38,14 @@ loadAssets(scene) {
         },
 
         {
+            id: "blade",
+            baseFolder: "x",
+            idleSprites: 3,
+            speakingSprites:3
+        },
+
+
+        {
             id: "zero",
             baseFolder: "zero",
             idleSprites: 3,

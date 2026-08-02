@@ -31,6 +31,11 @@ export const SHOP_UPGRADES = {
                 description: "X-Buster does more damage." 
             },
             {
+                name:"saber_plus",
+                cost: 500,
+                description: "Z-saber attacks do more damage(only for Blade or Shadow armor)." 
+            },
+            {
                 name:"giga_attack_recover",
                 cost: 800,
                 description: "Reduces the giga attack recharge time by 3 turns." 
@@ -68,6 +73,15 @@ export const SHOP_UPGRADES = {
                 giga_attack_type: "Area",
                 description: "Charged shot pierces through enemies.",
                 preview_sprite: "falcon_empty_armor"
+            },
+            {
+                name: "blade",
+                cost: 1500,
+                base_evasion: 20,
+                base_reduction: 50,
+                giga_attack_type: "Row",
+                description: "Has a saber attack.",
+                preview_sprite: "blade_empty_armor"
             },
             {
                 name: "ultimate",

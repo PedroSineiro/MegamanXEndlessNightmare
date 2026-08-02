@@ -325,6 +325,188 @@ CharacterActionRunner {
 
     }
 
+    async xSlash(
+
+        actor,
+
+        target
+
+    ) {
+
+        actor.isBusy =
+            true;
+
+        const originalX =
+            actor.sprite.x;
+
+        const originalY =
+            actor.sprite.y;
+
+        //
+        // posição perto do alvo
+        //
+
+        let offsetX = 80;
+
+        const dx =
+
+            target.sprite.x -
+
+            actor.sprite.x;
+
+        if (dx > 0) {
+
+            offsetX = - 80;
+
+            actor.direction =
+                1;
+
+            actor.sprite
+                .setFlipX(
+                    false
+                );
+
+        }
+
+
+        const targetX =
+
+            target.spawnX +
+            offsetX;
+
+
+        const targetY =
+            target.originalY + 120;
+
+
+        //
+        // mover até lane
+        //
+
+        await this.moveToLane(
+
+            actor,
+
+            targetY
+
+        );
+
+        //
+        // mover horizontal
+        //
+
+        await this.moveToX(
+
+            actor,
+
+            targetX
+
+        );
+
+        this.pressAttack(actor);
+
+        await this.wait(
+            1400
+        );
+
+        await this.moveBack(
+
+            actor,
+
+            originalX,
+
+            originalY
+
+        );
+
+        actor.isBusy =
+            false;
+
+    }
+
+    async bladeGigaAttack(
+        actor,
+        target
+    ) {
+
+        actor.isBusy =
+            true;
+
+        const originalX =
+            actor.sprite.x;
+
+        const originalY =
+            actor.sprite.y;
+
+        const dx = target.sprite.x - actor.sprite.x;
+
+        //
+        // virar personagem
+        //
+
+        if (dx > 0) {
+
+            actor.direction = 1;
+
+            actor.sprite.setFlipX(
+                false
+            );
+
+        }
+        else {
+
+            actor.direction = -1;
+
+            actor.sprite.setFlipX(
+                true
+            );
+
+        }
+
+        await this.moveToLane(
+
+            actor,
+
+            target.originalY + 120
+
+        );
+
+        this.pressGigaAttack(actor);
+        //
+        // atirar
+        //
+
+        //
+        // esperar tiro
+        //
+
+        await this.wait(
+            1400
+        );
+
+        //
+        // voltar
+        //
+
+        await this.moveBack(
+
+            actor,
+
+            originalX,
+
+            originalY
+
+        );
+
+        await this.wait(
+            600
+        );
+
+        actor.isBusy =
+            false;
+
+    }
+
     async moveToX(
         actor,
         targetX

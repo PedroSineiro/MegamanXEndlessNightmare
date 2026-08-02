@@ -651,6 +651,16 @@ export default class BaseCharacter {
             return;
         }
 
+        if (
+            this.attackHitbox
+            ?.active
+        ) {
+
+            this.attackHitbox
+                .update();
+
+        }
+
         this.sprite.setDepth(
             this.sprite.y
         );

@@ -38,7 +38,7 @@ import LeavingState
 from "../../../states/player/LeavingState.js";
 
 import NeutralSlashState 
-from "../../../states/player/saber/NeutralSlashState.js";
+from "../../../states/player/saber/NeutralSlashZeroState.js";
 
 import SlashAState 
 from "../../../states/player/saber/SlashAState.js";
@@ -238,7 +238,7 @@ extends BaseCharacter {
 
             );
 
-            this.comboStateMachine =
+        this.comboStateMachine =
             new StateMachine(
 
             "neutral",
@@ -546,16 +546,6 @@ extends BaseCharacter {
 
         this.comboStateMachine
         .step();
-
-        if (
-            this.attackHitbox
-            ?.active
-        ) {
-
-            this.attackHitbox
-                .update();
-
-        }
         
         //
         // debug

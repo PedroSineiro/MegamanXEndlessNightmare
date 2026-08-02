@@ -11,6 +11,8 @@ createAnimations(scene) {
 
         "falcon",
 
+        "blade",
+
         "zero",
 
         "black_zero",

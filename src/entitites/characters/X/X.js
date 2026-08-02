@@ -54,6 +54,12 @@ import FalconGigaAttackState from "../../../states/player/gigaAttackX/FalconArmo
 
 import FalconGigaShot from "./shots/falconGigaShot.js";
 
+import NeutralSlashState from "../../../states/player/saber/NeutralSlashXState.js";
+
+import SlashState from "../../../states/player/saber/SlashState.js";
+
+import BladeGigaAttackState from "../../../states/player/gigaAttackX/BladeGigaAttackState.js";
+
 
 export default class X
 extends BaseCharacter {
@@ -117,9 +123,13 @@ extends BaseCharacter {
 
         this.chargedShotDamage = stats.chargedShotDamage;
 
+        this.slashDamage = stats.slashDamage;
+
         this.isChargedShotPiercing = stats.isChargedShotPiercing;
 
         this.falconGigaAttackDamage = 50;
+
+        this.bladeGigaAttackDamage = 280;
 
         this.shots = [];
 
@@ -262,6 +272,25 @@ extends BaseCharacter {
 
             );
 
+            this.slashStateMachine =
+                new StateMachine(
+    
+                "neutral",
+    
+                {
+    
+                    neutral:
+                        new NeutralSlashState(),
+    
+                    slash:
+                        new SlashState()
+    
+                },
+    
+                this
+    
+            );
+
             this.gigaAttackStateMachine =
                 new StateMachine(
     
@@ -279,8 +308,10 @@ extends BaseCharacter {
                         new FourthGigaAttackState(),
 
                     falcon:
-                        new FalconGigaAttackState()
-    
+                        new FalconGigaAttackState(),
+
+                    blade:
+                        new BladeGigaAttackState()
     
                 },
     
@@ -341,6 +372,20 @@ extends BaseCharacter {
 
             this.virtualInput
                 .buster
+
+        );
+
+    }
+
+    getSaberAttackInput() {
+
+        return (
+
+            /*this.saberKey
+                .isDown ||*/
+
+            this.virtualInput
+                .slash
 
         );
 
@@ -418,7 +463,20 @@ extends BaseCharacter {
 
             isShotPiercing = this.isChargedShotPiercing;
 
+        } else if (
+            chargeLevel === 4
+        ) {
+
+            shotType =
+                "giga";
+
+            damage = this.bladeGigaAttackDamage;
+
+            isShotPiercing = true;
+
         }
+
+        const hasSpawn = !(this.currentArmor == "blade" && (shotType == "charged" || shotType == "giga"));
 
         const shot =
 
@@ -440,7 +498,9 @@ extends BaseCharacter {
 
                 damage,
 
-                isShotPiercing
+                isShotPiercing,
+
+                hasSpawn
             );
 
         this.shots.push(
@@ -1031,8 +1091,9 @@ extends BaseCharacter {
         // weapon
         //
 
-        this.weaponStateMachine
-            .step();
+        this.weaponStateMachine.step();
+
+        this.slashStateMachine.step();
 
         //
         // shots

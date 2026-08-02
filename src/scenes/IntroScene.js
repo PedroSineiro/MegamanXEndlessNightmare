@@ -691,7 +691,8 @@ is about to begin...`;
                         x: true,
                         fourth: false,
                         ultimate: false,
-                        falcon: false
+                        falcon: false,
+                        blade: false
 
                     }
 

@@ -47,10 +47,10 @@ SlashAState {
             slashSpawned = true;
 
             player.scene.sfx.play(
-            "z_saber",
-            {
-                volume: 0.2
-            }
+                "z_saber",
+                {
+                    volume: 0.2
+                }
             );
 
             player.scene.sfx.play(

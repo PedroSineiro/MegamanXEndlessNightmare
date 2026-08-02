@@ -21,6 +21,11 @@ createAnimations(scene) {
         {
             id: "falcon",
             hasNovaStrike: false
+        },
+
+        {
+            id: "blade",
+            hasNovaStrike: false
         }
 
     ];
@@ -204,6 +209,8 @@ createAnimations(scene) {
         frameRate: 30,
         repeat: -1
     });
+
+    createBladeSlash(scene);
 }
 
 function createSimpleAnimation(
@@ -420,6 +427,39 @@ function createFalconGigaAttack(scene) {
         frameRate: 30,
 
         repeat: -1
+
+    });
+}
+
+function createBladeSlash(scene) {
+
+    const frames = [];
+
+    for(let i = 1; i<=13; i++){
+        frames.push({
+            key: `blade_slash_${i}`
+        })
+    }
+
+    frames.push({
+        key: "blade_slash_14",
+        duration: 180
+    });
+
+    frames.push({
+        key: "blade_slash_15",
+        duration: 180
+    });
+
+    scene.anims.create({
+
+        key: "blade_slash",
+
+        frames,
+
+        frameRate: 25,
+
+        repeat: 0
 
     });
 }

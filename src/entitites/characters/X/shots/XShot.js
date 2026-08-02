@@ -15,7 +15,7 @@ from
 
 export default class XShot {
 
-    constructor(scene, x, y, direction, shotType, currentArmor, damage, isPiercing = false) {
+    constructor(scene, x, y, direction, shotType, currentArmor, damage, isPiercing = false, hasSpawn = true) {
 
         this.active = true;
 
@@ -26,6 +26,8 @@ export default class XShot {
         this.shotType = shotType;
 
         this.isPiercing = isPiercing;
+
+        this.hasSpawn = hasSpawn;
 
         this.playerCurrentArmor = currentArmor;
 
@@ -70,7 +72,7 @@ export default class XShot {
 
         this.stateMachine =
             new StateMachine(
-                "spawn",
+                this.hasSpawn?"spawn":"moving",
                 {
                     spawn:
                         new ShotSpawnState(),

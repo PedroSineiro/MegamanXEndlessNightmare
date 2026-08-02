@@ -193,11 +193,9 @@ ActionMenu {
         if (
 
             character
-                .turnActions <= 0 && !character.isBusy
+                .turnActions <= 0
 
         ) {
-
-            this.clear();
 
             return true;
 
@@ -206,13 +204,11 @@ ActionMenu {
         return false;
     }
 
-    show(
-        character, skipTurn = true
-    ) {
+    show(character) {
 
         this.clear();
 
-        if(this.scene.isBossDying || this.scene.isWaveOver || this.scene.isGameOver || this.scene.isMinibossDying) return;
+        if(this.scene.isBossDying || this.scene.isWaveOver || this.scene.isGameOver || this.scene.isMinibossDying|| character.isBusy) return;
 
         this.menuBackground
             .setVisible(
@@ -228,13 +224,7 @@ ActionMenu {
         this.currentCharacter =
             character;
 
-        if(skipTurn){
-            if(this.characterTurnEnded(character)) return;
-        } else {
-            if(this.checkCharacterTurnEnded(character)) return;
-        }
-
-        
+        if(this.characterTurnEnded(character)) return;
 
         this.updateEnergyTank(character);
 
@@ -279,8 +269,6 @@ ActionMenu {
                                         0
 
                                     );
-
-                                if(this.characterTurnEnded(character)) return
 
                                 this.refresh();
 
@@ -328,8 +316,6 @@ ActionMenu {
 
                                     );
 
-                                if(this.characterTurnEnded(character)) return
-
                                 this.refresh();
 
                             }
@@ -374,7 +360,6 @@ ActionMenu {
 
                                     );
 
-                                if(this.characterTurnEnded(character)) return;
 
                                 this.refresh();
 
@@ -418,8 +403,6 @@ ActionMenu {
 
                                     );
 
-                                if(this.characterTurnEnded(character)) return;
-
                                 this.refresh();
 
                             }
@@ -428,6 +411,44 @@ ActionMenu {
                     }
                 );
             }
+
+            if (
+
+                character.turnActions >= 2 && character.currentArmor=="blade"
+
+            ) {
+                this.addSpecialAttackButton(
+                "Slash",
+
+                () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                await this.scene
+                                    .actionRunner
+                                    .xSlash(
+
+                                        character,
+
+                                        enemy
+
+                                    );
+
+                                this.refresh();
+
+                            }
+
+                        );
+                }
+                );
+            }
+
 
             if((character.currentArmor=="falcon") && this.canUseGigaAttack(character)){
                 this.addGigaAttackButton(
@@ -466,6 +487,44 @@ ActionMenu {
 
                         this.refresh();
                     }
+                );
+            }
+
+            if((character.currentArmor=="blade") && this.canUseGigaAttack(character)){
+                this.addGigaAttackButton(
+                    "Giga Attack",
+
+                    async () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                character
+                                    .turnActions -= 4;
+                                
+                                if(character.gigaAttackMustRecharge) character.gigaAttackRechargeTurns = 0;
+
+                                await this.scene
+                                    .actionRunner
+                                    .bladeGigaAttack(
+
+                                        character,
+
+                                        enemy
+
+                                    );
+
+                                this.refresh();
+
+                            }
+
+                        );
+                }
                 );
             }
 
@@ -514,7 +573,7 @@ ActionMenu {
 
                         );
                     
-                    if(this.characterTurnEnded(character)) return;
+                    
                     
                 }
 
@@ -557,9 +616,6 @@ ActionMenu {
                             }
 
                         );
-                    
-                    if(this.characterTurnEnded(character)) return;
-
                 }
 
                 );
@@ -602,7 +658,7 @@ ActionMenu {
 
                         );
                     
-                    if(this.characterTurnEnded(character)) return;
+                    
 
                 }
 
@@ -646,7 +702,7 @@ ActionMenu {
 
                         );
                     
-                    if(this.characterTurnEnded(character)) return;
+                    
                 }
                 );
             }
@@ -688,7 +744,7 @@ ActionMenu {
 
                         );
                     
-                    if(this.characterTurnEnded(character)) return;
+                    
                 }
                 );
             }
@@ -719,19 +775,6 @@ ActionMenu {
                         .zeroGigaAttack(
                             character
                         );
-
-                    //
-                    // acabou turno?
-                    //
-
-                    if (
-                        this.characterTurnEnded(
-                            character
-                        )
-                    ) {
-                        return;
-                    }
-
                     //
                     // volta UI
                     //
@@ -767,8 +810,6 @@ ActionMenu {
                     //
                     // acabou turno?
                     //
-
-                    if(this.characterTurnEnded(character)) return
 
                     this.refresh();
 
@@ -880,14 +921,6 @@ ActionMenu {
 
         this.show(
             this.currentCharacter
-        );
-
-    }
-
-    shallowRefresh() {
-
-        this.show(
-            this.currentCharacter, false
         );
 
     }

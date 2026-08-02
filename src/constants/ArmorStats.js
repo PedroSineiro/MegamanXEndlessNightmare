@@ -6,6 +6,7 @@ export const ARMOR_STATS = {
         basicShotDamage: 10,
         mediumShotDamage: 25,
         chargedShotDamage: 60,
+        slashDamage: 0,
         hasGigaAttack: false,
         gigaAttackMustRecharge: false
     },
@@ -16,6 +17,7 @@ export const ARMOR_STATS = {
         basicShotDamage: 10,
         mediumShotDamage: 25,
         chargedShotDamage: 90,
+        slashDamage: 0,
         hasGigaAttack: true,
         gigaAttackMustRecharge: true
     },
@@ -26,6 +28,7 @@ export const ARMOR_STATS = {
         basicShotDamage: 10,
         mediumShotDamage: 25,
         chargedShotDamage: 90,
+        slashDamage: 0,
         hasGigaAttack: true,
         gigaAttackMustRecharge: false
     },
@@ -36,7 +39,20 @@ export const ARMOR_STATS = {
         basicShotDamage: 10,
         mediumShotDamage: 25,
         chargedShotDamage: 60,
+        slashDamage: 0,
         piercingShot: true,
+        hasGigaAttack: true,
+        gigaAttackMustRecharge: true
+    },
+
+    "blade":{
+        baseEvasion: 0.20,
+        baseReduction: 0.50,
+        basicShotDamage: 10,
+        mediumShotDamage: 25,
+        chargedShotDamage: 60,
+        slashDamage: 80,
+        piercingShot: false,
         hasGigaAttack: true,
         gigaAttackMustRecharge: true
     },

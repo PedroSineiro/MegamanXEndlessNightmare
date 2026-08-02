@@ -39,11 +39,18 @@ CharacterStatsCalculator {
                 .abilities
                 .buster_plus ?? false;
 
+        const hasSaberPlus = gameData.inventory
+                .x
+                .abilities
+                .saber_plus ?? false;
+
         const basicShotDamage = ARMOR_STATS[gameData.currentArmors[0]].basicShotDamage + (hasBusterPlus ? 10 : 0);
 
         const mediumShotDamage = ARMOR_STATS[gameData.currentArmors[0]].mediumShotDamage + (hasBusterPlus ? 15 : 0);
 
         const chargedShotDamage = ARMOR_STATS[gameData.currentArmors[0]].chargedShotDamage + (hasBusterPlus ? 20 : 0);
+
+        const slashDamage = ARMOR_STATS[gameData.currentArmors[0]].slashDamage + (hasSaberPlus ? 25 : 0);
 
         const isChargedShotPiercing = ARMOR_STATS[gameData.currentArmors[0]].piercingShot?? false;
 
@@ -87,6 +94,8 @@ CharacterStatsCalculator {
             mediumShotDamage: mediumShotDamage,
 
             chargedShotDamage: chargedShotDamage,
+
+            slashDamage: slashDamage,
 
             isChargedShotPiercing: isChargedShotPiercing,
 
