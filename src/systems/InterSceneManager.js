@@ -7,6 +7,24 @@ export default class InterSceneManager {
 
     static TOTAL_AMOUNT_STAGES = 9;
 
+    static FIRST_STAGE = {
+            stage: "introduction_stage",
+            theme: "introduction_stage",
+            background: "introduction_stage",
+            boss_theme: "boss",
+            layout: [
+                    {
+                        type: "waves",
+                        count: 8
+                    },
+
+                    {
+                        type: "boss",
+                        boss: "nightmare_zero"
+                    }
+                ]
+        }
+
     static STAGES = {
         volcano_stage: {
             stage: "volcano_stage",
@@ -276,6 +294,20 @@ export default class InterSceneManager {
 
     ];
 
+    static INTRODUCTION_STAGE_CONFIG = {
+
+        numberOfWaves: 8,
+
+        spawnPercentage: 0.50,
+
+        smallEnemySpawnPercentage: 0.70,
+
+        bigEnemySpawnPercentage: 0.30,
+
+        nightmareSpawnPercentage: 0.0
+
+    };
+
 
     static DEFAULT_WAVE_CONFIG = {
 
@@ -317,6 +349,8 @@ export default class InterSceneManager {
 
     };
 
+    static FIRST_STAGE_REWARD = 2000;
+
 
     static handleNextSceneAfterBase(
         gameData,
@@ -348,7 +382,7 @@ export default class InterSceneManager {
 
             ) {
 
-                const config = this.DEFAULT_WAVE_CONFIG;
+                const config = gameData.amountCompletedStages==0? this.INTRODUCTION_STAGE_CONFIG: this.DEFAULT_WAVE_CONFIG;
 
                 config.numberOfWaves = segment.count;
 
@@ -378,15 +412,12 @@ export default class InterSceneManager {
 
         }
 
-        const nightmareScrapReward =
-
+        const nightmareScrapReward = gameData.amountCompletedStages == 0? this.FIRST_STAGE_REWARD:
             this.calculateNightmareScrap(
                 waves
             );
 
         const dialogs = this.getCombatDialogs(nextStage, gameData.storyFlags.hasSeenRepliforce, gameData.amountCompletedStages);
-        
-        
 
         return {
 
@@ -452,6 +483,10 @@ export default class InterSceneManager {
         const amountCompletedStages =
 
             gameData.amountCompletedStages;
+
+        if(amountCompletedStages == 0) {
+            return this.FIRST_STAGE;
+        }
 
         if (
 
@@ -827,6 +862,10 @@ export default class InterSceneManager {
     }
 
     static getCombatDialogs(selectedStage, hasSeenRepliforce, amountOfCompletedStages) {
+
+        if(amountOfCompletedStages == 0) {
+            return COMBAT_DIALOGS[this.FIRST_STAGE.stage] ?? [];
+        }
 
         if(amountOfCompletedStages < 5){
             if(hasSeenRepliforce){

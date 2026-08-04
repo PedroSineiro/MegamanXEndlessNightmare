@@ -5,6 +5,8 @@ import TitleScene from "./TitleScene.js";
 import GameOverScene from "./GameOverScene.js"
 import BootScene from "./BootScene.js";
 import EndingScene from "./EndingScene.js";
+import DifficultyScene from "./DifficultyScene.js";
+import SaveScene from "./SaveScene.js";
 
 export default class MainScene
 extends Phaser.Scene {
@@ -142,6 +144,8 @@ const config = {
     scene: [
         BootScene,
         TitleScene,
+        DifficultyScene,
+        SaveScene,
         IntroScene,
         CombatScene,
         MainScene,

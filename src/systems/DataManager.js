@@ -6,21 +6,12 @@ export default class DataManager {
     static GAME_KEY =
         "endlessNightmareData";
 
-    static hasSaveData() {
+    static pointer = null;
 
-        try {
-
-            const save = this.loadSaveData();
-
-            return save !== null;
-
-        } catch {
-
-            return false;
-
-        }
-
+    static setPointer(pointer) {
+        this.pointer = pointer;
     }
+
 
     static hasPassedFirstStage() {
         const gameData = this.loadGameData();
@@ -33,7 +24,7 @@ export default class DataManager {
         return JSON.parse(
 
             localStorage.getItem(
-                this.SAVE_KEY
+                this.SAVE_KEY+this.pointer
             )
 
         );
@@ -46,13 +37,41 @@ export default class DataManager {
 
         localStorage.setItem(
 
-            this.SAVE_KEY,
+            this.SAVE_KEY+this.pointer,
 
             JSON.stringify(
                 saveData
             )
 
         );
+
+    }
+
+    static getAllSaves() {
+
+        const saves = [];
+
+        for (
+            let pointer = 1;
+            pointer <= 3;
+            pointer++
+        ) {
+
+            saves.push(
+
+                JSON.parse(
+
+                    localStorage.getItem(
+                        this.SAVE_KEY + pointer
+                    )
+
+                )
+
+            );
+
+        }
+
+        return saves;
 
     }
 

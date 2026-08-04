@@ -50,7 +50,7 @@ CharacterStatsCalculator {
 
         const chargedShotDamage = ARMOR_STATS[gameData.currentArmors[0]].chargedShotDamage + (hasBusterPlus ? 20 : 0);
 
-        const slashDamage = ARMOR_STATS[gameData.currentArmors[0]].slashDamage + (hasSaberPlus ? 25 : 0);
+        const slashDamage = ARMOR_STATS[gameData.currentArmors[0]].slashDamage + (hasSaberPlus ? 30 : 0);
 
         const isChargedShotPiercing = ARMOR_STATS[gameData.currentArmors[0]].piercingShot?? false;
 

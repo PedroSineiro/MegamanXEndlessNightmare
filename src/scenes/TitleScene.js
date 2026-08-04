@@ -154,23 +154,50 @@ export default class TitleScene extends Phaser.Scene {
 
         );
 
-        if (
-            DataManager.hasSaveData()
-        ) {
-            this.continueGameButton = 
+        this.loadGameButton =
 
-            this.createMenuButton(
+        this.createMenuButton(
 
-                "CONTINUE",
+            "LOAD GAME",
 
-                500,
-                520,
+            500,
+            520,
 
-                () => this.continueGame()
+            async () => {
+                this.cameras.main.fadeOut(
+                    500,
+                    0,
+                    0,
+                    0
+                );
 
-            );
+                await new Promise(resolve => {
 
-        }
+                    this.time.delayedCall(
+                        500,
+                        resolve
+                    );
+
+                });
+
+                this.bgm?.stop();
+
+                this.scene.start(
+
+                    "SaveScene",
+
+                    {
+
+                        mode:
+                            "load_game"
+
+                    }
+
+                );
+
+            }
+
+        );
 
         this.howToPlayButton = 
 
@@ -372,7 +399,7 @@ Clear enemy waves, defeat Mavericks and uncover the source of the Nightmare outb
             !showHowToPlay
         );
 
-        this.continueGameButton?.setVisible(
+        this.loadGameButton?.setVisible(
             !showHowToPlay
         );
 
@@ -394,103 +421,30 @@ Clear enemy waves, defeat Mavericks and uncover the source of the Nightmare outb
 
     }
 
-    async startNewGame(){
-         //
-        // fade
-        //
+    async startNewGame() {
 
         this.newGameButton.disableInteractive();
 
-        this.cameras
-            .main
-            .fadeOut(
+        this.cameras.main.fadeOut(
+            500,
+            0,
+            0,
+            0
+        );
 
+        await new Promise(resolve => {
+
+            this.time.delayedCall(
                 500,
-
-                0,
-                0,
-                0
-
+                resolve
             );
 
-        await new Promise(
-
-            resolve => {
-
-                this.time
-                    .delayedCall(
-
-                        500,
-
-                        resolve
-
-                    );
-
-            }
-
-        );
-
-        this.bgm?.stop();
-
-        this.bgm?.destroy();
-
-        //
-        // start combat
-        //
-
-        this.scene.start(
-
-        "IntroScene", {}
-
-        );
-    }
-
-    async continueGame() {
-
-        this.continueGameButton.disableInteractive();
-
-        const saveData =
-
-            DataManager.loadSaveData();
-
-        this.cameras
-            .main
-            .fadeOut(
-
-                500,
-
-                0,
-                0,
-                0
-
-            );
-
-        await new Promise(
-
-            resolve => {
-
-                this.time
-                    .delayedCall(
-
-                        500,
-
-                        resolve
-
-                    );
-
-            }
-
-        );
-
+        });
 
         this.bgm?.stop();
 
         this.scene.start(
-
-            "BaseScene",
-
-            saveData
-
+            "DifficultyScene"
         );
 
     }

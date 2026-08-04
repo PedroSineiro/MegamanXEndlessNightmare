@@ -1,7 +1,7 @@
 export default function loadStageAssets(scene) {
 
     scene.load.image(
-        "destroyed_base_stage",
+        "introduction_stage",
         "assets/backgrounds/destroyed_base_stage.png"
     );
 

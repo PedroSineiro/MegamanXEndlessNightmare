@@ -131,6 +131,10 @@ extends BaseCharacter {
 
         this.bladeGigaAttackDamage = 280;
 
+        this.novaStrikeDamage = 320;
+
+        this.novaStrikeHitbox = null;
+
         this.shots = [];
 
         this.shootKey =
@@ -720,8 +724,10 @@ extends BaseCharacter {
                 const direction =
                     this.direction;
 
-                const alreadyHit =
-                    new Set();
+                this.novaStrikeHitbox = {
+                    damage: this.novaStrikeDamage,
+                    alreadyHit: []
+                };
 
                 const event =
 
@@ -756,80 +762,21 @@ extends BaseCharacter {
                             const hitboxOffsetX =
                                 40;
 
-                            const hitbox =
+                            this.novaStrikeHitbox.hitbox =
 
-                                new Phaser
-                                    .Geom
-                                    .Rectangle(
+                            new Phaser.Geom.Rectangle(
 
-                                        direction === 1
+                                direction === 1
 
-                                        ? this.sprite.x -
-                                        hitboxOffsetX
+                                    ? this.sprite.x - hitboxOffsetX
 
-                                        : this.sprite.x -
-                                        hitboxWidth +
-                                        hitboxOffsetX,
+                                    : this.sprite.x - hitboxWidth + hitboxOffsetX,
 
-                                        this.sprite.y -
-                                        180,
+                                this.sprite.y - 180,
 
-                                        hitboxWidth,
+                                hitboxWidth,
 
-                                        hitboxHeight
-
-                                    );
-
-                            //
-                            // colisão
-                            //
-
-                            this.scene.enemies.forEach(
-
-                                enemy => {
-
-                                    if (
-                                        enemy.isDead
-                                    ) {
-                                        return;
-                                    }
-
-                                    if (
-                                        alreadyHit.has(
-                                            enemy
-                                        )
-                                    ) {
-                                        return;
-                                    }
-
-                                    const hit =
-
-                                        Phaser
-                                            .Geom
-                                            .Intersects
-                                            .RectangleToRectangle(
-
-                                                hitbox,
-
-                                                enemy.hurtbox
-
-                                            );
-
-                                    if (
-                                        hit
-                                    ) {
-
-                                        alreadyHit.add(
-                                            enemy
-                                        );
-
-                                        enemy.takeDamage(
-                                            320
-                                        );
-
-                                    }
-
-                                }
+                                hitboxHeight
 
                             );
 
@@ -844,6 +791,8 @@ extends BaseCharacter {
                                 totalDistance
 
                             ) {
+
+                                this.novaStrikeHitbox = null;
 
                                 event.remove();
 

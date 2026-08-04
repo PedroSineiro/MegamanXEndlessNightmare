@@ -35,7 +35,7 @@ extends Phaser.Scene {
 
     init(data) {
 
-        this.combatData =
+        this.data =
             data;
 
         this.createGameData();
@@ -238,26 +238,18 @@ extends Phaser.Scene {
 
                     const test = false;
 
-                    let firstHalf = [];
+                    const sceneData = InterSceneManager.handleNextSceneAfterBase(this.GameData, DataManager);
+
+                    this.stopWarningLoop();
 
                     if(!test){
-                        firstHalf =
+                         this.scene.start(
 
-                        InterSceneManager.generateWaves({
+                        sceneData.scene,sceneData.data)
 
-                            numberOfWaves: 8,
-
-                            spawnPercentage: 0.50,
-
-                            smallEnemySpawnPercentage: 0.70,
-
-                            bigEnemySpawnPercentage: 0.30,
-
-                            nightmareSpawnPercentage: 0.0
-
-                        });
-
-                        firstHalf.push({
+                    } else {
+                        const waves = [];
+                        waves.push({
 
                             type: "boss",
 
@@ -265,26 +257,14 @@ extends Phaser.Scene {
 
                         });
 
-                    } else {
-                        firstHalf.push({
-
-                            type: "boss",
-
-                            boss: "awakened_nightmare_zero"
-
-                        });
-                    }
-
-                    this.stopWarningLoop();
-
-                    this.scene.start(
+                        this.scene.start(
 
                         "CombatScene",
 
                         {
 
                             stage:
-                                "destroyed_base_stage",
+                                "introduction_stage",
 
                             players: [
 
@@ -293,204 +273,8 @@ extends Phaser.Scene {
 
                             ],
 
-                            waves: firstHalf,
-                            dialogs: [
-
-                                {
-                                    waveIndex: 0,
-                                    isAfterBossSpawn: false,
-
-                                    dialogs: [
-                                        {
-                                        speaker: "alia",
-                                        text: "X, Zero. You've just entered the affected sector. Be careful, reports indicate the Nightmare outbreak is spreading faster than expected."
-                                        },
-                                        {
-                                            speaker: "x",
-                                            text: "The damage is worse than I imagined..."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "And the mechaniloids are already attacking anything that moves."
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "We've lost contact with every Hunter team deployed here. No survivors have reported back."
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "Then our priority is containing the outbreak before it reaches the remaining sectors."
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "There's something else. Security records show a Reploid moving through the infected zones shortly before communications went down."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "The one that looks like me."
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "Yes. The sightings match your appearance almost perfectly."
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "Any idea who it is?"
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "None. But every major incident seems connected to its presence."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Then we'll find it."
-                                        },
-
-                                        {
-                                            speaker: "alia",
-                                            text: "Be careful. Whatever is behind this, it doesn't resemble any Maverick activity we've encountered before."
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "We'll secure the area and investigate the source."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "And if that impostor is responsible, I'll make sure this ends here."
-                                        }
-                                    ]
-
-                                },
-
-                                {
-                                    waveIndex: 8,
-                                    isAfterBossSpawn: true,
-
-                                    dialogs:[
-                                        {
-                                            speaker: "x",
-                                            text: "Impossible..."
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "That form... Zero, it's the same Nightmare form I fought during the Gate Incident."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "So that's what Alia detected."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "A Nightmare copy of me."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "RRRAAAAGH!!"
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "DESTROY...!"
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "He's completely out of control."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "No. He's worse."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "The original Nightmare Zero vanished after that day..."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "This thing shouldn't exist anymore."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "KILL...!"
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "DESTROY EVERYTHING!!"
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "The Nightmare Virus must have recreated him somehow."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "X!!"
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "DIE!!"
-                                        },
-
-                                        {
-                                            speaker: "x",
-                                            text: "He remembers me..."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Maybe. Or maybe all that's left are fragments of hatred."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "ZERO...!"
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "ERASE...!"
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Whatever he is, it's time to end."
-                                        },
-
-                                        {
-                                            speaker: "zero",
-                                            text: "Let's put him to rest."
-                                        },
-
-                                        {
-                                            speaker: "nightmare_zero",
-                                            text: "RRRAAAAAAAAGH!!!"
-                                        }
-                                    ]
-                                }
-
-                            ],
+                            waves: waves,
+                            dialogs: [],
 
                             stage_theme: "introduction_stage",
                             boss_theme:"boss",
@@ -499,6 +283,7 @@ extends Phaser.Scene {
                         }
 
                     );
+                    }
 
             }
 
@@ -662,7 +447,7 @@ is about to begin...`;
     createGameData(){
         const GameData = {
 
-            currentChapter: 1,
+            difficulty: this.data.difficulty,
 
             currentArmors: ["x","zero"],
 
@@ -733,7 +518,11 @@ is about to begin...`;
 
         };
 
+        this.GameData = GameData;
+
         DataManager.saveGameData(GameData);
+
+        DataManager.saveSaveData(GameData);
     }
 
 }

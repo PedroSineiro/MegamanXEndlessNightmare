@@ -39,7 +39,7 @@ extends Phaser.Scene {
 
             this.DataManager.saveGameData(data);
 
-        } 
+        }
 
         this.GameData = this.DataManager.loadGameData();
 

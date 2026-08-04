@@ -491,7 +491,7 @@ extends Phaser.Scene {
 
             );
 
-        EnemyBuilder.buildEnemy(enemy, this.GameData.nightmareLevel);
+        EnemyBuilder.buildEnemy(enemy, this.GameData.nightmareLevel, this.GameData.difficulty);
 
         enemy.lane =
         lane;
@@ -1555,7 +1555,7 @@ extends Phaser.Scene {
         this.enemies =
             [];
 
-        EnemyBuilder.buildBoss(this.boss, this.GameData.nightmareLevel);
+        EnemyBuilder.buildBoss(this.boss, this.GameData.nightmareLevel, this.GameData.difficulty);
 
         this.enemies.push(
             this.boss
@@ -1599,7 +1599,7 @@ extends Phaser.Scene {
 
             );
 
-        EnemyBuilder.buildBoss(this.miniboss, this.GameData.nightmareLevel);
+        EnemyBuilder.buildBoss(this.miniboss, this.GameData.nightmareLevel, this.GameData.difficulty);
 
         await this.miniboss.spawn();
 
@@ -1847,6 +1847,68 @@ extends Phaser.Scene {
             }
 
         );
+
+    }
+
+    updateNovaStrikeCollisions() {
+
+        const enemies = this.getTotalEnemies();
+
+        this.players?.forEach(player => {
+
+            const novaHitbox =
+                player.novaStrikeHitbox;
+
+            if (!novaHitbox?.hitbox) {
+                return;
+            }
+
+            enemies.forEach(enemy => {
+
+                if (enemy.isDead) {
+                    return;
+                }
+
+                const hit =
+
+                    Phaser
+                        .Geom
+                        .Intersects
+                        .RectangleToRectangle(
+
+                            novaHitbox.hitbox,
+
+                            enemy.hurtbox
+
+                        );
+
+                if (!hit) {
+                    return;
+                }
+
+                if (
+
+                    novaHitbox
+                        .alreadyHit
+                        .includes(enemy)
+
+                ) {
+
+                    return;
+
+                }
+
+                enemy.takeDamage(
+                    novaHitbox.damage
+                );
+
+                novaHitbox
+                    .alreadyHit
+                    .push(enemy);
+
+            });
+
+        });
 
     }
 
@@ -2099,6 +2161,8 @@ extends Phaser.Scene {
         this.updatePlayerShots();
 
         this.updateSlashCollisions();
+
+        this.updateNovaStrikeCollisions();
 
         this.updateGigaShots();
 
