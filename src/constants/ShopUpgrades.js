@@ -94,7 +94,7 @@ export const SHOP_UPGRADES = {
             },
             {
                 name: "ultimate",
-                cost: 2800,
+                cost: 2400,
                 base_evasion: 30,
                 base_reduction: 50,
                 giga_attack_type: "Row",
