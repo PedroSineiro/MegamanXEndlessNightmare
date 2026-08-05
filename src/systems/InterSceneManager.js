@@ -461,6 +461,8 @@ export default class InterSceneManager {
             gameData.storyFlags.hasSeenRepliforce = true;
         }
 
+        const ending = gameData.amountCompletedStages == this.TOTAL_AMOUNT_STAGES;
+
         gameData.nightmareLevel = this.updateNightmareLevel(gameData.nightmareLevel, gameData.amountCompletedStages);
         
         gameData.completedStages.push(combatData.stage);
@@ -469,7 +471,7 @@ export default class InterSceneManager {
 
         DataManager.saveGameData(gameData);
 
-        return {scene: "BaseScene", data: {}}
+        return {scene: "BaseScene", data:{ending}}
     }
 
     static handleGameOver(gameData, DataManager, combatData){

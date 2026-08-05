@@ -26,6 +26,11 @@ createAnimations(scene) {
         {
             id: "blade",
             hasNovaStrike: false
+        },
+
+        {
+            id: "shadow",
+            hasNovaStrike: false
         }
 
     ];
@@ -176,6 +181,8 @@ createAnimations(scene) {
 
     createFalconGigaAttack(scene);
 
+    createSlash(scene);
+
     let frames = [];
 
     for (let i = 1; i <= 5; i++) {
@@ -209,8 +216,6 @@ createAnimations(scene) {
         frameRate: 30,
         repeat: -1
     });
-
-    createBladeSlash(scene);
 }
 
 function createSimpleAnimation(
@@ -431,35 +436,40 @@ function createFalconGigaAttack(scene) {
     });
 }
 
-function createBladeSlash(scene) {
+function createSlash(scene) {
 
-    const frames = [];
+    const armors = ["blade", "shadow"];
 
-    for(let i = 1; i<=13; i++){
+    for(const armor of armors){
+        const frames = [];
+
+        for(let i = 1; i<=13; i++){
+            frames.push({
+                key: `${armor}_slash_${i}`
+            })
+        }
+
         frames.push({
-            key: `blade_slash_${i}`
-        })
+            key: `${armor}_slash_14`,
+            duration: 180
+        });
+
+        frames.push({
+            key: `${armor}_slash_15`,
+            duration: 180
+        });
+
+        scene.anims.create({
+
+            key: `${armor}_slash`,
+
+            frames,
+
+            frameRate: 25,
+
+            repeat: 0
+
+        });
+
     }
-
-    frames.push({
-        key: "blade_slash_14",
-        duration: 180
-    });
-
-    frames.push({
-        key: "blade_slash_15",
-        duration: 180
-    });
-
-    scene.anims.create({
-
-        key: "blade_slash",
-
-        frames,
-
-        frameRate: 25,
-
-        repeat: 0
-
-    });
 }

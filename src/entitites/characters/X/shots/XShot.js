@@ -15,11 +15,13 @@ from
 
 export default class XShot {
 
-    constructor(scene, x, y, direction, shotType, currentArmor, damage, isPiercing = false, hasSpawn = true) {
+    constructor(scene, owner, x, y, direction, shotType, currentArmor, damage, isPiercing = false, hasSpawn = true) {
 
         this.active = true;
 
         this.scene = scene;
+
+        this.owner = owner;
 
         this.direction = direction;
 
@@ -138,6 +140,13 @@ export default class XShot {
 
         this.sprite
             ?.destroy();
+
+        const index =
+        this.owner.shots.indexOf(this);
+
+        if (index !== -1) {
+            this.owner.shots.splice(index, 1);
+        }
 
     }
 

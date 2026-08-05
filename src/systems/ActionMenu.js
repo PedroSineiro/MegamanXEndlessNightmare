@@ -285,7 +285,7 @@ ActionMenu {
 
             if (
                 character
-                    .turnActions >= character.chargingMediumShotActions
+                    .turnActions >= character.chargingMediumShotActions && !(character.currentArmor=="shadow" || character.currentArmor=="gaea")
 
             ) {
                 this.addAttackButton(
@@ -414,7 +414,7 @@ ActionMenu {
 
             if (
 
-                character.turnActions >= 2 && character.currentArmor=="blade"
+                character.turnActions >= 2 && (character.currentArmor=="blade" || character.currentArmor=="shadow")
 
             ) {
                 this.addSpecialAttackButton(
@@ -512,6 +512,44 @@ ActionMenu {
                                 await this.scene
                                     .actionRunner
                                     .bladeGigaAttack(
+
+                                        character,
+
+                                        enemy
+
+                                    );
+
+                                this.refresh();
+
+                            }
+
+                        );
+                }
+                );
+            }
+
+            if((character.currentArmor=="shadow") && this.canUseGigaAttack(character)){
+                this.addGigaAttackButton(
+                    "Giga Attack",
+
+                    async () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                character
+                                    .turnActions -= 4;
+                                
+                                if(character.gigaAttackMustRecharge) character.gigaAttackRechargeTurns = 0;
+
+                                await this.scene
+                                    .actionRunner
+                                    .shadowGigaAttack(
 
                                         character,
 

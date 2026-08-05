@@ -102,6 +102,11 @@ loadAssets(scene) {
     );
 
     scene.load.image(
+        "shadow_empty_armor",
+        "assets/sprites/characters/x/shadow/empty_armor/empty_armor.png"
+    );
+
+    scene.load.image(
         "zero_empty_armor",
         "assets/sprites/characters/zero/zero/empty_armor/empty_armor.png"
     );

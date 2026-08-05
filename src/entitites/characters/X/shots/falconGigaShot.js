@@ -4,6 +4,8 @@ export default class FalconGigaShot {
 
         scene,
 
+        owner,
+
         x,
 
         y,
@@ -16,6 +18,8 @@ export default class FalconGigaShot {
 
         this.scene =
             scene;
+
+        this.owner = owner;
 
         this.active =
             true;
@@ -134,6 +138,13 @@ export default class FalconGigaShot {
             false;
 
         this.sprite?.destroy();
+
+        const index =
+        this.owner.gigaShots.indexOf(this);
+
+        if (index !== -1) {
+            this.owner.gigaShots.splice(index, 1);
+        }
 
     }
 

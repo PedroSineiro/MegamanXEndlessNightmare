@@ -60,6 +60,10 @@ import SlashState from "../../../states/player/saber/SlashState.js";
 
 import BladeGigaAttackState from "../../../states/player/gigaAttackX/BladeGigaAttackState.js";
 
+import ShadowGigaAttackState from "../../../states/player/gigaAttackX/ShadowGigaAttackState.js";
+
+import ShadowGigaSlash from "./shots/ShadowGigaSlash.js";
+
 
 export default class X
 extends BaseCharacter {
@@ -132,6 +136,8 @@ extends BaseCharacter {
         this.bladeGigaAttackDamage = 280;
 
         this.novaStrikeDamage = 320;
+
+        this.shadowGigaAttackDamage = 100;
 
         this.novaStrikeHitbox = null;
 
@@ -315,7 +321,10 @@ extends BaseCharacter {
                         new FalconGigaAttackState(),
 
                     blade:
-                        new BladeGigaAttackState()
+                        new BladeGigaAttackState(),
+
+                    shadow:
+                        new ShadowGigaAttackState()
     
                 },
     
@@ -480,13 +489,15 @@ extends BaseCharacter {
 
         }
 
-        const hasSpawn = !(this.currentArmor == "blade" && (shotType == "charged" || shotType == "giga"));
+        const hasSpawn = !((this.currentArmor == "blade" || this.currentArmor == "shadow") && (shotType == "charged" || shotType == "giga"));
 
         const shot =
 
             new XShot(
 
                 this.scene,
+
+                this,
 
                 this.sprite.x +
                 offsetX,
@@ -977,6 +988,8 @@ extends BaseCharacter {
 
                                 this.scene,
 
+                                this,
+
                                 baseX +
 
                                 Phaser.Math.Between(
@@ -1022,6 +1035,67 @@ extends BaseCharacter {
 
     }
 
+    shadowGigaSlash() {
+
+        const offsetX =
+
+            this.direction === 1
+            ? 30
+            : -30;
+
+        const offsetY = -135;
+
+        const slash1 =
+
+            new ShadowGigaSlash(
+
+                this.scene,
+
+                this,
+
+                this.sprite.x +
+                offsetX,
+
+                this.sprite.y + offsetY,
+
+                this.direction,
+
+                true,
+
+                this.shadowGigaAttackDamage
+
+            );
+
+        this.gigaShots.push(
+            slash1
+        );
+
+        const slash2 =
+
+            new ShadowGigaSlash(
+
+                this.scene,
+
+                this,
+
+                this.sprite.x +
+                offsetX,
+
+                this.sprite.y + offsetY,
+
+                this.direction,
+
+                false,
+
+                this.shadowGigaAttackDamage
+
+            );
+
+        this.gigaShots.push(
+            slash2
+        );
+    }
+
     update() {
 
         //
@@ -1047,16 +1121,6 @@ extends BaseCharacter {
         //
         // shots
         //
-
-        this.shots =
-
-            this.shots
-                .filter(
-
-                    shot =>
-                        shot.active
-
-                );
 
         this.shots
             .forEach(

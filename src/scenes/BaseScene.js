@@ -29,13 +29,17 @@ extends Phaser.Scene {
 
     init(data) {
 
+        this.data = data;
+
+        this.isEnding = data.ending ?? false;
+
         this.SceneHelper = SceneHelper;
 
         this.DataManager = DataManager;
 
         this.InterSceneManager = InterSceneManager;
 
-        if(data && Object.keys(data).length > 0){
+        if(data && Object.keys(data).length > 1){
 
             this.DataManager.saveGameData(data);
 
@@ -45,7 +49,7 @@ extends Phaser.Scene {
 
         this.inventoryManager = new InventoryManager(this.GameData);
 
-        this.stage_theme = "new_base_stage";
+        this.stage_theme = this.isEnding ? "ending":"new_base_stage";
 
         this.stage = "new_base_stage";
 
@@ -87,9 +91,13 @@ extends Phaser.Scene {
 
         );
 
-        this.BaseMenu = new BaseMenu(this);
+        if(!this.isEnding){
+            this.BaseMenu = new BaseMenu(this);
 
-        this.BaseMenu.createButtons();
+            this.BaseMenu.createButtons();
+        } else {
+            await this.goEndingScene();
+        }
 
 
     }
@@ -197,6 +205,14 @@ extends Phaser.Scene {
         this.scene.start(
 
             sceneData.scene, sceneData.data);
+    }
+
+    async goEndingScene() {
+        await this.SceneHelper.fadeToBlack(this, 1000);
+
+        this.scene.start(
+
+            "EndingScene",{});
     }
 
 

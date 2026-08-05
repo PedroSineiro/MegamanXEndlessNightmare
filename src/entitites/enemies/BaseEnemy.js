@@ -658,7 +658,7 @@ export default class BaseEnemy {
     }
 
     takeDamage(
-        damage
+        damage, cooldownTime = 350
     ) {
 
         //
@@ -703,7 +703,7 @@ export default class BaseEnemy {
             this.scene.time
             .delayedCall(
 
-                350,
+                cooldownTime,
 
                 () => {
 
@@ -826,7 +826,7 @@ export default class BaseEnemy {
         this.scene.time
             .delayedCall(
 
-                350,
+                cooldownTime,
 
                 () => {
 

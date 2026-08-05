@@ -253,7 +253,7 @@ extends Phaser.Scene {
 
                             type: "boss",
 
-                            boss: "nightmare_zero"
+                            boss: "magma_dragoon"
 
                         });
 
@@ -477,7 +477,8 @@ is about to begin...`;
                         fourth: false,
                         ultimate: false,
                         falcon: false,
-                        blade: false
+                        blade: false,
+                        shadow: false
 
                     }
 

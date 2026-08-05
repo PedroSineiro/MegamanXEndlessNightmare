@@ -104,4 +104,9 @@ export default function loadStageAssets(scene) {
         "final_boss",
         "assets/music/final_boss.mp3"
     );
+
+    scene.load.audio(
+        "ending",
+        "assets/music/ending.mp3"
+    );
 }

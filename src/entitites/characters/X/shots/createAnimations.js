@@ -36,6 +36,13 @@ createAnimations(scene) {
             source: "blade",
             chargedSpawnFrames: null,
             chargedMovingFrames: [1, 2, 3, 4, 5]
+        },
+
+        {
+            armor: "shadow",
+            source: "shadow",
+            chargedSpawnFrames: null,
+            chargedMovingFrames: [1, 2, 3, 4]
         }
     ];
 
@@ -73,6 +80,25 @@ createAnimations(scene) {
 
     });
 
+    scene.anims.create({
+
+        key: "shadow_giga_attack",
+
+        frames: [
+
+            { key: "shadow_giga_attack_1" },
+            { key: "shadow_giga_attack_2" },
+            { key: "shadow_giga_attack_3" },
+            { key: "shadow_giga_attack_4" },
+            { key: "shadow_giga_attack_5" }
+
+        ],
+
+        frameRate: 20,
+        repeat: -1
+
+    });
+
 }
 
 function createShotAnimations(
@@ -101,18 +127,17 @@ function createShotAnimations(
 
     });
 
+    const frames = [];
+
+    for(let i = 5; i<=(armor=="shadow"?16:8);i++){
+        frames.push({ key: `${sourceArmor}_basic_shot_${i}` })
+    }
+
     scene.anims.create({
 
         key: `${armor}_basic_shot_moving`,
 
-        frames: [
-
-            { key: `${sourceArmor}_basic_shot_5` },
-            { key: `${sourceArmor}_basic_shot_6` },
-            { key: `${sourceArmor}_basic_shot_7` },
-            { key: `${sourceArmor}_basic_shot_8` }
-
-        ],
+        frames,
 
         frameRate: 20,
         repeat: -1

@@ -233,6 +233,14 @@ export default class BaseShot {
         this.debugGraphics
             ?.destroy();
 
+        const index =
+            this.owner.shots.indexOf(this);
+
+        if (index !== -1) {
+            this.owner.shots.splice(index, 1);
+        }
+
+
     }
 
 }

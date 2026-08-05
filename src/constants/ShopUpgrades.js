@@ -84,9 +84,18 @@ export const SHOP_UPGRADES = {
                 preview_sprite: "blade_empty_armor"
             },
             {
+                name: "shadow",
+                cost: 1500,
+                base_evasion: 30,
+                base_reduction: 50,
+                giga_attack_type: "Target",
+                description: "Has no medium shot. Has a saber attack.",
+                preview_sprite: "shadow_empty_armor"
+            },
+            {
                 name: "ultimate",
                 cost: 2800,
-                base_evasion: 20,
+                base_evasion: 30,
                 base_reduction: 50,
                 giga_attack_type: "Row",
                 description: "Charged shot does more damage. Has unlimited Giga Attack.",

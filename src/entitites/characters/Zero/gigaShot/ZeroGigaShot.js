@@ -2,6 +2,7 @@ export default class ZeroGigaShot {
 
     constructor(
         scene,
+        owner,
         x,
         y,
         damage
@@ -9,6 +10,8 @@ export default class ZeroGigaShot {
 
         this.scene =
             scene;
+
+        this.owner = owner;
 
         this.active =
             true;
@@ -131,7 +134,7 @@ export default class ZeroGigaShot {
 
         if (
             this.sprite.y <
-            -100
+            -300
         ) {
 
             this.destroy();
@@ -150,6 +153,13 @@ export default class ZeroGigaShot {
 
         this.debugGraphics
             ?.destroy();
+
+        const index =
+            this.owner.gigaShots.indexOf(this);
+
+        if (index !== -1) {
+            this.owner.gigaShots.splice(index, 1);
+        }
 
     }
 

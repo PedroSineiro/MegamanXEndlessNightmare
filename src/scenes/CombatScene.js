@@ -1962,7 +1962,8 @@ extends Phaser.Scene {
 
                                     enemy
                                         .takeDamage(
-                                            shot.damage
+                                            shot.damage,
+                                            shot.cooldownTime?? 350
                                         );
 
                                 }

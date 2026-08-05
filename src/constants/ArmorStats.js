@@ -23,7 +23,7 @@ export const ARMOR_STATS = {
     },
 
     "ultimate":{
-        baseEvasion: 0.20,
+        baseEvasion: 0.30,
         baseReduction: 0.50,
         basicShotDamage: 10,
         mediumShotDamage: 25,
@@ -50,6 +50,18 @@ export const ARMOR_STATS = {
         baseReduction: 0.50,
         basicShotDamage: 10,
         mediumShotDamage: 25,
+        chargedShotDamage: 60,
+        slashDamage: 80,
+        piercingShot: false,
+        hasGigaAttack: true,
+        gigaAttackMustRecharge: true
+    },
+
+    "shadow":{
+        baseEvasion: 0.30,
+        baseReduction: 0.50,
+        basicShotDamage: 10,
+        mediumShotDamage: 0,
         chargedShotDamage: 60,
         slashDamage: 80,
         piercingShot: false,

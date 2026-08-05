@@ -487,36 +487,14 @@ extends BaseCharacter {
 
                             this.scene,
 
+                            this,
+
                             x,
                             y,
 
                             this.gigaAttackDamage,
 
                         );
-
-                    //
-                    // remover ao sair do topo
-                    //
-
-                    const originalUpdate =
-                        shot.update
-                            .bind(shot);
-
-                    shot.update =
-                        () => {
-
-                            originalUpdate();
-
-                            if (
-                                shot.sprite.y <
-                                -100
-                            ) {
-
-                                shot.destroy();
-
-                            }
-
-                        };
 
                     this.gigaShots.push(
                         shot

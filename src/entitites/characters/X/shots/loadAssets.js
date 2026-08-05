@@ -24,7 +24,14 @@ export default function loadAssets(scene) {
             key: "blade",
             chargedFolder: "blade",
             chargedFrames: 5
+        },
+
+        {
+            key: "shadow",
+            chargedFolder: "shadow",
+            chargedFrames: 4
         }
+
 
     ];
 
@@ -38,17 +45,19 @@ export default function loadAssets(scene) {
 
             let i = 1;
 
-            i <= 8;
+            i <= (armor.key=="shadow"? 16:8);
 
             i++
 
         ) {
 
+            const baseFolder = armor.key == "shadow"? "shadow": "base_x"
+
             scene.load.image(
 
                 `${armor.key}_basic_shot_${i}`,
 
-                `assets/sprites/characters/x/base_x/basic_shot/basic_shot_${i}.png`
+                `assets/sprites/characters/x/${baseFolder}/basic_shot/basic_shot_${i}.png`
 
             );
 
@@ -120,5 +129,13 @@ export default function loadAssets(scene) {
         "blade_giga_shot_2",
         "assets/sprites/characters/x/blade/giga_attack/giga_attack_2.png"
     );
+
+
+    for(let i = 1; i<=5; i++){
+        scene.load.image(
+        `shadow_giga_attack_${i}`,
+        `assets/sprites/characters/x/shadow/giga_attack/giga_attack_${i}.png`
+    );
+    }
 
 }

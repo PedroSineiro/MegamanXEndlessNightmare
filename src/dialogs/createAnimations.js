@@ -13,6 +13,8 @@ createAnimations(scene) {
 
         "blade",
 
+        "shadow",
+
         "zero",
 
         "black_zero",

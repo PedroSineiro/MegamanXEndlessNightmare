@@ -560,6 +560,183 @@ BASE_DIALOGS = {
             speaker: "zero",
             text: "This won't be in vain."
         }
+    ],
+
+    9: [
+        {
+            speaker: "alia",
+            text: "You did it... the Nightmare signal is gone."
+        },
+
+        {
+            speaker: "alia",
+            text: "I honestly don't know how many times you've saved the world anymore."
+        },
+
+        {
+            speaker: "alia",
+            text: "Every time a new crisis appears, you two somehow find a way to overcome it."
+        },
+
+        {
+            speaker: "alia",
+            text: "Even after everything you've been through... you never stop moving forward."
+        },
+
+        {
+            speaker: "x",
+            text: "It wasn't just us. Everyone helped make this possible."
+        },
+
+        {
+            speaker: "zero",
+            text: "..."
+        },
+
+        {
+            speaker: "alia",
+            text: "Zero?"
+        },
+
+        {
+            speaker: "zero",
+            text: "This nightmare..."
+        },
+
+        {
+            speaker: "zero",
+            text: "In the end, it all traced back to me again."
+        },
+
+        {
+            speaker: "zero",
+            text: "Another copy. Another weapon born from a past I still don't understand."
+        },
+
+        {
+            speaker: "zero",
+            text: "No matter how many times we stop these threats, they keep resurfacing."
+        },
+
+        {
+            speaker: "zero",
+            text: "Sometimes I wonder if they'll ever truly disappear."
+        },
+
+        {
+            speaker: "x",
+            text: "Maybe they won't."
+        },
+
+        {
+            speaker: "x",
+            text: "The future has never been certain for either of us."
+        },
+
+        {
+            speaker: "x",
+            text: "There are still things about the world... and about ourselves... that we don't understand."
+        },
+
+        {
+            speaker: "x",
+            text: "And honestly, I have doubts too."
+        },
+
+        {
+            speaker: "x",
+            text: "About what comes next. About what we'll face tomorrow."
+        },
+
+        {
+            speaker: "zero",
+            text: "..."
+        },
+
+        {
+            speaker: "x",
+            text: "But every time something threatens the future..."
+        },
+
+        {
+            speaker: "x",
+            text: "We've faced it together."
+        },
+
+        {
+            speaker: "x",
+            text: "And every time, we've found a way through."
+        },
+
+        {
+            speaker: "x",
+            text: "No matter what your past is, Zero..."
+        },
+
+        {
+            speaker: "x",
+            text: "You're the one who chooses who you are now."
+        },
+
+        {
+            speaker: "zero",
+            text: "Heh..."
+        },
+
+        {
+            speaker: "zero",
+            text: "Still trying to save everyone."
+        },
+
+        {
+            speaker: "x",
+            text: "Someone has to."
+        },
+
+        {
+            speaker: "zero",
+            text: "I suppose you're right."
+        },
+
+        {
+            speaker: "zero",
+            text: "Whatever comes next..."
+        },
+
+        {
+            speaker: "zero",
+            text: "We'll handle it."
+        },
+
+        {
+            speaker: "alia",
+            text: "That's what I wanted to hear."
+        },
+
+        {
+            speaker: "alia",
+            text: "For now, enjoy the peace while it lasts."
+        },
+
+        {
+            speaker: "alia",
+            text: "You've earned it."
+        },
+
+        {
+            speaker: "x",
+            text: "Come on, Zero. Let's go home."
+        },
+
+        {
+            speaker: "zero",
+            text: "Yeah."
+        },
+
+        {
+            speaker: "zero",
+            text: "Let's go."
+        }
     ]
 
 };

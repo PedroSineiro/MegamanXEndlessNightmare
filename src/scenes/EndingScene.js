@@ -88,10 +88,6 @@ export default class EndingScene extends Phaser.Scene {
     }
 
     async switchScene(sceneName, sceneArg = {}) {
-        //
-        // fade
-        //
-
         this.cameras
             .main
             .fadeOut(
@@ -120,6 +116,13 @@ export default class EndingScene extends Phaser.Scene {
             }
 
         );
+
+        const music = this.sound.get("ending");
+
+        if (music) {
+            music.stop();
+            music.destroy();
+        }
 
         this.scene.start(
 

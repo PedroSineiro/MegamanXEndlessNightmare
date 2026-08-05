@@ -164,6 +164,9 @@ export default class TitleScene extends Phaser.Scene {
             520,
 
             async () => {
+
+                this.loadGameButton.disableInteractive();
+
                 this.cameras.main.fadeOut(
                     500,
                     0,

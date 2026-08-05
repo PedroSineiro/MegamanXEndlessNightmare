@@ -25,6 +25,11 @@ export default function loadAssets(scene) {
         {
             key: "blade",
             folder: "blade"
+        },
+
+        {
+            key: "shadow",
+            folder: "shadow"
         }
 
     ];
@@ -166,7 +171,7 @@ export default function loadAssets(scene) {
     //
     loadFalconGigaAttack(scene);
 
-    loadBladeSlash(scene);
+    loadSlash(scene);
 
     for (let i = 1; i <= 5; i++) {
 
@@ -318,26 +323,36 @@ function loadFalconGigaAttack(scene){
 }
 
 
-function loadBladeSlash(scene) {
+function loadSlash(scene) {
 
-    for (
+    const armors = [
 
-        let i = 1;
+        "blade",
 
-        i <= 15;
+        "shadow"
 
-        i++
+    ];
 
-    ) {
+    for(const armor of armors) {
+        for (
 
-        scene.load.image(
+            let i = 1;
 
-            `blade_slash_${i}`,
+            i <= 15;
 
-            `assets/sprites/characters/x/blade/slash/slash_${i}.png`
+            i++
 
-        );
+        ) {
 
+            scene.load.image(
+
+                `${armor}_slash_${i}`,
+
+                `assets/sprites/characters/x/${armor}/slash/slash_${i}.png`
+
+            );
+
+        }
     }
 }
 
