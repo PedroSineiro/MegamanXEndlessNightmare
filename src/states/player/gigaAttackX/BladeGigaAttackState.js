@@ -6,7 +6,7 @@ import { SLASH_CONFIG } from "../../../constants/SlashConfig.js";
 export default class
 BladeGigaAttackState {
 
-    enter(
+    async enter(
         player
     ) {
 
@@ -20,7 +20,7 @@ BladeGigaAttackState {
                 
         const impactFrame = 4;
 
-        const onUpdate = (
+        const onUpdate = async (
 
             animation,
             frame
@@ -45,6 +45,10 @@ BladeGigaAttackState {
                 volume:0.2
             })
 
+
+            player.shoot(4);
+
+            await player.wait(50);
 
             player.shoot(4);
         };

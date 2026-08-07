@@ -33,6 +33,8 @@ export default class XShot {
 
         this.playerCurrentArmor = currentArmor;
 
+        this.cooldownTime = shotType == "giga"? 1000: 350;
+
         this.config =
             SHOT_CONFIG[currentArmor][
                 this.shotType
