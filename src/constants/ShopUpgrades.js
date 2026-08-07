@@ -80,7 +80,7 @@ export const SHOP_UPGRADES = {
                 base_evasion: 5,
                 base_reduction: 70,
                 giga_attack_type: "Target",
-                description: "Has quick charge, basic and charged shot does more damage.",
+                description: "Has quick charge. Has no medium shot. Basic and charged shot does more damage.",
                 preview_sprite: "gaea_empty_armor"
             },
             {
