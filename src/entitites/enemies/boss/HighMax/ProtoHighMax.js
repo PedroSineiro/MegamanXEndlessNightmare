@@ -1,4 +1,4 @@
-import HighMax from "./Highmax.js";
+import HighMax from "./HighMax.js";
 
 export default class
 ProtoHighMax
