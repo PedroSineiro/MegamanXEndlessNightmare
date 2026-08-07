@@ -10,7 +10,7 @@ import SpiralPegasus from "../entitites/enemies/boss/SpiralPegasus/SpiralPegasus
 import Colonel from "../entitites/enemies/boss/Colonel/Colonel.js";
 import Double from "../entitites/enemies/boss/Double/Double.js";
 import Dynamo from "../entitites/enemies/boss/Dynamo/Dynamo.js";
-import HighMax from "../entitites/enemies/boss/HighMax/Highmax.js";
+import HighMax from "../entitites/enemies/boss/HighMax/HighMax.js";
 import SigmaHead from "../entitites/enemies/boss/SigmaHead/SigmaHead.js";
 import Sigma from "../entitites/enemies/boss/Sigma/Sigma.js";
 import AwakenedNightmareZero from "../entitites/enemies/boss/AwakenedNightmareZero/AwakenedNightmareZero.js";

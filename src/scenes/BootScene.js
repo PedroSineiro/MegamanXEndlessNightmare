@@ -210,11 +210,11 @@ import createDynamoAnimations from "../entitites/enemies/boss/Dynamo/createAnima
 
 import createDynamoBoomerangAnimations from "../entitites/enemies/boss/Dynamo/boomerang/createAnimations.js";
 
-import createHighMaxAnimations from "../entitites/enemies/boss/highMax/createAnimations.js";
+import createHighMaxAnimations from "../entitites/enemies/boss/HighMax/createAnimations.js";
 
-import createHighMaxAttackSphereAnimations from "../entitites/enemies/boss/highMax/sphere/createAnimations.js";
+import createHighMaxAttackSphereAnimations from "../entitites/enemies/boss/HighMax/sphere/createAnimations.js";
 
-import createHighMaxGigaAttackSphereAnimations from "../entitites/enemies/boss/highMax/gigaAttack/createAnimations.js";
+import createHighMaxGigaAttackSphereAnimations from "../entitites/enemies/boss/HighMax/gigaAttack/createAnimations.js";
 
 import createSigmaHeadAnimations from "../entitites/enemies/boss/SigmaHead/createAnimations.js";
 
