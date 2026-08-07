@@ -23,6 +23,11 @@ export default function loadAssets(scene) {
         },
 
         {
+            key: "gaea",
+            folder: "gaea"
+        },
+
+        {
             key: "blade",
             folder: "blade"
         },
@@ -173,6 +178,8 @@ export default function loadAssets(scene) {
 
     loadSlash(scene);
 
+    loadGaeaGigaAttack(scene);
+
     for (let i = 1; i <= 5; i++) {
 
         scene.load.image(
@@ -254,6 +261,16 @@ export default function loadAssets(scene) {
     scene.load.audio(
         "falcon_giga_attack",
         "assets/sounds/X/falcon_giga_attack.wav"
+    );
+
+    scene.load.audio(
+        "gaea_start_giga_attack",
+        "assets/sounds/X/gaea_start_giga_attack.wav"
+    );
+
+    scene.load.audio(
+        "gaea_giga_attack",
+        "assets/sounds/X/gaea_giga_attack.wav"
     );
 }
 
@@ -355,4 +372,26 @@ function loadSlash(scene) {
         }
     }
 }
+
+function loadGaeaGigaAttack(scene) {
+        for (
+
+            let i = 1;
+
+            i <= 14;
+
+            i++
+
+        ) {
+
+            scene.load.image(
+
+                `gaea_giga_attack_${i}`,
+
+                `assets/sprites/characters/x/gaea/giga_attack/giga_attack_${i}.png`
+
+            );
+
+        }
+    }
 

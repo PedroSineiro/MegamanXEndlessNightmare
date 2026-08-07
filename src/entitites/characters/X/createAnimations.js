@@ -31,7 +31,12 @@ createAnimations(scene) {
         {
             id: "shadow",
             hasNovaStrike: false
-        }
+        },
+
+        {
+            id: "gaea",
+            hasNovaStrike: false
+        },
 
     ];
 
@@ -182,6 +187,8 @@ createAnimations(scene) {
     createFalconGigaAttack(scene);
 
     createSlash(scene);
+
+    createGaeaGigaAttack(scene);
 
     let frames = [];
 
@@ -472,4 +479,135 @@ function createSlash(scene) {
         });
 
     }
+}
+
+function createGaeaGigaAttack(scene) {
+    scene.anims.create({
+
+        key: "gaea_start_giga_attack",
+
+        frames:[
+            {
+                key: "gaea_giga_attack_1"
+            },
+            {
+                key: "gaea_giga_attack_2"
+            },
+            {
+                key: "gaea_giga_attack_3"
+            },
+            {
+                key: "gaea_giga_attack_2"
+            },
+            {
+                key: "gaea_giga_attack_3"
+            },
+            {
+                key: "gaea_giga_attack_2"
+            },
+            {
+                key: "gaea_giga_attack_3"
+            },
+            {
+                key: "gaea_giga_attack_2"
+            },
+            {
+                key: "gaea_giga_attack_3"
+            },
+            {
+                key: "gaea_giga_attack_4"
+            },
+            {
+                key: "gaea_giga_attack_5"
+            },
+            {
+                key: "gaea_giga_attack_6"
+            },
+            {
+                key: "gaea_giga_attack_7"
+            },
+            {
+                key: "gaea_giga_attack_8"
+            },
+            {
+                key: "gaea_giga_attack_9"
+            },
+            {
+                key: "gaea_giga_attack_7"
+            },
+            {
+                key: "gaea_giga_attack_8"
+            },
+            {
+                key: "gaea_giga_attack_9"
+            },
+            {
+                key: "gaea_giga_attack_7"
+            },
+            {
+                key: "gaea_giga_attack_8"
+            },
+            {
+                key: "gaea_giga_attack_9"
+            },
+            {
+                key: "gaea_giga_attack_7"
+            },
+            {
+                key: "gaea_giga_attack_8"
+            },
+            {
+                key: "gaea_giga_attack_9"
+            },
+            {
+                key: "gaea_giga_attack_10"
+            },
+            {
+                key: "gaea_giga_attack_11"
+            },
+            {
+                key: "gaea_giga_attack_12"
+            },
+        ],
+
+        frameRate: 26,
+
+        repeat: 0
+
+    });
+
+    scene.anims.create({
+
+        key: "gaea_giga_attack",
+
+        frames:[
+            {
+                key: "gaea_giga_attack_13"
+            },
+            {
+                key: "gaea_giga_attack_14"
+            },
+        ],
+
+        frameRate: 30,
+
+        repeat: -1
+
+    });
+
+    scene.anims.create({
+
+        key: "gaea_end_giga_attack",
+
+        frames:[
+            {
+                key: "gaea_giga_attack_13"
+            },
+        ],
+
+        frameRate: 1,
+
+        repeat: 0
+
+    });
 }

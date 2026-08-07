@@ -606,6 +606,105 @@ CharacterActionRunner {
 
     }
 
+    async gaeaGigaAttack(
+
+        actor,
+
+        target
+
+    ) {
+
+        actor.isBusy =
+            true;
+
+        const originalX =
+            actor.sprite.x;
+
+        const originalY =
+            actor.sprite.y;
+
+        //
+        // posição perto do alvo
+        //
+
+        let offsetX = 80;
+
+        const dx =
+
+            target.sprite.x -
+
+            actor.sprite.x;
+
+        if (dx > 0) {
+
+            offsetX = - 80;
+
+            actor.direction =
+                1;
+
+            actor.sprite
+                .setFlipX(
+                    false
+                );
+
+        }
+
+
+        const targetX =
+
+            target.spawnX +
+            offsetX;
+
+
+        const targetY =
+            target.originalY + 120;
+
+
+        //
+        // mover até lane
+        //
+
+        await this.moveToLane(
+
+            actor,
+
+            targetY
+
+        );
+
+        //
+        // mover horizontal
+        //
+
+        await this.moveToX(
+
+            actor,
+
+            targetX
+
+        );
+
+        this.pressGigaAttack(actor);
+
+        await this.wait(
+            4500
+        );
+
+        await this.moveBack(
+
+            actor,
+
+            originalX,
+
+            originalY
+
+        );
+
+        actor.isBusy =
+            false;
+
+    }
+
     async moveToX(
         actor,
         targetX

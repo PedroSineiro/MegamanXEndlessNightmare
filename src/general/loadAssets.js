@@ -97,6 +97,11 @@ loadAssets(scene) {
     );
 
     scene.load.image(
+        "gaea_empty_armor",
+        "assets/sprites/characters/x/gaea/empty_armor/empty_armor.png"
+    );
+
+    scene.load.image(
         "blade_empty_armor",
         "assets/sprites/characters/x/blade/empty_armor/empty_armor.png"
     );

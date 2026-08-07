@@ -75,6 +75,15 @@ export const SHOP_UPGRADES = {
                 preview_sprite: "falcon_empty_armor"
             },
             {
+                name: "gaea",
+                cost: 1500,
+                base_evasion: 5,
+                base_reduction: 70,
+                giga_attack_type: "Target",
+                description: "Has quick charge, basic and charged shot does more damage.",
+                preview_sprite: "gaea_empty_armor"
+            },
+            {
                 name: "blade",
                 cost: 1500,
                 base_evasion: 20,
@@ -88,7 +97,7 @@ export const SHOP_UPGRADES = {
                 cost: 1500,
                 base_evasion: 30,
                 base_reduction: 50,
-                giga_attack_type: "Target",
+                giga_attack_type: "Column",
                 description: "Has no medium shot. Has a saber attack.",
                 preview_sprite: "shadow_empty_armor"
             },

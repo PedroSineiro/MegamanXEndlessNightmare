@@ -57,7 +57,7 @@ CharacterStatsCalculator {
         const hasQuickCharge = gameData.inventory
                 .x
                 .abilities
-                .quick_charge?? false;
+                .quick_charge?? (gameData.currentArmors[0] == "gaea"? true: false);
 
         const chargingMediumShotActions = (hasQuickCharge? 1: 2);
 

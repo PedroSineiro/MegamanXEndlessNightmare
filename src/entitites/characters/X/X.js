@@ -64,6 +64,10 @@ import ShadowGigaAttackState from "../../../states/player/gigaAttackX/ShadowGiga
 
 import ShadowGigaSlash from "./shots/ShadowGigaSlash.js";
 
+import GaeaGigaSphere from "./shots/GaeaGigaSphere.js";
+
+import GaeaGigaAttackState from "../../../states/player/gigaAttackX/GaeaArmorGigaAttackState.js";
+
 
 export default class X
 extends BaseCharacter {
@@ -132,6 +136,8 @@ extends BaseCharacter {
         this.isChargedShotPiercing = stats.isChargedShotPiercing;
 
         this.falconGigaAttackDamage = 50;
+
+        this.gaeaGigaAttackDamage = 100;
 
         this.bladeGigaAttackDamage = 280;
 
@@ -316,6 +322,9 @@ extends BaseCharacter {
 
                     ultimate:
                         new FourthGigaAttackState(),
+
+                    gaea:
+                        new GaeaGigaAttackState(),
 
                     falcon:
                         new FalconGigaAttackState(),
@@ -1033,6 +1042,72 @@ extends BaseCharacter {
 
         }
 
+    }
+
+    async gaeaGigaAttack() {
+
+        this.isInvulnerable = true;
+
+        this.scene.sfx.play("gaea_start_giga_attack");
+
+        await this.playAnimation(
+            `${this.currentArmor}_start_giga_attack`
+        );
+
+        this.sprite.play(`${this.currentArmor}_giga_attack`);
+
+        this.scene.sfx.play("gaea_giga_attack");
+
+        const sphere = this.gaeaGigaSphere();
+
+        await this.wait(3000);
+
+        sphere.destroy();
+
+        this.sprite.play(`${this.currentArmor}_end_giga_attack`);
+
+        await this.wait(1000);
+
+        this.isInvulnerable = false;
+
+    }
+
+    gaeaGigaSphere() {
+
+        const offsetX =
+
+            this.direction === 1
+            ? 30
+            : -30;
+
+        const offsetY = -135;
+
+        const sphere =
+
+            new GaeaGigaSphere(
+
+                this.scene,
+
+                this,
+
+                this.sprite.x +
+                offsetX,
+
+                this.sprite.y + offsetY,
+
+                this.direction,
+
+                true,
+
+                this.shadowGigaAttackDamage
+
+            );
+
+        this.gigaShots.push(
+            sphere
+        );
+
+        return sphere;
     }
 
     shadowGigaSlash() {

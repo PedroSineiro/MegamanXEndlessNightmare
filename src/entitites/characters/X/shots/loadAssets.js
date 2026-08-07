@@ -21,6 +21,12 @@ export default function loadAssets(scene) {
         },
 
         {
+            key: "gaea",
+            chargedFolder: "gaea",
+            chargedFrames: 8
+        },
+
+        {
             key: "blade",
             chargedFolder: "blade",
             chargedFrames: 5
@@ -51,7 +57,7 @@ export default function loadAssets(scene) {
 
         ) {
 
-            const baseFolder = armor.key == "shadow"? "shadow": "base_x"
+            const baseFolder = (armor.key == "shadow" || armor.key == "gaea")? armor.key: "base_x"
 
             scene.load.image(
 
@@ -71,23 +77,27 @@ export default function loadAssets(scene) {
 
     for (const armor of armors) {
 
-        for (
+        if(armor.key != "shadow" && armor.key != "gaea") {
 
-            let i = 1;
+            for (
 
-            i <= 7;
+                let i = 1;
 
-            i++
+                i <= 7;
 
-        ) {
+                i++
 
-            scene.load.image(
+            ) {
 
-                `${armor.key}_medium_shot_${i}`,
+                scene.load.image(
 
-                `assets/sprites/characters/x/base_x/medium_shot/medium_shot_${i}.png`
+                    `${armor.key}_medium_shot_${i}`,
 
-            );
+                    `assets/sprites/characters/x/base_x/medium_shot/medium_shot_${i}.png`
+
+                );
+
+            }
 
         }
 
@@ -133,9 +143,16 @@ export default function loadAssets(scene) {
 
     for(let i = 1; i<=5; i++){
         scene.load.image(
-        `shadow_giga_attack_${i}`,
-        `assets/sprites/characters/x/shadow/giga_attack/giga_attack_${i}.png`
-    );
+            `shadow_giga_attack_${i}`,
+            `assets/sprites/characters/x/shadow/giga_attack/giga_attack_${i}.png`
+        );
+    }
+
+    for(let i = 0; i<=4; i++){
+        scene.load.image(
+            `gaea_giga_attack_sphere_${i}`,
+            `assets/sprites/characters/x/gaea/giga_attack_sphere/giga_attack_sphere_${i}.png`
+        );
     }
 
 }

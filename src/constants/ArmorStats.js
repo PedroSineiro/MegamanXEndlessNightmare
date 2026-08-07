@@ -45,6 +45,18 @@ export const ARMOR_STATS = {
         gigaAttackMustRecharge: true
     },
 
+    "gaea":{
+        baseEvasion: 0.05,
+        baseReduction: 0.70,
+        basicShotDamage: 20,
+        mediumShotDamage: 0,
+        chargedShotDamage: 80,
+        slashDamage: 0,
+        piercingShot: false,
+        hasGigaAttack: true,
+        gigaAttackMustRecharge: true
+    },
+
     "blade":{
         baseEvasion: 0.20,
         baseReduction: 0.50,

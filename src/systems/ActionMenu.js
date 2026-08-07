@@ -566,6 +566,44 @@ ActionMenu {
                 );
             }
 
+            if((character.currentArmor=="gaea") && this.canUseGigaAttack(character)){
+                this.addGigaAttackButton(
+                    "Giga Attack",
+
+                    async () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                character
+                                    .turnActions -= 4;
+                                
+                                if(character.gigaAttackMustRecharge) character.gigaAttackRechargeTurns = 0;
+
+                                await this.scene
+                                    .actionRunner
+                                    .gaeaGigaAttack(
+
+                                        character,
+
+                                        enemy
+
+                                    );
+
+                                this.refresh();
+
+                            }
+
+                        );
+                }
+                );
+            }
+
         }
 
         //

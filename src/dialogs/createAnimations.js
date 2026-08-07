@@ -11,6 +11,8 @@ createAnimations(scene) {
 
         "falcon",
 
+        "gaea",
+
         "blade",
 
         "shadow",

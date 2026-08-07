@@ -477,6 +477,7 @@ is about to begin...`;
                         fourth: false,
                         ultimate: false,
                         falcon: false,
+                        gaea: false,
                         blade: false,
                         shadow: false
 

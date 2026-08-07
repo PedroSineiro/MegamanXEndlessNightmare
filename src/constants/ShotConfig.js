@@ -105,6 +105,33 @@ export const SHOT_CONFIG = {
         }
     },
 
+    "gaea":{
+        basic: {
+            width: 20,
+            height: 12,
+            offsetXRight: -10,
+            offsetXLeft: -10,
+            offsetY: -12
+        },
+
+        charged: {
+            width: 120,
+            height: 60,
+            offsetXRight: -40,
+            offsetXLeft: -80,
+            offsetY: -35
+        },
+
+        giga: {
+            width: 80,
+            height: 80,
+            offsetXRight: 60,
+            offsetXLeft: -60,
+            offsetY: 0
+        }
+    },
+
+
     "blade":{
         basic: {
             width: 20,

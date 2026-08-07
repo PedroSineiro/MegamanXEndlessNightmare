@@ -25,6 +25,13 @@ createAnimations(scene) {
         },
 
         {
+            armor: "gaea",
+            source: "gaea",
+            chargedSpawnFrames: [1, 2, 3, 4],
+            chargedMovingFrames: [5, 6, 7, 8]
+        },
+
+        {
             armor: "ultimate",
             source: "fourth",
             chargedSpawnFrames: [1, 2, 3, 4],
@@ -99,6 +106,28 @@ createAnimations(scene) {
 
     });
 
+    scene.anims.create({
+
+        key: "gaea_giga_attack_sphere",
+
+        frames: [
+
+            { key: "gaea_giga_attack_sphere_1" },
+            { key: "gaea_giga_attack_sphere_2" },
+            { key: "gaea_giga_attack_sphere_0" },
+            { key: "gaea_giga_attack_sphere_3" },
+            { key: "gaea_giga_attack_sphere_2" },
+            { key: "gaea_giga_attack_sphere_4" },
+            { key: "gaea_giga_attack_sphere_0" },
+            { key: "gaea_giga_attack_sphere_1" },
+
+        ],
+
+        frameRate: 30,
+        repeat: -1
+
+    });
+
 }
 
 function createShotAnimations(
@@ -144,7 +173,8 @@ function createShotAnimations(
 
     });
 
-    scene.anims.create({
+    if(armor != "gaea" && armor != "shadow") {
+        scene.anims.create({
 
         key: `${armor}_medium_shot_spawn`,
 
@@ -178,6 +208,7 @@ function createShotAnimations(
         repeat: -1
 
     });
+    }
 
     if(chargedSpawnFrames) {
         scene.anims.create({
