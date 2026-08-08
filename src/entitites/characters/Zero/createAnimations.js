@@ -92,12 +92,28 @@ export default function createAnimations(scene) {
 
         scene.anims.create({
             key: `${armor}_low_hp`,
-            frames: Array.from(
-                { length: 6 },
-                (_, i) => ({
-                    key: `${armor}_low_hp_${i + 1}`
-                })
-            ),
+            frames: [{
+                key: `${armor}_low_hp_1`
+            },
+            {
+                key: `${armor}_low_hp_2`,
+                duration: 600
+            },
+            {
+                key: `${armor}_low_hp_3`
+            },
+            {
+                key: `${armor}_low_hp_4`,
+                duration: 60
+            },
+            {
+                key: `${armor}_low_hp_5`,
+                duration: 60
+            },
+            {
+                key: `${armor}_low_hp_6`,
+                duration: 60
+            }],
             frameRate: 6,
             repeat: -1
         });

@@ -658,7 +658,7 @@ export default class BaseEnemy {
     }
 
     takeDamage(
-        damage, cooldownTime = 350
+        damage, cooldownTime = 350, isPiercing = false
     ) {
 
         //
@@ -717,7 +717,10 @@ export default class BaseEnemy {
 
             );
 
-            return;
+            if(!isPiercing){
+                return;
+            }
+            
         }
 
         //
@@ -972,6 +975,11 @@ export default class BaseEnemy {
 
         this.sprite
             ?.destroy();
+
+        if(this.shieldActive) {
+            this.shieldActive = false;
+            this.hideShield();
+        }
 
         this.scene
         .checkWaveCompleted();

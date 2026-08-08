@@ -34,7 +34,7 @@ export const ARMOR_STATS = {
     },
 
     "falcon":{
-        baseEvasion: 0.20,
+        baseEvasion: 0.25,
         baseReduction: 0.50,
         basicShotDamage: 10,
         mediumShotDamage: 25,
@@ -47,10 +47,10 @@ export const ARMOR_STATS = {
 
     "gaea":{
         baseEvasion: 0.05,
-        baseReduction: 0.70,
-        basicShotDamage: 20,
+        baseReduction: 0.65,
+        basicShotDamage: 15,
         mediumShotDamage: 0,
-        chargedShotDamage: 80,
+        chargedShotDamage: 70,
         slashDamage: 0,
         piercingShot: false,
         hasGigaAttack: true,

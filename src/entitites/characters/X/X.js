@@ -135,11 +135,11 @@ extends BaseCharacter {
 
         this.isChargedShotPiercing = stats.isChargedShotPiercing;
 
-        this.falconGigaAttackDamage = 50;
+        this.falconGigaAttackDamage = 60;
 
         this.gaeaGigaAttackDamage = 100;
 
-        this.bladeGigaAttackDamage = 280;
+        this.bladeGigaAttackDamage = 300;
 
         this.novaStrikeDamage = 320;
 

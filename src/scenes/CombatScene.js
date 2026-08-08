@@ -1733,7 +1733,8 @@ extends Phaser.Scene {
 
                                     enemy.takeDamage(
                                         shot.damage,
-                                        shot.cooldownTime?? 350
+                                        shot.cooldownTime?? 350,
+                                        shot.isPiercing
                                     );
 
                                     //

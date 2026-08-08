@@ -78,9 +78,9 @@ export const SHOP_UPGRADES = {
                 name: "gaea",
                 cost: 1500,
                 base_evasion: 5,
-                base_reduction: 70,
+                base_reduction: 65,
                 giga_attack_type: "Target",
-                description: "Has quick charge. Has no medium shot. Basic and charged shot does more damage.",
+                description: "Has quick charge. Has no medium shot. Basic and charged shot do more damage.",
                 preview_sprite: "gaea_empty_armor"
             },
             {
