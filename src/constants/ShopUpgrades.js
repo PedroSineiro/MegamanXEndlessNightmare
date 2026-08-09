@@ -68,7 +68,7 @@ export const SHOP_UPGRADES = {
             {
                 name: "falcon",
                 cost: 1500,
-                base_evasion: 20,
+                base_evasion: 25,
                 base_reduction: 50,
                 giga_attack_type: "Area",
                 description: "Charged shot pierces through enemies.",
