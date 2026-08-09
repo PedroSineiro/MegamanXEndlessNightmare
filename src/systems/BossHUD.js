@@ -21,7 +21,7 @@ export default class BossHUD {
                 )
 
                 .setDepth(
-                    99999
+                    100000
                 );
 
         //

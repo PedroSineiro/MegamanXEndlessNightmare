@@ -130,11 +130,23 @@ loadAssets(scene) {
     }
 
     scene.load.spritesheet(
-    "warning",
-    "assets/images/warning.png",
-    {
-        frameWidth: 300,
-        frameHeight: 168
+        "warning",
+        "assets/images/warning.png",
+        {
+            frameWidth: 300,
+            frameHeight: 168
+        }
+    );
+
+    for(let i = 1;i<=5; i++) {
+        scene.load.image(
+            `rain_${i}`,
+            `assets/backgrounds/rain/rain_${i}.png`
+        );
     }
-);
+
+    scene.load.audio(
+        "rain",
+        "assets/sounds/general/rain.wav"
+    );
 }

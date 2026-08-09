@@ -46,4 +46,17 @@ createAnimations(scene) {
 
     });
 
+    scene.anims.create({
+        key: "rain",
+        frames: [
+            { key: "rain_1"},
+            { key: "rain_2"},
+            { key: "rain_3"},
+            { key: "rain_4"},
+            { key: "rain_5"}
+        ],
+        frameRate: 16,
+        repeat: -1
+    });
+
 }

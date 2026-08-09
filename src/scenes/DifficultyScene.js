@@ -294,7 +294,7 @@ Resource management becomes critical.`,
 
 Enemies deal significantly more damage and survive longer.
 
-Bosses start in second phase.`
+Bosses start in second phase. Nightmare rain deals damage each turn.`
 
         };
 

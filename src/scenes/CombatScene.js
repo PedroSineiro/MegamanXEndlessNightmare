@@ -71,6 +71,10 @@ extends Phaser.Scene {
 
         this.GameData = this.DataManager.loadGameData();
 
+        this.isRainActive = this.combatData.is_rain_active;
+
+        this.rainDamage = this.combatData.rain_damage;
+
         this.isReady = false;
 
         this.isWaveOver = false;
@@ -124,6 +128,10 @@ extends Phaser.Scene {
         );*/
 
         this.setupStage();
+
+        if(this.isRainActive){
+            this.createRain();
+        }
 
         this.setupEnemyLanes();
 
@@ -323,6 +331,38 @@ extends Phaser.Scene {
             spawnPromises
         );
 
+    }
+
+    createRain() {
+        this.rain = this.add.sprite(
+            500,
+            300,
+            "rain_1"
+        );
+
+        this.rain
+            .setDisplaySize(
+                1000,
+                600
+            )
+            .setDepth(100000).setAlpha(0.35);
+
+        this.rain.play("rain");
+
+        this.rainSound =
+
+        this.sound.add(
+
+            "rain",
+
+            {
+                loop: true,
+                volume: 0.02
+            }
+
+        );
+
+        this.rainSound.play();
     }
 
     async preparePlayersForNextWave(
@@ -776,7 +816,7 @@ extends Phaser.Scene {
         ready
             .setScale(2)
             .setDepth(
-                99999
+                100000
             );
 
         //
@@ -866,7 +906,7 @@ extends Phaser.Scene {
         warning
         .setScale(2)
         .setDepth(
-            99999
+            100000
         );
 
         await this.playWarningSound();
@@ -974,6 +1014,8 @@ extends Phaser.Scene {
 
             await SceneHelper.fadeToBlack(this);
 
+            this.rainSound?.stop();
+
             await SceneHelper.wait(this, 2000);
 
             const nextScene = InterSceneManager.handleNextSceneAfterCombat(this.GameData, this.DataManager, this.combatData);
@@ -1021,6 +1063,8 @@ extends Phaser.Scene {
         await SceneHelper.wait(this, 1000);
 
         await SceneHelper.fadeToBlack(this);
+
+        this.rainSound?.stop();
 
         const nextScene = InterSceneManager.handleGameOver(this.GameData, this.DataManager, this.combatData);
 

@@ -67,6 +67,9 @@ export default class TurnManager {
             this.roundStarted = true;
             this.scene.players.forEach(player => {
                 player.applyTurnHabilities();
+                if(this.scene.isRainActive){
+                    player.takeDamage(this.scene.rainDamage,true);
+                }
             });
         }
 

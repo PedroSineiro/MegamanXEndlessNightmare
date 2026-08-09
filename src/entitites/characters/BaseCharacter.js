@@ -532,9 +532,9 @@ export default class BaseCharacter {
 
     }
 
-    takeDamage(damage) {
+    takeDamage(damage, ignoneReduction = false) {
 
-        const finalDamage =
+        const finalDamage = ignoneReduction? damage:
 
             Math.ceil(
 
@@ -592,10 +592,16 @@ export default class BaseCharacter {
         this.isInvulnerable =
             true;
 
-        this.stateMachine
-            .transition(
-                "takingDamage"
-            );
+        if(!ignoneReduction){
+            this.stateMachine
+                .transition(
+                    "takingDamage"
+                );
+
+            
+        } else {
+            this.isInvulnerable = false;
+        }
 
     }
 

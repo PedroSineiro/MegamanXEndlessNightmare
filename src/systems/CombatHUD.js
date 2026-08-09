@@ -18,7 +18,7 @@ export default class CombatHUD {
                 )
 
                 .setDepth(
-                    99999
+                    100000
                 );
 
         //

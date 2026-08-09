@@ -417,6 +417,22 @@ export default class InterSceneManager {
                 waves
             );
 
+        const rainActive = gameData.difficulty == "nightmare"? true: false;
+
+        let rainDamage = 2;
+
+        if(gameData.amountCompletedStages >= 3){
+            rainDamage = 4;
+        }
+
+        if(gameData.amountCompletedStages >= 5){
+            rainDamage = 5;
+        }
+
+        if(gameData.amountCompletedStages >= 7){
+            rainDamage = 6;
+        }
+
         const dialogs = this.getCombatDialogs(nextStage, gameData.storyFlags.hasSeenRepliforce, gameData.amountCompletedStages);
 
         return {
@@ -438,6 +454,10 @@ export default class InterSceneManager {
                 waves,
 
                 dialogs: dialogs,
+
+                is_rain_active: rainActive,
+
+                rain_damage: rainDamage,
 
                 stage_theme:
                     nextStage.theme,
