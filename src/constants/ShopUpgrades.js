@@ -3,7 +3,7 @@ export const SHOP_UPGRADES = {
         items: [
             {
                 name: "heart_tank",
-                cost: 300,
+                cost: 200,
                 max_amount: 8,
                 description: "Raises the max HP by 50. Can be purchased 8 times." 
             },
@@ -117,7 +117,7 @@ export const SHOP_UPGRADES = {
         items: [
             {
                 name: "heart_tank",
-                cost: 300,
+                cost: 200,
                 max_amount: 8,
                 description: "Raises the max HP by 50. Can be purchased 8 times." 
             },
