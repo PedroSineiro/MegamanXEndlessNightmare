@@ -185,6 +185,8 @@ export default class ShadowGigaSlash {
 
         this.sprite?.destroy();
 
+        this.owner.gigaShots.filter(shot => shot.active);
+
     }
 
 }

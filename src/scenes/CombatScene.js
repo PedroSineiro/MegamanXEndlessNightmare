@@ -1778,7 +1778,7 @@ extends Phaser.Scene {
                                     enemy.takeDamage(
                                         shot.damage,
                                         shot.cooldownTime?? 350,
-                                        shot.isPiercing
+                                        shot.throughShield ?? false
                                     );
 
                                     //
@@ -1872,7 +1872,9 @@ extends Phaser.Scene {
                                     .takeDamage(
 
                                         hitbox
-                                            .damage
+                                            .damage,
+                                        350,
+                                        hitbox.throughShield?? false,
 
                                     );
 
@@ -2009,7 +2011,8 @@ extends Phaser.Scene {
                                     enemy
                                         .takeDamage(
                                             shot.damage,
-                                            shot.cooldownTime?? 350
+                                            shot.cooldownTime?? 350,
+                                            shot.throughShield ?? false
                                         );
 
                                 }

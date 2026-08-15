@@ -68,6 +68,8 @@ import GaeaGigaSphere from "./shots/GaeaGigaSphere.js";
 
 import GaeaGigaAttackState from "../../../states/player/gigaAttackX/GaeaArmorGigaAttackState.js";
 
+import XGigaAttackState from "../../../states/player/gigaAttackX/XGigaAttackState.js";
+
 
 export default class X
 extends BaseCharacter {
@@ -135,15 +137,17 @@ extends BaseCharacter {
 
         this.isChargedShotPiercing = stats.isChargedShotPiercing;
 
-        this.falconGigaAttackDamage = 60;
+        this.falconGigaAttackDamage = 65;
 
-        this.gaeaGigaAttackDamage = 100;
+        this.gaeaGigaAttackDamage = 80;
 
-        this.bladeGigaAttackDamage = 300;
+        this.bladeGigaAttackDamage = 320;
 
         this.novaStrikeDamage = 320;
 
-        this.shadowGigaAttackDamage = 100;
+        this.shadowGigaAttackDamage = 80;
+
+        this.xGigaAttackDamage = 270;
 
         this.novaStrikeHitbox = null;
 
@@ -333,7 +337,10 @@ extends BaseCharacter {
                         new BladeGigaAttackState(),
 
                     shadow:
-                        new ShadowGigaAttackState()
+                        new ShadowGigaAttackState(),
+
+                    x:
+                        new XGigaAttackState()
     
                 },
     
@@ -492,13 +499,16 @@ extends BaseCharacter {
             shotType =
                 "giga";
 
-            damage = this.bladeGigaAttackDamage;
+            damage = this.currentArmor=="blade"?this.bladeGigaAttackDamage: this.xGigaAttackDamage;
 
             isShotPiercing = true;
 
         }
 
-        const hasSpawn = !((this.currentArmor == "blade" || this.currentArmor == "shadow") && (shotType == "charged" || shotType == "giga"));
+        const offsetY = !(this.currentArmor == "x" && shotType == "giga")? -135:-110;
+
+        const hasSpawn = !((this.currentArmor == "blade" || this.currentArmor == "shadow")
+                            && (shotType == "charged" || shotType == "giga")) && !(this.currentArmor == "x" && shotType == "giga");
 
         const shot =
 
@@ -511,8 +521,8 @@ extends BaseCharacter {
                 this.sprite.x +
                 offsetX,
 
-                this.sprite.y -
-                135,
+                this.sprite.y +
+                offsetY,
 
                 this.direction,
 
@@ -1169,6 +1179,28 @@ extends BaseCharacter {
         this.gigaShots.push(
             slash2
         );
+    }
+
+    async xGigaAttack() {
+
+        this.isInvulnerable = true;
+
+        this.scene.sfx.play("gaea_start_giga_attack");
+
+        this.sprite.play(`${this.currentArmor}_start_giga_attack`);
+
+        await this.wait(2000);
+
+        this.scene.sfx.play("hadouken_voice");
+
+        await this.playAnimation(
+            `${this.currentArmor}_giga_attack`
+        );
+
+        this.shoot(4);
+
+        this.isInvulnerable = false;
+
     }
 
     update() {

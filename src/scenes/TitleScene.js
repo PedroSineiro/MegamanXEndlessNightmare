@@ -58,6 +58,17 @@ export default class TitleScene extends Phaser.Scene {
 
     async create() {
 
+        if (
+            !this.scene.isActive(
+                "UIScene"
+            )
+        ) {
+
+            this.scene.launch(
+                "UIScene"
+            );
+        }
+
         this.volume = this.sound.volume;
 
         this.sfx =
@@ -212,6 +223,43 @@ export default class TitleScene extends Phaser.Scene {
             580,
 
             () => this.changeMenu(true)
+
+        );
+
+        this.achievementsButton =
+
+        this.createMenuButton(
+
+            "ACHIEVEMENTS",
+
+            500,
+            640,
+
+            async () => {
+
+                this.achievementsButton.disableInteractive();
+
+                this.cameras.main.fadeOut(
+                    500,
+                    0,
+                    0,
+                    0
+                );
+
+                await new Promise(resolve => {
+
+                    this.time.delayedCall(
+                        500,
+                        resolve
+                    );
+
+                });
+
+                this.bgm?.stop();
+
+                this.scene.start("AchievementScene",{});
+
+            }
 
         );
 
@@ -409,6 +457,11 @@ Clear enemy waves, defeat Mavericks and uncover the source of the Nightmare outb
         this.howToPlayButton.setVisible(
             !showHowToPlay
         );
+
+        this.achievementsButton.setVisible(
+            !showHowToPlay
+        );
+
 
         //
         // tutorial

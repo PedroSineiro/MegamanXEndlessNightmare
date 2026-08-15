@@ -705,6 +705,89 @@ CharacterActionRunner {
 
     }
 
+    async xGigaAttack(
+        actor,
+        target
+    ) {
+
+        actor.isBusy =
+            true;
+
+        const originalX =
+            actor.sprite.x;
+
+        const originalY =
+            actor.sprite.y;
+
+        const dx = target.sprite.x - actor.sprite.x;
+
+        //
+        // virar personagem
+        //
+
+        if (dx > 0) {
+
+            actor.direction = 1;
+
+            actor.sprite.setFlipX(
+                false
+            );
+
+        }
+        else {
+
+            actor.direction = -1;
+
+            actor.sprite.setFlipX(
+                true
+            );
+
+        }
+
+        await this.moveToLane(
+
+            actor,
+
+            target.originalY + 120
+
+        );
+
+        this.pressGigaAttack(actor);
+        //
+        // atirar
+        //
+
+        //
+        // esperar tiro
+        //
+
+        await this.wait(
+            3400
+        );
+
+        //
+        // voltar
+        //
+
+        await this.moveBack(
+
+            actor,
+
+            originalX,
+
+            originalY
+
+        );
+
+        await this.wait(
+            600
+        );
+
+        actor.isBusy =
+            false;
+
+    }
+
     async moveToX(
         actor,
         targetX

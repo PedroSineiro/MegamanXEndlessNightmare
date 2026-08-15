@@ -1,5 +1,6 @@
 import SoundManager from "../../systems/SoundManager.js";
 import Explosion from "../effects/Explosion/Explosion.js";
+import AchievementManager from "../../systems/AchievementManager.js";
 
 export default class BaseEnemy {
 
@@ -50,6 +51,10 @@ export default class BaseEnemy {
         this.SoundManager = SoundManager;
 
         this.auraSprite = null;
+
+        this.damageTaken = 0;
+                
+        this.AchievementManager = AchievementManager;
 
     }
 
@@ -354,9 +359,6 @@ export default class BaseEnemy {
         this.isBusy =
             true;
 
-        //
-        // escolhe alvo
-        //
 
         const target =
 
@@ -374,10 +376,6 @@ export default class BaseEnemy {
             return;
 
         }
-
-        //
-        // guarda posição
-        //
 
         await this.performAttack(
             target
@@ -658,7 +656,7 @@ export default class BaseEnemy {
     }
 
     takeDamage(
-        damage, cooldownTime = 350, isPiercing = false
+        damage, cooldownTime = 350, throughShield = false
     ) {
 
         //
@@ -717,7 +715,7 @@ export default class BaseEnemy {
 
             );
 
-            if(!isPiercing){
+            if(!throughShield){
                 return;
             }
             
@@ -735,6 +733,12 @@ export default class BaseEnemy {
                 0,
                 this.hp
             );
+
+        this.damageTaken += damage;
+
+        if(this.damageTaken >= 610) {
+            this.AchievementManager.unlock("max_damage");
+        }
 
         //
         // morreu

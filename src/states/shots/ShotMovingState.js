@@ -14,8 +14,8 @@ export default class ShotMovingState {
 
         // destruir fora da tela
         if (
-            shot.sprite.x < -100 ||
-            shot.sprite.x > 1000
+            shot.sprite.x < -200 ||
+            shot.sprite.x > 1200
         ) {
 
             shot.destroy();

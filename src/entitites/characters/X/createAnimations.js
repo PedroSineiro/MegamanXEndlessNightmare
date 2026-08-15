@@ -190,6 +190,8 @@ createAnimations(scene) {
 
     createGaeaGigaAttack(scene);
 
+    createXGigaAttack(scene);
+
     let frames = [];
 
     for (let i = 1; i <= 5; i++) {
@@ -606,6 +608,49 @@ function createGaeaGigaAttack(scene) {
         ],
 
         frameRate: 1,
+
+        repeat: 0
+
+    });
+}
+
+function createXGigaAttack(scene) {
+    scene.anims.create({
+
+        key: "x_start_giga_attack",
+
+        frames:[
+            {
+                key: "x_giga_attack_1"
+            },
+            {
+                key: "x_giga_attack_2"
+            },
+        ],
+
+        frameRate: 26,
+
+        repeat: -1
+
+    });
+
+    scene.anims.create({
+
+        key: "x_giga_attack",
+
+        frames:[
+            {
+                key: "x_giga_attack_3"
+            },
+            {
+                key: "x_giga_attack_4"
+            },
+            {
+                key: "x_giga_attack_5"
+            },
+        ],
+
+        frameRate: 16,
 
         repeat: 0
 

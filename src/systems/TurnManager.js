@@ -1,3 +1,5 @@
+import AchievementManager from "./AchievementManager.js";
+
 export default class TurnManager {
 
     constructor(scene) {
@@ -65,12 +67,23 @@ export default class TurnManager {
 
         if(this.currentIndex==0 && !this.roundStarted){
             this.roundStarted = true;
+            let amountPlayersNoDamage = 0;
             this.scene.players.forEach(player => {
-                player.applyTurnHabilities();
-                if(this.scene.isRainActive){
-                    player.takeDamage(this.scene.rainDamage,true);
+                if(!player.isDead){
+                    player.turnsNoDamage++;
+                    if(player.turnsNoDamage==6) amountPlayersNoDamage++;
+                    player.applyTurnHabilities();
+                    if(this.scene.isRainActive){
+                        player.takeDamage(this.scene.rainDamage,true);
+                    }
                 }
+                
             });
+
+            const enemies = this.scene.getTotalEnemies();
+            enemies.forEach(enemy => {enemy.damageTaken = 0;});
+
+            if(amountPlayersNoDamage==2) AchievementManager.unlock("turns_no_damage");
         }
 
         character.startTurn();

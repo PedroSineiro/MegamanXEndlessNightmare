@@ -3,9 +3,11 @@ import { BASE_DIALOGS } from "../constants/BaseDialogs.js";
 
 import { COMBAT_DIALOGS } from "../constants/CombatDialogs.js";
 
+import AchievementManager from "./AchievementManager.js";
+
 export default class InterSceneManager {
 
-    static TOTAL_AMOUNT_STAGES = 9;
+    static TOTAL_AMOUNT_STAGES = 10;
 
     static FIRST_STAGE = {
             stage: "introduction_stage",
@@ -212,10 +214,9 @@ export default class InterSceneManager {
 
             ]
         },
-        gate_stage: {
-            stage: "gate_stage",
+        first_gate_stage: {
+            stage: "first_gate_stage",
             theme: "gate_stage",
-            background: "gate_stage",
             boss_theme: "final_boss",
             layout: [
 
@@ -241,6 +242,24 @@ export default class InterSceneManager {
 
                 {
                     type: "boss",
+                    boss: "colonel"
+                },
+
+                {
+                    type: "boss",
+                    boss: "double"
+                },
+
+            ]
+        },
+        second_gate_stage: {
+            stage: "second_gate_stage",
+            theme: "gate_stage",
+            boss_theme: "final_boss",
+            layout: [
+
+                {
+                    type: "boss",
                     boss: "frost_walrus"
                 },
 
@@ -257,14 +276,23 @@ export default class InterSceneManager {
                 {
                     type: "boss",
                     boss: "cyber_peacock"
+                },
+
+                {
+                    type: "boss",
+                    boss: "dynamo"
+                },
+
+                {
+                    type: "boss",
+                    boss: "high_max"
                 }
 
             ]
         },
         final_stage: {
-            stage: "final_stage",
+            stage: "zero_stage",
             theme: "gate_stage",
-            background: "gate_stage",
             boss_theme: "final_stage",
             layout: [
 
@@ -288,7 +316,9 @@ export default class InterSceneManager {
 
         "sigma_stage",
 
-        "gate_stage",
+        "first_gate_stage",
+
+        "second_gate_stage",
 
         "final_stage"
 
@@ -422,15 +452,15 @@ export default class InterSceneManager {
         let rainDamage = 2;
 
         if(gameData.amountCompletedStages >= 3){
-            rainDamage = 4;
+            rainDamage = 3;
         }
 
         if(gameData.amountCompletedStages >= 5){
-            rainDamage = 5;
+            rainDamage = 4;
         }
 
         if(gameData.amountCompletedStages >= 7){
-            rainDamage = 6;
+            rainDamage = 5;
         }
 
         const dialogs = this.getCombatDialogs(nextStage, gameData.storyFlags.hasSeenRepliforce, gameData.amountCompletedStages);
@@ -481,6 +511,10 @@ export default class InterSceneManager {
             gameData.storyFlags.hasSeenRepliforce = true;
         }
 
+        if(gameData.currentArmors[0] != "x" || gameData.currentArmors[1] != "zero") {
+            gameData.achievementFlags.usedOtherArmors = true;
+        }
+
         const ending = gameData.amountCompletedStages == this.TOTAL_AMOUNT_STAGES;
 
         gameData.nightmareLevel = this.updateNightmareLevel(gameData.nightmareLevel, gameData.amountCompletedStages);
@@ -494,7 +528,11 @@ export default class InterSceneManager {
         return {scene: "BaseScene", data:{ending}}
     }
 
-    static handleGameOver(gameData, DataManager, combatData){
+    static handleGameOver(gameData, DataManager, combatData) {
+        gameData.achievementFlags.hasDied = true;
+        
+        DataManager.saveHasDied();
+
         return {scene: "GameOverScene", data: combatData}
     }
 
@@ -600,13 +638,24 @@ export default class InterSceneManager {
         ) {
 
             return this.STAGES
-                .gate_stage;
+                .first_gate_stage;
 
         }
 
         if (
 
             amountCompletedStages === 8
+
+        ) {
+
+            return this.STAGES
+                .second_gate_stage;
+
+        }
+
+        if (
+
+            amountCompletedStages === 9
 
         ) {
 
@@ -898,5 +947,44 @@ export default class InterSceneManager {
 
         return COMBAT_DIALOGS[selectedStage.stage] ?? [];
 
+    }
+
+    static checkBaseAchievements(gameData) {
+
+        const achievements = [];
+
+        if(gameData.amountCompletedStages == 1){
+            achievements.push("first_stage");
+        }
+
+        if(gameData.nightmareLevel==2){
+            achievements.push("nightmare_level_rising");
+        }
+
+        if(gameData.nightmareLevel==4){
+            achievements.push("nightmare_level_max");
+        }
+
+        if(gameData.amountCompletedStages == this.TOTAL_AMOUNT_STAGES){
+            achievements.push("beat_first_time");
+
+            if(!gameData.achievementFlags.usedOtherArmors){
+                achievements.push("base_armors");
+            }
+
+            if(!gameData.achievementFlags.hasDied){
+                achievements.push("flawless_victory");
+            }
+
+            if(gameData.difficulty == "nightmare"){
+                achievements.push("beat_nightmare_diff");
+                if(!gameData.achievementFlags.usedOtherArmors){
+                    achievements.push("base_armors_nightmare");
+                }
+            }
+
+        }
+
+        return achievements;
     }
 }

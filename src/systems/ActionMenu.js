@@ -604,6 +604,44 @@ ActionMenu {
                 );
             }
 
+            if((character.currentArmor=="x") && this.canUseGigaAttack(character)){
+                this.addGigaAttackButton(
+                    "Giga Attack",
+
+                    async () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                character
+                                    .turnActions -= 4;
+                                
+                                if(character.gigaAttackMustRecharge) character.gigaAttackRechargeTurns = 0;
+
+                                await this.scene
+                                    .actionRunner
+                                    .xGigaAttack(
+
+                                        character,
+
+                                        enemy
+
+                                    );
+
+                                this.refresh();
+
+                            }
+
+                        );
+                }
+                );
+            }
+
         }
 
         //
@@ -1002,7 +1040,7 @@ ActionMenu {
     }
 
     canUseGigaAttack(character) {
-        return character.turnActions >= 4 && character.gigaAttackRechargeTurns == character.gigaAttackCooldown;
+        return character.hasGigaAttack && character.turnActions >= 4 && character.gigaAttackRechargeTurns == character.gigaAttackCooldown;
     }
 
     addCancelButton() {

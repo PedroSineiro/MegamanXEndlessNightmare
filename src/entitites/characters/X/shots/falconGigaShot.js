@@ -30,6 +30,8 @@ export default class FalconGigaShot {
         this.damage =
             damage;
 
+        this.throughShield = true;
+
         this.speed =
             16;
 

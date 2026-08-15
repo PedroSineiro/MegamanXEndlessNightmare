@@ -771,10 +771,19 @@ Nightmare Level: ${this.data.nightmareLevel}`,
             this.evasionText.setText("");
             this.reductionText.setText("");
         } else {
-            this.gigaAttackText.setText(`giga attack type: ${upgrade.giga_attack_type}`);
+            const gigaAttackType = this.getGigaAttackType(upgrade);
+            this.gigaAttackText.setText(`giga attack type: ${gigaAttackType}`);
             this.evasionText.setText(`evasion: ${upgrade.base_evasion}%`);
             this.reductionText.setText(`reduction: ${upgrade.base_reduction}%`);
         }
+    }
+
+    getGigaAttackType(upgrade){
+        let gigaAttackType = upgrade.giga_attack_type;
+        if(this.character=="x" && (this.inventory.getItemAmount(this.character,"hidden_capsule")>0) && upgrade.name=="x"){
+            gigaAttackType = "Row";
+        }
+        return gigaAttackType;
     }
 
     addButton(

@@ -19,6 +19,14 @@ export default class DataManager {
         return gameData.amountCompletedStages > 0;
     }
 
+    static saveHasDied() {
+        const saveData = this.loadSaveData();
+
+        saveData.achievementFlags.hasDied = true;
+
+        this.saveSaveData(saveData);
+    }
+
     static loadSaveData() {
 
         return JSON.parse(

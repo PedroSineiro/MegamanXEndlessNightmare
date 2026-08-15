@@ -8,7 +8,7 @@ export const ARMOR_STATS = {
         chargedShotDamage: 60,
         slashDamage: 0,
         hasGigaAttack: false,
-        gigaAttackMustRecharge: false
+        gigaAttackMustRecharge: true
     },
 
     "fourth":{
@@ -70,7 +70,7 @@ export const ARMOR_STATS = {
     },
 
     "shadow":{
-        baseEvasion: 0.30,
+        baseEvasion: 0.25,
         baseReduction: 0.50,
         basicShotDamage: 10,
         mediumShotDamage: 0,
@@ -88,7 +88,7 @@ export const ARMOR_STATS = {
         slashBDamage: 20,
         slashCDamage: 60,
         slashPiercingDamage: 60,
-        gigaAttackDamage: 200,
+        gigaAttackDamage: 220,
         hasGigaAttack: true,
         gigaAttackMustRecharge: true
     },
@@ -96,11 +96,11 @@ export const ARMOR_STATS = {
     "black_zero":{
         baseEvasion: 0.20,
         baseReduction: 0.50,
-        slashADamage: 40,
-        slashBDamage: 40,
-        slashCDamage: 80,
-        slashPiercingDamage: 80,
-        gigaAttackDamage: 220,
+        slashADamage: 35,
+        slashBDamage: 35,
+        slashCDamage: 75,
+        slashPiercingDamage: 75,
+        gigaAttackDamage: 240,
         hasGigaAttack: true,
         gigaAttackMustRecharge: true
     }

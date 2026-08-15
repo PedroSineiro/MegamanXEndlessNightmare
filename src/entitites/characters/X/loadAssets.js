@@ -180,6 +180,8 @@ export default function loadAssets(scene) {
 
     loadGaeaGigaAttack(scene);
 
+    loadXGigaAttack(scene);
+
     for (let i = 1; i <= 5; i++) {
 
         scene.load.image(
@@ -271,6 +273,11 @@ export default function loadAssets(scene) {
     scene.load.audio(
         "gaea_giga_attack",
         "assets/sounds/X/gaea_giga_attack.wav"
+    );
+
+    scene.load.audio(
+        "hadouken_voice",
+        "assets/sounds/X/hadouken_voice.wav"
     );
 }
 
@@ -395,3 +402,25 @@ function loadGaeaGigaAttack(scene) {
         }
     }
 
+
+function loadXGigaAttack(scene) {
+        for (
+
+            let i = 1;
+
+            i <= 5;
+
+            i++
+
+        ) {
+
+            scene.load.image(
+
+                `x_giga_attack_${i}`,
+
+                `assets/sprites/characters/x/base_x/hadouken/hadouken_${i}.png`
+
+            );
+
+        }
+    }

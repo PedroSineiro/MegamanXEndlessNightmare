@@ -253,7 +253,7 @@ extends Phaser.Scene {
 
                             type: "boss",
 
-                            boss: "magma_dragoon"
+                            boss: "nightmare_zero"
 
                         });
 
@@ -516,6 +516,11 @@ is about to begin...`;
 
             storyFlags: {
                 hasSeenRepliforce: false
+            },
+
+            achievementFlags: {
+                usedOtherArmors: false,
+                hasDied: false
             }
 
         };

@@ -48,7 +48,7 @@ export default class EndingScene extends Phaser.Scene {
 
         this.add.text(
 
-                240,
+                230,
                 300,
 
                 "THANKS FOR PLAYING",

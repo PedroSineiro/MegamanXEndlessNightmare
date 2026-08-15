@@ -128,6 +128,23 @@ createAnimations(scene) {
 
     });
 
+    scene.anims.create({
+
+        key: "x_giga_shot_moving",
+
+        frames: [
+
+            { key: "x_giga_shot_moving_1" },
+            { key: "x_giga_shot_moving_2" },
+            { key: "x_giga_shot_moving_3" },
+
+        ],
+
+        frameRate: 20,
+        repeat: -1
+
+    });
+
 }
 
 function createShotAnimations(

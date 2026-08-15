@@ -13,7 +13,8 @@ SLASH_CONFIG = {
         offsetXLeft: -20,
         offsetY: -160,
 
-        duration: 120
+        duration: 120,
+        throughShield: false
     },
 
     slashB: {
@@ -26,7 +27,8 @@ SLASH_CONFIG = {
         offsetXLeft: -20,
         offsetY: -160,
 
-        duration: 140
+        duration: 140,
+        throughShield: false
     },
 
     slashC: {
@@ -38,7 +40,8 @@ SLASH_CONFIG = {
         offsetXLeft: -20,
         offsetY: -200,
 
-        duration: 180
+        duration: 180,
+        throughShield: false
     },
 
     slashSpecial1: {
@@ -50,7 +53,8 @@ SLASH_CONFIG = {
         offsetXLeft: 20,
         offsetY: -160,
 
-        duration: 180
+        duration: 180,
+        throughShield: true
     }
 
 };

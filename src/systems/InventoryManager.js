@@ -1,3 +1,5 @@
+import AchievementManager from "./AchievementManager.js";
+
 export default class InventoryManager {
 
     constructor(
@@ -148,6 +150,10 @@ export default class InventoryManager {
 
             ) + 1;
 
+            if(itemName == "hidden_capsule") {
+                AchievementManager.unlock("old_technique");
+            }
+
     }
 
     addAbility(
@@ -167,6 +173,8 @@ export default class InventoryManager {
         character,
         armorName
     ) {
+
+        AchievementManager.unlock(armorName);
 
         this.getInventory(
             character

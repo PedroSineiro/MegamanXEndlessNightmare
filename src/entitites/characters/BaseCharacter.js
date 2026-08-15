@@ -96,6 +96,8 @@ export default class BaseCharacter {
         this.gigaShots = [];
 
         this.isBusy = false;
+
+        this.turnsNoDamage = -1;
     }
 
     setupSprite(
@@ -533,6 +535,10 @@ export default class BaseCharacter {
     }
 
     takeDamage(damage, ignoneReduction = false) {
+
+        if(!ignoneReduction) {
+            this.turnsNoDamage=-1;
+        }
 
         const finalDamage = ignoneReduction? damage:
 

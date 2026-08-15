@@ -155,4 +155,11 @@ export default function loadAssets(scene) {
         );
     }
 
+    for(let i = 1; i<=3; i++){
+        scene.load.image(
+            `x_giga_shot_moving_${i}`,
+            `assets/sprites/characters/x/base_x/hadouken_shot/hadouken_shot_${i}.png`
+        );
+    }
+
 }

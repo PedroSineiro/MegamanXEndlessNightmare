@@ -29,6 +29,8 @@ export default class XShot {
 
         this.isPiercing = isPiercing;
 
+        this.throughShield = owner.currentArmor == "falcon" && shotType == "charged";
+
         this.hasSpawn = hasSpawn;
 
         this.playerCurrentArmor = currentArmor;
@@ -143,12 +145,7 @@ export default class XShot {
         this.sprite
             ?.destroy();
 
-        const index =
-        this.owner.shots.indexOf(this);
-
-        if (index !== -1) {
-            this.owner.shots.splice(index, 1);
-        }
+        this.owner.shots = this.owner.shots.filter(shot => shot.active);
 
     }
 

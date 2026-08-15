@@ -451,7 +451,7 @@ BASE_DIALOGS = {
 
             {
                 speaker: "alia",
-                text: "I'll transmit the coordinates."
+                text: "I'll transmit the coordinates for the two locations."
             },
 
             {
@@ -465,7 +465,7 @@ BASE_DIALOGS = {
             }
         ],
 
-    8: [
+    9: [
         {
             speaker: "alia",
             text: "X, Zero... we've received another transmission."
@@ -562,7 +562,7 @@ BASE_DIALOGS = {
         }
     ],
 
-    9: [
+    10: [
         {
             speaker: "alia",
             text: "You did it... the Nightmare signal is gone."

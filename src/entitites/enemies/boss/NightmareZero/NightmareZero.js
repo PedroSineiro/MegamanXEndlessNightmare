@@ -381,6 +381,10 @@ extends BaseBoss {
 
     }
 
+    unlockAchievement() {
+        this.AchievementManager.unlock("nightmare_zero_defeated");
+    }
+
     async gigaAttack() {
 
         this.scene.sfx.play(

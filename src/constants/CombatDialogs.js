@@ -1297,19 +1297,60 @@ export const COMBAT_DIALOGS = {
 
 
             dialogs: [
+
                 {
-                    speaker: "dynamo",
-                    text: "Still fighting for the same ideals?"
+                    speaker: "x",
+                    text: "Dynamo...?"
+                },
+
+                {
+                    speaker: "zero",
+                    text: "You're still alive?"
                 },
 
                 {
                     speaker: "dynamo",
-                    text: "How boring."
+                    text: "Hmph. Not exactly the reaction I was hoping for."
                 },
 
                 {
                     speaker: "x",
-                    text: "Dynamo..."
+                    text: "Last time we saw you, you disappeared without a trace."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "What are you doing here?"
+                },
+
+                {
+                    speaker: "zero",
+                    text: "Still scavenging for scrap?"
+                },
+
+                {
+                    speaker: "x",
+                    text: "Or are you working for Sigma now?"
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "Sigma?"
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "You still think this is about Sigma?"
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "How disappointing."
+                },
+
+                {
+                    speaker: "x",
+                    text: "..."
                 },
 
                 {
@@ -1319,12 +1360,22 @@ export const COMBAT_DIALOGS = {
 
                 {
                     speaker: "zero",
-                    text: "He's speaking as if he actually understands what's happening."
+                    text: "Dynamo never cared about any of this."
+                },
+
+                {
+                    speaker: "zero",
+                    text: "He barely cared about anything except money."
                 },
 
                 {
                     speaker: "dynamo",
-                    text: "Of course I understand."
+                    text: "People change."
+                },
+
+                {
+                    speaker: "dynamo",
+                    text: "Or perhaps they simply evolve."
                 },
 
                 {
@@ -1384,8 +1435,14 @@ export const COMBAT_DIALOGS = {
 
                 {
                     speaker: "zero",
+                    text: "Whether you're Dynamo or just another Nightmare..."
+                },
+
+                {
+                    speaker: "zero",
                     text: "Let's end this."
                 }
+
             ]
         },
         {
@@ -1507,7 +1564,7 @@ export const COMBAT_DIALOGS = {
         }
     ],
 
-    gate_stage: [
+    first_gate_stage: [
         {
             waveIndex: 0,
             isAfterBossSpawn: false,
@@ -1610,7 +1667,7 @@ export const COMBAT_DIALOGS = {
         }
     ],
 
-    final_stage: [
+    zero_stage: [
         {
             waveIndex: 4,
             isAfterBossSpawn: true,

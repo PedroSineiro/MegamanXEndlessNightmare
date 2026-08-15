@@ -12,6 +12,12 @@ export const SHOP_UPGRADES = {
                 cost: 800,
                 max_amount: 1,
                 description: "Refills the HP completley once in battle." 
+            },
+            {
+                name: "hidden_capsule",
+                cost: 400,
+                max_amount: 1,
+                description: "Gives base X a giga attack." 
             }
         ],
         habilities: [
@@ -44,6 +50,16 @@ export const SHOP_UPGRADES = {
                 name:"life_recover",
                 cost: 800,
                 description: "Heals 10 HP at the start of the turn." 
+            },
+            {
+                name:"shock_buffer",
+                cost: 900,
+                description: "Gives 50% Damage Reduction, it only works with base X." 
+            },
+            {
+                name:"agility_buffer",
+                cost: 400,
+                description: "Gives 5% Evasion." 
             }
         ],
         armors: [
@@ -95,7 +111,7 @@ export const SHOP_UPGRADES = {
             {
                 name: "shadow",
                 cost: 1500,
-                base_evasion: 30,
+                base_evasion: 25,
                 base_reduction: 50,
                 giga_attack_type: "Column",
                 description: "Has no medium shot. Has a saber attack.",
@@ -153,6 +169,16 @@ export const SHOP_UPGRADES = {
                 name:"life_recover",
                 cost: 800,
                 description: "Heals 10 HP at the start of the turn." 
+            },
+            {
+                name:"shock_buffer",
+                cost: 900,
+                description: "Gives 50% Damage Reduction, it only works with base Zero." 
+            },
+            {
+                name:"agility_buffer",
+                cost: 400,
+                description: "Gives 5% Evasion." 
             }
         ],
         armors: [

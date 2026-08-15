@@ -16,6 +16,8 @@ import SceneHelper from "../systems/SceneHelper.js";
 
 import InterSceneManager from "../systems/InterSceneManager.js";
 
+import AchievementManager from "../systems/AchievementManager.js";
+
 export default class BaseScene
 extends Phaser.Scene {
 
@@ -73,6 +75,10 @@ extends Phaser.Scene {
             new DialogBox(this);
 
         this.playStageMusic();
+
+        const achievements = this.InterSceneManager.checkBaseAchievements(this.GameData);
+
+        achievements?.forEach(achievement => {AchievementManager.unlock(achievement)});
 
         this.setupStage();
 

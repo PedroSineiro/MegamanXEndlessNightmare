@@ -7,6 +7,8 @@ import BootScene from "./BootScene.js";
 import EndingScene from "./EndingScene.js";
 import DifficultyScene from "./DifficultyScene.js";
 import SaveScene from "./SaveScene.js";
+import AchievementScene from "./AchievementScene.js";
+import UIScene from "./UIScene.js";
 
 export default class MainScene
 extends Phaser.Scene {
@@ -21,116 +23,6 @@ extends Phaser.Scene {
 
     create() {
 
-        this.scene.start(
-
-            "CombatScene",
-
-            {
-
-                stage:
-                    "highway",
-
-                players: [
-
-                    "x",
-                    "zero"
-
-                ],
-
-                waves: [
-
-                    {
-                        type: "enemies",
-
-                        enemies: [
-
-                            {
-                                type: "ground_enemy_1",
-                                lane: "bottom",
-                                slot: 0
-                            }
-                        ]
-                    },
-                    {
-                        type: "enemies",
-
-                        enemies: [
-
-                            {
-                                type: "flying_enemy_1",
-                                lane: "top",
-                                slot: 0
-                            }
-
-                        ]
-                    },
-                     {
-                        type: "boss",
-
-                        boss: "nightmare_zero"
-                    },
-                    {
-                        type: "enemies",
-
-                        enemies: [
-
-                            {
-                                type: "flying_enemy_1",
-                                lane: "top",
-                                slot: 0
-                            }
-
-                        ]
-                    },
-                ],
-                    dialogs: [
-
-                    {
-                        waveIndex: 0,
-                        isAfterBossSpawn: false,
-
-                        dialogs: [
-
-                            {
-                                speaker: "alia",
-                                text: "X! We are detecting Nightmare activity!"
-                            },
-
-                            {
-                                speaker: "x",
-                                text: "I'm heading out."
-                            }
-
-                        ]
-                    },
-
-                    {
-                        waveIndex: 2,
-                        isAfterBossSpawn: true,
-
-                        dialogs: [
-
-                            {
-                                speaker: "nightmare_zero",
-                                text: "You are too late..."
-                            },
-
-                            {
-                                speaker: "zero",
-                                text: "..."
-                            }
-
-                        ]
-                    }
-
-                ],
-                stage_theme: "introduction_stage",
-                boss_theme:"boss"
-
-            }
-
-        );
-
     }
 
 }
@@ -143,9 +35,11 @@ const config = {
     pixelArt: true,
     scene: [
         BootScene,
+        UIScene,
         TitleScene,
         DifficultyScene,
         SaveScene,
+        AchievementScene,
         IntroScene,
         CombatScene,
         MainScene,

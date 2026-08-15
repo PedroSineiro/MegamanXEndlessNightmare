@@ -10,76 +10,54 @@ CharacterStatsCalculator {
         let maxHp =
             gameData.x.baseHp;
 
-        const actions  = 4 + 
+        const abilities = gameData.inventory.x.abilities;
 
-            (gameData.inventory
-                .x
-                .abilities
-                .extra_offensive_action? 1: 0);
+        const items = gameData.inventory.x.items;
 
-        const heartTanks =
+        const actions  = 4 + (abilities.extra_offensive_action? 1: 0);
 
-            gameData.inventory
-                .x
-                .items
-                .heart_tank ?? 0;
+        const heartTanks = items.heart_tank ?? 0;
 
         maxHp +=
             heartTanks * 50;
 
         gameData.x.maxHp = maxHp;
 
-        const hasEnergyTank = gameData.inventory
-                .x
-                .items
-                .energy_tank ? true: false;
+        const armor = ARMOR_STATS[gameData.currentArmors[0]];
 
-        const hasBusterPlus = gameData.inventory
-                .x
-                .abilities
-                .buster_plus ?? false;
+        const hasEnergyTank = items.energy_tank ? true: false;
 
-        const hasSaberPlus = gameData.inventory
-                .x
-                .abilities
-                .saber_plus ?? false;
+        const hasBusterPlus = abilities.buster_plus ?? false;
 
-        const basicShotDamage = ARMOR_STATS[gameData.currentArmors[0]].basicShotDamage + (hasBusterPlus ? 10 : 0);
+        const hasSaberPlus = abilities.saber_plus ?? false;
 
-        const mediumShotDamage = ARMOR_STATS[gameData.currentArmors[0]].mediumShotDamage + (hasBusterPlus ? 15 : 0);
+        const basicShotDamage = armor.basicShotDamage + (hasBusterPlus ? 10 : 0);
 
-        const chargedShotDamage = ARMOR_STATS[gameData.currentArmors[0]].chargedShotDamage + (hasBusterPlus ? 20 : 0);
+        const mediumShotDamage = armor.mediumShotDamage + (hasBusterPlus ? 15 : 0);
 
-        const slashDamage = ARMOR_STATS[gameData.currentArmors[0]].slashDamage + (hasSaberPlus ? 30 : 0);
+        const chargedShotDamage = armor.chargedShotDamage + (hasBusterPlus ? 20 : 0);
 
-        const isChargedShotPiercing = ARMOR_STATS[gameData.currentArmors[0]].piercingShot?? false;
+        const slashDamage = armor.slashDamage + (hasSaberPlus ? 30 : 0);
 
-        const hasQuickCharge = gameData.inventory
-                .x
-                .abilities
-                .quick_charge?? (gameData.currentArmors[0] == "gaea"? true: false);
+        const isChargedShotPiercing = armor.piercingShot?? false;
+
+        const hasQuickCharge = abilities.quick_charge?? (gameData.currentArmors[0] == "gaea"? true: false);
 
         const chargingMediumShotActions = (hasQuickCharge? 1: 2);
 
         const chargingChargedShotActions = (hasQuickCharge? 2: 3);
 
-        const evasion = ARMOR_STATS[gameData.currentArmors[0]].baseEvasion;
+        const evasion = armor.baseEvasion + (abilities.agility_buffer?0.05:0);
 
-        const reduction = ARMOR_STATS[gameData.currentArmors[0]].baseReduction;
+        const reduction = armor.baseReduction + (gameData.currentArmors[0] == "x"? (abilities.shock_buffer?0.5:0):0);
 
-        const hasGigaAttack = ARMOR_STATS[gameData.currentArmors[0]].hasGigaAttack;
+        const hasGigaAttack = gameData.currentArmors[0] == "x" ? (items.hidden_capsule?? false) : armor.hasGigaAttack;
 
-        const gigaAttackMustRecharge = ARMOR_STATS[gameData.currentArmors[0]].gigaAttackMustRecharge;
+        const gigaAttackMustRecharge = armor.gigaAttackMustRecharge;
 
-        const gigaAttackCooldown = (gameData.inventory
-                .x
-                .abilities
-                .giga_attack_recover? 4: 7);
+        const gigaAttackCooldown = (abilities.giga_attack_recover? 4: 7);
 
-        const lifeRecover = gameData.inventory
-                .x
-                .abilities
-                .life_recover?? false;
+        const lifeRecover = abilities.life_recover?? false;
 
         return {
 
@@ -133,67 +111,48 @@ CharacterStatsCalculator {
         let maxHp =
             gameData.zero.baseHp;
 
-        const actions  = 4 + 
+        const abilities = gameData.inventory.zero.abilities;
 
-            (gameData.inventory
-                .zero
-                .abilities
-                .extra_offensive_action? 1: 0);
+        const items = gameData.inventory.zero.items;
 
-        const heartTanks =
+        const actions  = 4 + (abilities.extra_offensive_action? 1: 0);
 
-            gameData.inventory
-                .zero
-                .items
-                .heart_tank ?? 0;
+        const heartTanks = items.heart_tank ?? 0;
 
         maxHp +=
             heartTanks * 50;
 
         gameData.zero.maxHp = maxHp;
 
-        const hasEnergyTank = gameData.inventory
-                .zero
-                .items
-                .energy_tank ? true: false;
+        const hasEnergyTank = items.energy_tank ? true: false;
 
-        const hasSaberPlus = gameData.inventory
-                .zero
-                .abilities
-                .saber_plus ?? false;
+        const hasSaberPlus = abilities.saber_plus ?? false;
 
-        const slashADamage = ARMOR_STATS[gameData.currentArmors[1]].slashADamage + (hasSaberPlus ? 10: 0);
+        const armor = ARMOR_STATS[gameData.currentArmors[1]];
 
-        const slashBDamage = ARMOR_STATS[gameData.currentArmors[1]].slashBDamage + (hasSaberPlus ? 10: 0);
+        const slashADamage = armor.slashADamage + (hasSaberPlus ? 15: 0);
 
-        const slashCDamage = ARMOR_STATS[gameData.currentArmors[1]].slashCDamage + (hasSaberPlus ? 10: 0);
+        const slashBDamage = armor.slashBDamage + (hasSaberPlus ? 15: 0);
 
-        const slashPiercingDamage = ARMOR_STATS[gameData.currentArmors[1]].slashPiercingDamage + (hasSaberPlus ? 10: 0);
+        const slashCDamage = armor.slashCDamage + (hasSaberPlus ? 15: 0);
 
-        const gigaAttackDamage = ARMOR_STATS[gameData.currentArmors[1]].gigaAttackDamage;
+        const slashPiercingDamage = armor.slashPiercingDamage + (hasSaberPlus ? 15: 0);
 
-        const evasion = ARMOR_STATS[gameData.currentArmors[1]].baseEvasion;
+        const gigaAttackDamage = armor.gigaAttackDamage;
 
-        const reduction = ARMOR_STATS[gameData.currentArmors[1]].baseReduction;
+        const evasion = armor.baseEvasion + (abilities.agility_buffer?0.05:0);
 
-        const piercingSlashActions = (gameData.inventory
-                .zero
-                .abilities
-                .quick_piercing_slash? 2: 3);
+        const reduction = armor.baseReduction + (gameData.currentArmors[1] == "zero"? (abilities.shock_buffer?0.50:0):0);
 
-        const hasGigaAttack = ARMOR_STATS[gameData.currentArmors[1]].hasGigaAttack;
+        const piercingSlashActions = (abilities.quick_piercing_slash? 2: 3);
 
-        const gigaAttackMustRecharge = ARMOR_STATS[gameData.currentArmors[1]].gigaAttackMustRecharge;
+        const hasGigaAttack = armor.hasGigaAttack;
 
-        const gigaAttackCooldown = (gameData.inventory
-                .zero
-                .abilities
-                .giga_attack_recover? 4: 7);
+        const gigaAttackMustRecharge = armor.gigaAttackMustRecharge;
 
-        const lifeRecover = gameData.inventory
-                .zero
-                .abilities
-                .life_recover?? false;
+        const gigaAttackCooldown = (abilities.giga_attack_recover? 4: 7);
+
+        const lifeRecover = abilities.life_recover?? false;
 
         return {
 

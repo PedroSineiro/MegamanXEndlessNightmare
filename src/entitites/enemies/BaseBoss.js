@@ -43,6 +43,8 @@ extends BaseEnemy {
         onComplete
     ) {
 
+        this.damageTaken = 0;
+
         if (
             this.isDead
         ) {
@@ -474,6 +476,11 @@ extends BaseEnemy {
 
     }
 
+    
+    unlockAchievement() {
+        
+    }
+
     async destroy() {
 
         if (
@@ -537,6 +544,8 @@ extends BaseEnemy {
         await this.playDeathSequence();
 
         await this.wait(1500);
+
+        this.unlockAchievement();
 
         this.scene.isBossDying = false;
 

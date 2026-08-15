@@ -41,13 +41,18 @@ export default function loadStageAssets(scene) {
     );
 
     scene.load.image(
-        "gate_stage",
-        "assets/backgrounds/gate_stage.png"
+        "first_gate_stage",
+        "assets/backgrounds/first_gate_stage.png"
     );
 
     scene.load.image(
-        "final_stage",
-        "assets/backgrounds/final_stage.png"
+        "second_gate_stage",
+        "assets/backgrounds/second_gate_stage.png"
+    );
+
+    scene.load.image(
+        "zero_stage",
+        "assets/backgrounds/zero_stage.png"
     );
 
     scene.load.audio(

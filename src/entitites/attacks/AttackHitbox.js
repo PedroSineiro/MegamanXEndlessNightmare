@@ -14,6 +14,8 @@ export default class AttackHitbox {
 
         this.damage = damage;
 
+        this.throughShield = config.throughShield
+
         this.active =
             true;
 

@@ -23,6 +23,13 @@ export const SHOT_CONFIG = {
             offsetXRight: -40,
             offsetXLeft: -80,
             offsetY: -35
+        },
+        giga: {
+            width: 100,
+            height: 60,
+            offsetXRight: 75,
+            offsetXLeft: -85,
+            offsetY: -35
         }
 
     },

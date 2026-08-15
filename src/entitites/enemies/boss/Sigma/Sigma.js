@@ -379,4 +379,8 @@ extends BaseBoss {
 
     }
 
+    unlockAchievement() {
+        this.AchievementManager.unlock("sigma_defeated");
+    }
+
 }

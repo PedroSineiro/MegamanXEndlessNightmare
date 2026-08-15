@@ -35,9 +35,9 @@ extends NightmareZero {
                 "night_zero_aura"
             );
 
-        this.maxHp = 1400;
+        this.maxHp = 1500;
 
-        this.hp = 1400;
+        this.hp = 1500;
 
         this.attackDamage = 40;
 
@@ -214,7 +214,7 @@ extends NightmareZero {
 
             );
 
-        if(!this.secondPhase &&  this.hp < this.maxHp *2/3){
+        if(!this.secondPhase &&  this.hp < this.maxHp *3/4){
             this.secondPhase = true;
 
             this.scene.sfx.play("night_zero_laugth",{
