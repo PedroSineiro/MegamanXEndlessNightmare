@@ -71,7 +71,7 @@ export const ACHIEVEMENTS = {
         name: "The Fourth One",
 
         description:
-            "Unlock the fourth armor."
+            "Unlock the Fourth armor."
 
     },
 
@@ -82,7 +82,7 @@ export const ACHIEVEMENTS = {
         name: "Top Gun",
 
         description:
-            "Unlock the falcon armor."
+            "Unlock the Falcon armor."
 
     },
 
@@ -93,7 +93,7 @@ export const ACHIEVEMENTS = {
         name: "Rock Solid",
 
         description:
-            "Unlock the gaea armor."
+            "Unlock the Gaea armor."
 
     },
 
@@ -104,7 +104,7 @@ export const ACHIEVEMENTS = {
         name: "The Last Samurai",
 
         description:
-            "Unlock the blade armor."
+            "Unlock the Blade armor."
 
     },
 
@@ -115,7 +115,7 @@ export const ACHIEVEMENTS = {
         name: "Deadly Shadow",
 
         description:
-            "Unlock the shadow armor."
+            "Unlock the Shadow armor."
 
     },
 
@@ -126,7 +126,7 @@ export const ACHIEVEMENTS = {
         name: "Time to go Ultimate",
 
         description:
-            "Unlock the ultimate armor."
+            "Unlock the Ultimate armor."
 
     },
 
@@ -137,7 +137,7 @@ export const ACHIEVEMENTS = {
         name: "Back in Black",
 
         description:
-            "Unlock the black zero."
+            "Unlock the Black Zero."
 
     },
 
@@ -177,7 +177,7 @@ export const ACHIEVEMENTS = {
         name: "The Good Old Red and Blue",
 
         description:
-            "Beat the game using only base x and zero."
+            "Beat the game using only base X and Zero."
     },
 
 
@@ -196,7 +196,7 @@ export const ACHIEVEMENTS = {
         name: "The Invincible Red and Blue",
 
         description:
-            "Beat the game using only base x and zero in nightmare difficulty."
+            "Beat the game using only base X and Zero in nightmare difficulty."
     },
 
     flawless_victory: {
