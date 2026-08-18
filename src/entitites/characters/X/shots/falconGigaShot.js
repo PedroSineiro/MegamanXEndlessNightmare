@@ -121,10 +121,10 @@ export default class FalconGigaShot {
         if (
 
             this.sprite.y <
-            -100 ||
+            -200 ||
 
             this.sprite.y >
-            screenHeight + 100
+            screenHeight + 200
 
         ) {
 
