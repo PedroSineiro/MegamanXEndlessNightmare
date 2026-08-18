@@ -72,7 +72,7 @@ EnemyBuilder {
                 hpMultiplier: 2
             },
             {
-                attackMultiplier: 2,
+                attackMultiplier: 2.2,
                 hpMultiplier: 2.5
             },
         ]
@@ -121,15 +121,15 @@ EnemyBuilder {
                 hpMultiplier: 1
             },
             {
-                attackMultiplier: 1.3,
+                attackMultiplier: 1.5,
                 hpMultiplier: 1.2
             },
             {
-                attackMultiplier: 1.8,
+                attackMultiplier: 1.9,
                 hpMultiplier: 1.4
             },
             {
-                attackMultiplier: 2,
+                attackMultiplier: 2.2,
                 hpMultiplier: 1.6
             },
         ],
@@ -139,15 +139,15 @@ EnemyBuilder {
                 hpMultiplier: 1
             },
             {
-                attackMultiplier: 1.3,
+                attackMultiplier: 1.5,
                 hpMultiplier: 1.2
             },
             {
-                attackMultiplier: 1.8,
+                attackMultiplier: 1.9,
                 hpMultiplier: 1.4
             },
             {
-                attackMultiplier: 2,
+                attackMultiplier: 2.2,
                 hpMultiplier: 1.6
             },
         ]
