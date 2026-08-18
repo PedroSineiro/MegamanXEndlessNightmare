@@ -100,8 +100,8 @@ extends BaseEnemy {
 
             (
                 this.direction === 1
-                ? 50
-                : -50
+                ? 42
+                : -42
             );
 
         const startY =

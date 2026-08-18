@@ -736,7 +736,7 @@ export default class BaseEnemy {
 
         this.damageTaken += damage;
 
-        if(this.damageTaken >= 610) {
+        if(this.damageTaken >= 650) {
             this.AchievementManager.unlock("max_damage");
         }
 

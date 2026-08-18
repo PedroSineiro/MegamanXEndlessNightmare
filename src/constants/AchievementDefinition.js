@@ -158,7 +158,7 @@ export const ACHIEVEMENTS = {
         name: "That's a Lot of Damage",
 
         description:
-            "Deal the maximum damage to an enemy in a turn."
+            "Deal the 650 damage to an enemy in a turn."
     },
 
     turns_no_damage: {

@@ -141,12 +141,7 @@ export default class FalconGigaShot {
 
         this.sprite?.destroy();
 
-        const index =
-        this.owner.gigaShots.indexOf(this);
-
-        if (index !== -1) {
-            this.owner.gigaShots.splice(index, 1);
-        }
+        this.owner.gigaShots = this.owner.gigaShots.filter(gigaShot => gigaShot.active);
 
     }
 

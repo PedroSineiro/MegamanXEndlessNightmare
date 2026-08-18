@@ -93,7 +93,7 @@ extends BaseEnemy {
             );
 
         const startY =
-            this.sprite.y - 86;
+            this.sprite.y - 106;
 
         //
         // centro da hurtbox
