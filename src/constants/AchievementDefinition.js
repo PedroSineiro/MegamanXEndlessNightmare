@@ -141,6 +141,28 @@ export const ACHIEVEMENTS = {
 
     },
 
+    black_axl: {
+
+        id: "black_axl",
+
+        name: "Now in Black",
+
+        description:
+            "Unlock the Black Axl."
+
+    },
+
+    black_ops: {
+
+        id: "black_ops",
+
+        name: "Black Ops",
+
+        description:
+            "Equip the Shadow armor, Black Zero and Black Axl."
+
+    },
+
     old_technique: {
 
         id: "old_technique",
@@ -174,10 +196,10 @@ export const ACHIEVEMENTS = {
     base_armors: {
         id: "base_armors",
 
-        name: "The Good Old Red and Blue",
+        name: "The Good Old Red, Blue ang Grey",
 
         description:
-            "Beat the game using only base X and Zero."
+            "Beat the game using only base X, Zero and Axl."
     },
 
 
@@ -193,10 +215,10 @@ export const ACHIEVEMENTS = {
     base_armors_nightmare: {
         id: "base_armors_nightmare",
 
-        name: "The Invincible Red and Blue",
+        name: "The Invincible Red, Blue and Grey",
 
         description:
-            "Beat the game using only base X and Zero in nightmare difficulty."
+            "Beat the game using only base X and Zero and Axl in nightmare difficulty."
     },
 
     flawless_victory: {

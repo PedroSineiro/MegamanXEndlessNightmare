@@ -33,7 +33,7 @@ export default class TitleScene extends Phaser.Scene {
 
             "x_and_zero",
 
-            "assets/images/x_and_zero.png"
+            "assets/images/x_and_zero_and_axl.png"
 
         );
 
@@ -277,16 +277,16 @@ Megaman X Endless Nightmare is a turn-based game where you control X and Zero.
 Each character has 4 actions per turn and can use them offensively or defensively.
 
 ATTACK
-Use attacks to damage enemies. X specializes in ranged attacks while Zero excels in close combat.
+Use attacks to damage enemies. X and Axl specializes in ranged attacks while Zero excels in close combat.
 
 DEFENSE
 Characters can use turns to raise their evasion chance and damage reduction for the turn.
 
 POWERFULL ATTACKS
-Powerfull attacks cost more actions to use, X can shoot charged shoots and Zero can do Saber combos to do more damage.
+Powerfull attacks cost more actions to use, X can shoot charged shoots and Zero can do Saber combos to do more damage and Axl can use other weapons.
 
 GIGA ATTACKS
-Both hunters can possess devastating special attacks capable of turning the tide of battle, it recharges in some turns.
+The hunters can possess devastating special attacks capable of turning the tide of battle, it recharges in some turns.
 
 UPGRADES
 Collect Nightmare Scrap during missions to purchase Heart Tanks, Energy Tanks, Armors and other upgrades.

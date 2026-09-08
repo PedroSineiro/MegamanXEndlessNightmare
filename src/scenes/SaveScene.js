@@ -119,6 +119,8 @@ export default class SaveScene extends Phaser.Scene {
 
         .setOrigin(0.5);
 
+        DataManager.deleteOldSaves();
+
         const saves =
             DataManager.getAllSaves();
 
@@ -285,7 +287,9 @@ export default class SaveScene extends Phaser.Scene {
         // vazio
         //
 
-        if(!saveData){
+        const isEmpty = (obj) => obj && Object.keys(obj).length === 0 && obj.constructor === Object;
+
+        if(!saveData || isEmpty(saveData)){
 
             this.add.text(
 
@@ -360,9 +364,11 @@ export default class SaveScene extends Phaser.Scene {
 
         const zeroArmor = saveData.currentArmors[1];
 
+        const axlArmor = saveData.currentArmors[2];
+
         this.add.image(
 
-            700,
+            620,
             y,
 
             `${xArmor}_empty_armor`
@@ -373,10 +379,21 @@ export default class SaveScene extends Phaser.Scene {
 
         this.add.image(
 
-            780,
+            700,
             y,
 
             `${zeroArmor}_empty_armor`
+
+        )
+
+        .setScale(1.6);
+
+        this.add.image(
+
+            780,
+            y,
+
+            `${axlArmor}_empty_armor`
 
         )
 

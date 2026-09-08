@@ -63,37 +63,37 @@ CharacterStatsCalculator {
 
             maxHp,
 
-            hasEnergyTank: hasEnergyTank,
+            hasEnergyTank,
 
-            actions: actions,
+            actions,
 
-            basicShotDamage: basicShotDamage,
+            basicShotDamage,
 
-            mediumShotDamage: mediumShotDamage,
+            mediumShotDamage,
 
-            chargedShotDamage: chargedShotDamage,
+            chargedShotDamage,
 
-            slashDamage: slashDamage,
+            slashDamage,
 
-            isChargedShotPiercing: isChargedShotPiercing,
+            isChargedShotPiercing,
 
-            hasQuickCharge: hasQuickCharge,
+            hasQuickCharge,
 
-            chargingMediumShotActions: chargingMediumShotActions,
+            chargingMediumShotActions,
 
-            chargingChargedShotActions: chargingChargedShotActions,
+            chargingChargedShotActions,
 
-            evasion: evasion,
+            evasion,
             
-            reduction: reduction,
+            reduction,
 
-            hasGigaAttack: hasGigaAttack,
+            hasGigaAttack,
 
-            gigaAttackMustRecharge: gigaAttackMustRecharge,
+            gigaAttackMustRecharge,
 
-            gigaAttackCooldown: gigaAttackCooldown,
+            gigaAttackCooldown,
 
-            lifeRecover: lifeRecover,
+            lifeRecover,
 
             armor:
 
@@ -158,33 +158,33 @@ CharacterStatsCalculator {
 
             maxHp,
 
-            hasEnergyTank: hasEnergyTank,
+            hasEnergyTank,
 
-            slashADamage: slashADamage,
+            slashADamage,
 
-            slashBDamage: slashBDamage,
+            slashBDamage,
 
-            slashCDamage: slashCDamage,
+            slashCDamage,
 
-            slashPiercingDamage: slashPiercingDamage,
+            slashPiercingDamage,
 
-            gigaAttackDamage: gigaAttackDamage,
+            gigaAttackDamage,
 
-            actions: actions,
+            actions,
 
-            evasion: evasion,
+            evasion,
             
-            reduction: reduction,
+            reduction,
 
-            piercingSlashActions: piercingSlashActions,
+            piercingSlashActions,
 
-            hasGigaAttack: hasGigaAttack,
+            hasGigaAttack,
 
-            gigaAttackMustRecharge: gigaAttackMustRecharge,
+            gigaAttackMustRecharge,
 
-            gigaAttackCooldown: gigaAttackCooldown,
+            gigaAttackCooldown,
 
-            lifeRecover: lifeRecover,
+            lifeRecover,
 
             armor:
 
@@ -195,4 +195,91 @@ CharacterStatsCalculator {
 
     }
 
+    static buildAxl(
+        gameData
+    ) {
+
+        let maxHp =
+            gameData.axl.baseHp;
+
+        const abilities = gameData.inventory.axl.abilities;
+
+        const items = gameData.inventory.axl.items;
+
+        const actions  = 4 + (abilities.extra_offensive_action? 1: 0);
+
+        const heartTanks = items.heart_tank ?? 0;
+
+        maxHp +=
+            heartTanks * 50;
+
+        gameData.x.maxHp = maxHp;
+
+        const armor = ARMOR_STATS[gameData.currentArmors[2]];
+
+        const shotDamage = armor.shotDamage + (abilities.weapon_plus? 5: 0);
+
+        const isShotPiercing = abilities.piercing_pistol ?? false;
+
+        const bazookaDamage = armor.bazookaDamage + (abilities.weapon_plus? 10: 0);
+
+        const bazookaActions = abilities.quick_bazooka? 2: 3;
+
+        const shockDamage = armor.shockDamage  + (abilities.weapon_plus? 20: 0);
+
+        const gigaAttackDamage = armor.gigaAttackDamage;
+
+        const hasEnergyTank = items.energy_tank ? true: false;
+
+        const evasion = armor.baseEvasion + (abilities.agility_buffer?0.05:0);
+
+        const reduction = armor.baseReduction + (gameData.currentArmors[2] == "axl"? (abilities.shock_buffer?0.5:0):0);
+
+        const hasGigaAttack = gameData.amountCompletedStages > 0? armor.hasGigaAttack: false;
+
+        const gigaAttackMustRecharge = armor.gigaAttackMustRecharge;
+
+        const gigaAttackCooldown = (abilities.giga_attack_recover? 4: 7);
+
+        const lifeRecover = abilities.life_recover?? false;
+
+        return {
+
+            maxHp,
+
+            hasEnergyTank,
+
+            shotDamage,
+
+            isShotPiercing,
+
+            shockDamage,
+
+            bazookaDamage,
+
+            bazookaActions,
+
+            gigaAttackDamage,
+
+            actions,
+
+            evasion,
+            
+            reduction,
+
+            hasGigaAttack,
+
+            gigaAttackMustRecharge,
+
+            gigaAttackCooldown,
+
+            lifeRecover,
+
+            armor:
+
+                gameData
+                    .currentArmors[2]
+
+        };
+    }
 }

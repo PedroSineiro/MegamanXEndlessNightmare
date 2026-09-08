@@ -72,14 +72,14 @@ extends BaseCharacter {
     constructor(
         scene,
         x,
-        y,
+        targetY,
         stats
     ) {
 
         super(
             scene,
             x,
-            y,
+            targetY,
             stats
         );
 
@@ -116,7 +116,7 @@ extends BaseCharacter {
         this.setupSprite(
             "zero_idle_1",
             x,
-            y
+            -100
         );
 
         //

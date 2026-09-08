@@ -2,224 +2,260 @@ export const
 BASE_DIALOGS = {
 
     1:
-        [
-            {
-                speaker: "alia",
-                text: "X! Zero! I'm glad you made it back safely."
-            },
+    [
+        {
+            speaker: "alia",
+            text: "X, Zero... welcome back."
+        },
 
-            {
-                speaker: "x",
-                text: "So this is the temporary Hunter Base?"
-            },
+        {
+            speaker: "alia",
+            text: "And there's someone I'd like you to meet."
+        },
 
-            {
-                speaker: "alia",
-                text: "Yes. After the attack on headquarters, we relocated all remaining personnel here."
-            },
+        {
+            speaker: "axl",
+            text: "Uh... hi."
+        },
 
-            {
-                speaker: "zero",
-                text: "What have you found?"
-            },
+        {
+            speaker: "axl",
+            text: "It's really an honor."
+        },
 
-            {
-                speaker: "alia",
-                text: "We've confirmed it. The Nightmare Virus has returned."
-            },
+        {
+            speaker: "axl",
+            text: "I've heard stories about both of you for years."
+        },
 
-            {
-                speaker: "x",
-                text: "..."
-            },
+        {
+            speaker: "zero",
+            text: "Who's the kid?"
+        },
 
-            {
-                speaker: "alia",
-                text: "And it's far more dangerous than the strain we encountered during the Gate Incident."
-            },
+        {
+            speaker: "axl",
+            text: "Hey!"
+        },
 
-            {
-                speaker: "zero",
-                text: "Because of Nightmare Zero?"
-            },
+        {
+            speaker: "alia",
+            text: "His name is Axl."
+        },
 
-            {
-                speaker: "alia",
-                text: "Exactly."
-            },
+        {
+            speaker: "alia",
+            text: "He's not a Maverick Hunter."
+        },
 
-            {
-                speaker: "alia",
-                text: "The original Nightmare Effect could create copies and illusions, but this new strain appears capable of materializing them permanently."
-            },
+        {
+            speaker: "alia",
+            text: "At least, he wasn't."
+        },
 
-            {
-                speaker: "alia",
-                text: "Not only people... but events, locations and creatures from the past."
-            },
+        {
+            speaker: "alia",
+            text: "During the outbreak he protected civilians and engaged Nightmare entities on his own."
+        },
 
-            {
-                speaker: "x",
-                text: "As if history itself is being recreated."
-            },
+        {
+            speaker: "alia",
+            text: "Under normal circumstances I wouldn't even consider this."
+        },
 
-            {
-                speaker: "alia",
-                text: "That's our current theory."
-            },
+        {
+            speaker: "alia",
+            text: "But this crisis has stretched our forces far too thin."
+        },
 
-            {
-                speaker: "alia",
-                text: "Nightmare Zero shouldn't exist anymore. Yet somehow the virus recreated him using information from the original event."
-            },
+        {
+            speaker: "x",
+            text: "You fought Nightmares alone?"
+        },
 
-            {
-                speaker: "zero",
-                text: "Then we may encounter even worse things."
-            },
+        {
+            speaker: "axl",
+            text: "Someone had to do something."
+        },
 
-            {
-                speaker: "alia",
-                text: "Unfortunately, that's likely."
-            },
+        {
+            speaker: "zero",
+            text: "Bravery and recklessness aren't the same thing."
+        },
 
-            {
-                speaker: "alia",
-                text: "We've also recovered fragments from defeated Nightmare entities."
-            },
+        {
+            speaker: "axl",
+            text: "Maybe."
+        },
 
-            {
-                speaker: "x",
-                text: "Fragments?"
-            },
+        {
+            speaker: "axl",
+            text: "But I'm still here."
+        },
 
-            {
-                speaker: "alia",
-                text: "We're calling it Nightmare Scrap."
-            },
+        {
+            speaker: "alia",
+            text: "I've already performed a preliminary scan."
+        },
 
-            {
-                speaker: "alia",
-                text: "At first we thought it was unstable viral residue, but our engineers discovered something surprising."
-            },
+        {
+            speaker: "alia",
+            text: "No signs of infection."
+        },
 
-            {
-                speaker: "alia",
-                text: "The material is incredibly durable and contains unusual energy properties."
-            },
+        {
+            speaker: "alia",
+            text: "His systems are unusual, though."
+        },
 
-            {
-                speaker: "zero",
-                text: "Useful enough to be recycled?"
-            },
+        {
+            speaker: "alia",
+            text: "The more data I gather, the better I'll be able to support him."
+        },
 
-            {
-                speaker: "alia",
-                text: "More than that."
-            },
+        {
+            speaker: "x",
+            text: "If he's willing to help, we can use every capable ally we can get."
+        },
 
-            {
-                speaker: "alia",
-                text: "Using reverse engineering, we may be able to turn Nightmare Scrap into equipment upgrades."
-            },
+        {
+            speaker: "zero",
+            text: "...Fine."
+        },
 
-            {
-                speaker: "x",
-                text: "Using the virus against itself..."
-            },
+        {
+            speaker: "zero",
+            text: "Just don't get yourself killed."
+        },
 
-            {
-                speaker: "alia",
-                text: "Exactly."
-            },
+        {
+            speaker: "axl",
+            text: "Wouldn't dream of it."
+        },
 
-            {
-                speaker: "alia",
-                text: "Every Nightmare you destroy will help us develop stronger technology."
-            },
+        {
+            speaker: "alia",
+            text: "Now, onto the situation."
+        },
 
-            {
-                speaker: "zero",
-                text: "Then we'll make sure to bring back plenty of samples."
-            },
+        {
+            speaker: "alia",
+            text: "We've confirmed that the Nightmare Virus has returned."
+        },
 
-            {
-                speaker: "alia",
-                text: "There's one more thing."
-            },
+        {
+            speaker: "alia",
+            text: "And it's creating entities from the past, including Mavericks we thought were long gone."
+        },
 
-            {
-                speaker: "alia",
-                text: "Reports are coming in from all over the world."
-            },
+        {
+            speaker: "x",
+            text: "So Nightmare Zero wasn't an isolated case."
+        },
 
-            {
-                speaker: "alia",
-                text: "Cities, research facilities, abandoned military complexes..."
-            },
+        {
+            speaker: "alia",
+            text: "No."
+        },
 
-            {
-                speaker: "alia",
-                text: "Nightmare outbreaks are appearing everywhere."
-            },
+        {
+            speaker: "alia",
+            text: "We should expect more."
+        },
 
-            {
-                speaker: "x",
-                text: "So headquarters wasn't the only target."
-            },
+        {
+            speaker: "alia",
+            text: "We've also recovered material from defeated Nightmares."
+        },
 
-            {
-                speaker: "alia",
-                text: "No. It was only the beginning."
-            },
+        {
+            speaker: "alia",
+            text: "We're calling it Nightmare Scrap."
+        },
 
-            {
-                speaker: "alia",
-                text: "The virus is spreading and creating new Nightmare entities wherever it appears."
-            },
+        {
+            speaker: "alia",
+            text: "It's stable enough to be repurposed into equipment upgrades."
+        },
 
-            {
-                speaker: "alia",
-                text: "If left unchecked, entire regions could become overrun."
-            },
+        {
+            speaker: "zero",
+            text: "Using the Nightmare against itself."
+        },
 
-            {
-                speaker: "zero",
-                text: "Then there's no time to waste."
-            },
+        {
+            speaker: "alia",
+            text: "Exactly."
+        },
 
-            {
-                speaker: "alia",
-                text: "I've prepared a list of active hotspots."
-            },
+        {
+            speaker: "alia",
+            text: "Bring back as much as you can."
+        },
 
-            {
-                speaker: "alia",
-                text: "Your mission is simple: investigate each location, eliminate all Nightmare manifestations, and recover any Nightmare Scrap you find."
-            },
+        {
+            speaker: "alia",
+            text: "Reports of outbreaks are coming from all over the world."
+        },
 
-            {
-                speaker: "x",
-                text: "We'll stop the spread."
-            },
+        {
+            speaker: "alia",
+            text: "We don't have enough Hunters to respond everywhere at once."
+        },
 
-            {
-                speaker: "alia",
-                text: "Good luck, Hunters."
-            },
+        {
+            speaker: "alia",
+            text: "From now on, missions will be carried out by teams of two."
+        },
 
-            {
-                speaker: "alia",
-                text: "The Nightmare has returned..."
-            }
-        ],
+        {
+            speaker: "axl",
+            text: "Only two?"
+        },
+
+        {
+            speaker: "alia",
+            text: "The third member will remain here."
+        },
+
+        {
+            speaker: "alia",
+            text: "This base is all we have left."
+        },
+
+        {
+            speaker: "alia",
+            text: "We can't afford to lose another headquarters."
+        },
+
+        {
+            speaker: "x",
+            text: "Understood."
+        },
+
+        {
+            speaker: "zero",
+            text: "Then let's get to work."
+        },
+
+        {
+            speaker: "axl",
+            text: "Just point me at the nearest Maverick."
+        },
+
+        {
+            speaker: "alia",
+            text: "Good luck, Hunters."
+        }
+    ],
 
     3:
         [
             {
-            speaker: "alia",
-            text: "X, Zero, I've been monitoring the sectors that remain under Nightmare influence."
+                speaker: "alia",
+                text: "X, Zero, Axl... I've been monitoring the sectors that remain under Nightmare influence."
             },
+
             {
                 speaker: "x",
                 text: "Have you discovered anything new?"
@@ -238,6 +274,16 @@ BASE_DIALOGS = {
             {
                 speaker: "alia",
                 text: "Exactly. Even in sectors with no Hunter activity, the Nightmare's energy continues to rise."
+            },
+
+            {
+                speaker: "axl",
+                text: "Great... so we're actually losing ground?"
+            },
+
+            {
+                speaker: "alia",
+                text: "Not yet. But the situation is getting worse."
             },
 
             {
@@ -261,6 +307,11 @@ BASE_DIALOGS = {
             },
 
             {
+                speaker: "axl",
+                text: "Feeding on time...? That's creepy."
+            },
+
+            {
                 speaker: "x",
                 text: "Then every mission from now on will be more dangerous."
             },
@@ -268,6 +319,16 @@ BASE_DIALOGS = {
             {
                 speaker: "alia",
                 text: "Most likely. We've started referring to the intensity of the phenomenon as the Nightmare Level. According to our projections, it's still rising."
+            },
+
+            {
+                speaker: "axl",
+                text: "So the longer this goes on, the stronger everything gets?"
+            },
+
+            {
+                speaker: "alia",
+                text: "That's what the data suggests."
             },
 
             {
@@ -286,17 +347,21 @@ BASE_DIALOGS = {
             },
 
             {
+                speaker: "axl",
+                text: "Then let's stop wasting time and get moving."
+            },
+
+            {
                 speaker: "zero",
                 text: "No matter what the Nightmare creates, we'll destroy it."
             }
-
         ],
     
     7:
         [
             {
                 speaker: "alia",
-                text: "X, Zero... something's wrong."
+                text: "X, Zero, Axl... something's wrong."
             },
 
             {
@@ -340,6 +405,11 @@ BASE_DIALOGS = {
             },
 
             {
+                speaker: "axl",
+                text: "Wait... you're saying things got worse after we beat Sigma?"
+            },
+
+            {
                 speaker: "x",
                 text: "That doesn't make any sense."
             },
@@ -357,6 +427,16 @@ BASE_DIALOGS = {
             {
                 speaker: "zero",
                 text: "Which means Sigma wasn't the one in control."
+            },
+
+            {
+                speaker: "axl",
+                text: "So we fought our way through all of that..."
+            },
+
+            {
+                speaker: "axl",
+                text: "...and still haven't found the real enemy?"
             },
 
             {
@@ -410,6 +490,11 @@ BASE_DIALOGS = {
             },
 
             {
+                speaker: "axl",
+                text: "Yeah, that's definitely not suspicious at all."
+            },
+
+            {
                 speaker: "x",
                 text: "...A challenge."
             },
@@ -422,6 +507,11 @@ BASE_DIALOGS = {
             {
                 speaker: "alia",
                 text: "Most likely."
+            },
+
+            {
+                speaker: "axl",
+                text: "At least they're finally talking to us directly."
             },
 
             {
@@ -450,13 +540,23 @@ BASE_DIALOGS = {
             },
 
             {
+                speaker: "axl",
+                text: "We've come this far. No way I'm backing out now."
+            },
+
+            {
                 speaker: "alia",
                 text: "I'll transmit the coordinates for the two locations."
             },
 
             {
                 speaker: "alia",
-                text: "Be careful. Whatever is waiting there... it survived Sigma."
+                text: "Be careful. Whatever is waiting there..."
+            },
+
+            {
+                speaker: "alia",
+                text: "...it survived Sigma."
             },
 
             {
@@ -468,7 +568,7 @@ BASE_DIALOGS = {
     9: [
         {
             speaker: "alia",
-            text: "X, Zero... we've received another transmission."
+            text: "X, Zero, Axl... we've received another transmission."
         },
 
         {
@@ -487,18 +587,23 @@ BASE_DIALOGS = {
         },
 
         {
+            speaker: "axl",
+            text: "So they're not even hiding anymore."
+        },
+
+        {
             speaker: "zero",
-            text: "Another waste of time."
+            text: "Good."
         },
 
         {
             speaker: "alia",
-            text: "Almost certainly."
+            text: "After analyzing the data recovered from the Sigma sector..."
         },
 
         {
             speaker: "alia",
-            text: "But after analyzing the data from the Sigma sector, I'm convinced this is the source."
+            text: "I'm convinced this is the source."
         },
 
         {
@@ -527,6 +632,11 @@ BASE_DIALOGS = {
         },
 
         {
+            speaker: "axl",
+            text: "No more running in circles either."
+        },
+
+        {
             speaker: "x",
             text: "We'll find whoever's responsible."
         },
@@ -538,12 +648,17 @@ BASE_DIALOGS = {
 
         {
             speaker: "alia",
-            text: "Be careful... whoever sent this message has manipulated every battle you've fought so far."
+            text: "Be careful. Whoever sent this message has manipulated every battle you've fought so far."
         },
 
         {
             speaker: "alia",
-            text: "This won't be easy, the full capabilites of the one behind this are still unknown."
+            text: "This won't be easy. The full capabilities of whoever is behind this remain unknown."
+        },
+
+        {
+            speaker: "axl",
+            text: "After everything we've seen, I'd be disappointed if it was easy."
         },
 
         {
@@ -553,12 +668,17 @@ BASE_DIALOGS = {
 
         {
             speaker: "zero",
-            text: "The amount of battles that we've already faced before..."
+            text: "All the battles we've fought..."
         },
 
         {
             speaker: "zero",
-            text: "This won't be in vain."
+            text: "All the people this nightmare has used..."
+        },
+
+        {
+            speaker: "zero",
+            text: "None of it will be in vain."
         }
     ],
 
@@ -710,6 +830,131 @@ BASE_DIALOGS = {
 
         {
             speaker: "alia",
+            text: "Speaking of what's next..."
+        },
+
+        {
+            speaker: "alia",
+            text: "There's something else we should discuss."
+        },
+
+        {
+            speaker: "axl",
+            text: "Uh... that sounds serious."
+        },
+
+        {
+            speaker: "alia",
+            text: "When we first met, you weren't even a Maverick Hunter."
+        },
+
+        {
+            speaker: "alia",
+            text: "You were just a civilian who refused to run away."
+        },
+
+        {
+            speaker: "alia",
+            text: "You fought through Nightmare outbreaks, protected civilians, and survived battles that most Hunters wouldn't."
+        },
+
+        {
+            speaker: "alia",
+            text: "Your combat data has exceeded every expectation."
+        },
+
+        {
+            speaker: "axl",
+            text: "Wait..."
+        },
+
+        {
+            speaker: "axl",
+            text: "Are you saying what I think you're saying?"
+        },
+
+        {
+            speaker: "x",
+            text: "You've already proven yourself, Axl."
+        },
+
+        {
+            speaker: "x",
+            text: "Not because of your strength."
+        },
+
+        {
+            speaker: "x",
+            text: "Because no matter how dangerous things became, you kept helping people."
+        },
+
+        {
+            speaker: "zero",
+            text: "You didn't run."
+        },
+
+        {
+            speaker: "zero",
+            text: "That's more than I can say for a lot of Hunters I've met."
+        },
+
+        {
+            speaker: "axl",
+            text: "...Wow."
+        },
+
+        {
+            speaker: "alia",
+            text: "Axl."
+        },
+
+        {
+            speaker: "alia",
+            text: "On behalf of the Maverick Hunters..."
+        },
+
+        {
+            speaker: "alia",
+            text: "I'd like to officially invite you to join our ranks."
+        },
+
+        {
+            speaker: "axl",
+            text: "Seriously?!"
+        },
+
+        {
+            speaker: "axl",
+            text: "I mean..."
+        },
+
+        {
+            speaker: "axl",
+            text: "Of course! I'd be honored!"
+        },
+
+        {
+            speaker: "x",
+            text: "Welcome to the team, Hunter."
+        },
+
+        {
+            speaker: "zero",
+            text: "Try not to make us regret it."
+        },
+
+        {
+            speaker: "axl",
+            text: "Hey! I can be professional!"
+        },
+
+        {
+            speaker: "zero",
+            text: "We'll see."
+        },
+
+        {
+            speaker: "alia",
             text: "That's what I wanted to hear."
         },
 
@@ -720,12 +965,17 @@ BASE_DIALOGS = {
 
         {
             speaker: "alia",
-            text: "You've earned it."
+            text: "You've all earned it."
         },
 
         {
             speaker: "x",
-            text: "Come on, Zero. Let's go home."
+            text: "Come on."
+        },
+
+        {
+            speaker: "x",
+            text: "Let's go home."
         },
 
         {
@@ -734,8 +984,13 @@ BASE_DIALOGS = {
         },
 
         {
-            speaker: "zero",
-            text: "Let's go."
+            speaker: "axl",
+            text: "Heh..."
+        },
+
+        {
+            speaker: "axl",
+            text: "Home."
         }
     ]
 

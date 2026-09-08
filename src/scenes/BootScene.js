@@ -4,6 +4,10 @@ import loadXShotAssets from "../entitites/characters/X/shots/loadAssets.js";
 
 import loadZeroAssets from "../entitites/characters/Zero/loadAssets.js";
 
+import loadAxlAssets from "../entitites/characters/Axl/loadAssets.js";
+
+import loadAxlShotAssets from "../entitites/characters/Axl/shots/loadAssets.js";
+
 import loadFlyingEnemy1Assets from "../entitites/enemies/regular/FlyingEnemy1/loadAssets.js"
 
 import loadFlyingEnemy2Assets from "../entitites/enemies/regular/FlyingEnemy2/loadAssets.js";
@@ -110,6 +114,12 @@ import loadAwakenedNightmareZeroAssets from "../entitites/enemies/boss/AwakenedN
 
 import loadAwakenedNightmareZeroRingAssets from "../entitites/enemies/boss/AwakenedNightmareZero/ring/loadAssets.js";
 
+import loadBlazeHeatnixAssets from "../entitites/enemies/boss/BlazeHeatnix/loadAssets.js";
+
+import loadBlazeHeatnixFireballAssets from "../entitites/enemies/boss/BlazeHeatnix/fireball/loadAssets.js";
+
+import loadNightmareSnakeAssets from "../entitites/enemies/boss/NightmareSnake/loadAssets.js";
+
 import loadExplosionAssets from "../entitites/effects/Explosion/loadAssets.js";
 
 import loadStageAssets from "../stages/loadAssets.js";
@@ -125,6 +135,10 @@ import createXAnimations from "../entitites/characters/X/createAnimations.js";
 import createXShotAnimations from "../entitites/characters/X/shots/createAnimations.js";
 
 import createZeroAnimations from "../entitites/characters/Zero/createAnimations.js";
+
+import createAxlAnimations from "../entitites/characters/Axl/createAnimations.js";
+
+import createAxlShotAnimations from "../entitites/characters/Axl/shots/createAnimations.js";
 
 import createFlyingEnemy1Animations from "../entitites/enemies/regular/FlyingEnemy1/createAnimations.js";
 
@@ -232,6 +246,12 @@ import createAwakenedNightmareZeroAnimations from "../entitites/enemies/boss/Awa
 
 import createAwakenedNightmareZeroRingAnimations from "../entitites/enemies/boss/AwakenedNightmareZero/ring/createAnimations.js";
 
+import createBlazeHeatnixAnimations from "../entitites/enemies/boss/BlazeHeatnix/createAnimations.js";
+
+import createBlazeHeatnixFireballAnimations from "../entitites/enemies/boss/BlazeHeatnix/fireball/createAnimations.js";
+
+import createNightmareSnakeAnimations from "../entitites/enemies/boss/NightmareSnake/createAnimations.js";
+
 import createExplosionAnimations from "../entitites/effects/Explosion/createAnimations.js";
 
 import createGeneralAnimations from "../general/createAnimations.js";
@@ -270,6 +290,8 @@ extends Phaser.Scene {
         loadXAssets(this);
         loadZeroAssets(this);
         loadXShotAssets(this);
+        loadAxlAssets(this);
+        loadAxlShotAssets(this);
         loadEnemy1ShotAssets(this);
         loadEnemy3ShotAssets(this);
         loadBigEnemy2ShotAssets(this);
@@ -314,6 +336,9 @@ extends Phaser.Scene {
         loadSigmaBlockAssets(this);
         loadAwakenedNightmareZeroAssets(this);
         loadAwakenedNightmareZeroRingAssets(this);
+        loadBlazeHeatnixAssets(this);
+        loadBlazeHeatnixFireballAssets(this);
+        loadNightmareSnakeAssets(this);
         loadExplosionAssets(this);
         loadGeneralAssets(this);
         loadStageAssets(this);
@@ -327,6 +352,8 @@ extends Phaser.Scene {
         createXAnimations(this);
         createXShotAnimations(this);
         createZeroAnimations(this);
+        createAxlAnimations(this);
+        createAxlShotAnimations(this);
         createFlyingEnemy1Animations(this);
         createFlyingEnemy2Animations(this);
         createFlyingEnemy3Animations(this);
@@ -380,6 +407,9 @@ extends Phaser.Scene {
         createSigmaBlockAnimations(this);
         createAwakenedNightmareZeroAnimations(this);
         createAwakenedNightmareZeroRingAnimations(this);
+        createBlazeHeatnixAnimations(this);
+        createBlazeHeatnixFireballAnimations(this);
+        createNightmareSnakeAnimations(this);
         createExplosionAnimations(this);
         createGeneralAnimations(this);
         createDialogAnimations(this);

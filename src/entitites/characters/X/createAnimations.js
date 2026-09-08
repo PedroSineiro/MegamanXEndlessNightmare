@@ -117,8 +117,8 @@ createAnimations(scene) {
             `${id}_dying`,
             `${id}_dying`,
             1,
-            4,
-            16
+            1,
+            4
         );
 
         createSimpleAnimation(
@@ -191,6 +191,8 @@ createAnimations(scene) {
     createGaeaGigaAttack(scene);
 
     createXGigaAttack(scene);
+
+    createDeathSpheres(scene);
 
     let frames = [];
 
@@ -273,7 +275,7 @@ function createIdleAnimation(scene, armor) {
 
         frames: [
 
-            { key: `${armor}_idle_1` },
+            { key: `${armor}_idle_1`},
             { key: `${armor}_idle_2` },
             { key: `${armor}_idle_3` },
             { key: `${armor}_idle_4` },
@@ -292,7 +294,7 @@ function createIdleAnimation(scene, armor) {
 
         ],
 
-        frameRate: 6,
+        frameRate: 4,
 
         repeat: -1
 
@@ -653,6 +655,61 @@ function createXGigaAttack(scene) {
         frameRate: 16,
 
         repeat: 0
+
+    });
+}
+
+function createDeathSpheres(scene) {
+    scene.anims.create({
+
+        key: "x_death_sphere_1",
+
+        frames:[
+            {
+                key: "x_death_sphere_1_1"
+            },
+            {
+                key: "x_death_sphere_1_2"
+            },
+            {
+                key: "x_death_sphere_1_3"
+            },
+            {
+                key: "x_death_sphere_1_4"
+            },
+            {
+                key: "x_death_sphere_1_5"
+            },
+        ],
+
+        frameRate: 22,
+
+        repeat: -1
+
+    });
+
+    scene.anims.create({
+
+        key: "x_death_sphere_2",
+
+        frames:[
+            {
+                key: "x_death_sphere_2_1"
+            },
+            {
+                key: "x_death_sphere_2_2"
+            },
+            {
+                key: "x_death_sphere_2_3"
+            },
+            {
+                key: "x_death_sphere_2_4"
+            }
+        ],
+
+        frameRate: 22,
+
+        repeat: -1
 
     });
 }

@@ -77,14 +77,14 @@ extends BaseCharacter {
     constructor(
         scene,
         x,
-        y,
+        targetY,
         stats
     ) {
 
         super(
             scene,
             x,
-            y,
+            targetY,
             stats
         );
 
@@ -97,7 +97,7 @@ extends BaseCharacter {
         this.setupSprite(
             "x_idle_1",
             x,
-            y
+            -100
         );
 
         //
@@ -147,7 +147,7 @@ extends BaseCharacter {
 
         this.shadowGigaAttackDamage = 80;
 
-        this.xGigaAttackDamage = 270;
+        this.xGigaAttackDamage = 320;
 
         this.novaStrikeHitbox = null;
 
@@ -738,105 +738,7 @@ extends BaseCharacter {
             `${this.currentArmor}_nova_strike`
         );
 
-        return new Promise(
-
-            resolve => {
-
-                const totalDistance =
-                    550;
-
-                let traveled =
-                    0;
-
-                const speed =
-                    18;
-
-                const direction =
-                    this.direction;
-
-                this.novaStrikeHitbox = {
-                    damage: this.novaStrikeDamage,
-                    alreadyHit: []
-                };
-
-                const event =
-
-                    this.scene.time.addEvent({
-
-                        delay: 16,
-
-                        loop: true,
-
-                        callback: () => {
-
-                            //
-                            // mover
-                            //
-
-                            this.sprite.x +=
-                                speed * direction;
-
-                            traveled +=
-                                speed;
-
-                            //
-                            // hitbox
-                            //
-
-                            const hitboxWidth =
-                                180;
-
-                            const hitboxHeight =
-                                100;
-
-                            const hitboxOffsetX =
-                                40;
-
-                            this.novaStrikeHitbox.hitbox =
-
-                            new Phaser.Geom.Rectangle(
-
-                                direction === 1
-
-                                    ? this.sprite.x - hitboxOffsetX
-
-                                    : this.sprite.x - hitboxWidth + hitboxOffsetX,
-
-                                this.sprite.y - 180,
-
-                                hitboxWidth,
-
-                                hitboxHeight
-
-                            );
-
-                            //
-                            // terminou?
-                            //
-
-                            if (
-
-                                traveled >=
-
-                                totalDistance
-
-                            ) {
-
-                                this.novaStrikeHitbox = null;
-
-                                event.remove();
-
-                                resolve();
-
-                            }
-
-                        }
-
-                    });
-
-            }
-
-        );
+        await this.performDash(this.novaStrikeDamage);
 
     }
 

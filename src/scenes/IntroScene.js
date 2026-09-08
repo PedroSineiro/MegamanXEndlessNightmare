@@ -253,7 +253,7 @@ extends Phaser.Scene {
 
                             type: "boss",
 
-                            boss: "nightmare_zero"
+                            boss: "magma_dragoon"
 
                         });
 
@@ -264,12 +264,11 @@ extends Phaser.Scene {
                         {
 
                             stage:
-                                "introduction_stage",
+                                "base_stage",
 
                             players: [
 
-                                "x",
-                                "zero"
+                                "axl", "x"
 
                             ],
 
@@ -449,7 +448,14 @@ is about to begin...`;
 
             difficulty: this.data.difficulty,
 
-            currentArmors: ["x","zero"],
+            currentArmors: ["x", "zero", "axl"],
+
+            baseTeam: ["axl"],
+
+            missionTeam: ["x", "zero"],
+
+            currentStage: ["first"],
+            
 
             x: {
                 baseHp: 400,
@@ -457,6 +463,11 @@ is about to begin...`;
             },
 
             zero: {
+                baseHp: 400,
+                maxHp: 400
+            },
+
+            axl: {
                 baseHp: 400,
                 maxHp: 400
             },
@@ -502,6 +513,24 @@ is about to begin...`;
 
                     }
 
+                },
+
+                axl: {
+
+                    items: {
+
+                    },
+
+                    abilities: {
+                    },
+
+                    armors: {
+
+                        axl: true,
+                        black_axl: false
+
+                    }
+
                 }
 
             },
@@ -511,6 +540,8 @@ is about to begin...`;
             amountCompletedStages: 0,
 
             nightmareScrap: 0,
+
+            nightmareScrapForCombats: 0,
 
             nightmareLevel: 1,
 

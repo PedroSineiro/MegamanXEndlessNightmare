@@ -10,6 +10,8 @@ export default class DialogBox {
             "alia": 0xff99cc,
             "x": 0x173aff,
             "zero": 0xf71e1e,
+            "axl": 0x0a0f6e,
+            "blaze_heatnix": 0xfc5e03,
             "nightmare_zero": 0xfc03f8,
             "high_max": 0xffe924,
             "dynamo":   0x3a24ff,
@@ -336,6 +338,28 @@ export default class DialogBox {
 
         }
 
+        if (
+            speaker === "axl"
+        ) {
+
+            const armor =
+
+                this.scene
+                    .GameData
+                    .currentArmors[2];
+
+            return {
+
+                idle:
+                    `dialog_${armor}_idle`,
+
+                speaking:
+                    `dialog_${armor}_speaking`
+
+            };
+
+        }
+
 
         return {
 
@@ -528,7 +552,8 @@ export default class DialogBox {
 
             "alia",
             "x",
-            "zero"
+            "zero",
+            "axl"
 
         ].includes(
             speaker

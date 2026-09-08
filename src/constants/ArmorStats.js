@@ -46,7 +46,7 @@ export const ARMOR_STATS = {
     },
 
     "gaea":{
-        baseEvasion: 0.05,
+        baseEvasion: 0.10,
         baseReduction: 0.65,
         basicShotDamage: 15,
         mediumShotDamage: 0,
@@ -101,6 +101,28 @@ export const ARMOR_STATS = {
         slashCDamage: 75,
         slashPiercingDamage: 75,
         gigaAttackDamage: 240,
+        hasGigaAttack: true,
+        gigaAttackMustRecharge: true
+    },
+
+    "axl":{
+        baseEvasion: 0.15,
+        baseReduction: 0,
+        shotDamage: 15,
+        bazookaDamage: 60,
+        shockDamage: 60,
+        gigaAttackDamage: 260,
+        hasGigaAttack: true,
+        gigaAttackMustRecharge: true
+    },
+
+    "black_axl":{
+        baseEvasion: 0.20,
+        baseReduction: 0.50,
+        shotDamage: 20,
+        bazookaDamage: 80,
+        shockDamage: 80,
+        gigaAttackDamage: 300,
         hasGigaAttack: true,
         gigaAttackMustRecharge: true
     }

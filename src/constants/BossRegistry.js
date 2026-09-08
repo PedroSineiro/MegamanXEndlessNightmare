@@ -17,9 +17,17 @@ import AwakenedNightmareZero from "../entitites/enemies/boss/AwakenedNightmareZe
 import ProtoMagmaDragoon from "../entitites/enemies/boss/MagmaDragoon/ProtoMagmaDragoon.js";
 import ProtoHighMax from "../entitites/enemies/boss/HighMax/ProtoHighMax.js";
 import ProtoSigmaHead from "../entitites/enemies/boss/SigmaHead/ProtoSigmaHead.js";
+import BlazeHeatnix from "../entitites/enemies/boss/BlazeHeatnix/BlazeHeatnix.js";
+import NightmareSnake from "../entitites/enemies/boss/NightmareSnake/NightmareSnake.js";
 
 export const
 BOSS_CONFIG = {
+
+    blaze_heatnix:
+        BlazeHeatnix,
+
+    nightmare_snake:
+        NightmareSnake,
 
     nightmare_zero:
         NightmareZero,

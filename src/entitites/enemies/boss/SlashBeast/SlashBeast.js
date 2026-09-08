@@ -178,7 +178,7 @@ extends BaseBoss {
 
         const targetX =
 
-            target.filename === "x"
+            this.attackCount == 0
 
             ? 100
 
@@ -208,7 +208,7 @@ extends BaseBoss {
 
         this.setDirection(
 
-            target.filename === "x"
+            this.attackCount == 0
 
             ? 1
 

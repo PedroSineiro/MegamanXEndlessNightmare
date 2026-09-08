@@ -1,13 +1,14 @@
-import { ARMOR_STATS } from "../../constants/ArmorStats.js";
-import SoundManager from "../../systems/SoundManager.js";
+import DeathSphere from "./DeathSphere.js";
 
 export default class BaseCharacter {
 
-    constructor(scene, x, y, stats) {
+    constructor(scene, x, targetY, stats) {
 
         this.isSpawned = false;
 
         this.spawnX = x;
+
+        this.spawnTargetY = targetY;
 
         this.isPlayer = true;
 
@@ -94,6 +95,10 @@ export default class BaseCharacter {
         };
         
         this.gigaShots = [];
+
+        this.gigaAttackHitbox = null;
+
+        this.deathSpheres = [];
 
         this.isBusy = false;
 
@@ -226,7 +231,7 @@ export default class BaseCharacter {
 
     recoverHP(){
         if(this.lifeRecover){
-            this.hp = Math.min(this.hp + 10, this.maxHp);
+            this.hp = Math.min(this.hp + 8, this.maxHp);
         }
     }
 
@@ -611,6 +616,208 @@ export default class BaseCharacter {
 
     }
 
+    async performDash(damage, totalDistance = 550, speed = 18, hitboxWidth = 180, hitboxHeight = 100) {
+
+        return new Promise(
+
+            resolve => {
+
+                let traveled =
+                    0;
+
+                const direction =
+                    this.direction;
+
+                this.gigaAttackHitbox = {
+                    damage: damage,
+                    alreadyHit: []
+                };
+
+                const event =
+
+                    this.scene.time.addEvent({
+
+                        delay: 16,
+
+                        loop: true,
+
+                        callback: () => {
+
+                            //
+                            // mover
+                            //
+
+                            this.sprite.x +=
+                                speed * direction;
+
+                            traveled +=
+                                speed;
+
+                            //
+                            // hitbox
+                            //
+
+                            const hitboxOffsetX =
+                                40;
+
+                            this.gigaAttackHitbox.hitbox =
+
+                            new Phaser.Geom.Rectangle(
+
+                                direction === 1
+
+                                    ? this.sprite.x - hitboxOffsetX
+
+                                    : this.sprite.x - hitboxWidth + hitboxOffsetX,
+
+                                this.sprite.y - 180,
+
+                                hitboxWidth,
+
+                                hitboxHeight
+
+                            );
+
+                            //
+                            // terminou?
+                            //
+
+                            if (
+
+                                traveled >=
+
+                                totalDistance
+
+                            ) {
+
+                                this.gigaAttackHitbox = null;
+
+                                event.remove();
+
+                                resolve();
+
+                            }
+
+                        }
+
+                    });
+
+            }
+
+        );
+
+    }
+
+    spawnRadialWave(
+
+        type,
+
+        amount,
+
+        angleOffset = 0
+
+    ) {
+
+        const step = 360 / amount;
+
+        for (
+
+            let i = 0;
+
+            i < amount;
+
+            i++
+
+        ) {
+
+            const angle =
+
+                Phaser.Math.DegToRad(
+
+                    angleOffset +
+
+                    step * i
+
+                );
+
+            const speed = 2;
+
+            const bounds =
+
+                this.sprite.getBounds();
+
+            const centerX =
+                bounds.centerX;
+
+            const centerY =
+                bounds.centerY;
+
+            const deathPhere = new DeathSphere(
+
+                this.scene,
+
+                centerX,
+                centerY,
+
+                this.filename,
+
+                type,
+
+                Math.cos(angle) * speed,
+                Math.sin(angle) * speed
+
+            );
+
+            this.deathSpheres.push(deathPhere);
+
+        }
+
+    }
+
+    spawnRandomSphere() {
+
+        const angle =
+
+            Phaser.Math.FloatBetween(
+
+                0,
+
+                Math.PI * 2
+
+            );
+
+        const speed = 5;
+
+        const bounds =
+
+            this.sprite.getBounds();
+
+        const centerX =
+            bounds.centerX;
+
+        const centerY =
+            bounds.centerY;
+
+        const deathPhere = new DeathSphere(
+
+            this.scene,
+
+            centerX,
+            centerY,
+
+            this.filename,
+
+            2,
+
+            Math.cos(angle) * speed,
+            Math.sin(angle) * speed
+
+        );
+
+        this.deathSpheres.push(deathPhere);
+
+    }
+
     updateMovementAnimation() {
 
         const cursors = this.getInput();
@@ -657,6 +864,8 @@ export default class BaseCharacter {
 
     update() {
 
+        this.deathSpheres.forEach(deathPhere => deathPhere.update());
+
         if (
             !this.active
         ) {
@@ -697,7 +906,7 @@ export default class BaseCharacter {
         this.stateMachine
             .step();
 
-        this.gigaAttackStateMachine.step();
+        this.gigaAttackStateMachine?.step();
 
     }
 

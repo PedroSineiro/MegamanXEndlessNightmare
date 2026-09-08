@@ -1,7 +1,12 @@
 export default function loadStageAssets(scene) {
 
     scene.load.image(
-        "introduction_stage",
+        "intro_stage",
+        "assets/backgrounds/intro_stage.png"
+    );
+
+    scene.load.image(
+        "base_stage",
         "assets/backgrounds/destroyed_base_stage.png"
     );
 
@@ -13,6 +18,11 @@ export default function loadStageAssets(scene) {
     scene.load.image(
         "volcano_stage",
         "assets/backgrounds/volcano.png"
+    );
+
+    scene.load.image(
+        "new_base",
+        "assets/backgrounds/new_base.png"
     );
 
     scene.load.image(
@@ -61,8 +71,13 @@ export default function loadStageAssets(scene) {
     );
 
     scene.load.audio(
-        "new_base_stage",
+        "new_base",
         "assets/music/base.mp3"
+    );
+
+    scene.load.audio(
+        "new_base_stage",
+        "assets/music/new_base_theme.mp3"
     );
 
     scene.load.audio(

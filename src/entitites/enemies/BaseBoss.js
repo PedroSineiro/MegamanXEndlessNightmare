@@ -37,6 +37,10 @@ extends BaseEnemy {
 
         this.hasShield = false;
 
+        this.stopMusicWhenDie = true;
+
+        this.hasGigaAttack = true;
+
     }
 
     async takeTurn(
@@ -44,6 +48,8 @@ extends BaseEnemy {
     ) {
 
         this.damageTaken = 0;
+
+        this.attackCount = 0;
 
         if (
             this.isDead
@@ -65,12 +71,12 @@ extends BaseEnemy {
 
             this.maxHp / 2;
 
-        if(!this.secondPhase && this.hp <= halfHp){
+        if(!this.secondPhase && this.hp <= halfHp && this.hasGigaAttack){
             this.secondPhase = true;
         }
 
         if (
-           this.secondPhase 
+           this.secondPhase && this.hasGigaAttack
         ) {
 
             this.gigaAttackCooldown = Math.max(--this.gigaAttackCooldown,0);
@@ -128,6 +134,8 @@ extends BaseEnemy {
                 await this.wait(
                     300
                 );
+
+                this.attackCount++;
 
             }
         }
@@ -508,7 +516,9 @@ extends BaseEnemy {
         // sequência
         //
 
-        this.scene.bgm.stop();
+        if(this.stopMusicWhenDie) {
+            this.scene.bgm.stop();
+        }
 
         this.scene.sfx.play(
             "enemy_taking_damage",

@@ -73,7 +73,27 @@ loadAssets(scene) {
         },
 
         {
+            id: "axl",
+            baseFolder: "axl",
+            idleSprites: 3,
+            speakingSprites:3
+        },
+
+        {
+            id: "black_axl",
+            baseFolder: "axl",
+            idleSprites: 3,
+            speakingSprites:3
+        },
+
+        {
             id: "alia",
+            idleSprites: 3,
+            speakingSprites:3
+        },
+
+        {
+            id: "blaze_heatnix",
             idleSprites: 3,
             speakingSprites:3
         },

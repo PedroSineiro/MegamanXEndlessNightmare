@@ -70,7 +70,7 @@ extends BaseEnemy {
         this.createHurtbox(
 
             30,
-            40,
+            80,
 
             this.direction===-1?-30:0,
             -150

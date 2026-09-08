@@ -15,7 +15,7 @@ export const SHOP_UPGRADES = {
             },
             {
                 name: "hidden_capsule",
-                cost: 400,
+                cost: 300,
                 max_amount: 1,
                 description: "Gives base X a giga attack." 
             }
@@ -49,7 +49,7 @@ export const SHOP_UPGRADES = {
             {
                 name:"life_recover",
                 cost: 800,
-                description: "Heals 10 HP at the start of the turn." 
+                description: "Heals 8 HP at the start of the turn." 
             },
             {
                 name:"shock_buffer",
@@ -93,7 +93,7 @@ export const SHOP_UPGRADES = {
             {
                 name: "gaea",
                 cost: 1500,
-                base_evasion: 5,
+                base_evasion: 10,
                 base_reduction: 65,
                 giga_attack_type: "Target",
                 description: "Has quick charge. Has no medium shot. Basic and charged shot do more damage.",
@@ -168,7 +168,7 @@ export const SHOP_UPGRADES = {
             {
                 name:"life_recover",
                 cost: 800,
-                description: "Heals 10 HP at the start of the turn." 
+                description: "Heals 8 HP at the start of the turn." 
             },
             {
                 name:"shock_buffer",
@@ -199,6 +199,85 @@ export const SHOP_UPGRADES = {
                 giga_attack_type: "Area",
                 description: "All attacks do more damage.",
                 preview_sprite: "black_zero_empty_armor"
+            }
+        ]
+    },
+
+    "axl": {
+        items: [
+            {
+                name: "heart_tank",
+                cost: 200,
+                max_amount: 8,
+                description: "Raises the max HP by 50. Can be purchased 8 times." 
+            },
+            {
+                name: "energy_tank",
+                cost: 800,
+                max_amount: 1,
+                description: "Refills the HP completley once in battle." 
+            }
+        ],
+        habilities: [
+             {
+                name:"extra_offensive_action",
+                cost: 400,
+                description: "Gains an Extra Action to use offensively." 
+            },
+            {
+                name:"piercing_pistol",
+                cost: 300,
+                description: "Pistol shots pierce through enemies." 
+            },
+            {
+                name:"quick_bazooka",
+                cost: 400,
+                description: "Bazooka takes 1 less action." 
+            },
+            {
+                name:"weapon_plus",
+                cost: 500,
+                description: "All weapon attacks do more damage." 
+            },
+            {
+                name:"giga_attack_recover",
+                cost: 800,
+                description: "Reduces the giga attack recharge time by 3 turns." 
+            },
+            {
+                name:"life_recover",
+                cost: 800,
+                description: "Heals 8 HP at the start of the turn." 
+            },
+            {
+                name:"shock_buffer",
+                cost: 900,
+                description: "Gives 50% Damage Reduction, it only works with base Axl." 
+            },
+            {
+                name:"agility_buffer",
+                cost: 400,
+                description: "Gives 5% Evasion." 
+            }
+        ],
+        armors: [
+            {
+                name: "axl",
+                cost: 0,
+                base_evasion: 15,
+                base_reduction: 0,
+                giga_attack_type: "Area",
+                description: "",
+                preview_sprite: "axl_empty_armor"
+            },
+            {
+                name: "black_axl",
+                cost: 1800,
+                base_evasion: 20,
+                base_reduction: 50,
+                giga_attack_type: "Area",
+                description: "All attacks do more damage.",
+                preview_sprite: "black_axl_empty_armor"
             }
         ]
     }

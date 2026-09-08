@@ -1,5 +1,3 @@
-import { SPAWN_CONFIG } from "../../constants/SpawnConfig.js";
-
 export default class LightState {
 
     enter(player) {
@@ -17,11 +15,10 @@ export default class LightState {
 
         this.targetY =
 
-            player.lightTargetY
-            ?? SPAWN_CONFIG[player.filename].spawnHeight; 
+            player.lightTargetY ?? player.spawnTargetY; 
 
 
-        if(this.targetY!=500){
+        if(this.targetY==-200){
             player.sprite.play(
             `${player.currentArmor}_light_leaving`
             );

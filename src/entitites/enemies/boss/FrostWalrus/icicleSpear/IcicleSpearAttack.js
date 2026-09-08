@@ -39,7 +39,7 @@ export default class IcicleSpearAttack {
                 )
 
                 .setScale(
-                    1.5
+                    2
                 )
 
                 .setDepth(

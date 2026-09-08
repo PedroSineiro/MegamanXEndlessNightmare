@@ -18,6 +18,10 @@ import InterSceneManager from "../systems/InterSceneManager.js";
 
 import AchievementManager from "../systems/AchievementManager.js";
 
+import SaveNotificator from "../systems/SaveNotificator.js";
+
+import CharacterSelector from "../systems/CharacterSelector.js";
+
 export default class BaseScene
 extends Phaser.Scene {
 
@@ -41,6 +45,8 @@ extends Phaser.Scene {
 
         this.InterSceneManager = InterSceneManager;
 
+        this.SaveNotificator = SaveNotificator;
+
         if(data && Object.keys(data).length > 1){
 
             this.DataManager.saveGameData(data);
@@ -51,9 +57,9 @@ extends Phaser.Scene {
 
         this.inventoryManager = new InventoryManager(this.GameData);
 
-        this.stage_theme = this.isEnding ? "ending":"new_base_stage";
+        this.stage_theme = this.isEnding ? "ending":"new_base";
 
-        this.stage = "new_base_stage";
+        this.stage = "new_base";
 
         this.sfx =
             new SoundManager(
@@ -100,7 +106,9 @@ extends Phaser.Scene {
         if(!this.isEnding){
             this.BaseMenu = new BaseMenu(this);
 
-            this.BaseMenu.createButtons();
+            this.clearScreen();
+
+            this.BaseMenu.createUpgradeButtons();
         } else {
             await this.goEndingScene();
         }
@@ -182,15 +190,47 @@ extends Phaser.Scene {
                 );
 
         }
-        else {
+        else if(character === "zero") {
 
             this.cameras.main
                 .setBackgroundColor(
                     "#501010"
                 );
 
+        } else {
+            this.cameras.main
+                .setBackgroundColor(
+                    "#100a4b"
+                );
         }
 
+    }
+
+    showTeamSelectScreen(
+    ) {
+
+        this.upgradeScreen
+            ?.clear();
+
+        
+        this.cameras.main
+            .setBackgroundColor(
+                "#040916"
+            );
+
+        this.characterSelector = new CharacterSelector(this);
+    }
+
+    clearScreen() {
+        this.cameras.main
+            .setBackgroundColor(
+                "#040916"
+            );
+    }
+
+    showChooseTeamScreen() {
+        this.characterSelector =
+            new CharacterSelector(this.scene);
     }
 
     async goTitleScene(){
@@ -221,6 +261,37 @@ extends Phaser.Scene {
             "EndingScene",{});
     }
 
+    getCurrentArmors() {
+        return this.GameData.currentArmors;
+    }
+
+    enableNextMission(shouldEnable = true) {
+        this.BaseMenu.confirmButton.setVisible(shouldEnable);
+    }
+
+    getMissionTeam() {
+        return this.characterSelector.selectedCharacters;
+    }
+
+    goToMissions() {
+
+        const missionTeam = this.getMissionTeam();
+
+        this.GameData.missionTeam = missionTeam;
+
+        const baseTeam = ["x", "zero", "axl"].filter(character => !missionTeam.includes(character));
+
+        this.GameData.baseTeam = baseTeam;
+
+        this.DataManager.saveGameData(this.GameData);
+
+        this.InterSceneManager.prepareForCombats(this.GameData, this.DataManager);
+
+        const sceneData = this.InterSceneManager.handleNextSceneAfterBase(this.GameData, this.DataManager);
+
+        this.goCombatScene(sceneData);
+
+    }
 
     update() {
 

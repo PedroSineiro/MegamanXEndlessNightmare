@@ -286,15 +286,16 @@ Recommended for most players.`,
 
 Enemies deal significantly more damage and survive longer.
 
-Resource management becomes critical.`,
+Nightmare rain deals damage each turn.`,
 
             nightmare:
 
 `The true challenge.
 
-Enemies deal significantly more damage and survive longer.
+Enemies deal significantly more damage and survive longer  
+and you receive less nightmare scrap.
 
-Bosses start in second phase. Nightmare rain deals damage each turn.`
+Bosses start in second phase. Nightmare Rain deals more damage.`
 
         };
 

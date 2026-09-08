@@ -138,13 +138,19 @@ ActionMenu {
         // Zero
         //
 
-        else {
+        else if(character.filename ===
+            "zero") {
 
             this.menuBackground
                 .setFillStyle(
                     0xf71e1e
                 );
 
+        } else {
+            this.menuBackground
+                .setFillStyle(
+                    0x0a0f6e
+                );
         }
 
     }
@@ -155,14 +161,14 @@ ActionMenu {
 
         this.portrait.setFlipX(true);
 
+        const currentArmors = this.scene
+                .GameData
+                .currentArmors;
+
         const armor = character.filename === "x"?
 
-            this.scene
-                .GameData
-                .currentArmors[0]:
-            this.scene
-                .GameData
-                .currentArmors[1];
+            (currentArmors[0]):
+            (character.filename === "zero"? currentArmors[1]:currentArmors[2]);
 
         this.portrait.play(`dialog_${armor}_idle`);
 
@@ -648,7 +654,8 @@ ActionMenu {
         // ZERO
         //
 
-        else {
+        else if(character.filename ===
+            "zero") {
 
 
             if (
@@ -895,6 +902,221 @@ ActionMenu {
 
                     this.refresh();
                 }
+                );
+            }
+        } else {
+            if (
+                character
+                    .turnActions >= 1
+
+            ) {
+                this.addAttackButton(
+                "Single Shot",
+
+                () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                character
+                                    .turnActions -= 1;
+
+                                await this.scene
+                                    .actionRunner
+                                    .axlShot(
+
+                                        character,
+
+                                        enemy,
+
+                                        "single shot"
+
+                                    );
+
+
+                                this.refresh();
+
+                            }
+
+                        );
+
+                    }
+
+                );
+            }
+
+            if (
+                character
+                    .turnActions >= 2
+
+            ) {
+                this.addAttackButton(
+                "Tripple Shot",
+
+                () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                character
+                                    .turnActions -= 2;
+
+                                await this.scene
+                                    .actionRunner
+                                    .axlShot(
+
+                                        character,
+
+                                        enemy,
+
+                                        "tripple shot"
+
+                                    );
+
+
+                                this.refresh();
+
+                            }
+
+                        );
+
+                    }
+
+                );
+            }
+
+            if (
+                character
+                    .turnActions >= 2
+
+            ) {
+                this.addAttackButton(
+                "Shock Gun",
+
+                () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                character
+                                    .turnActions -= 2;
+
+                                await this.scene
+                                    .actionRunner
+                                    .axlShot(
+
+                                        character,
+
+                                        enemy,
+
+                                        "shock"
+
+                                    );
+
+
+                                this.refresh();
+
+                            }
+
+                        );
+
+                    }
+
+                );
+            }
+
+        if (
+                character
+                    .turnActions >= character.bazookaActions
+
+            ) {
+                this.addAttackButton(
+                "Bazooka",
+
+                () => {
+
+                    this.selectEnemyTarget(
+
+                            character,
+
+                            async enemy => {
+
+                                this.hide();
+
+                                character
+                                    .turnActions -= character.bazookaActions;
+
+                                await this.scene
+                                    .actionRunner
+                                    .axlShot(
+
+                                        character,
+
+                                        enemy,
+
+                                        "bazooka"
+
+                                    );
+
+
+                                this.refresh();
+
+                            }
+
+                        );
+
+                    }
+
+                );
+            }
+
+            if (
+                character
+                    .turnActions >= 4 && this.canUseGigaAttack(character)
+
+            ) {
+                this.addGigaAttackButton(
+                "Giga Attack",
+
+                async () => {
+
+
+                        this.hide();
+
+                        character
+                            .turnActions -= 4;
+
+
+                        if(character.gigaAttackMustRecharge) character.gigaAttackRechargeTurns = 0;
+
+                        await this.scene
+                            .actionRunner
+                            .axlGigaAttack(
+
+                                character,
+
+                            );
+
+
+                        this.refresh();
+
+                    }
+
                 );
             }
         }

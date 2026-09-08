@@ -83,6 +83,27 @@ export default class DataManager {
 
     }
 
+    static deleteOldSaves() {
+
+        const saves = this.getAllSaves();
+
+        const isEmpty = (obj) => obj && Object.keys(obj).length === 0 && obj.constructor === Object;
+
+        for(let i = 0; i<=2; i++) {
+            if(!saves[i] || isEmpty(saves[i]) || saves[i].currentArmors.length < 3){
+                localStorage.setItem(
+
+                    this.SAVE_KEY+(i+1),
+
+                    JSON.stringify(
+                        false
+                    )
+
+                );
+            }
+        }
+    }
+
     static loadGameData() {
 
         return JSON.parse(

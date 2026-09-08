@@ -2,6 +2,8 @@ import X from "../entitites/characters/X/X.js"
 
 import Zero from "../entitites/characters/Zero/Zero.js";
 
+import Axl from "../entitites/characters/Axl/Axl.js";
+
 import createStage from "../stages/createStage.js";
 
 import { ENEMY_SPAWN_CONFIG } from "../constants/EnemySpawnOffset.js";
@@ -208,11 +210,17 @@ extends Phaser.Scene {
 
         if(wave.type == "boss"){
 
-            this.movePlayersForBoss();
-            
             this.bossId =
                 wave.boss;
-            
+
+            const needWarning = this.bossNeedWarning(this.bossId);
+
+            if(needWarning) {
+                this.movePlayersForBoss();
+            } else {
+                await this.movePlayersForBoss();
+            }
+        
             await this.startBossSequence();
 
         }
@@ -240,35 +248,59 @@ extends Phaser.Scene {
 
             x: X,
 
-            zero: Zero
+            zero: Zero,
+
+            axl: Axl
 
         };
 
-        const spawnPositions = [
+        const duoSpawnPositions = [
 
             {
                 x: 480,
-                y: -100
+                targetSpawnY: 500
             },
 
             {
                 x: 540,
-                y: -100
+                targetSpawnY: 600
             }
 
         ];
 
-        const stats = [
-            CharacterStatsCalculator.buildX(this.GameData),
+        const soloSpawnPositions = [
 
-            CharacterStatsCalculator.buildZero(this.GameData),
-        ]
+            {
+                x: 510,
+                targetSpawnY: 550
+            },
+
+        ];
+
+        const players = this.combatData.players;
+
+        const isSolo = players.length == 1;
+
+        const spawnPositions = isSolo ? soloSpawnPositions: duoSpawnPositions;
+
+        const stats = [
+        ];
+
+        players.forEach(player => {
+            if(player == "x"){
+                stats.push(CharacterStatsCalculator.buildX(this.GameData));
+            } else if(player == "zero"){
+                stats.push(CharacterStatsCalculator.buildZero(this.GameData));
+            } else {
+                stats.push(CharacterStatsCalculator.buildAxl(this.GameData));
+            }
+        });
+        
 
         const spawnPromises =
             [];
 
-        this.combatData
-            .players
+        players
             .forEach(
 
             (
@@ -296,7 +328,7 @@ extends Phaser.Scene {
 
                         spawn.x,
 
-                        spawn.y,
+                        spawn.targetSpawnY,
 
                         stats[index]
 
@@ -1314,59 +1346,76 @@ extends Phaser.Scene {
 
     async startBossSequence() {
 
+        const needWarning = this.bossNeedWarning(this.bossId);
+
         //
         // personagens recuam
         //
 
-        this.bgm.stop();
+        if(needWarning) {
+            this.bgm.stop();
 
-        this.actionMenu.clear();
+            this.actionMenu.clear();
 
-        //
-        // warning simultâneo
-        //
+            //
+            // warning simultâneo
+            //
 
-        const warningPromise =
+            const warningPromise =
 
-            this.showWarning();
+                this.showWarning();
 
-        //
-        // espera ambos
-        //
+            //
+            // espera ambos
+            //
 
-        await Promise.all([
+            await Promise.all([
 
-            warningPromise
+                warningPromise
 
-        ]);
+            ]);
 
-        //
-        // boss spawn
-        //
+            //
+            // boss spawn
+            //
 
-        await this.spawnBoss();
+            await this.spawnBoss();
 
-        await this.runWaveDialogs(
+            await this.runWaveDialogs(
 
-            this.currentWaveIndex,
+                this.currentWaveIndex,
 
-            true
+                true
 
-        );
+            );
 
-        this.bgm = this.sound.add(
+            this.bgm = this.sound.add(
 
-            this.combatData.boss_theme,
+                this.combatData.boss_theme,
 
-            {
-                loop: true,
-                volume: 0.15
-            }
+                {
+                    loop: true,
+                    volume: 0.15
+                }
 
-        );
+            );
 
-        this.bgm.play();
+            this.bgm.play();
 
+        } else {
+            this.actionMenu.clear();
+
+            await this.spawnBoss();
+
+            await this.runWaveDialogs(
+
+                this.currentWaveIndex,
+
+                true
+
+            );
+
+        }
 
         //
         // volta turnos
@@ -1616,6 +1665,13 @@ extends Phaser.Scene {
 
         this.isBossFight = true;
 
+    }
+
+    bossNeedWarning(bossId) {
+        if(bossId == "nightmare_snake"){
+            return false;
+        }
+        return true;
     }
 
     async spawnMiniboss(bossId) {
@@ -1898,16 +1954,16 @@ extends Phaser.Scene {
 
     }
 
-    updateNovaStrikeCollisions() {
+    updateGigaAttackHitboxCollisions() {
 
         const enemies = this.getTotalEnemies();
 
         this.players?.forEach(player => {
 
-            const novaHitbox =
-                player.novaStrikeHitbox;
+            const gigaAttackHitbox =
+                player.gigaAttackHitbox;
 
-            if (!novaHitbox?.hitbox) {
+            if (!gigaAttackHitbox?.hitbox) {
                 return;
             }
 
@@ -1924,7 +1980,7 @@ extends Phaser.Scene {
                         .Intersects
                         .RectangleToRectangle(
 
-                            novaHitbox.hitbox,
+                            gigaAttackHitbox.hitbox,
 
                             enemy.hurtbox
 
@@ -1936,7 +1992,7 @@ extends Phaser.Scene {
 
                 if (
 
-                    novaHitbox
+                    gigaAttackHitbox
                         .alreadyHit
                         .includes(enemy)
 
@@ -1947,10 +2003,10 @@ extends Phaser.Scene {
                 }
 
                 enemy.takeDamage(
-                    novaHitbox.damage
+                    gigaAttackHitbox.damage
                 );
 
-                novaHitbox
+                gigaAttackHitbox
                     .alreadyHit
                     .push(enemy);
 
@@ -2051,7 +2107,7 @@ extends Phaser.Scene {
                         }
 
                         this.players
-                        .forEach(
+                        ?.forEach(
 
                             player => {
 
@@ -2212,7 +2268,7 @@ extends Phaser.Scene {
 
         this.updateSlashCollisions();
 
-        this.updateNovaStrikeCollisions();
+        this.updateGigaAttackHitboxCollisions();
 
         this.updateGigaShots();
 

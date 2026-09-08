@@ -23,30 +23,7 @@ CharacterActionRunner {
         const originalY =
             actor.sprite.y;
 
-        const dx = target.sprite.x - actor.sprite.x;
-
-        //
-        // virar personagem
-        //
-
-        if (dx > 0) {
-
-            actor.direction = 1;
-
-            actor.sprite.setFlipX(
-                false
-            );
-
-        }
-        else {
-
-            actor.direction = -1;
-
-            actor.sprite.setFlipX(
-                true
-            );
-
-        }
+        this.prepareToMoveX(actor, target);
 
         await this.moveToLane(
 
@@ -126,33 +103,7 @@ CharacterActionRunner {
         // posição perto do alvo
         //
 
-        let offsetX = 80;
-
-        const dx =
-
-            target.sprite.x -
-
-            actor.sprite.x;
-
-        if (dx > 0) {
-
-            offsetX = - 80;
-
-            actor.direction =
-                1;
-
-            actor.sprite
-                .setFlipX(
-                    false
-                );
-
-        }
-
-
-        const targetX =
-
-            target.spawnX +
-            offsetX;
+        const targetX = this.prepareToMoveX(actor, target);
 
 
         const targetY =
@@ -346,34 +297,8 @@ CharacterActionRunner {
         // posição perto do alvo
         //
 
-        let offsetX = 80;
 
-        const dx =
-
-            target.sprite.x -
-
-            actor.sprite.x;
-
-        if (dx > 0) {
-
-            offsetX = - 80;
-
-            actor.direction =
-                1;
-
-            actor.sprite
-                .setFlipX(
-                    false
-                );
-
-        }
-
-
-        const targetX =
-
-            target.spawnX +
-            offsetX;
-
+        const targetX = this.prepareToMoveX(actor, target);
 
         const targetY =
             target.originalY + 120;
@@ -438,30 +363,7 @@ CharacterActionRunner {
         const originalY =
             actor.sprite.y;
 
-        const dx = target.sprite.x - actor.sprite.x;
-
-        //
-        // virar personagem
-        //
-
-        if (dx > 0) {
-
-            actor.direction = 1;
-
-            actor.sprite.setFlipX(
-                false
-            );
-
-        }
-        else {
-
-            actor.direction = -1;
-
-            actor.sprite.setFlipX(
-                true
-            );
-
-        }
+        this.prepareToMoveX(actor, target);
 
         await this.moveToLane(
 
@@ -528,33 +430,8 @@ CharacterActionRunner {
         // posição perto do alvo
         //
 
-        let offsetX = 80;
 
-        const dx =
-
-            target.sprite.x -
-
-            actor.sprite.x;
-
-        if (dx > 0) {
-
-            offsetX = - 80;
-
-            actor.direction =
-                1;
-
-            actor.sprite
-                .setFlipX(
-                    false
-                );
-
-        }
-
-
-        const targetX =
-
-            target.spawnX +
-            offsetX;
+        const targetX = this.prepareToMoveX(actor, target);
 
 
         const targetY =
@@ -627,33 +504,7 @@ CharacterActionRunner {
         // posição perto do alvo
         //
 
-        let offsetX = 80;
-
-        const dx =
-
-            target.sprite.x -
-
-            actor.sprite.x;
-
-        if (dx > 0) {
-
-            offsetX = - 80;
-
-            actor.direction =
-                1;
-
-            actor.sprite
-                .setFlipX(
-                    false
-                );
-
-        }
-
-
-        const targetX =
-
-            target.spawnX +
-            offsetX;
+        const targetX = this.prepareToMoveX(actor, target);
 
 
         const targetY =
@@ -719,30 +570,7 @@ CharacterActionRunner {
         const originalY =
             actor.sprite.y;
 
-        const dx = target.sprite.x - actor.sprite.x;
-
-        //
-        // virar personagem
-        //
-
-        if (dx > 0) {
-
-            actor.direction = 1;
-
-            actor.sprite.setFlipX(
-                false
-            );
-
-        }
-        else {
-
-            actor.direction = -1;
-
-            actor.sprite.setFlipX(
-                true
-            );
-
-        }
+        this.prepareToMoveX(actor, target);
 
         await this.moveToLane(
 
@@ -769,6 +597,8 @@ CharacterActionRunner {
         // voltar
         //
 
+        actor.updateMovementAnimation();
+
         await this.moveBack(
 
             actor,
@@ -786,6 +616,109 @@ CharacterActionRunner {
         actor.isBusy =
             false;
 
+    }
+
+    async axlShot(
+        actor,
+        target,
+        type
+    ) {
+
+        actor.isBusy =
+            true;
+
+        const originalX =
+            actor.sprite.x;
+
+        const originalY =
+            actor.sprite.y;
+
+
+        const targetX = this.prepareToMoveX(actor, target);
+
+        await this.moveToLane(
+
+            actor,
+
+            target.originalY + 120
+
+        );
+
+        if(type == "shock"){
+            await this.moveToX(actor,targetX);
+        }
+
+        if(type == "single shot"){
+            await actor.gunShot(1);
+        } else if(type == "tripple shot") {
+            await actor.gunShot(3);
+        } else if(type == "bazooka") {
+            await actor.bazookaShot();
+        } else {
+            await actor.shockShot();
+        }
+
+        await this.wait(
+            400
+        );
+
+        //
+        // voltar
+        //
+
+        await this.moveBack(
+
+            actor,
+
+            originalX,
+
+            originalY
+
+        );
+
+        actor.isBusy =
+            false;
+
+    }
+
+    async axlGigaAttack(actor) {
+
+        actor.isBusy =
+            true;
+
+        const originalX =
+            actor.sprite.x;
+
+        const originalY =
+            actor.sprite.y;
+
+        await actor.transformGigaAttack();
+
+        await this.moveToY(actor, -300, 6);
+
+        await actor.gigaAttack();
+
+        actor.sprite.x = originalX;
+
+        actor.sprite.y = -300;
+
+        actor.wingSound.play({
+
+            volume: 0.15,
+            loop: true
+
+        });
+
+        await this.moveToY(actor, originalY, 6);
+
+        actor.wingSound.stop();
+
+        await actor.playAnimation(`${actor.currentArmor}_detransform`);
+
+        actor.updateMovementAnimation();
+
+        actor.isBusy =
+            false;
     }
 
     async moveToX(
@@ -895,33 +828,7 @@ CharacterActionRunner {
         const originalY =
             actor.sprite.y;
 
-        const dx = target.sprite.x - actor.sprite.x;
-
-        //
-        // virar personagem
-        //
-
-        if (dx > 0) {
-
-            actor.direction = 1;
-
-            actor.sprite.setFlipX(
-                false
-            );
-
-        }
-        else {
-
-            actor.direction = -1;
-
-            actor.sprite.setFlipX(
-                true
-            );
-
-        }
-
-        let offsetX = 80;
-
+        this.prepareToMoveX(actor, target);
 
         const targetY =
             target.originalY + 120;
@@ -1304,6 +1211,107 @@ CharacterActionRunner {
 
         );
 
+    }
+
+    async moveToY(
+        actor,
+        targetY,
+        speed = 30
+    ) {
+
+        return new Promise(
+
+            resolve => {
+
+                const event =
+
+                    this.scene
+                        .time
+                        .addEvent({
+
+                    delay:
+                        16,
+
+                    loop:
+                        true,
+
+                    callback: () => {
+
+                        const dy =
+
+                            targetY -
+
+                            actor.sprite.y;
+
+                        if (
+
+                            Math.abs(dy)
+
+                            <= speed
+
+                        ) {
+
+                            actor.sprite.y =
+                                targetY;
+
+                            event.remove();
+
+                            resolve();
+
+                            return;
+
+                        }
+
+                        actor.sprite.y +=
+
+                            Math.sign(dy)
+                            * speed;
+
+                    }
+
+                });
+
+            }
+
+        );
+
+    }
+
+    prepareToMoveX(actor, target) {
+        let offsetX = target.filename!="nightmare_snake"? 80: 150;
+
+        offsetX+=actor.filename=="axl"?60:0;
+
+        const dx = target.sprite.x - actor.sprite.x;
+
+        //
+        // virar personagem
+        //
+
+        if (dx > 0) {
+
+            offsetX = -1*offsetX;
+
+            actor.direction = 1;
+
+            actor.sprite.setFlipX(
+                false
+            );
+
+        }
+        else {
+
+            actor.direction = -1;
+
+            actor.sprite.setFlipX(
+                true
+            );
+
+        }
+
+
+        return target.spawnX +
+            offsetX;
     }
 
 }

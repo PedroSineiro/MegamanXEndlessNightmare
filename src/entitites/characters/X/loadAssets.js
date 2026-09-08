@@ -182,6 +182,8 @@ export default function loadAssets(scene) {
 
     loadXGigaAttack(scene);
 
+    loadDeathBalls(scene);
+
     for (let i = 1; i <= 5; i++) {
 
         scene.load.image(
@@ -278,6 +280,11 @@ export default function loadAssets(scene) {
     scene.load.audio(
         "hadouken_voice",
         "assets/sounds/X/hadouken_voice.wav"
+    );
+
+    scene.load.audio(
+        "dying_explosion",
+        "assets/sounds/general/dying.wav"
     );
 }
 
@@ -424,3 +431,29 @@ function loadXGigaAttack(scene) {
 
         }
     }
+
+function loadDeathBalls(scene) {
+    for (let i = 1;i <= 5;i++) {
+
+        scene.load.image(
+
+            `x_death_sphere_1_${i}`,
+
+            `assets/sprites/characters/x/death_sphere/death_sphere_1_${i}.png`
+
+        );
+
+    }
+
+    for (let i = 1;i <= 4;i++) {
+
+        scene.load.image(
+
+            `x_death_sphere_2_${i}`,
+
+            `assets/sprites/characters/x/death_sphere/death_sphere_2_${i}.png`
+
+        );
+
+    }
+}

@@ -1,4 +1,5 @@
 import { SHOP_UPGRADES } from "../constants/ShopUpgrades.js";
+import AchievementManager from "./AchievementManager.js";
 
 export default class UpgradeScreen {
 
@@ -124,7 +125,7 @@ export default class UpgradeScreen {
 
             ? this.data.x.maxHp
 
-            : this.data.zero.maxHp;
+            : (this.character === "zero" ? this.data.zero.maxHp:this.data.axl.maxHp);
 
         const armor =
 
@@ -132,7 +133,7 @@ export default class UpgradeScreen {
 
             ? this.data.currentArmors[0]
 
-            : this.data.currentArmors[1];
+            :(this.character === "zero" ? this.data.currentArmors[1]:this.data.currentArmors[2]);
 
         this.hpText =
 
@@ -433,7 +434,7 @@ Nightmare Level: ${this.data.nightmareLevel}`,
 
             ? 0x0000ff
 
-            : 0xff0000;
+            : (this.character === "zero"? 0xff0000: 0x100a4b);
 
 
         this.backgroundBox =
@@ -740,7 +741,7 @@ Nightmare Level: ${this.data.nightmareLevel}`,
 
                 ? this.data.currentArmors[0]
 
-                : this.data.currentArmors[1];
+                : (this.character === "zero"?this.data.currentArmors[1]: this.data.currentArmors[2]);
 
             this.equipButton
                 .setVisible(
@@ -883,7 +884,13 @@ Nightmare Level: ${this.data.nightmareLevel}`,
     equipUpgrade(){
         this.scene.sfx.play("equiping_armor", {volume: 0.15});
 
-        this.data.currentArmors[this.character === "x"? 0:1] = this.selectedUpgrade.name;
+        this.data.currentArmors[this.character === "x"? 0: (this.character === "zero"?1:2)] = this.selectedUpgrade.name;
+
+        const currentArmors = this.data.currentArmors;
+
+        if(currentArmors[0]=="shadow" && currentArmors[1] == "black_zero" && currentArmors[2] == "black_axl") {
+            AchievementManager.unlock("black_ops");
+        }
 
         this.updateButtons();
 
@@ -898,7 +905,7 @@ Nightmare Level: ${this.data.nightmareLevel}`,
 
             ? this.data.x.maxHp
 
-            : this.data.zero.maxHp;
+            : (this.character === "zero" ? this.data.zero.maxHp:this.data.axl.maxHp);
 
         const armor =
 
@@ -906,7 +913,7 @@ Nightmare Level: ${this.data.nightmareLevel}`,
 
             ? this.data.currentArmors[0]
 
-            : this.data.currentArmors[1];
+            :(this.character === "zero" ? this.data.currentArmors[1]:this.data.currentArmors[2]) ;
 
         this.hpText.setText(
 

@@ -205,6 +205,30 @@ export const SHOT_CONFIG = {
             offsetXLeft: -80,
             offsetY: 0
         }
+    },
+
+    "axl":{
+        shot: {
+            width: 20,
+            height: 12,
+            offsetXRight: -10,
+            offsetXLeft: -10,
+            offsetY: -12
+        },
+        bazooka: {
+            width: 90,
+            height: 60,
+            offsetXRight: -40,
+            offsetXLeft: -80,
+            offsetY: -35
+        },
+        shock: {
+            width: 90,
+            height: 60,
+            offsetXRight: -40,
+            offsetXLeft: -80,
+            offsetY: -30
+        },
     }
 
 };

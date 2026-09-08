@@ -10,11 +10,13 @@ export default class BaseMenu {
         this.buttons =
             [];
 
-        this.createButtons();
+        this.confirmButton = null;
+
+        this.createUpgradeButtons();
 
     }
 
-    createButtons() {
+    createUpgradeButtons() {
 
         this.addButton(
 
@@ -45,9 +47,10 @@ export default class BaseMenu {
         this.addButton(
 
             "Zero Upgrades",
+
             100,
 
-            720,
+            680,
 
             () => {
 
@@ -67,6 +70,32 @@ export default class BaseMenu {
 
         );
 
+        this.addButton(
+
+            "Axl Upgrades",
+
+            100,
+
+            720,
+
+            () => {
+
+                this.scene.sfx.play(
+                    "choosing_menu",
+                    {
+                        volume: 0.2
+                    }
+                );
+
+                this.scene
+                    .showUpgradeScreen(
+                        "axl"
+                    );
+
+            }
+
+        );
+
 
         this.addButton(
 
@@ -79,11 +108,13 @@ export default class BaseMenu {
             () => {
                 this.scene.sfx.play("equiping_armor", {volume: 0.15});
 
-                this.scene.DataManager.saveGameData(this.scene.GameData);
+                this.scene.showTeamSelectScreen();
 
-                const sceneData = this.scene.InterSceneManager.handleNextSceneAfterBase(this.scene.GameData, this.scene.DataManager);
+                this.resetButtons();
 
-                this.scene.goCombatScene(sceneData);
+                this.scene.clearScreen();
+
+                this.createTeamSelectButtons();
             }
 
         );
@@ -105,7 +136,11 @@ export default class BaseMenu {
                     }
                 );
 
-                this.scene.DataManager.saveSaveData(this.scene.GameData);
+                this.scene.DataManager.saveSaveData(
+                    this.scene.GameData
+                );
+
+                this.scene.SaveNotificator.notify();
 
             }
 
@@ -139,6 +174,73 @@ export default class BaseMenu {
                     }
                 );
     }
+
+    createTeamSelectButtons() {
+
+        this.confirmButton = this.addButton(
+
+            "Confirm",
+
+            250,
+
+            680,
+
+            () => {
+
+                this.scene.sfx.play(
+                    "buying_upgrade",
+                    {
+                        volume: 0.2
+                    }
+                );
+
+
+                this.scene.goToMissions();
+
+            }
+
+        );
+
+        this.confirmButton.setVisible(false);
+
+        this.confirmButton.on(
+                    "pointerdown",
+                    () => {
+                        this.confirmButton.disableInteractive();
+                    }
+                );
+
+        this.addButton(
+
+            "Cancel",
+
+            650,
+
+            680,
+
+            () => {
+
+                this.scene.sfx.play(
+                    "choosing_menu",
+                    {
+                        volume: 0.2
+                    }
+                );
+
+                this.scene.characterSelector.cancelSelection();
+
+            }
+
+        );
+
+    }
+
+    resetButtons() {
+        this.buttons.forEach(button => button.destroy());
+
+        this.buttons = [];
+    }
+
 
     addButton(
         text,

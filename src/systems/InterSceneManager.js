@@ -9,17 +9,62 @@ export default class InterSceneManager {
 
     static TOTAL_AMOUNT_STAGES = 10;
 
-    static FIRST_STAGE = {
-            stage: "introduction_stage",
+    static FIRST_BASE_STAGE = {
+            stage: "intro_stage",
             theme: "introduction_stage",
-            background: "introduction_stage",
+            background: "intro_stage",
+            boss_theme: "boss",
+            layout: [
+                    {
+                        type: "waves",
+                        count: 5
+                    },
+                    {
+                        type: "boss",
+                        boss: "blaze_heatnix"
+                    }
+
+                ]
+        }
+
+    static DEFAULT_BASE_STAGE = {
+            stage: "new_base_stage",
+            theme: "new_base_stage",
+            background: "new_base_stage",
+            boss_theme: "boss",
+            layout: [
+                    {
+                        type: "waves",
+                        count: 4
+                    },
+
+                    {
+                        type: "boss",
+                        boss: "nightmare_snake"
+                    },
+
+                    {
+                        type: "waves",
+                        count: 4
+                    },
+
+                    {
+                        type: "boss",
+                        boss: "nightmare_snake"
+                    }
+                ]
+        }
+
+    static FIRST_MISSION_STAGE = {
+            stage: "base_stage",
+            theme: "introduction_stage",
+            background: "base_stage",
             boss_theme: "boss",
             layout: [
                     {
                         type: "waves",
                         count: 8
                     },
-
                     {
                         type: "boss",
                         boss: "nightmare_zero"
@@ -324,7 +369,21 @@ export default class InterSceneManager {
 
     ];
 
-    static INTRODUCTION_STAGE_CONFIG = {
+        static INTRODUCTION_BASE_STAGE_CONFIG = {
+
+        numberOfWaves: 8,
+
+        spawnPercentage: 0.25,
+
+        smallEnemySpawnPercentage: 0.90,
+
+        bigEnemySpawnPercentage: 0.10,
+
+        nightmareSpawnPercentage: 0.0
+
+    };
+
+    static INTRODUCTION_MISSION_STAGE_CONFIG = {
 
         numberOfWaves: 8,
 
@@ -339,7 +398,22 @@ export default class InterSceneManager {
     };
 
 
-    static DEFAULT_WAVE_CONFIG = {
+    static DEFAULT_BASE_CONFIG = {
+
+        numberOfWaves: 4,
+
+        spawnPercentage: 0.60,
+
+        smallEnemySpawnPercentage: 0.65,
+
+        bigEnemySpawnPercentage: 0.10,
+
+        nightmareSpawnPercentage: 0.20
+
+    };
+
+
+    static DEFAULT_MISSION_CONFIG = {
 
         numberOfWaves: 8,
 
@@ -358,6 +432,8 @@ export default class InterSceneManager {
     static BIG_ENEMY_REWARD = 15;
 
     static NIGHTMARE_ENEMY_REWARD = 30;
+
+    static BASE_BOSS_REWARD = 100;
 
     static BOSS_REWARD = 200;
 
@@ -379,8 +455,15 @@ export default class InterSceneManager {
 
     };
 
-    static FIRST_STAGE_REWARD = 2000;
+    static FIRST_BASE_STAGE_REWARD = 400;
 
+    static FIRST_MISSION_STAGE_REWARD = 2000;
+
+    static prepareForCombats(gameData, DataManager) {
+        gameData.currentStage = "first";
+        gameData.nightmareScrapForCombats = 0;
+        DataManager.saveGameData(gameData);
+    }
 
     static handleNextSceneAfterBase(
         gameData,
@@ -412,7 +495,7 @@ export default class InterSceneManager {
 
             ) {
 
-                const config = gameData.amountCompletedStages==0? this.INTRODUCTION_STAGE_CONFIG: this.DEFAULT_WAVE_CONFIG;
+                const config = gameData.currentStage == "first"? (gameData.amountCompletedStages==0? this.INTRODUCTION_BASE_STAGE_CONFIG: this.DEFAULT_BASE_CONFIG):(gameData.amountCompletedStages==0? this.INTRODUCTION_MISSION_STAGE_CONFIG: this.DEFAULT_MISSION_CONFIG);
 
                 config.numberOfWaves = segment.count;
 
@@ -442,28 +525,32 @@ export default class InterSceneManager {
 
         }
 
-        const nightmareScrapReward = gameData.amountCompletedStages == 0? this.FIRST_STAGE_REWARD:
-            this.calculateNightmareScrap(
-                waves
-            );
+        const nightmareScrapReward = this.getNightmareScrapReward(gameData, waves);
 
-        const rainActive = gameData.difficulty == "nightmare"? true: false;
 
-        let rainDamage = 2;
+        const rainActive = (gameData.difficulty == "nightmare" || gameData.difficulty == "hard")? true: false;
+
+        let rainDamage = 1;
+
+        if(gameData.difficulty == "nightmare") {
+            rainDamage++;
+        }
 
         if(gameData.amountCompletedStages >= 3){
-            rainDamage = 3;
+            rainDamage++;
         }
 
         if(gameData.amountCompletedStages >= 5){
-            rainDamage = 4;
+            rainDamage++;
         }
 
         if(gameData.amountCompletedStages >= 7){
-            rainDamage = 5;
+            rainDamage++;
         }
 
-        const dialogs = this.getCombatDialogs(nextStage, gameData.storyFlags.hasSeenRepliforce, gameData.amountCompletedStages);
+        const dialogs = this.getCombatDialogs(nextStage, gameData.storyFlags.hasSeenRepliforce, gameData.amountCompletedStages,gameData.currentStage, gameData.missionTeam);
+
+        const team = gameData.currentStage == "first" ? gameData.baseTeam: gameData.missionTeam;
 
         return {
 
@@ -474,12 +561,7 @@ export default class InterSceneManager {
                 stage:
                     nextStage.stage,
 
-                players: [
-
-                    "x",
-                    "zero"
-
-                ],
+                players: team,
 
                 waves,
 
@@ -504,14 +586,40 @@ export default class InterSceneManager {
 
     }
 
+    static getNightmareScrapReward(gameData, waves) {
+
+        if(gameData.amountCompletedStages == 0) {
+            if(gameData.currentStage=="first"){
+                return this.FIRST_BASE_STAGE_REWARD;
+            }
+            return this.FIRST_MISSION_STAGE_REWARD;
+        }
+        
+        return this.calculateNightmareScrap(
+                waves
+            );
+
+    }
+
     static handleNextSceneAfterCombat(gameData, DataManager, combatData){
+
+        gameData.nightmareScrapForCombats+= combatData.nightmare_scrap_reward;
+
+        if(gameData.currentStage == "first") {
+            gameData.currentStage = "second";
+
+            DataManager.saveGameData(gameData);
+
+            return this.handleNextSceneAfterBase(gameData, DataManager);
+        }
+
         gameData.amountCompletedStages++;
 
         if(gameData.amountCompletedStages>1){
             gameData.storyFlags.hasSeenRepliforce = true;
         }
 
-        if(gameData.currentArmors[0] != "x" || gameData.currentArmors[1] != "zero") {
+        if(gameData.currentArmors[0] != "x" || gameData.currentArmors[1] != "zero"  || gameData.currentArmors[2] != "axl") {
             gameData.achievementFlags.usedOtherArmors = true;
         }
 
@@ -521,7 +629,7 @@ export default class InterSceneManager {
         
         gameData.completedStages.push(combatData.stage);
 
-        gameData.nightmareScrap += combatData.nightmare_scrap_reward;
+        gameData.nightmareScrap += Math.floor(gameData.nightmareScrapForCombats*((gameData.difficulty=="nightmare" || gameData.difficulty=="hard")?0.9:1)) ;
 
         DataManager.saveGameData(gameData);
 
@@ -544,123 +652,133 @@ export default class InterSceneManager {
 
             gameData.amountCompletedStages;
 
-        if(amountCompletedStages == 0) {
-            return this.FIRST_STAGE;
-        }
+        if(gameData.currentStage == "first"){
+            if(amountCompletedStages == 0) {
+                return this.FIRST_BASE_STAGE;
+            }
 
-        if (
+            return this.DEFAULT_BASE_STAGE;
 
-            amountCompletedStages < 5
-
-        ) {
-
-            const availableStages =
-
-                Object.keys(
-                    this.STAGES
-                )
-
-                .filter(
-
-                    stage =>
-
-                        !this.FINAL_STAGE_KEYS
-                            .includes(stage)
-
-                )
-
-                .filter(
-
-                    stage =>
-
-                        !gameData
-                            .completedStages
-                            .includes(stage)
-
-                );
+        } else {
+            if(amountCompletedStages == 0) {
+                return this.FIRST_MISSION_STAGE;
+            }
 
             if (
 
-                availableStages.length === 0
+                amountCompletedStages < 5
 
             ) {
 
-                return null;
+                const availableStages =
 
-            }
+                    Object.keys(
+                        this.STAGES
+                    )
 
-            const selectedStage =
+                    .filter(
 
-                availableStages[
+                        stage =>
 
-                    Math.floor(
-
-                        Math.random() *
-
-                        availableStages.length
+                            !this.FINAL_STAGE_KEYS
+                                .includes(stage)
 
                     )
 
+                    .filter(
+
+                        stage =>
+
+                            !gameData
+                                .completedStages
+                                .includes(stage)
+
+                    );
+
+                if (
+
+                    availableStages.length === 0
+
+                ) {
+
+                    return null;
+
+                }
+
+                const selectedStage =
+
+                    availableStages[
+
+                        Math.floor(
+
+                            Math.random() *
+
+                            availableStages.length
+
+                        )
+
+                    ];
+
+                return this.STAGES[
+                    selectedStage
                 ];
 
-            return this.STAGES[
-                selectedStage
-            ];
+            }
 
-        }
+            if (
 
-        if (
+                amountCompletedStages === 5
 
-            amountCompletedStages === 5
+            ) {
 
-        ) {
+                return this.STAGES
+                    .repliforce_stage;
 
-            return this.STAGES
-                .repliforce_stage;
+            }
 
-        }
+            if (
 
-        if (
+                amountCompletedStages === 6
 
-            amountCompletedStages === 6
+            ) {
 
-        ) {
+                return this.STAGES
+                    .sigma_stage;
 
-            return this.STAGES
-                .sigma_stage;
+            }
 
-        }
+            if (
 
-        if (
+                amountCompletedStages === 7
 
-            amountCompletedStages === 7
+            ) {
 
-        ) {
+                return this.STAGES
+                    .first_gate_stage;
 
-            return this.STAGES
-                .first_gate_stage;
+            }
 
-        }
+            if (
 
-        if (
+                amountCompletedStages === 8
 
-            amountCompletedStages === 8
+            ) {
 
-        ) {
+                return this.STAGES
+                    .second_gate_stage;
 
-            return this.STAGES
-                .second_gate_stage;
+            }
 
-        }
+            if (
 
-        if (
+                amountCompletedStages === 9
 
-            amountCompletedStages === 9
+            ) {
 
-        ) {
+                return this.STAGES
+                    .final_stage;
 
-            return this.STAGES
-                .final_stage;
+            }
 
         }
 
@@ -887,8 +1005,8 @@ export default class InterSceneManager {
 
             ) {
 
-                totalReward +=
-                    this.BOSS_REWARD;
+                totalReward += wave.boss != "nightmare_snake"?
+                    this.BOSS_REWARD: this.BASE_BOSS_REWARD;
 
                 continue;
 
@@ -932,20 +1050,48 @@ export default class InterSceneManager {
 
     }
 
-    static getCombatDialogs(selectedStage, hasSeenRepliforce, amountOfCompletedStages) {
+    static getCombatDialogs(selectedStage, hasSeenRepliforce, amountOfCompletedStages, currentStage, characters) {
 
-        if(amountOfCompletedStages == 0) {
-            return COMBAT_DIALOGS[this.FIRST_STAGE.stage] ?? [];
-        }
-
-        if(amountOfCompletedStages < 5){
-            if(hasSeenRepliforce){
-                return COMBAT_DIALOGS[selectedStage.stage].later ?? [];
+        if(currentStage == "first") {
+            if(amountOfCompletedStages == 0) {
+                return COMBAT_DIALOGS[this.FIRST_BASE_STAGE.stage] ?? [];
             }
-            return COMBAT_DIALOGS[selectedStage.stage].first ?? []
+            
+            return [];
+
+        } else {
+            if(amountOfCompletedStages == 0) {
+                return COMBAT_DIALOGS[this.FIRST_MISSION_STAGE.stage] ?? [];
+            }
+
+            const charactersKey = this.getCharactersKey(characters);
+
+            if(amountOfCompletedStages < 5){
+                if(hasSeenRepliforce){
+                    return COMBAT_DIALOGS[selectedStage.stage].later[charactersKey] ?? [];
+                }
+
+                return COMBAT_DIALOGS[selectedStage.stage].first[charactersKey] ?? []
+            }
+
+            return COMBAT_DIALOGS[selectedStage.stage]?
+            COMBAT_DIALOGS[selectedStage.stage][charactersKey] : [];
         }
 
-        return COMBAT_DIALOGS[selectedStage.stage] ?? [];
+    }
+
+    static getCharactersKey(characters) {
+
+        return [...characters]
+
+            .sort()
+
+            .map(
+                character =>
+                    character[0]
+            )
+
+            .join("");
 
     }
 

@@ -5,6 +5,11 @@ export const BOSS_SPAWN_CONFIG = {
         offsetY: 120,
     },
 
+    nightmare_snake: {
+        offsetX: 0,
+        offsetY: 160,
+    },
+
     magma_dragoon: {
         offsetX: 0,
         offsetY: 150,
@@ -91,6 +96,11 @@ export const BOSS_SPAWN_CONFIG = {
     },
 
     awakened_nightmare_zero: {
+        offsetX: 0,
+        offsetY: 120,
+    },
+
+    blaze_heatnix: {
         offsetX: 0,
         offsetY: 120,
     },

@@ -21,34 +21,132 @@ DeathState {
             true
         );
 
-         player.scene.sfx.play(`${player.filename}_dying_voice`,
-            {
-            volume: 0.2
-        })
-
         //
         // terminou
         //
 
         player.sprite.once(
 
-            Phaser.Animations
-            .Events
-            .ANIMATION_COMPLETE,
+    Phaser.Animations.Events.ANIMATION_COMPLETE,
+
+    () => {
+
+        //
+        // wave 1
+        //
+
+        player.spawnRadialWave(
+            1,
+
+            8,
+
+            0
+
+        );
+
+        //
+        // wave 2
+        //
+
+        player.scene.time.delayedCall(
+
+            160,
 
             () => {
 
-                player.destroy();
+                player.spawnRadialWave(
 
-                 new Explosion(
+                    1,
 
-                    player.scene,
+                    8,
 
-                    player.sprite.x -30,
-
-                    player.sprite.y - 140
+                    22.5
 
                 );
+
+            }
+
+        );
+
+        //
+        // wave 3
+        //
+
+        player.scene.time.delayedCall(
+
+                    320,
+
+                    () => {
+
+                        player.spawnRadialWave(
+
+                            1,
+
+                            16,
+
+                            0
+
+                        );
+
+                    }
+
+                );
+
+                //
+                // death sphere 2
+                //
+
+                let count = 0;
+
+                const event =
+
+                    player.scene.time.addEvent({
+
+                        delay: 40,
+
+                        loop: true,
+
+                        callback: () => {
+
+                            count++;
+
+                            player.spawnRandomSphere(
+
+                            );
+
+                            if (
+
+                                count >= 25
+
+                            ) {
+
+                                event.remove();
+
+                            }
+
+                        }
+
+                    });
+
+                //
+                // sons
+                //
+
+                player.scene.sfx.play(
+                    `${player.filename}_dying_voice`,
+                    {
+                        volume: 0.2
+                    }
+                );
+
+                player.scene.sfx.play(
+                    "dying_explosion",
+                    {
+                        volume: 0.2
+                    }
+                );
+
+                player.destroy();
 
             }
 

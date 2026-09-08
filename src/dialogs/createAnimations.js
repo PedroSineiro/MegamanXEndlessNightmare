@@ -21,7 +21,13 @@ createAnimations(scene) {
 
         "black_zero",
 
+        "axl",
+
+        "black_axl",
+
         "alia",
+
+        "blaze_heatnix",
 
         "nightmare_zero",
 

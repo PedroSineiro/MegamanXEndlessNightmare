@@ -121,6 +121,16 @@ loadAssets(scene) {
         "assets/sprites/characters/zero/black_zero/empty_armor/empty_armor.png"
     );
 
+    scene.load.image(
+        "axl_empty_armor",
+        "assets/sprites/characters/axl/axl/empty_armor/empty_armor.png"
+    );
+
+    scene.load.image(
+        "black_axl_empty_armor",
+        "assets/sprites/characters/axl/black_axl/empty_armor/empty_armor.png"
+    );
+
 
     for (let i = 1; i <= 11; i++) {
         scene.load.image(

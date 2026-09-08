@@ -91,7 +91,7 @@ export default class AchievementScene extends Phaser.Scene {
 
                         {
                             fontFamily: "MegaManX",
-                            fontSize: "12px",
+                            fontSize: "11px",
 
                             color:
 

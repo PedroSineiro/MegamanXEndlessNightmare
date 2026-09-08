@@ -1,4 +1,5 @@
 import AchievementManager from "../systems/AchievementManager.js";
+import SaveNotificator from "../systems/SaveNotificator.js";
 import SoundManager from "../systems/SoundManager.js";
 
 export default class UIScene extends Phaser.Scene {
@@ -25,6 +26,10 @@ export default class UIScene extends Phaser.Scene {
         this.isShowing = false;
 
         AchievementManager.setUIScene(
+            this
+        );
+
+        SaveNotificator.setUIScene(
             this
         );
 
@@ -192,6 +197,124 @@ export default class UIScene extends Phaser.Scene {
 
                     duration:
                         400,
+
+                    onComplete: () => {
+
+                        container.destroy();
+
+                        resolve();
+
+                    }
+
+                });
+
+            }
+        );
+
+    }
+
+    async displaySaveNotification() {
+
+        const container =
+
+            this.add.container(
+                500,
+                -100
+            );
+
+        const bg =
+
+            this.add.rectangle(
+                0,
+                0,
+                320,
+                60,
+                0x000000,
+                0.9
+            );
+
+        bg.setStrokeStyle(
+            2,
+            0xffffff
+        );
+
+        const text =
+
+            this.add.text(
+
+                0,
+                0,
+
+                "GAME SAVED",
+
+                {
+
+                    fontFamily:
+                        "MegaManX",
+
+                    fontSize:
+                        "14px",
+
+                    color:
+                        "#00ff00"
+
+                }
+
+            )
+
+            .setOrigin(
+                0.5
+            );
+
+        container.add([
+            bg,
+            text
+        ]);
+
+        container.setDepth(
+            999999
+        );
+
+        this.tweens.add({
+
+            targets:
+                container,
+
+            y:
+                50,
+
+            duration:
+                300,
+
+            ease:
+                "Back.Out"
+
+        });
+
+        await this.wait(
+            2000
+        );
+
+        //
+        // saída
+        //
+
+        await new Promise(
+            resolve => {
+
+                this.tweens.add({
+
+                    targets:
+                        container,
+
+                    y:
+                        -100,
+
+                    duration:
+                        300,
+
+                    ease:
+                        "Back.In",
 
                     onComplete: () => {
 

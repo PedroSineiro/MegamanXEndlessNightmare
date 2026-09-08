@@ -46,53 +46,21 @@ export default class CombatHUD {
                     0
                 );
 
+        this.container.add(
+            this.background
+        );
+
         //
-        // textos
+        // personagens
         //
 
-        this.xText =
+        this.playerTexts = [];
 
-            scene.add.text(
+        this.createPlayerTexts();
 
-                20,
-                10,
-
-                "",
-
-                {
-                    fontSize:
-                        "14px",
-
-                    fontFamily:
-                        "MegaManX",
-
-                    color:
-                        "#66ccff"
-                }
-
-            );
-
-        this.zeroText =
-
-            scene.add.text(
-
-                230,
-                10,
-
-                "",
-
-                {
-                    fontSize:
-                        "14px",
-
-                    fontFamily:
-                        "MegaManX",
-
-                    color:
-                        "#ff6666"
-                }
-
-            );
+        //
+        // wave
+        //
 
         this.waveText =
 
@@ -104,6 +72,7 @@ export default class CombatHUD {
                 "Wave: ",
 
                 {
+
                     fontSize:
                         "14px",
 
@@ -112,74 +81,272 @@ export default class CombatHUD {
 
                     color:
                         "#ffffff"
+
                 }
 
             );
 
-        this.container.add([
-
-            this.background,
-
-            this.xText,
-
-            this.zeroText,
-
+        this.container.add(
             this.waveText
+        );
 
-        ]);
+    }
+
+    createPlayerTexts() {
+
+        const players =
+            this.scene.players || [];
+
+        players.forEach(
+
+            (player, index) => {
+
+                const config =
+                    this.getPlayerConfig(
+                        player
+                    );
+
+                //
+                // posição
+                //
+
+                const x =
+                    20 + (index * 210);
+
+                const text =
+
+                    this.scene.add.text(
+
+                        x,
+                        10,
+
+                        "",
+
+                        {
+
+                            fontSize:
+                                "14px",
+
+                            fontFamily:
+                                "MegaManX",
+
+                            color:
+                                config.color
+
+                        }
+
+                    );
+
+                this.container.add(
+                    text
+                );
+
+                this.playerTexts.push({
+
+                    player:
+                        player,
+
+                    text:
+                        text,
+
+                    config:
+                        config
+
+                });
+
+            }
+
+        );
+
+    }
+
+    getPlayerConfig(player) {
+
+        const filename =
+            player.filename;
+
+        //
+        // X
+        //
+
+        if (
+            filename === "x"
+        ) {
+
+            return {
+
+                title:
+                    "X",
+
+                color:
+                    "#66ccff"
+
+            };
+
+        }
+
+        //
+        // Zero
+        //
+
+        if (
+            filename === "zero"
+        ) {
+
+            return {
+
+                title:
+                    "Zero",
+
+                color:
+                    "#ff6666"
+
+            };
+
+        }
+
+        //
+        // Axl
+        //
+
+        if (
+            filename === "axl"
+        ) {
+
+            return {
+
+                title:
+                    "Axl",
+
+                color:
+                    "#0a3686"
+
+            };
+
+        }
+
+        //
+        // fallback
+        //
+
+        return {
+
+            title:
+                player.filename || "Unknown",
+
+            color:
+                "#ffffff"
+
+        };
 
     }
 
     update() {
 
         if (
-        this.container?.destroyed ||
-        this.container?.scene === undefined
+
+            this.container?.destroyed ||
+
+            this.container?.scene ===
+            undefined
+
         ) {
 
             return;
+
         }
 
-        const x =
-            this.scene.players[0];
+        //
+        // caso a composição dos players
+        // tenha mudado
+        //
 
-        const zero =
-            this.scene.players[1];
+        if (
 
-        this.xText?.setText(
+            this.playerTexts.length !==
+            this.scene.players.length
 
-        `
-X
-HP: ${x.hp}/${x.maxHp}
-Actions: ${x.turnActions}
-Evasion: ${Math.round(x.evasion * 100)}%
-Reduction: ${Math.round(x.damageReduction * 100)}%` + 
-(x.hasGigaAttack? `
-Giga
-Attack: ${Math.round((x.gigaAttackRechargeTurns/x.gigaAttackCooldown)*100)}%`: "")
+        ) {
 
-                );
+            this.rebuild();
 
-                this.zeroText?.setText(
+        }
 
-        `
-Zero
-HP: ${zero.hp}/${zero.maxHp}
-Actions: ${zero.turnActions}
-Evasion: ${Math.round(zero.evasion * 100)}%
-Reduction: ${Math.round(zero.damageReduction * 100)}%` + 
-(zero.hasGigaAttack? `
-Giga
-Attack: ${Math.round((zero.gigaAttackRechargeTurns/zero.gigaAttackCooldown)*100)}%`: "")
+        this.playerTexts.forEach(
 
-                );
+            data => {
 
+                const player =
+                    data.player;
 
-                this.waveText?.setText(
-        `
-Wave:${Math.min(this.scene.currentWaveIndex + 1,this.scene.totalNumberOfWaves)}/${this.scene.waves.length}`
+                if (!player) {
+                    return;
+                }
+
+                const gigaText =
+
+                    player.hasGigaAttack
+
+                    ? `\nGiga\nAttack: ${
+                        Math.round(
+                            (
+                                player
+                                    .gigaAttackRechargeTurns /
+
+                                player
+                                    .gigaAttackCooldown
+
+                            ) * 100
+                        )
+                    }%`
+
+                    : "";
+
+                data.text.setText(
+
+                    `${data.config.title}
+HP: ${player.hp}/${player.maxHp}
+Actions: ${player.turnActions}
+Evasion: ${Math.round(player.evasion * 100)}%
+Reduction: ${Math.round(player.damageReduction * 100)}%${gigaText}`
+
                 );
 
             }
+
+        );
+
+        //
+        // wave
+        //
+
+        this.waveText?.setText(
+
+            `Wave:${Math.min(
+                this.scene.currentWaveIndex + 1,
+                this.scene.totalNumberOfWaves
+            )}/${this.scene.waves.length}`
+
+        );
+
+    }
+
+    rebuild() {
+
+        this.playerTexts.forEach(
+
+            data => {
+
+                data.text?.destroy();
+
+            }
+
+        );
+
+        this.playerTexts = [];
+
+        this.createPlayerTexts();
+
+    }
 
 }

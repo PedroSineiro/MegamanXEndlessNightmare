@@ -52,7 +52,7 @@ export default function createAnimations(scene) {
                 { key: `${armor}_idle_10`, duration: 35 },
                 { key: `${armor}_idle_11`, duration: 35 }
             ],
-            frameRate: 6,
+            frameRate: 3,
             repeat: -1
         });
 
@@ -120,13 +120,10 @@ export default function createAnimations(scene) {
 
         scene.anims.create({
             key: `${armor}_dying`,
-            frames: Array.from(
-                { length: 8 },
-                (_, i) => ({
-                    key: `${armor}_dying_${i + 1}`
-                })
-            ),
-            frameRate: 20,
+            frames: [{
+                    key: `${armor}_dying_1`
+                }],
+            frameRate: 4,
             repeat: 0
         });
 
@@ -289,4 +286,61 @@ export default function createAnimations(scene) {
         repeat: -1
     });
 
+    createDeathSpheres(scene);
+
+}
+
+function createDeathSpheres(scene) {
+    scene.anims.create({
+
+        key: "zero_death_sphere_1",
+
+        frames:[
+            {
+                key: "zero_death_sphere_1_1"
+            },
+            {
+                key: "zero_death_sphere_1_2"
+            },
+            {
+                key: "zero_death_sphere_1_3"
+            },
+            {
+                key: "zero_death_sphere_1_4"
+            },
+            {
+                key: "zero_death_sphere_1_5"
+            },
+        ],
+
+        frameRate: 22,
+
+        repeat: -1
+
+    });
+
+    scene.anims.create({
+
+        key: "zero_death_sphere_2",
+
+        frames:[
+            {
+                key: "zero_death_sphere_2_1"
+            },
+            {
+                key: "zero_death_sphere_2_2"
+            },
+            {
+                key: "zero_death_sphere_2_3"
+            },
+            {
+                key: "zero_death_sphere_2_4"
+            }
+        ],
+
+        frameRate: 22,
+
+        repeat: -1
+
+    });
 }

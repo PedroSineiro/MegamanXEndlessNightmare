@@ -194,6 +194,8 @@ extends BaseBoss {
 
 
     async chargePlayers(){
+
+            let attackCount = 0;
             for (
 
                 const player of
@@ -227,7 +229,7 @@ extends BaseBoss {
 
             const targetX =
 
-                player.filename === "x"
+                attackCount == 0
 
                 ? 100
 
@@ -257,13 +259,15 @@ extends BaseBoss {
 
             this.setDirection(
 
-                player.filename === "x"
+                attackCount == 0
 
                 ? 1
 
                 : -1
 
             );
+
+            attackCount++;
 
         }
     }

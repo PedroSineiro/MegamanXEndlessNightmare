@@ -169,6 +169,8 @@ export default function loadAssets(scene) {
 
     }
 
+    loadDeathSpheres(scene);
+
     //
     // sons
     //
@@ -223,4 +225,30 @@ export default function loadAssets(scene) {
         "assets/sounds/Zero/giga_attack.wav"
     );
 
+}
+
+function loadDeathSpheres(scene) {
+    for (let i = 1;i <= 5;i++) {
+
+        scene.load.image(
+
+            `zero_death_sphere_1_${i}`,
+
+            `assets/sprites/characters/zero/death_sphere/death_sphere_1_${i}.png`
+
+        );
+
+    }
+
+    for (let i = 1;i <= 4;i++) {
+
+        scene.load.image(
+
+            `zero_death_sphere_2_${i}`,
+
+            `assets/sprites/characters/zero/death_sphere/death_sphere_2_${i}.png`
+
+        );
+
+    }
 }

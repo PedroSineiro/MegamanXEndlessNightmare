@@ -148,9 +148,9 @@ extends BaseBoss {
     async performAttack(
         target
     ) {
-        let startHadokenAnimationName = target.filename==="x"?this.startHadokenUpAnimationName:this.startHadokenDownAnimationName;
-        let hadokenAnimationName = target.filename==="x"?this.hadokenUpAnimationName:this.hadokenDownAnimationName;
-        let hadokenStartYoffset = target.filename==="x"?186:130;
+        let startHadokenAnimationName = this.attackCount == 0?this.startHadokenUpAnimationName:this.startHadokenDownAnimationName;
+        let hadokenAnimationName = this.attackCount == 0?this.hadokenUpAnimationName:this.hadokenDownAnimationName;
+        let hadokenStartYoffset = this.attackCount == 0?186:130;
 
 
         await this.playAnimation(
@@ -267,15 +267,11 @@ extends BaseBoss {
 
 
         this.spawnTargetedFireball(
-            this.scene.players.find(
-                p => p.filename === "x"
-            )
+            this.scene.players[0]
         );
 
         this.spawnTargetedFireball(
-            this.scene.players.find(
-                p => p.filename === "zero"
-            )
+             this.scene.players[1]
         );
 
         await this.wait(2000);
@@ -284,9 +280,7 @@ extends BaseBoss {
 
 
         this.spawnTargetedFireball(
-            this.scene.players.find(
-                p => p.filename === "x"
-            )
+            this.scene.players[0]
         );
 
         //
@@ -294,9 +288,7 @@ extends BaseBoss {
         //
 
         this.spawnTargetedFireball(
-            this.scene.players.find(
-                p => p.filename === "zero"
-            )
+            this.scene.players[1]
         );
 
         this.randomFireBalls(2);

@@ -166,7 +166,7 @@ extends BaseBoss {
 
                     const hitbox = this.setupHitbox();
 
-                    this.checkChargeHit([x], hitbox, this.attackDamage);
+                    this.checkChargeHit([x], hitbox, this.gigaAttackDamage);
                 }
                 
             }
@@ -198,7 +198,7 @@ extends BaseBoss {
 
                     const hitbox = this.setupHitbox();
 
-                    this.checkChargeHit([zero], hitbox, this.attackDamage);
+                    this.checkChargeHit([zero], hitbox, this.gigaAttackDamage);
                 }
                 
             }
