@@ -273,8 +273,37 @@ extends Phaser.Scene {
     }
 
     preload() {
-        this.loadAssets();
 
+        const loadingText = this.add.text(
+            500,
+            400,
+            "LOADING 0%",
+            {
+                fontFamily: "MegaManX",
+                fontSize: "24px",
+                color: "#FFFFFF"
+            }
+        ).setOrigin(0.5);
+
+        this.load.on(
+            "progress",
+            (value) => {
+                loadingText.setText(
+                    `LOADING ${Math.floor(value * 100)}%`
+                );
+            }
+        );
+
+        this.load.on(
+            "complete",
+            () => {
+                loadingText.setText(
+                    "LOADING COMPLETE"
+                );
+            }
+        );
+
+        this.loadAssets();
     }
 
     loadAssets() {
