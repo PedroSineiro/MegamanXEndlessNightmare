@@ -552,6 +552,8 @@ export default class InterSceneManager {
 
         const team = gameData.currentStage == "first" ? gameData.baseTeam: gameData.missionTeam;
 
+        const showPauseHint = gameData.amountCompletedStages == 0;
+
         return {
 
             scene: "CombatScene",
@@ -564,6 +566,8 @@ export default class InterSceneManager {
                 players: team,
 
                 waves,
+
+                show_pause_hint: showPauseHint,
 
                 dialogs: dialogs,
 

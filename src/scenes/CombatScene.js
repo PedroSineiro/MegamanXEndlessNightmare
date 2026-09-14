@@ -95,6 +95,8 @@ extends Phaser.Scene {
 
         this.isGameOver = false;
 
+        this.canPause = false;
+
         this.sfx =
             new SoundManager(
                 this
@@ -111,23 +113,26 @@ extends Phaser.Scene {
 
         this.playStageMusic();
 
-        /*this.input.keyboard.on(
+        this.input.keyboard.on(
 
-            "keydown-V",
+            "keydown-ESC",
 
             () => {
 
-                this.GameData.amountCompletedStages++;
+                if(this.canPause && !this.scene.isActive("PauseScene")) {
 
-                DataManager.saveGameData(this.GameData);
+                    this.sfx.play(
+                        "choosing_menu"
+                    );
 
-                this.bgm.stop();
+                    this.scene.pause("CombatScene");
+                    this.scene.launch("PauseScene");
 
-               this.scene.start("BaseScene", {});
+                }
 
             }
 
-        );*/
+        );
 
         this.setupStage();
 
@@ -174,7 +179,17 @@ extends Phaser.Scene {
 
         await this.setupPlayers();
 
-         await this.runWaveDialogs(
+        this.canPause = true;
+
+        if(this.combatData.show_pause_hint) {
+            const uiScene = this.scene.get("UIScene");
+
+            uiScene.showHint(
+                "Press ESC to pause"
+            );
+        }
+
+        await this.runWaveDialogs(
 
             this.currentWaveIndex,
 
@@ -1092,6 +1107,8 @@ extends Phaser.Scene {
 
         this.isGameOver = true;
 
+        this.canPause = false;
+
         await SceneHelper.wait(this, 1000);
 
         await SceneHelper.fadeToBlack(this);
@@ -1107,6 +1124,9 @@ extends Phaser.Scene {
 
 
     async startVictorySequence(){
+
+        this.canPause = false;
+
         this.bgm?.stop();
 
             await this.playSoundAndWait("stage_clear", {volume: 0.2});

@@ -58,6 +58,8 @@ export default class TitleScene extends Phaser.Scene {
 
     async create() {
 
+        this.buttons = [];
+
         if (
             !this.scene.isActive(
                 "UIScene"
@@ -176,7 +178,7 @@ export default class TitleScene extends Phaser.Scene {
 
             async () => {
 
-                this.loadGameButton.disableInteractive();
+                this.buttons.forEach(button => button.disableInteractive());
 
                 this.cameras.main.fadeOut(
                     500,
@@ -237,7 +239,7 @@ export default class TitleScene extends Phaser.Scene {
 
             async () => {
 
-                this.achievementsButton.disableInteractive();
+                this.buttons.forEach(button => button.disableInteractive());
 
                 this.cameras.main.fadeOut(
                     500,
@@ -479,7 +481,7 @@ Clear enemy waves, defeat Mavericks and uncover the source of the Nightmare outb
 
     async startNewGame() {
 
-        this.newGameButton.disableInteractive();
+        this.buttons.forEach(button => button.disableInteractive());
 
         this.cameras.main.fadeOut(
             500,
@@ -591,6 +593,8 @@ Clear enemy waves, defeat Mavericks and uncover the source of the Nightmare outb
             }
 
         );
+
+        this.buttons.push(button);
 
         return button;
 

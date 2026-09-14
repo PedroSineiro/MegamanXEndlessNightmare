@@ -20,6 +20,8 @@ export default class GameOverScene extends Phaser.Scene {
 
     async create() {
 
+        this.buttons = [];
+
         this.sfx =
             new SoundManager(
                 this
@@ -313,7 +315,7 @@ export default class GameOverScene extends Phaser.Scene {
 
             () => {
 
-                button.disableInteractive();
+                this.buttons.forEach(button => button.disableInteractive());
 
                 this.sfx.play(
                     "buying_upgrade",

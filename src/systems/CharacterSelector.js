@@ -262,7 +262,11 @@ export default class CharacterSelector {
 
         this.destroy();
 
+        this.scene.volumeItems.forEach(volumeItem => volumeItem.setVisible(true));
+
         this.scene.BaseMenu.resetButtons();
+
+        this.scene.setVolumeItems();
 
         this.scene.BaseMenu.createUpgradeButtons();
 

@@ -331,6 +331,48 @@ export default class UIScene extends Phaser.Scene {
 
     }
 
+    async showHint(text) {
+
+        const hint = this.add.text(
+
+            140,
+            60,
+
+            text,
+
+            {
+                fontFamily: "MegaManX",
+                fontSize: "12px",
+                color: "#FFFFFF",
+                stroke: "#000000",
+                strokeThickness: 4
+            }
+
+        )
+
+        .setOrigin(0.5)
+        .setDepth(999999);
+
+        this.tweens.add({
+
+            targets: hint,
+
+            alpha: 0.2,
+
+            duration: 500,
+
+            yoyo: true,
+
+            repeat: 5
+
+        });
+
+        await this.wait(5000);
+
+        hint.destroy();
+
+    }
+
     wait(ms) {
 
         return new Promise(

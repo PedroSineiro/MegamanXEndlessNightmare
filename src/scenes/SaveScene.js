@@ -518,6 +518,8 @@ export default class SaveScene extends Phaser.Scene {
 
             DataManager.loadSaveData();
 
+        DataManager.saveGameData(saveData);
+
         if(saveData.amountCompletedStages == 0){
             const sceneData = this.InterSceneManager.handleNextSceneAfterBase(saveData, DataManager);
 

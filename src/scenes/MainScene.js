@@ -9,6 +9,7 @@ import DifficultyScene from "./DifficultyScene.js";
 import SaveScene from "./SaveScene.js";
 import AchievementScene from "./AchievementScene.js";
 import UIScene from "./UIScene.js";
+import PauseScene from "./PauseScene.js";
 
 export default class MainScene
 extends Phaser.Scene {
@@ -43,6 +44,7 @@ const config = {
     scene: [
         BootScene,
         UIScene,
+        PauseScene,
         TitleScene,
         DifficultyScene,
         SaveScene,

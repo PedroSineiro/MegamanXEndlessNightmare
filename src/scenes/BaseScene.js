@@ -72,6 +72,8 @@ extends Phaser.Scene {
 
         this.fadeOverlay = this.SceneHelper.createFadeOverlay(this);
 
+        this.volume = this.sound.volume;
+
         this.sfx =
             new SoundManager(
                 this
@@ -86,12 +88,125 @@ extends Phaser.Scene {
 
         achievements?.forEach(achievement => {AchievementManager.unlock(achievement)});
 
+        this.volumeItems = [];
+
+        this.volumeText = this.add.text(
+            600,
+            50,
+            `MASTER VOLUME: 50%`,
+            {
+                fontFamily: "MegaManX",
+                fontSize: "20px",
+                color: "#FFFFFF"
+            }
+        ).setOrigin(0.5).setDepth(99999);
+
+        this.volumeItems.push(this.volumeText);
+
+        this.leftButton = this.add.text(
+            710,
+            65,
+            "<",
+            {
+                fontFamily: "MegaManX",
+                fontSize: "20px",
+                color: "#FFFFFF"
+            }
+        )
+        .setInteractive({
+            useHandCursor:
+                true
+        }).setDepth(99999);
+
+        this.volumeItems.push(this.leftButton);
+
+        this.rightButton = this.add.text(
+            750,
+            65,
+            ">",
+            {
+                fontFamily: "MegaManX",
+                fontSize: "20px",
+                color: "#FFFFFF"
+            }
+        )
+        .setInteractive({
+            useHandCursor:
+                true
+        }).setDepth(99999);
+
+        this.volumeItems.push(this.rightButton);
+
+        this.leftButton.on("pointerdown", () => {
+
+            this.sfx.play(
+                    "choosing_menu",
+                    {
+                        volume: 0.15
+                    }
+                );
+
+            this.volume =
+
+                Math.max(
+                    0,
+                    this.volume - 0.1
+                );
+
+            this.updateVolume();
+
+        });
+
+        this.rightButton.on("pointerdown", () => {
+
+            this.sfx.play(
+                    "choosing_menu",
+                    {
+                        volume: 0.15
+                    }
+                );
+
+            this.volume =
+
+                Math.min(
+                    1,
+                    this.volume + 0.1
+                );
+
+            this.updateVolume();
+
+        });
+
+        this.updateVolume();
+
         this.setupStage();
 
         await this.initialize();
 
     }
 
+    updateVolume() {
+
+        const volume =
+
+            Math.round(
+                this.volume * 100
+            );
+
+        this.volumeText.setText(
+            `MASTER VOLUME: ${volume}%`
+        );
+
+        this.sound.setVolume(
+            this.volume
+        );
+
+    }
+
+
+    setVolumeItems(visible = true) {
+        this.volumeItems.forEach(volumeItem => volumeItem.setVisible(visible));
+    }
 
     async initialize() {
 

@@ -108,6 +108,8 @@ export default class BaseMenu {
             () => {
                 this.scene.sfx.play("equiping_armor", {volume: 0.15});
 
+                this.scene.setVolumeItems(false);
+
                 this.scene.showTeamSelectScreen();
 
                 this.resetButtons();
